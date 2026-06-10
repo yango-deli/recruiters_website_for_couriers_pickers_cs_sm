@@ -22,8 +22,6 @@
 
 # misc
 .DS_Store
-.hallmark/
-.reference/
 .cursor/**/__pycache__/
 *.pem
 
@@ -33,31 +31,26 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
-# env files (can opt-in for committing if needed)
+# env files (secrets — use .env.local.example + GitHub Secrets)
 .env*
 !.env.local.example
 
-# vercel
+# vercel (local link; committed copy at vercel.project.json)
 .vercel
 
 # typescript
 *.tsbuildinfo
 next-env.d.ts
 .env.local
-.reference/
 .cursor/skills/ui-ux-pro-max/scripts/__pycache__/
 
-# Large brand source files (sync locally via scripts/sync-brand-from-yadisk.py)
+# Nested git metadata inside committed reference clones
+.reference/**/.git/
+
+# Large brand source files (15GB+; restore via scripts/sync-brand-from-yadisk.py)
+# Inventory committed at public/brand/local-assets-manifest.json
 public/brand/Yango_Deli_Photos/
 public/brand/Presentation/
 public/brand/Avatars/
 *.psd
 *.PSD
-
-# Local Zoho exploration artifacts (not part of production site)
-scripts/explore-zoho*
-scripts/setup-zoho*
-scripts/verify-zoho*
-scripts/verify-*.png
-scripts/zoho-*
-scripts/scripts/

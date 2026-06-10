@@ -1,0 +1,163 @@
+@import "tailwindcss";
+
+/* ─── Fluid Typography ─── */
+:root {
+  --text-hero: clamp(3rem, 8vw, 8rem);
+  --text-section: clamp(2rem, 5vw, 4rem);
+  --text-body: clamp(1rem, 2vw, 1.25rem);
+  --text-caption: clamp(0.75rem, 1.5vw, 0.875rem);
+
+  /* ─── Color Palette (defaults — Hero) ─── */
+  --bg: #f5f0e8;
+  --text: #2c1810;
+  --accent: #c8956c;
+  --muted: #8a7a6d;
+}
+
+/* ─── Tailwind Theme ─── */
+@theme inline {
+  --font-serif: var(--font-instrument-serif);
+  --font-sans: var(--font-inter);
+  --color-bg: var(--bg);
+  --color-text: var(--text);
+  --color-accent: var(--accent);
+  --color-muted: var(--muted);
+}
+
+/* ─── Section Color Palettes ─── */
+[data-theme="hero"] {
+  --bg: #f5f0e8;
+  --text: #2c1810;
+  --accent: #c8956c;
+  --muted: #8a7a6d;
+}
+
+[data-theme="launch"] {
+  --bg: #ede6da;
+  --text: #2c1810;
+  --accent: #b8845c;
+  --muted: #8a7a6d;
+}
+
+[data-theme="river-story"] {
+  --bg: #f0ece4;
+  --text: #1a1a1a;
+  --accent: #5c7a6b;
+  --muted: #6b6b6b;
+}
+
+[data-theme="green"] {
+  --bg: #1a3a2a;
+  --text: #e8e0d0;
+  --accent: #7ab592;
+  --muted: #5a8a6a;
+}
+
+[data-theme="transition"] {
+  --bg: #3a3e44;
+  --text: #e8e4e0;
+  --accent: #8a9aa4;
+  --muted: #6a7a84;
+}
+
+[data-theme="city"] {
+  --bg: #121212;
+  --text: #f0ece4;
+  --accent: #d4a574;
+  --muted: #6a6a6a;
+}
+
+[data-theme="summit"] {
+  --bg: #c8956c;
+  --text: #2c1810;
+  --accent: #f5f0e8;
+  --muted: #8a5a3a;
+}
+
+/* ─── Base ─── */
+@layer base {
+  *,
+  *::before,
+  *::after {
+    margin: 0;
+    box-sizing: border-box;
+  }
+}
+
+/* ─── Hide native cursor (custom cursor replaces it) ─── */
+@media (pointer: fine) {
+  * {
+    cursor: none !important;
+  }
+}
+
+html {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-sans, system-ui, sans-serif);
+}
+
+/* ─── Selection ─── */
+::selection {
+  background: var(--accent);
+  color: var(--bg);
+}
+
+/* ─── Scrollbar ─── */
+::-webkit-scrollbar {
+  width: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--muted);
+  border-radius: 3px;
+}
+
+/* ─── Film Grain Overlay ─── */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  pointer-events: none;
+  opacity: 0.035;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)'/%3E%3C/svg%3E");
+  background-repeat: repeat;
+  background-size: 256px 256px;
+}
+
+/* ─── Image Hover States ─── */
+@media (hover: hover) {
+  [class*="aspect-"] img,
+  .green-image-panel img {
+    transition: filter 0.6s ease, transform 0.6s ease;
+  }
+
+  [class*="aspect-"]:hover img,
+  .green-image-panel:hover img {
+    filter: brightness(1.05);
+    transform: scale(1.02);
+  }
+}
+
+/* ─── Reduced Motion ─── */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}

@@ -1,0 +1,568 @@
+{
+  "generated": "2026-06-09",
+  "note": "Large brand assets not in git (GitHub 100MB/file limit). Sync via scripts/sync-brand-from-yadisk.py",
+  "total_files": 140,
+  "total_bytes": 15479237576,
+  "files": [
+    {
+      "path": "public/brand/Avatars/YD_avatar_business trip.png",
+      "bytes": 51455
+    },
+    {
+      "path": "public/brand/Avatars/YD_avatar_dayoff.png",
+      "bytes": 42414
+    },
+    {
+      "path": "public/brand/Avatars/YD_avatar_event.png",
+      "bytes": 52708
+    },
+    {
+      "path": "public/brand/Avatars/YD_avatar_in the fields.png",
+      "bytes": 43395
+    },
+    {
+      "path": "public/brand/Avatars/YD_avatar_photoshoot.png",
+      "bytes": 58464
+    },
+    {
+      "path": "public/brand/Avatars/YD_avatar_sick.png",
+      "bytes": 42118
+    },
+    {
+      "path": "public/brand/Avatars/YD_avatar_studyk.png",
+      "bytes": 43231
+    },
+    {
+      "path": "public/brand/Avatars/YD_avatar_vacation.png",
+      "bytes": 43991
+    },
+    {
+      "path": "public/brand/Presentation/Eng/Presentation_General Font_Eng.pptx",
+      "bytes": 403212434
+    },
+    {
+      "path": "public/brand/Presentation/Eng/Presentation_Yango Font_Eng.pptx",
+      "bytes": 403212351
+    },
+    {
+      "path": "public/brand/Presentation/Hebrew/Presentation_General Font_Hebrew.pptx",
+      "bytes": 403215635
+    },
+    {
+      "path": "public/brand/Presentation/Hebrew/Presentation_Yango Font_Hebrew.pptx",
+      "bytes": 403215842
+    },
+    {
+      "path": "public/brand/Presentation/Simple instruction for the presentation.pdf",
+      "bytes": 43938522
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1004.psd",
+      "bytes": 603153022
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1089.psd",
+      "bytes": 424099840
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1141.psd",
+      "bytes": 566424497
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1221.psd",
+      "bytes": 447306860
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1275.psd",
+      "bytes": 529511885
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1297.psd",
+      "bytes": 381421596
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1321.psd",
+      "bytes": 492085248
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1340.psd",
+      "bytes": 1078743972
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1561.psd",
+      "bytes": 733630002
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1571.psd",
+      "bytes": 492256928
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1624.psd",
+      "bytes": 934376226
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1654.psd",
+      "bytes": 982912178
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1663.psd",
+      "bytes": 416906050
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-1669.psd",
+      "bytes": 265361730
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-175.psd",
+      "bytes": 435165631
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-217.psd",
+      "bytes": 701556067
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-863.psd",
+      "bytes": 440420485
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-872.psd",
+      "bytes": 460970605
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-915.psd",
+      "bytes": 426227044
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/PSD/YANGODELI-978.psd",
+      "bytes": 444820528
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 12.MOV",
+      "bytes": 2116885
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 13.MOV",
+      "bytes": 4500061
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 21 copy.MOV",
+      "bytes": 6898259
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 21.MOV",
+      "bytes": 12407784
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 22.MOV",
+      "bytes": 12081600
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 24.MOV",
+      "bytes": 4128706
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 25.MOV",
+      "bytes": 4429373
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 26.MOV",
+      "bytes": 3700786
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 27.MOV",
+      "bytes": 4625464
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 28.MOV",
+      "bytes": 2127108
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 29.MOV",
+      "bytes": 2777683
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 3.MOV",
+      "bytes": 1297689
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 30.MOV",
+      "bytes": 1980207
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 33.MOV",
+      "bytes": 7811863
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 37.MOV",
+      "bytes": 8891863
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 39.MOV",
+      "bytes": 4158599
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 4 copy.MOV",
+      "bytes": 4103418
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 4.MOV",
+      "bytes": 9027313
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 40.MOV",
+      "bytes": 4227462
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 42.MOV",
+      "bytes": 3967881
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 43.MOV",
+      "bytes": 4108484
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 47.MOV",
+      "bytes": 3723123
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 48.MOV",
+      "bytes": 4056536
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 49.MOV",
+      "bytes": 2141553
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 54.MOV",
+      "bytes": 2231499
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 57.MOV",
+      "bytes": 13434837
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 6.MOV",
+      "bytes": 3305603
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 60.MOV",
+      "bytes": 2472830
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 7.MOV",
+      "bytes": 12874855
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 8.MOV",
+      "bytes": 7207478
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE= 9.MOV",
+      "bytes": 4897136
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/GMP_U2F2ZVZINTE=.MOV",
+      "bytes": 6606444
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/copy_27171A06-0590-4DA1-B9EE-7150018B46E4.mov",
+      "bytes": 49450525
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/GIFs/copy_9B2684E5-A0F6-49ED-BD35-A97B5D1424F3.mov",
+      "bytes": 20523882
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5096.mov",
+      "bytes": 42828137
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5103.mov",
+      "bytes": 44990820
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5174.mov",
+      "bytes": 82112227
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5175.mov",
+      "bytes": 22241684
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5178.mov",
+      "bytes": 87131999
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5204.MOV",
+      "bytes": 68554249
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5216.mov",
+      "bytes": 59179200
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5230.mov",
+      "bytes": 30101839
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5241.mov",
+      "bytes": 29242761
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5289.mov",
+      "bytes": 3856916
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5324.mov",
+      "bytes": 9431074
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5365.mov",
+      "bytes": 3287506
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5368.MOV",
+      "bytes": 24340255
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5452.mov",
+      "bytes": 7333481
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5457.mov",
+      "bytes": 457078638
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5468.mov",
+      "bytes": 26152741
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5501.mov",
+      "bytes": 45457851
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5521.mov",
+      "bytes": 10591595
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5565.mov",
+      "bytes": 20063750
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5572.mov",
+      "bytes": 16910872
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5573.mov",
+      "bytes": 22421418
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5639.mov",
+      "bytes": 202467459
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5642.mov",
+      "bytes": 6812268
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5651.mov",
+      "bytes": 23237153
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5661.mov",
+      "bytes": 17131692
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5662.mov",
+      "bytes": 17769362
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5664.mov",
+      "bytes": 8321216
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5665.mov",
+      "bytes": 7079806
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5666.mov",
+      "bytes": 8011864
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5669.mov",
+      "bytes": 3745038
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5679.mov",
+      "bytes": 21539571
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5680.mov",
+      "bytes": 4193178
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5683.mov",
+      "bytes": 8881332
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5684.mov",
+      "bytes": 15306943
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/Soical/video /IMG_5709 2.mov",
+      "bytes": 3981070
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1004.jpg",
+      "bytes": 22895764
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1033.jpg",
+      "bytes": 25491322
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1089.jpg",
+      "bytes": 24112629
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1141.jpg",
+      "bytes": 26033440
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1159.jpg",
+      "bytes": 24723329
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1192.jpg",
+      "bytes": 26155152
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1221.jpg",
+      "bytes": 25272167
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1275.jpg",
+      "bytes": 26332944
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1297.jpg",
+      "bytes": 28720680
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1321.jpg",
+      "bytes": 27371363
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1340.jpg",
+      "bytes": 28721775
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1379.jpg",
+      "bytes": 7580666
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1561.jpg",
+      "bytes": 36769073
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1571.jpg",
+      "bytes": 35973238
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-161.jpg",
+      "bytes": 25535952
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1624.jpg",
+      "bytes": 16832058
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1654 copy.jpg",
+      "bytes": 40281843
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1669.jpg",
+      "bytes": 21798214
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-1678.jpg",
+      "bytes": 25624592
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-175.jpg",
+      "bytes": 22225759
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-199.jpg",
+      "bytes": 19998277
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-200.jpg",
+      "bytes": 21666006
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-217.jpg",
+      "bytes": 22913775
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-278.jpg",
+      "bytes": 20072048
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-448.jpg",
+      "bytes": 17178782
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-526.jpg",
+      "bytes": 19262329
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-616.jpg",
+      "bytes": 19772446
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-626.jpg",
+      "bytes": 19995478
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-645.jpg",
+      "bytes": 17622016
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-670.jpg",
+      "bytes": 18239877
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-691.jpg",
+      "bytes": 18775440
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-729.jpg",
+      "bytes": 18307093
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-817.jpg",
+      "bytes": 18773163
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-863.jpg",
+      "bytes": 26931420
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-872.jpg",
+      "bytes": 8817791
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-901.jpg",
+      "bytes": 23922905
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-915.jpg",
+      "bytes": 22301980
+    },
+    {
+      "path": "public/brand/Yango_Deli_Photos/YANGODELI-978.jpg",
+      "bytes": 7630082
+    }
+  ]
+}

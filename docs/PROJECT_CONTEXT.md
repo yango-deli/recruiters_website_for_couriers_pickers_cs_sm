@@ -38,6 +38,8 @@ Deep link: `?role=couriers` (see `LandingPageRoleSync`).
 | [`docs/RELEASE.md`](RELEASE.md) | CI/CD, GitHub secrets, Vercel |
 | [`docs/MIGRATION.md`](MIGRATION.md) | Repo migration from personal GitHub to `yango-deli` org |
 | [`docs/CONTENT.md`](CONTENT.md) | i18n structure, section copy rules, no duplicate content |
+| [`docs/AGENT_ONBOARDING_PROMPT.md`](AGENT_ONBOARDING_PROMPT.md) | Copy-paste prompt for a new Cursor agent |
+| [`docs/LOCAL_BACKUP.md`](LOCAL_BACKUP.md) | What is in git vs local-only, restore steps |
 | [`design/yango-deli-design.md`](../design/yango-deli-design.md) | Design DNA, macrostructure, Hallmark archetypes |
 | [`design/brand-assets.md`](../design/brand-assets.md) | Brand pack paths, logo rules, Yandex Disk sync |
 | [`AGENTS.md`](../AGENTS.md) | Agent entrypoint + Next.js 16 notes |
@@ -92,7 +94,7 @@ Implemented in [`src/styles/tokens.css`](../src/styles/tokens.css) and [`src/app
 - Logos: `public/logos/official/`
 - Illustrations: `public/brand/Illustration/`
 - 3D bag: `public/brand/3d_bag/`
-- Full photo pack: sync locally via `python3 scripts/sync-brand-from-yadisk.py` (not in git)
+- Full photo pack: sync via `python3 scripts/sync-brand-from-yadisk.py` (~15GB, not in git — see `public/brand/local-assets-manifest.json`)
 
 ### Motion stack
 
@@ -102,7 +104,7 @@ Implemented in [`src/styles/tokens.css`](../src/styles/tokens.css) and [`src/app
 
 **Known fix (v0.2.0):** do **not** use `ScrollTrigger.scrollerProxy(document.documentElement)` with Lenis — caused invisible/black screen. Lenis updates via `gsap.ticker` + `ScrollTrigger.update` only.
 
-**Reference inspiration (not in git):** [chicago-current](https://github.com/ryancalacsan/chicago-current) — Lenis + GSAP pinned narrative. Local clone was in `.reference/chicago-current/` (gitignored).
+**Reference clones (in git):** `.reference/` — chicago-current, hallmark, uupm, ia-startup (see `.reference/README.md`). Primary motion reference: [chicago-current](https://github.com/ryancalacsan/chicago-current).
 
 ---
 
@@ -176,6 +178,7 @@ Vercel project ID: `prj_RteDbZeITDPEc4VaTtIAbjM8njIk` (see [`docs/RELEASE.md`](R
 |--------|---------|
 | `scripts/expand-role-content.mjs` | Bulk-expand role sections in JSON |
 | `scripts/sync-brand-from-yadisk.py` | Download full brand pack from Yandex Disk |
+| `scripts/explore-zoho*.mjs`, `scripts/verify-*` | Zoho Forms integration research (committed) |
 
 ---
 
@@ -193,13 +196,16 @@ Read Next.js 16 breaking changes in `node_modules/next/dist/docs/` before assumi
 
 ## What is NOT in git (by design)
 
+See [`docs/LOCAL_BACKUP.md`](LOCAL_BACKUP.md) for full restore guide.
+
 | Path | Why |
 |------|-----|
-| `.env.local` | Secrets |
-| `.vercel/` | Local Vercel link |
-| `.reference/` | Large reference clones (chicago-current, etc.) |
-| `public/brand/Yango_Deli_Photos/` etc. | Large assets — sync via script |
+| `.env.local` | Secrets — use GitHub Secrets + `.env.local.example` |
+| `.vercel/` | Local Vercel CLI link — IDs in `vercel.project.json` |
+| `public/brand/Yango_Deli_Photos/` etc. | ~15GB, files >100MB — sync via script + `local-assets-manifest.json` |
 | `node_modules/`, `.next/` | Build artifacts |
+
+**In git:** `.reference/`, `.hallmark/`, `.cursor/skills/`, Zoho exploration scripts, agent docs.
 
 ---
 

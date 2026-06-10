@@ -1,0 +1,7 @@
+{
+  "project": "yango-deli-careers",
+  "macrostructure": "14-narrative-workflow",
+  "components": ["f2-sticky-scroll-stack", "h2-split-diptych", "s1-left-margin-numbered"],
+  "theme": "custom-yango-brand",
+  "lastBuild": "2026-06-08"
+}

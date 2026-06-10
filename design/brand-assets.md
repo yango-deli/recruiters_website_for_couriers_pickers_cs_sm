@@ -38,6 +38,8 @@ Local mirror: `public/brand/` (sync via `scripts/sync-brand-from-yadisk.py`)
 
 ## Re-sync from Yandex Disk
 
+Large folders (`Yango_Deli_Photos/`, `Presentation/`, `Avatars/`, `*.psd`) are **not in git** (GitHub 100MB/file limit). Inventory of local files: `public/brand/local-assets-manifest.json`.
+
 ```bash
 python3 scripts/sync-brand-from-yadisk.py
 ```
