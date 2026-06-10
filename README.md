@@ -7,7 +7,8 @@
 **Версия:** `0.2.0` — см. [`CHANGELOG.md`](CHANGELOG.md)
 
 > Код и релизы ведутся **только через GitHub**. Push в `main` → CI → автодеплой на Vercel. Подробнее: [`docs/RELEASE.md`](docs/RELEASE.md).  
-> Миграция с личного репозитория: [`docs/MIGRATION.md`](docs/MIGRATION.md).
+> Миграция с личного репозитория: [`docs/MIGRATION.md`](docs/MIGRATION.md).  
+> **Для AI-агентов:** полный контекст проекта — [`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md) (skills, бренд, архитектура, контент).
 
 ---
 

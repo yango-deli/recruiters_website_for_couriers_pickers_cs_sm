@@ -1,0 +1,33 @@
+---
+description: Yango Deli design system — UUPM + Hallmark + locked brand brief. Apply on UI, layout, motion, redesign, or visual polish tasks.
+globs:
+  - src/components/**
+  - src/styles/**
+  - src/app/globals.css
+  - design/**
+alwaysApply: false
+---
+
+# Yango Deli Design Rule
+
+Before any visual/UI change:
+
+1. Load skill **yango-deli-design** (`.cursor/skills/yango-deli-design/SKILL.md`)
+2. Read locked brief: `design/yango-deli-design.md`
+3. For pattern research, use **ui-ux-pro-max** search script
+4. For anti-slop and structure, follow **hallmark** skill gates
+
+## Non-negotiables
+
+- Brand colors from `src/styles/tokens.css`: `#0e0e0e`, `#ffcd57`, warm surfaces `#fff9ed` / `#fff4d6`
+- Fonts: Yango Headline + Yango Text (not Inter/Outfit/Poppins for display)
+- Content from `src/messages/*.json` only — no hardcoded copy
+- Lucide + brand SVG icons — no emoji
+- Respect `prefers-reduced-motion`
+- RTL for `/he`
+
+## UUPM quick search
+
+```bash
+python3 .cursor/skills/ui-ux-pro-max/scripts/search.py "grocery careers scroll storytelling" --design-system -p "Yango Deli"
+```

@@ -3,6 +3,8 @@
 > Locked design brief for this project. Combines **UI UX Pro Max (UUPM)** intelligence + **Hallmark** anti-slop rules.  
 > Generated for: careers landing, grocery delivery hiring, scroll storytelling.
 
+**Note:** Live color tokens are in [`src/styles/tokens.css`](../src/styles/tokens.css) (`#0e0e0e` + `#ffcd57` warm surfaces). Some values below reflect an earlier purple palette — use `tokens.css` for implementation, this doc for structure, motion, and archetypes.
+
 **Official creatives:** [Yandex Disk](https://disk.yandex.com/d/13x6l2pIMjLRow) → see [`brand-assets.md`](brand-assets.md)
 
 ## Macrostructure
