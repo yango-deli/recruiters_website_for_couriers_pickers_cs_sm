@@ -2,6 +2,12 @@
 
 Формат основан на [Keep a Changelog](https://keepachangelog.com/ru/1.1.0/). Версии совпадают с `package.json`.
 
+## [Unreleased]
+
+### Changed
+
+- Канонический репозиторий перенесён в [yango-deli/recruiters_website_for_couriers_pickers_cs_sm](https://github.com/yango-deli/recruiters_website_for_couriers_pickers_cs_sm). См. [`docs/MIGRATION.md`](docs/MIGRATION.md).
+
 ## [0.2.0] — 2026-06-09
 
 ### Changed
@@ -22,5 +28,5 @@
 - Первый production-релиз careers-лендинга Yango Deli на Vercel.
 - CI/CD через GitHub Actions: lint, build, deploy в production при merge в `main`.
 
-[0.2.0]: https://github.com/Kuznetsovv15/yangodeli_couriers_carriers_website/compare/v0.1.0...v0.2.0
-[0.1.0]: https://github.com/Kuznetsovv15/yangodeli_couriers_carriers_website/releases/tag/v0.1.0
+[0.2.0]: https://github.com/yango-deli/recruiters_website_for_couriers_pickers_cs_sm/compare/v0.1.0...v0.2.0
+[0.1.0]: https://github.com/yango-deli/recruiters_website_for_couriers_pickers_cs_sm/releases/tag/v0.1.0

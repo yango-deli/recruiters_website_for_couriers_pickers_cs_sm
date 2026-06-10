@@ -2,11 +2,12 @@
 
 Сайт карьеры [Yango Deli](https://yango-deli.co.il) — набор персонала в Израиле: сборщики заказов, курьеры, служба поддержки, менеджеры смен.
 
-**GitHub:** [Kuznetsovv15/yangodeli_couriers_carriers_website](https://github.com/Kuznetsovv15/yangodeli_couriers_carriers_website)  
+**GitHub:** [yango-deli/recruiters_website_for_couriers_pickers_cs_sm](https://github.com/yango-deli/recruiters_website_for_couriers_pickers_cs_sm)  
 **Production:** https://yangodeli-couriers-carriers-website.vercel.app  
 **Версия:** `0.2.0` — см. [`CHANGELOG.md`](CHANGELOG.md)
 
-> Код и релизы ведутся **только через GitHub**. Push в `main` → CI → автодеплой на Vercel. Подробнее: [`docs/RELEASE.md`](docs/RELEASE.md).
+> Код и релизы ведутся **только через GitHub**. Push в `main` → CI → автодеплой на Vercel. Подробнее: [`docs/RELEASE.md`](docs/RELEASE.md).  
+> Миграция с личного репозитория: [`docs/MIGRATION.md`](docs/MIGRATION.md).
 
 ---
 
@@ -43,8 +44,8 @@
 ## Быстрый старт
 
 ```bash
-git clone https://github.com/Kuznetsovv15/yangodeli_couriers_carriers_website.git
-cd yangodeli_couriers_carriers_website
+git clone https://github.com/yango-deli/recruiters_website_for_couriers_pickers_cs_sm.git
+cd recruiters_website_for_couriers_pickers_cs_sm
 npm install
 npm run dev
 ```
@@ -126,7 +127,7 @@ git push -u origin feature/my-change
 # → Pull Request → merge в main → автодеплой
 ```
 
-Статус сборок: [GitHub Actions](https://github.com/Kuznetsovv15/yangodeli_couriers_carriers_website/actions).
+Статус сборок: [GitHub Actions](https://github.com/yango-deli/recruiters_website_for_couriers_pickers_cs_sm/actions).
 
 ## Деплой (production)
 

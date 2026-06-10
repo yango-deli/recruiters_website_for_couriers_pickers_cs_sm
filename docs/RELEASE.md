@@ -21,7 +21,7 @@ feature branch → Pull Request → merge в main → GitHub Actions → Vercel 
 
 ## Секреты GitHub (один раз)
 
-В [Settings → Secrets → Actions](https://github.com/Kuznetsovv15/yangodeli_couriers_carriers_website/settings/secrets/actions):
+В [Settings → Secrets → Actions](https://github.com/yango-deli/recruiters_website_for_couriers_pickers_cs_sm/settings/secrets/actions):
 
 | Secret | Значение |
 |--------|----------|
@@ -50,6 +50,6 @@ python3 scripts/sync-brand-from-yadisk.py
 
 ## Мониторинг
 
-- **CI / Release:** [GitHub Actions](https://github.com/Kuznetsovv15/yangodeli_couriers_carriers_website/actions)
+- **CI / Release:** [GitHub Actions](https://github.com/yango-deli/recruiters_website_for_couriers_pickers_cs_sm/actions)
 - **Production:** https://yangodeli-couriers-carriers-website.vercel.app
 - **Vercel dashboard:** https://vercel.com/igoryangotaxi-bytes-projects/yangodeli-couriers-carriers-website
