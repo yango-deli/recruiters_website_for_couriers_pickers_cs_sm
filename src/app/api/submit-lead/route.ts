@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { formatLeadTelegramMessage } from "@/lib/lead-message";
 import { parseLeadForm, type LeadFormData } from "@/lib/forms/schema";
 import { sendTelegramMessage } from "@/lib/telegram";
+import { sendLeadToCrm } from "@/lib/crm";
 import { isRole } from "@/types/role";
 
 export async function POST(request: NextRequest) {
@@ -40,10 +41,19 @@ export async function POST(request: NextRequest) {
       ? String((body as { locale: string }).locale)
       : undefined;
 
-  try {
-    await sendTelegramMessage(formatLeadTelegramMessage(data, locale));
-  } catch (error) {
-    console.error("[submit-lead] Telegram delivery failed:", error);
+  // Deliver to Telegram (primary) and the CRM (secondary) in parallel.
+  // A CRM failure must never break the applicant-facing submission.
+  const [telegram, crm] = await Promise.allSettled([
+    sendTelegramMessage(formatLeadTelegramMessage(data, locale)),
+    sendLeadToCrm(data, locale),
+  ]);
+
+  if (crm.status === "rejected") {
+    console.error("[submit-lead] CRM intake failed:", crm.reason);
+  }
+
+  if (telegram.status === "rejected") {
+    console.error("[submit-lead] Telegram delivery failed:", telegram.reason);
     return NextResponse.json({ error: "Delivery failed" }, { status: 502 });
   }
 
