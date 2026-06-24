@@ -29,6 +29,8 @@ export async function sendLeadToCrm(
     lastName: data.lastName,
     phone: data.phone,
     city: data.city,
+    targetId: data.targetId,
+    storeId: data.storeId,
     vehicle: data.vehicle,
     taxRegistered: data.taxRegistered,
     locale: locale ?? data.locale,

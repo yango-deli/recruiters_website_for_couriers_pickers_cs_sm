@@ -10,6 +10,8 @@ import { FormField } from "@/components/forms/FormField";
 import { ROLE_FORM_FIELDS, VEHICLE_OPTIONS } from "@/lib/forms/form-fields";
 import { leadFormSchema, type LeadFormData } from "@/lib/forms/schema";
 import { submitLead } from "@/lib/forms/submitLead";
+import type { HiringTarget, HiringTargetsResponse } from "@/lib/hiring-targets";
+import { resolveTargetSelection, targetOptionValue } from "@/lib/hiring-targets";
 import type { Role } from "@/types/role";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -44,6 +46,11 @@ export function LeadForm({ role }: LeadFormProps) {
   const locale = useLocale();
   const [successOpen, setSuccessOpen] = useState(false);
   const [submitError, setSubmitError] = useState(false);
+  const [targetsLoading, setTargetsLoading] = useState(true);
+  const [targets, setTargets] = useState<HiringTarget[]>([]);
+  const [locationType, setLocationType] = useState<"store" | "city">("city");
+  const [selectedTarget, setSelectedTarget] = useState("");
+  const [locationError, setLocationError] = useState(false);
 
   const fields = ROLE_FORM_FIELDS[role];
 
@@ -79,11 +86,43 @@ export function LeadForm({ role }: LeadFormProps) {
       ageConsent: undefined,
       privacyConsent: undefined,
       company: "",
+      targetId: undefined,
+      storeId: undefined,
     });
+    setSelectedTarget("");
+    setLocationError(false);
   }, [role, reset]);
+
+  useEffect(() => {
+    let cancelled = false;
+    setTargetsLoading(true);
+    fetch(`/api/hiring-targets?role=${encodeURIComponent(role)}`)
+      .then((res) => (res.ok ? res.json() : null))
+      .then((data: HiringTargetsResponse | null) => {
+        if (cancelled || !data) return;
+        setTargets(data.targets ?? []);
+        setLocationType(data.locationType ?? "city");
+      })
+      .catch(() => {
+        if (!cancelled) setTargets([]);
+      })
+      .finally(() => {
+        if (!cancelled) setTargetsLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [role]);
 
   const onSubmit = async (data: LeadFormData) => {
     setSubmitError(false);
+    setLocationError(false);
+
+    if (targets.length > 0 && !selectedTarget) {
+      setLocationError(true);
+      return;
+    }
+
     const result = await submitLead({ ...data, role }, locale);
     if (result.success) {
       setSuccessOpen(true);
@@ -99,6 +138,32 @@ export function LeadForm({ role }: LeadFormProps) {
   };
 
   let fieldDelay = 0.05;
+
+  const locationLabel =
+    locationType === "store" ? t("locationStore") : t("locationCity");
+
+  if (targetsLoading) {
+    return (
+      <div className="space-y-4 animate-pulse" aria-busy="true">
+        <div className="h-10 w-40 rounded-full bg-brand-surface" />
+        <div className="grid gap-5 sm:grid-cols-2">
+          <div className="h-12 rounded-xl bg-brand-surface" />
+          <div className="h-12 rounded-xl bg-brand-surface" />
+        </div>
+        <div className="h-12 rounded-xl bg-brand-surface" />
+        <div className="h-12 rounded-xl bg-brand-surface" />
+      </div>
+    );
+  }
+
+  if (!targetsLoading && targets.length === 0) {
+    return (
+      <div className="rounded-2xl border border-brand-border/40 bg-brand-surface/60 p-6 text-center">
+        <p className="font-semibold text-brand-primary">{t("noOpenings")}</p>
+        <p className="mt-2 text-sm text-brand-muted">{t("noOpeningsHint")}</p>
+      </div>
+    );
+  }
 
   return (
     <>
@@ -188,17 +253,41 @@ export function LeadForm({ role }: LeadFormProps) {
           </FormField>
 
           <FormField
-            id="city"
-            label={t("city")}
-            error={errors.city ? t("validation.city") : undefined}
+            id="location"
+            label={locationLabel}
+            error={locationError ? t("validation.location") : undefined}
             delay={(fieldDelay += 0.04)}
           >
-            <Input
-              id="city"
-              className={inputClassName}
-              {...register("city")}
-              aria-invalid={!!errors.city}
-            />
+            <select
+              id="location"
+              className={cn(
+                inputClassName,
+                "w-full appearance-none bg-white pe-10"
+              )}
+              value={selectedTarget}
+              onChange={(e) => {
+                const value = e.target.value;
+                setSelectedTarget(value);
+                setLocationError(false);
+                const resolved = resolveTargetSelection(targets, value);
+                if (resolved) {
+                  setValue("city", resolved.city, { shouldValidate: true });
+                  setValue("targetId", resolved.targetId);
+                  setValue("storeId", resolved.storeId);
+                }
+              }}
+              aria-invalid={locationError}
+            >
+              <option value="">{t("locationPlaceholder")}</option>
+              {targets.map((target) => {
+                const value = targetOptionValue(target);
+                return (
+                  <option key={value} value={value}>
+                    {target.label}
+                  </option>
+                );
+              })}
+            </select>
           </FormField>
 
           {fields.includes("vehicle") && (

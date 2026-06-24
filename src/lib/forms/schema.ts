@@ -12,6 +12,8 @@ export type LeadFormData = {
   privacyConsent: true;
   locale?: string;
   company?: string;
+  targetId?: string;
+  storeId?: string;
   vehicle?: (typeof VEHICLE_OPTIONS)[number];
   taxRegistered?: "yes" | "no";
 };
@@ -27,6 +29,8 @@ export const leadFormSchema = z
     role: z.enum(ROLES),
     locale: z.string().optional(),
     company: z.string().max(0).optional(),
+    targetId: z.string().optional(),
+    storeId: z.string().optional(),
     vehicle: z.enum(VEHICLE_OPTIONS).optional(),
     taxRegistered: z.enum(["yes", "no"]).optional(),
   })
