@@ -1,0 +1,84 @@
+.wp-page-shell {
+  min-height: 100dvh;
+  background: var(--brand-background);
+  color: var(--brand-text);
+}
+
+.wp-page-shell .elementor {
+  font-family: "Yango Text", ui-sans-serif, system-ui, sans-serif;
+}
+
+.wp-page-shell .elementor-heading-title {
+  font-family: "Yango Headline", "Yango Text", ui-sans-serif, sans-serif;
+}
+
+.wp-lead-form-slot {
+  max-width: 42rem;
+  margin-inline: auto;
+  padding: 1.5rem 1rem 2rem;
+}
+
+.wp-legal-content {
+  max-width: 48rem;
+  margin-inline: auto;
+  padding: 2rem 1rem 4rem;
+  font-family: "Yango Text", ui-sans-serif, system-ui, sans-serif;
+  line-height: 1.7;
+  color: var(--brand-text);
+}
+
+.wp-legal-content h1,
+.wp-legal-content h2,
+.wp-legal-content h3 {
+  font-family: "Yango Headline", "Yango Text", ui-sans-serif, sans-serif;
+  color: var(--brand-primary);
+  margin-block: 1.5rem 0.75rem;
+}
+
+.wp-legal-content h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.wp-legal-content h2 {
+  font-size: clamp(1.35rem, 3vw, 1.75rem);
+}
+
+.wp-legal-content p,
+.wp-legal-content li {
+  margin-block: 0.75rem;
+  font-size: clamp(0.95rem, 1.5vw, 1.0625rem);
+}
+
+.wp-legal-content ul,
+.wp-legal-content ol {
+  padding-inline-start: 1.25rem;
+  margin-block: 0.75rem;
+}
+
+.wp-legal-content a {
+  color: var(--brand-primary);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.wp-legal-content a:hover {
+  color: var(--brand-accent);
+}
+
+.wp-legal-content table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-block: 1rem;
+}
+
+.wp-legal-content th,
+.wp-legal-content td {
+  border: 1px solid var(--brand-border);
+  padding: 0.5rem 0.75rem;
+  text-align: start;
+}
+
+[dir="rtl"] .wp-legal-content ul,
+[dir="rtl"] .wp-legal-content ol {
+  padding-inline-start: 1.25rem;
+}

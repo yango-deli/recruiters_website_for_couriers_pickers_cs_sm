@@ -10,8 +10,7 @@ import { FormField } from "@/components/forms/FormField";
 import { ROLE_FORM_FIELDS, VEHICLE_OPTIONS } from "@/lib/forms/form-fields";
 import { leadFormSchema, type LeadFormData } from "@/lib/forms/schema";
 import { submitLead } from "@/lib/forms/submitLead";
-import type { HiringTarget, HiringTargetsResponse } from "@/lib/hiring-targets";
-import { resolveTargetSelection, targetOptionValue } from "@/lib/hiring-targets";
+import { resolveTargetSelection, targetOptionValue, withFallbackTargets, fallbackTargetLabel, type HiringTarget, type HiringTargetsResponse } from "@/lib/hiring-targets";
 import type { Role } from "@/types/role";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -31,16 +30,18 @@ const inputClassName =
 
 const roleBadgeClass: Record<Role, string> = {
   pickers: "from-brand-accent/30 to-brand-accent/15 text-brand-primary",
-  couriers: "from-brand-secondary/25 to-brand-secondary/10 text-brand-primary",
+  couriers: "from-brand-accent/25 to-brand-accent/10 text-brand-primary",
   support: "from-brand-surface-elevated to-brand-surface text-brand-text",
   manager: "from-brand-accent/40 to-brand-accent-dark/20 text-brand-primary",
 };
 
 type LeadFormProps = {
   role: Role;
+  /** Render inside WordPress Elementor form slot (compact, no page-level motion). */
+  embedded?: boolean;
 };
 
-export function LeadForm({ role }: LeadFormProps) {
+export function LeadForm({ role, embedded = false }: LeadFormProps) {
   const t = useTranslations("form");
   const tRoles = useTranslations("nav.roles");
   const locale = useLocale();
@@ -99,12 +100,19 @@ export function LeadForm({ role }: LeadFormProps) {
     fetch(`/api/hiring-targets?role=${encodeURIComponent(role)}`)
       .then((res) => (res.ok ? res.json() : null))
       .then((data: HiringTargetsResponse | null) => {
-        if (cancelled || !data) return;
-        setTargets(data.targets ?? []);
-        setLocationType(data.locationType ?? "city");
+        if (cancelled) return;
+        const normalized = withFallbackTargets(
+          data ?? { role, targets: [] }
+        );
+        setTargets(normalized.targets);
+        setLocationType(normalized.locationType);
       })
       .catch(() => {
-        if (!cancelled) setTargets([]);
+        if (!cancelled) {
+          const normalized = withFallbackTargets({ role, targets: [] });
+          setTargets(normalized.targets);
+          setLocationType(normalized.locationType);
+        }
       })
       .finally(() => {
         if (!cancelled) setTargetsLoading(false);
@@ -113,6 +121,18 @@ export function LeadForm({ role }: LeadFormProps) {
       cancelled = true;
     };
   }, [role]);
+
+  useEffect(() => {
+    if (targets.length !== 1 || !targets[0].isFallback || selectedTarget) return;
+    const value = targetOptionValue(targets[0]);
+    setSelectedTarget(value);
+    const resolved = resolveTargetSelection(targets, value);
+    if (resolved) {
+      setValue("city", resolved.city, { shouldValidate: true });
+      setValue("targetId", resolved.targetId);
+      setValue("storeId", resolved.storeId);
+    }
+  }, [targets, selectedTarget, setValue]);
 
   const onSubmit = async (data: LeadFormData) => {
     setSubmitError(false);
@@ -141,6 +161,10 @@ export function LeadForm({ role }: LeadFormProps) {
 
   const locationLabel =
     locationType === "store" ? t("locationStore") : t("locationCity");
+  const anyLocationLabels = {
+    anyCity: t("locationAnyCity"),
+    anyBranch: t("locationAnyBranch"),
+  };
 
   if (targetsLoading) {
     return (
@@ -156,27 +180,17 @@ export function LeadForm({ role }: LeadFormProps) {
     );
   }
 
-  if (!targetsLoading && targets.length === 0) {
-    return (
-      <div className="rounded-2xl border border-brand-border/40 bg-brand-surface/60 p-6 text-center">
-        <p className="font-semibold text-brand-primary">{t("noOpenings")}</p>
-        <p className="mt-2 text-sm text-brand-muted">{t("noOpeningsHint")}</p>
-      </div>
-    );
-  }
+  const formClassName = embedded ? "wp-lead-form-fields space-y-4" : "space-y-6";
+  const fieldInputClass = embedded
+    ? "h-11 rounded-xl border-brand-border/80 bg-white px-3 text-sm shadow-sm transition-all focus-visible:border-brand-accent focus-visible:ring-brand-accent/30"
+    : inputClassName;
 
-  return (
-    <>
-      <AnimatePresence mode="wait">
-        <motion.form
+  const formBody = (
+        <form
           key={role}
           onSubmit={handleSubmit(onSubmit)}
-          className="space-y-6"
+          className={formClassName}
           noValidate
-          initial={{ opacity: 0, y: 16 }}
-          animate={{ opacity: 1, y: 0 }}
-          exit={{ opacity: 0, y: -8 }}
-          transition={{ duration: 0.35 }}
         >
           <input type="hidden" {...register("role")} value={role} />
           <input
@@ -188,18 +202,20 @@ export function LeadForm({ role }: LeadFormProps) {
             aria-hidden
           />
 
-          <motion.div
-            initial={{ scale: 0.96, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{ delay: 0.02 }}
-            className={cn(
-              "inline-flex items-center gap-2 rounded-full bg-gradient-to-r px-4 py-2 text-sm font-bold",
-              roleBadgeClass[role]
-            )}
-          >
-            <User className="size-4 shrink-0" aria-hidden />
-            {tRoles(role)}
-          </motion.div>
+          {!embedded ? (
+            <motion.div
+              initial={{ scale: 0.96, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{ delay: 0.02 }}
+              className={cn(
+                "inline-flex items-center gap-2 rounded-full bg-gradient-to-r px-4 py-2 text-sm font-bold",
+                roleBadgeClass[role]
+              )}
+            >
+              <User className="size-4 shrink-0" aria-hidden />
+              {tRoles(role)}
+            </motion.div>
+          ) : null}
 
           <div className="grid gap-5 sm:grid-cols-2">
             <FormField
@@ -210,7 +226,7 @@ export function LeadForm({ role }: LeadFormProps) {
             >
               <Input
                 id="firstName"
-                className={inputClassName}
+                className={fieldInputClass}
                 {...register("firstName")}
                 aria-invalid={!!errors.firstName}
               />
@@ -223,7 +239,7 @@ export function LeadForm({ role }: LeadFormProps) {
             >
               <Input
                 id="lastName"
-                className={inputClassName}
+                className={fieldInputClass}
                 {...register("lastName")}
                 aria-invalid={!!errors.lastName}
               />
@@ -245,7 +261,7 @@ export function LeadForm({ role }: LeadFormProps) {
                 id="phone"
                 type="tel"
                 dir="ltr"
-                className={cn(inputClassName, "ps-10")}
+                className={cn(fieldInputClass, "ps-10")}
                 {...register("phone")}
                 aria-invalid={!!errors.phone}
               />
@@ -261,7 +277,7 @@ export function LeadForm({ role }: LeadFormProps) {
             <select
               id="location"
               className={cn(
-                inputClassName,
+                fieldInputClass,
                 "w-full appearance-none bg-white pe-10"
               )}
               value={selectedTarget}
@@ -278,12 +294,14 @@ export function LeadForm({ role }: LeadFormProps) {
               }}
               aria-invalid={locationError}
             >
-              <option value="">{t("locationPlaceholder")}</option>
+              {!(targets.length === 1 && targets[0].isFallback) ? (
+                <option value="">{t("locationPlaceholder")}</option>
+              ) : null}
               {targets.map((target) => {
                 const value = targetOptionValue(target);
                 return (
                   <option key={value} value={value}>
-                    {target.label}
+                    {fallbackTargetLabel(target, locationType, anyLocationLabels)}
                   </option>
                 );
               })}
@@ -417,21 +435,39 @@ export function LeadForm({ role }: LeadFormProps) {
             </p>
           )}
 
-          <motion.div
-            initial={{ opacity: 0, y: 8 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: fieldDelay + 0.08 }}
-          >
+          {embedded ? (
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="h-14 w-full cursor-pointer rounded-full bg-brand-accent text-base font-bold text-brand-primary shadow-volumetric transition-all hover:bg-brand-accent-dark hover:shadow-volumetric-lg disabled:opacity-60"
+              className="h-12 w-full cursor-pointer rounded-full bg-[#FFCC00] text-sm font-bold text-black transition-all hover:bg-[#E6B800] disabled:opacity-60"
             >
               {isSubmitting ? t("submitting") : t("submit")}
             </Button>
-          </motion.div>
-        </motion.form>
-      </AnimatePresence>
+          ) : (
+            <motion.div
+              initial={{ opacity: 0, y: 8 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: fieldDelay + 0.08 }}
+            >
+              <Button
+                type="submit"
+                disabled={isSubmitting}
+                className="h-14 w-full cursor-pointer rounded-full bg-brand-accent text-base font-bold text-brand-primary shadow-volumetric transition-all hover:bg-brand-accent-dark hover:shadow-volumetric-lg disabled:opacity-60"
+              >
+                {isSubmitting ? t("submitting") : t("submit")}
+              </Button>
+            </motion.div>
+          )}
+        </form>
+  );
+
+  return (
+    <>
+      {embedded ? (
+        formBody
+      ) : (
+        <AnimatePresence mode="wait">{formBody}</AnimatePresence>
+      )}
 
       <Dialog open={successOpen} onOpenChange={setSuccessOpen}>
         <DialogContent className="border-brand-border bg-white sm:max-w-md">

@@ -55,23 +55,19 @@ export function Footer() {
             Yango Deli Israel Ltd © 2026
           </p>
 
-          <a
-            href={t("termsUrl")}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/terms-of-use"
             className="text-sm text-white/90 transition-colors hover:text-brand-accent"
           >
             {t("terms")}
-          </a>
+          </Link>
 
-          <a
-            href={t("privacyUrl")}
-            target="_blank"
-            rel="noopener noreferrer"
+          <Link
+            href="/privacy-policy"
             className="text-sm text-white/90 transition-colors hover:text-brand-accent"
           >
             {t("privacy")}
-          </a>
+          </Link>
 
           <Link
             href="/"

@@ -70,9 +70,20 @@ cp .env.local.example .env.local
 
 | Переменная | Назначение |
 |------------|------------|
-| `TELEGRAM_BOT_TOKEN` | Бот для заявок с сайта |
+| `TELEGRAM_BOT_TOKEN` | Бот для заявок с сайта (**обязательно** — без него `/api/submit-lead` → 502) |
 | `TELEGRAM_CHAT_ID` | Чат/канал для уведомлений |
+| `CRM_API_URL` | Базовый URL CRM — список филиалов/городов для форм (`/api/hiring-targets`) |
+| `CRM_INTAKE_URL` | Webhook CRM для лидов, напр. `https://delicrm.com/api/recruitment/webhook` |
+| `CRM_WEBHOOK_SECRET` | Секрет webhook (должен совпадать с `RECRUITMENT_WEBHOOK_SECRET` в CRM) |
 | `WP_*` | Опционально: синхронизация ассетов с WordPress |
+
+### Production checklist (перед релизом)
+
+1. `npm run generate:en && npm run generate:ru` — актуальные EN/RU HTML из ивритского источника
+2. `npm run lint && npm run build` — 79 SSG-страниц без ошибок
+3. Vercel env: `TELEGRAM_*`, `CRM_*` заданы для Production
+4. Smoke: `/he`, `/en`, `/ru` (hub) + 4 роли × 3 локали — 200, форма монтируется, жёлтый hero = `#FFCC00`
+5. Submit тест на staging: Telegram + запись в CRM
 
 На Vercel те же переменные задаются в [Project → Settings → Environment Variables](https://vercel.com/igoryangotaxi-bytes-projects/yangodeli-couriers-carriers-website/settings/environment-variables). **Не коммитьте `.env.local`.**
 

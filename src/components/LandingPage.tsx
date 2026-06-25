@@ -115,11 +115,16 @@ function HeroPanel({
   );
 }
 
-export function LandingPage() {
+type LandingPageProps = {
+  initialRole?: Role;
+  useWpChrome?: boolean;
+};
+
+export function LandingPage({ initialRole = "pickers", useWpChrome = false }: LandingPageProps) {
   const t = useTranslations("roles");
   const tLanding = useTranslations("landing");
   const tCommon = useTranslations("common");
-  const [selectedRole, setSelectedRole] = useState<Role>("pickers");
+  const [selectedRole, setSelectedRole] = useState<Role>(initialRole);
   const [applyOpen, setApplyOpen] = useState(false);
   const activeRole = selectedRole;
 
@@ -165,20 +170,25 @@ export function LandingPage() {
       <Suspense fallback={null}>
         <LandingPageRoleSync onRoleFromUrl={setSelectedRole} />
       </Suspense>
-      <VolumetricChrome
-        header={
-          <Header
-            activeRole={activeRole}
-            onRoleChange={setSelectedRole}
-            onApplyClick={openApply}
-          />
-        }
-      />
+      {!useWpChrome ? (
+        <VolumetricChrome
+          header={
+            <Header
+              activeRole={activeRole}
+              onRoleChange={setSelectedRole}
+              onApplyClick={openApply}
+            />
+          }
+        />
+      ) : null}
       <ApplyModal open={applyOpen} onOpenChange={setApplyOpen} role={activeRole} />
 
       <SectionNav sectionIds={[...SECTION_IDS]} />
 
-      <main id="main-content" className="chrome-offset relative">
+      <main
+        id="main-content"
+        className={useWpChrome ? "relative" : "chrome-offset relative"}
+      >
         <SectionShell
           id="hero"
           theme="hero"

@@ -73,6 +73,8 @@
   }
 }
 @import "../styles/tokens.css";
+@import "../styles/legal.css";
+@import "../styles/wp-isolation.css";
 
 :root {
   --background: var(--brand-background);
@@ -82,7 +84,7 @@
   --secondary: var(--brand-surface-elevated);
   --secondary-foreground: var(--brand-text);
   --accent: var(--brand-accent);
-  --accent-foreground: var(--brand-primary);
+  --accent-foreground: #000000;
   --muted: var(--brand-surface-elevated);
   --muted-foreground: var(--brand-muted);
   --card: var(--brand-surface);

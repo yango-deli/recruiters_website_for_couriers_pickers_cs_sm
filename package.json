@@ -9,6 +9,10 @@
     "dev": "next dev",
     "build": "next build",
     "start": "next start",
+    "sync:wp": "node scripts/sync-from-wordpress.mjs",
+    "generate:ru": "node scripts/generate-ru-html.mjs",
+    "generate:en": "node scripts/generate-en-html.mjs",
+    "audit:wp": "node scripts/wp-audit.mjs",
     "lint": "eslint"
   },
   "dependencies": {

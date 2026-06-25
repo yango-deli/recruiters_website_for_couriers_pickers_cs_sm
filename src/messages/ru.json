@@ -688,6 +688,8 @@
     "locationStore": "Выберите филиал",
     "locationCity": "Выберите город",
     "locationPlaceholder": "Выберите локацию…",
+    "locationAnyCity": "Любой город",
+    "locationAnyBranch": "Любой филиал",
     "noOpenings": "Сейчас нет открытых вакансий",
     "noOpeningsHint": "Мы пока не нанимаем на эту роль. Загляните позже.",
     "vehicle": "Транспорт",

@@ -6,7 +6,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Menu, X } from "lucide-react";
 import { useState } from "react";
 import { LanguageSwitcher } from "./LanguageSwitcher";
-import { Link } from "@/i18n/navigation";
+import { Link, useRouter } from "@/i18n/navigation";
 import { YangoButton } from "@/components/ui/YangoButton";
 import { ROLES, type Role } from "@/types/role";
 import { cn } from "@/lib/utils";
@@ -20,10 +20,15 @@ type HeaderProps = {
 export function Header({ activeRole = "pickers", onRoleChange, onApplyClick }: HeaderProps) {
   const t = useTranslations("nav");
   const tCommon = useTranslations("common");
+  const router = useRouter();
   const [mobileOpen, setMobileOpen] = useState(false);
 
   const selectRole = (role: Role) => {
-    onRoleChange?.(role);
+    if (onRoleChange) {
+      onRoleChange(role);
+    } else {
+      router.push(`/${role}`);
+    }
     setMobileOpen(false);
   };
 

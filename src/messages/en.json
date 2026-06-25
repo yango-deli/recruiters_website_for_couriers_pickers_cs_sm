@@ -739,6 +739,8 @@
     "locationStore": "Select branch",
     "locationCity": "Select city",
     "locationPlaceholder": "Choose a location…",
+    "locationAnyCity": "Any cities",
+    "locationAnyBranch": "Any branches",
     "noOpenings": "No open positions right now",
     "noOpeningsHint": "We're not hiring for this role at the moment. Please check back soon.",
     "vehicle": "Vehicle",

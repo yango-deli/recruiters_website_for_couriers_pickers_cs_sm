@@ -101,18 +101,18 @@
             "icon": "/icons/young-team.svg"
           },
           {
-            "title": "Quality checks",
-            "description": "Verify expiry dates and product condition before every order leaves the branch.",
+            "title": "בדיקות איכות",
+            "description": "בודקים תאריכי תפוגה ומצב מוצרים לפני שכל הזמנה יוצאת מהסניף.",
             "icon": "/icons/icon2.svg"
           },
           {
-            "title": "Team rhythm",
-            "description": "Work with pickers, shift leads, and couriers in one smooth order flow.",
+            "title": "קצב צוותי",
+            "description": "עובדים עם מלקטים, אחראי משמרת ושליחים בזרימת הזמנות חלקה.",
             "icon": "/icons/young-team.svg"
           },
           {
-            "title": "Stable scheduling",
-            "description": "Morning, evening, and weekend slots you can plan around after onboarding.",
+            "title": "לוח זמנים יציב",
+            "description": "משמרות בוקר, ערב וסופ\"ש שאפשר לתכנן אחרי הקליטה.",
             "icon": "/icons/Flexible-shifts.svg"
           },
           {
@@ -143,8 +143,8 @@
             "image": "/images/Group-2087327983.png"
           },
           {
-            "title": "Refer a friend",
-            "description": "Bring great people to Yango Deli and earn a referral bonus when they join.",
+            "title": "חבר מביא חבר",
+            "description": "מביאים אנשים טובים ליאנגו דלי ומרוויחים בונוס כשהם מצטרפים.",
             "image": "/images/Group-2087327955-1.png"
           }
         ],
@@ -235,7 +235,7 @@
             "sticker": "/images/Group-2087327955-1.png"
           },
           {
-            "title": "Route app guidance",
+            "title": "ניווט באפליקציה",
             "description": "ניווט ברור, פרטי הזמנה וצ'אט תמיכה — הכל באפליקציית השליח.",
             "sticker": "/icons/come-to-the-store.svg"
           }
@@ -260,18 +260,18 @@
             "icon": "/icons/Flexible-shifts.svg"
           },
           {
-            "title": "Route support",
-            "description": "In-app navigation plus managers and support reps one message away.",
+            "title": "תמיכה במסלול",
+            "description": "ניווט באפליקציה ומנהלים ונציגי תמיכה במרחק הודעה.",
             "icon": "/icons/wait-for-the-call.svg"
           },
           {
-            "title": "Thermal equipment",
-            "description": "Yango Deli bags and gear so orders arrive fresh at the doorstep.",
+            "title": "ציוד תרמי",
+            "description": "תיקים וציוד של יאנגו דלי — כדי שההזמנות יגיעו טריות לדלת.",
             "icon": "/icons/come-to-the-store.svg"
           },
           {
-            "title": "No weekly minimum",
-            "description": "Choose shifts that fit your life — days and hours are yours to decide.",
+            "title": "בלי מינימום שבועי",
+            "description": "בוחרים משמרות שמתאימות לחיים — הימים והשעות בידיכם.",
             "icon": "/icons/Flexible-shifts.svg"
           },
           {
@@ -300,8 +300,8 @@
             "image": "/images/Group-2087327983.png"
           },
           {
-            "title": "Referral bonus",
-            "description": "Know a great rider? Refer them to Yango Deli and earn when they start.",
+            "title": "בונוס הפניה",
+            "description": "מכירים שליח מעולה? הפנו אותו ליאנגו דלי וקבלו בונוס כשהוא מתחיל.",
             "image": "/images/Group-2087327955-1.png"
           }
         ]
@@ -325,12 +325,12 @@
             "icon": "/icons/training.svg"
           },
           {
-            "title": "Vehicle registration",
+            "title": "רישום רכב",
             "description": "רישום אופניים, קורקינט או רכב — אישור תוך ימים ספורים.",
             "icon": "/icons/icon3.svg"
           },
           {
-            "title": "First shift support",
+            "title": "ליווי במשמרת ראשונה",
             "description": "תדריך, קבלת תיק וקו תמיכה למסלולים הראשונים שלכם.",
             "icon": "/icons/training.svg"
           }
@@ -392,7 +392,7 @@
             "sticker": "/icons/training.svg"
           },
           {
-            "title": "Knowledge base & tools",
+            "title": "מאגר ידע וכלים",
             "description": "מדריכי מוצרים, מדיניות וכלי CRM — כדי לענות בביטחון מהיום הראשון.",
             "sticker": "/icons/icon1.svg"
           }
@@ -422,13 +422,13 @@
             "icon": "/icons/icon1.svg"
           },
           {
-            "title": "Coaching on every shift",
-            "description": "Team leads review cases with you and help you grow your service skills.",
+            "title": "ליווי בכל משמרת",
+            "description": "מנהלי צוות עוברים איתכם על מקרים ומפתחים את כישורי השירות.",
             "icon": "/icons/training.svg"
           },
           {
-            "title": "Performance bonuses",
-            "description": "Quality and availability rewards that meaningfully boost monthly pay.",
+            "title": "בונוסי ביצועים",
+            "description": "תגמול על איכות וזמינות שמקפיץ משמעותית את השכר החודשי.",
             "icon": "/icons/icon2.svg"
           }
         ]
@@ -477,13 +477,13 @@
             "icon": "/icons/icon2.svg"
           },
           {
-            "title": "Remote interview",
-            "description": "Apply online and interview from home — no branch commute required.",
+            "title": "ראיון מרחוק",
+            "description": "מגישים מועמדות ומתראיינים מהבית — בלי נסיעה לסניף.",
             "icon": "/icons/icon4.svg"
           },
           {
-            "title": "Shadow shifts",
-            "description": "Listen to live cases with a team lead before you take your first ticket solo.",
+            "title": "משמרות צל",
+            "description": "מאזינים למקרים חיים עם מנהל צוות לפני פנייה ראשונה לבד.",
             "icon": "/icons/icon1.svg"
           }
         ]
@@ -503,7 +503,7 @@
             "description": "מקרים מורכבים עוברים מהר למנהל צוות — לא נשארים לבד עם פנייה קשה."
           },
           {
-            "title": "קריירה בתוך Yango",
+            "title": "קריירה בתוך יאנגו דלי",
             "description": "מנהלי צוות התחילו כנציגים — מסלול ברור לאימון ולניהול."
           }
         ]
@@ -543,8 +543,8 @@
             "sticker": "/images/Group-2087327983.png"
           },
           {
-            "title": "Live operations dashboard",
-            "description": "Track order peaks, staffing, and quality metrics in real time during every shift.",
+            "title": "דשבורד תפעול חי",
+            "description": "מעקב אחר שיאי הזמנות, כוח אדם ומדדי איכות בזמן אמת בכל משמרת.",
             "sticker": "/icons/icon2.svg"
           }
         ]
@@ -568,18 +568,18 @@
             "icon": "/icons/training.svg"
           },
           {
-            "title": "Staffing & quality",
-            "description": "Own picker schedules, quality checks, and customer issue resolution each shift.",
+            "title": "כוח אדם ואיכות",
+            "description": "אחראים על לוח מלקטים, בדיקות איכות ופתרון פניות לקוחות בכל משמרת.",
             "icon": "/icons/icon2.svg"
           },
           {
-            "title": "Operations reporting",
-            "description": "Blend floor leadership with remote planning and shift performance reviews.",
+            "title": "דיווח תפעולי",
+            "description": "שילוב הובלה על הרצפה עם תכנון מרחוק וסקירת ביצועי משמרות.",
             "icon": "/icons/icon4.svg"
           },
           {
-            "title": "Training budget",
-            "description": "Company investment in your leadership development and branch certifications.",
+            "title": "תקציב הכשרה",
+            "description": "השקעה של החברה בפיתוח מנהיגות והסמכות סניפיות.",
             "icon": "/icons/training.svg"
           }
         ]
@@ -603,8 +603,8 @@
             "image": "/images/Group-2087327983.png"
           },
           {
-            "title": "Internal promotions",
-            "description": "Move up to senior shift lead, trainer, or regional operations inside Yango Deli.",
+            "title": "קידום פנימי",
+            "description": "קידום לתפקיד אחראי בכיר, מאמן או תפעול אזורי בתוך יאנגו דלי.",
             "image": "/images/Group-2087327955-1.png"
           }
         ]
@@ -628,13 +628,13 @@
             "icon": "/icons/icon2.svg"
           },
           {
-            "title": "Shadow at your branch",
-            "description": "Onboard with experienced managers before you run your first solo shift.",
+            "title": "הצללה בסניף",
+            "description": "קליטה עם מנהלים מנוסים לפני משמרת ראשונה עצמאית.",
             "icon": "/icons/training.svg"
           },
           {
-            "title": "Operations interview",
-            "description": "Meet regional leadership, align on expectations, and pick your home branch.",
+            "title": "ראיון תפעול",
+            "description": "פגישה עם הנהלה אזורית, התאמת ציפיות ובחירת סניף בית.",
             "icon": "/icons/icon1.svg"
           }
         ]
@@ -647,16 +647,16 @@
       "trust": {
         "points": [
           {
-            "title": "החלטות עם גיבוי",
-            "description": "מקבלים החלטות שוטף ואיכות על הרצפה — תפעול אזורי מגבה במקרים מורכבים."
+            "title": "אימון הצוות",
+            "description": "מאמנים מלקטים, קובעים סטנדרט על הרצפה ובונים תרבות משמרת שאנשים רוצים להצטרף אליה."
           },
           {
-            "title": "Coach your team",
-            "description": "Train pickers, set the floor standard, and build a shift culture people want to join."
+            "title": "חונכות אזורית",
+            "description": "מנהלי תפעול משקיעים בכישורי הניהול שלכם עם משוב שוטף."
           },
           {
-            "title": "Regional mentorship",
-            "description": "Operations leaders invest in your management skills with regular feedback."
+            "title": "שכר וצמיחה",
+            "description": "שכר תחרותי ומסלול ברור לתפקידי הנהלה אזורית."
           }
         ]
       }
@@ -670,6 +670,8 @@
     "locationStore": "בחר סניף",
     "locationCity": "בחר עיר",
     "locationPlaceholder": "בחר מיקום…",
+    "locationAnyCity": "כל הערים",
+    "locationAnyBranch": "כל הסניפים",
     "noOpenings": "אין משרות פתוחות כרגע",
     "noOpeningsHint": "איננו מגייסים לתפקיד זה כרגע. נשמח אם תבדקו שוב בקרוב.",
     "vehicle": "כלי רכב",

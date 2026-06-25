@@ -3,9 +3,7 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
-import { CtaPromptRoot } from "@/components/modals/CtaPromptRoot";
-import { MotionProvider } from "@/components/motion/MotionProvider";
-import { buildCtaInlineScript } from "@/lib/cta-inline-script";
+import { WP_CRITICAL_CSS } from "@/components/wp/wp-critical.css";
 import "../globals.css";
 
 export const viewport: Viewport = {
@@ -69,15 +67,40 @@ export default async function LocaleLayout({
   const dir = locale === "he" ? "rtl" : "ltr";
   return (
     <html lang={locale} dir={dir} className="h-full">
-      <body className="h-full antialiased">
-        <script
-          dangerouslySetInnerHTML={{
-            __html: buildCtaInlineScript(),
-          }}
+      <head>
+        <style dangerouslySetInnerHTML={{ __html: WP_CRITICAL_CSS }} />
+        <link
+          rel="preload"
+          href="/fonts/yango-text/YangoText_Rg.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
         />
+        <link
+          rel="preload"
+          href="/fonts/yango-text/YangoText_A_Rg.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/yango-headline/YangoHeadline-Black.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/yango-headline/yango-headline-hebrew.ttf"
+          as="font"
+          type="font/ttf"
+          crossOrigin="anonymous"
+        />
+      </head>
+      <body className="h-full antialiased" suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
-          <CtaPromptRoot />
-          <MotionProvider>{children}</MotionProvider>
+          {children}
         </NextIntlClientProvider>
       </body>
     </html>

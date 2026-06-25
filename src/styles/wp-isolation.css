@@ -1,0 +1,1719 @@
+/* WordPress pages: strip Next.js global overrides so Elementor CSS wins */
+
+:root {
+  --wp-font-body: "Yango Text", sans-serif;
+  --wp-font-heading: "Yango Headline", "Yango Text", sans-serif;
+  --wp-brand-primary: #000000;
+  --wp-brand-accent: #ffcc00;
+  --wp-brand-accent-hover: #e6b800;
+  --wp-space-1: 0.5rem;
+  --wp-space-2: 1rem;
+  --wp-space-3: 1.5rem;
+  --wp-space-4: 2rem;
+  --wp-space-5: 3rem;
+  --wp-container: 71.25rem;
+  --wp-hero-height: clamp(300px, 36vw, 435px);
+  --wp-card-radius: 1.25rem;
+  --wp-card-illus-bg: #ececec;
+  --wp-card-illus-min-h: 13rem;
+  --wp-card-body-min-h: 12.5rem;
+  --wp-card-overlap: -2.5rem;
+  --wp-section-black: #111111;
+}
+
+body.wp-site {
+  background: #ffffff;
+  color: var(--wp-brand-primary);
+  font-family: var(--wp-font-body);
+}
+
+body.wp-site::after {
+  display: none !important;
+}
+
+body.wp-site .wp-page-shell {
+  margin: 0;
+  padding: 0;
+  min-height: 0;
+  background: #ffffff;
+}
+
+/* Hebrew / RTL — Elementor pages are authored RTL */
+html[lang="he"] body.wp-site,
+html[lang="he"] body.wp-site .elementor {
+  direction: rtl;
+}
+
+html[lang="en"] body.wp-site,
+html[lang="en"] body.wp-site .elementor,
+html[lang="ru"] body.wp-site,
+html[lang="ru"] body.wp-site .elementor {
+  direction: ltr;
+}
+
+/* Force brand typography — override Elementor "Sans-serif" fallbacks */
+body.wp-site .elementor {
+  font-family: var(--wp-font-body) !important;
+}
+
+/* Buttons use body font; hero headings styled per-widget below */
+body.wp-site .elementor .elementor-button,
+body.wp-site .elementor .elementor-button-text {
+  font-family: var(--wp-font-body) !important;
+}
+
+/* Non-brand yellows from synced Elementor */
+/* Hero yellow — beat synced post-*.css (#FEDE47) */
+body.wp-site .elementor .elementor-element.elementor-element-f1a1893:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-f77fac1:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-12ec484:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-ff28f6d:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-2eaad409:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-bf9b706:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-d26b98c:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-54c787f7:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-f1a1893 > .elementor-motion-effects-container > .elementor-motion-effects-layer,
+body.wp-site .elementor .elementor-element.elementor-element-f77fac1 > .elementor-motion-effects-container > .elementor-motion-effects-layer,
+body.wp-site .elementor .elementor-element.elementor-element-12ec484 > .elementor-motion-effects-container > .elementor-motion-effects-layer,
+body.wp-site .elementor .elementor-element.elementor-element-ff28f6d > .elementor-motion-effects-container > .elementor-motion-effects-layer,
+body.wp-site .elementor .elementor-element.elementor-element-2eaad409 > .elementor-motion-effects-container > .elementor-motion-effects-layer,
+body.wp-site .elementor .elementor-element.elementor-element-bf9b706 > .elementor-motion-effects-container > .elementor-motion-effects-layer,
+body.wp-site .elementor .elementor-element.elementor-element-d26b98c > .elementor-motion-effects-container > .elementor-motion-effects-layer,
+body.wp-site .elementor .elementor-element.elementor-element-54c787f7 > .elementor-motion-effects-container > .elementor-motion-effects-layer {
+  background-color: var(--wp-brand-accent) !important;
+}
+
+body.wp-site .elementor-element-7238539 .elementor-button,
+body.wp-site .elementor-element-43f8131 .elementor-button {
+  background-color: var(--wp-brand-accent) !important;
+}
+
+/* Manager / support hero — centered copy on all locales */
+html[lang="he"] body.wp-site .elementor-element-515e0e6,
+html[lang="he"] body.wp-site .elementor-element-0ce76a5 {
+  text-align: center !important;
+  padding-inline: var(--wp-space-3) !important;
+}
+
+html:not([lang="he"]) body.wp-site .elementor-element-515e0e6,
+html:not([lang="he"]) body.wp-site .elementor-element-0ce76a5 {
+  text-align: center !important;
+  padding-inline: var(--wp-space-3) !important;
+}
+
+html:not([lang="he"]) body.wp-site .elementor-element-ff28f6d {
+  --flex-direction: row !important;
+}
+
+/* RTL: natural row order — text at inline-start (right), photo at inline-end (left) */
+html[lang="he"] body.wp-site .elementor-element-ff28f6d {
+  --flex-direction: row !important;
+}
+
+/* HE hero: H1 = Yango Headline Black (smaller), H2 = Yango Text Regular */
+html[lang="he"] body.wp-site .elementor-element-5bc57ca,
+html[lang="he"] body.wp-site .elementor-element-e82df0d,
+html[lang="he"] body.wp-site .elementor-element-488008d,
+html[lang="he"] body.wp-site .elementor-element-19906d1,
+html[lang="he"] body.wp-site .elementor-element-8c2667c,
+html[lang="he"] body.wp-site .elementor-element-cebc447,
+html[lang="he"] body.wp-site .elementor-element-515e0e6,
+html[lang="he"] body.wp-site .elementor-element-0ce76a5 {
+  text-align: center !important;
+}
+
+html[lang="he"] body.wp-site .elementor-element-5bc57ca .elementor-heading-title,
+html[lang="he"] body.wp-site .elementor-element-488008d .elementor-heading-title,
+html[lang="he"] body.wp-site .elementor-element-8c2667c .elementor-heading-title,
+html[lang="he"] body.wp-site .elementor-element-515e0e6 .elementor-heading-title {
+  font-family: var(--wp-font-heading) !important;
+  font-weight: 900 !important;
+  font-size: clamp(1.75rem, 4vw, 2.75rem) !important;
+  line-height: 1.08 !important;
+}
+
+html[lang="he"] body.wp-site .elementor-element-e82df0d .elementor-heading-title,
+html[lang="he"] body.wp-site .elementor-element-19906d1 .elementor-heading-title,
+html[lang="he"] body.wp-site .elementor-element-cebc447 .elementor-heading-title,
+html[lang="he"] body.wp-site .elementor-element-0ce76a5 .elementor-heading-title {
+  font-family: var(--wp-font-body) !important;
+  font-weight: 400 !important;
+  font-size: clamp(1rem, 2.2vw, 1.375rem) !important;
+  line-height: 1.35 !important;
+}
+
+/* Elementor kit — replace WP default blues/greens with Yango Deli brand */
+body.wp-site.elementor-kit-8,
+body.wp-site .elementor-kit-8,
+body.wp-site .elementor {
+  --e-global-color-primary: var(--wp-brand-primary);
+  --e-global-color-secondary: var(--wp-brand-primary);
+  --e-global-color-text: var(--wp-brand-primary);
+  --e-global-color-accent: var(--wp-brand-accent);
+  --e-global-typography-primary-font-family: var(--wp-font-heading);
+  --e-global-typography-secondary-font-family: var(--wp-font-heading);
+  --e-global-typography-text-font-family: var(--wp-font-body);
+  --e-global-typography-accent-font-family: var(--wp-font-body);
+  font-family: var(--wp-font-body);
+}
+
+/* Typography — fonts only; colors come from synced Elementor post CSS */
+body.wp-site .elementor h1,
+body.wp-site .elementor .elementor-heading-title.elementor-size-default,
+body.wp-site .elementor .elementor-heading-title.elementor-size-large {
+  font-family: var(--wp-font-heading) !important;
+  font-weight: 900 !important;
+}
+
+body.wp-site .elementor h2,
+body.wp-site .elementor h3,
+body.wp-site .elementor h4,
+body.wp-site .elementor h5,
+body.wp-site .elementor h6 {
+  font-family: var(--wp-font-heading) !important;
+}
+
+body.wp-site .elementor .elementor-image-box-title {
+  font-family: var(--wp-font-heading) !important;
+}
+
+body.wp-site .elementor p,
+body.wp-site .elementor .elementor-widget-text-editor,
+body.wp-site .elementor .elementor-image-box-description {
+  font-family: var(--wp-font-body) !important;
+  font-weight: 400 !important;
+}
+
+body.wp-site .elementor a:not(.elementor-button) {
+  color: inherit;
+}
+
+body.wp-site .elementor a:not(.elementor-button):hover,
+body.wp-site .elementor a:not(.elementor-button):focus-visible {
+  opacity: 0.88;
+}
+
+/* Elementor buttons — inherit synced colors; don't force black globally */
+body.wp-site .elementor .elementor-button {
+  font-family: var(--wp-font-body) !important;
+  font-weight: 700;
+}
+
+body.wp-site .elementor .elementor-button .elementor-button-text,
+body.wp-site .elementor .elementor-button .elementor-button-content-wrapper {
+  color: inherit !important;
+  fill: inherit !important;
+  font-family: inherit !important;
+}
+
+body.wp-site .elementor .elementor-button:hover,
+body.wp-site .elementor .elementor-button:focus-visible {
+  opacity: 1;
+}
+
+/* Black hero / form CTAs from synced Elementor */
+body.wp-site .elementor-element-e1170ad .elementor-button,
+body.wp-site .elementor-element-29c4f7a .elementor-button,
+body.wp-site .elementor-element-00ecb37 .elementor-button,
+body.wp-site .elementor-element-7840307 .elementor-button,
+body.wp-site .elementor-element-73960e4a .elementor-button,
+body.wp-site .elementor-element-13f07b06 .elementor-button,
+body.wp-site .elementor-element-457d7d1 .elementor-button {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+}
+
+body.wp-site .elementor-element-e1170ad .elementor-button:hover,
+body.wp-site .elementor-element-29c4f7a .elementor-button:hover,
+body.wp-site .elementor-element-00ecb37 .elementor-button:hover,
+body.wp-site .elementor-element-7840307 .elementor-button:hover,
+body.wp-site .elementor-element-73960e4a .elementor-button:hover,
+body.wp-site .elementor-element-13f07b06 .elementor-button:hover,
+body.wp-site .elementor-element-457d7d1 .elementor-button:hover {
+  color: #ffffff !important;
+  fill: #ffffff !important;
+  background-color: #111111 !important;
+}
+
+/* Non-brand greens from synced Elementor → brand yellow */
+body.wp-site .elementor-element-fdd1186 .elementor-button {
+  background-color: var(--wp-brand-accent) !important;
+}
+
+body.wp-site .elementor-widget-button .elementor-button {
+  font-family: var(--wp-font-body) !important;
+}
+
+/* Hero + content images — never crop (beat Elementor object-fit: cover) */
+body.wp-site .elementor .elementor-widget-image img,
+body.wp-site .elementor .elementor-image-box-img img {
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+/* Neutralize Tailwind base on Elementor tree */
+body.wp-site .elementor *,
+body.wp-site .elementor *::before,
+body.wp-site .elementor *::after {
+  border-color: revert-layer;
+}
+
+/* Lead form mount — match Zoho iframe footprint in Elementor */
+body.wp-site .wp-lead-form-mount {
+  width: 100%;
+  max-width: 500px;
+  min-height: 0 !important;
+  margin-inline: auto;
+  box-sizing: border-box;
+}
+
+body.wp-site .elementor-element-a6ce159 .wp-lead-form-mount,
+body.wp-site .elementor-element-a6ce159 .wp-lead-form {
+  max-width: 461px;
+}
+
+body.wp-site .elementor-element-9a20242 .e-con-inner,
+body.wp-site .elementor-element-29cb0846 {
+  align-items: center;
+}
+
+body.wp-site .wp-lead-form {
+  width: 100%;
+  max-width: 500px;
+  margin-inline: auto;
+  padding: 0;
+  font-family: var(--wp-font-body);
+  color: var(--wp-brand-primary);
+}
+
+body.wp-site .wp-lead-form-fields {
+  width: 100%;
+}
+
+body.wp-site .wp-lead-form label {
+  color: var(--wp-brand-primary);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-family: var(--wp-font-body);
+}
+
+body.wp-site .wp-lead-form,
+body.wp-site .wp-lead-form input,
+body.wp-site .wp-lead-form select,
+body.wp-site .wp-lead-form button,
+body.wp-site .wp-lead-form label {
+  font-family: var(--wp-font-body) !important;
+  font-size: 1rem !important;
+}
+
+body.wp-site .wp-lead-form input,
+body.wp-site .wp-lead-form select {
+  min-height: 2.75rem;
+  color: #000000;
+}
+
+body.wp-site .wp-lead-form input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+body.wp-site .wp-lead-form [role="checkbox"] + label,
+body.wp-site .wp-lead-form label:has([role="checkbox"]) {
+  font-size: 0.875rem !important;
+  line-height: 1.625;
+}
+
+body.wp-site .wp-lead-form button[type="submit"] {
+  background-color: var(--wp-brand-accent) !important;
+  color: #000000 !important;
+  min-height: 2.75rem;
+  font-weight: 700;
+}
+
+body.wp-site .wp-lead-form .text-destructive,
+body.wp-site .wp-lead-form [class*="text-destructive"] {
+  font-size: 0.875rem;
+}
+
+/* Hub dark form band */
+body.wp-site .elementor-element-a6ce159 .wp-lead-form,
+body.wp-site .elementor-element-a6ce159 .wp-lead-form label,
+body.wp-site .elementor-element-a6ce159 .wp-lead-form .wp-lead-form-fields {
+  color: #ffffff;
+}
+
+body.wp-site .elementor-element-a6ce159 .wp-lead-form .rounded-2xl {
+  background: rgba(255, 255, 255, 0.08) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+body.wp-site .wp-legal-page {
+  padding: 2rem 1rem 4rem;
+  max-width: 48rem;
+  margin-inline: auto;
+}
+
+body.wp-site .wp-legal-content {
+  padding: 0;
+  max-width: none;
+  margin: 0;
+}
+
+/* Site chrome — Elementor-style nav (replaces WP HTML nav rows) */
+.wp-site-chrome {
+  font-family: var(--wp-font-body);
+}
+
+.wp-site-chrome .wp-chrome-brand {
+  font-family: var(--wp-font-heading);
+}
+
+.wp-chrome-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding: 0.4rem 1rem;
+  border-radius: 9999px;
+  border: 1px solid transparent;
+  background: var(--wp-brand-accent);
+  color: var(--wp-brand-primary);
+  font-family: var(--wp-font-body);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  line-height: 1.2;
+  text-decoration: none;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.08);
+  transition:
+    background-color 0.2s ease,
+    box-shadow 0.2s ease,
+    transform 0.2s ease;
+}
+
+.wp-chrome-pill:hover {
+  background: var(--wp-brand-accent-hover);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+.wp-chrome-pill--active {
+  background: var(--wp-brand-primary);
+  color: #ffffff;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+}
+
+.wp-chrome-pill--active:hover {
+  background: var(--wp-brand-primary);
+  color: #ffffff;
+  opacity: 0.92;
+}
+
+.wp-chrome-lang {
+  border: 1px solid rgba(0, 0, 0, 0.18);
+  background: #ffffff;
+  color: var(--wp-brand-primary);
+}
+
+.wp-chrome-lang--active {
+  border-color: var(--wp-brand-accent);
+  background: var(--wp-brand-accent);
+  color: var(--wp-brand-primary);
+}
+
+.wp-chrome-lang--idle:hover {
+  border-color: var(--wp-brand-accent);
+  background: #fff9e6;
+  color: var(--wp-brand-primary);
+}
+
+/* Hide duplicate Elementor role/lang nav — site chrome replaces it (fallback if strip missed) */
+body.wp-site
+  .elementor
+  > .e-con.e-parent.elementor-hidden-mobile:has(a.elementor-button[href*="/couriers"]),
+body.wp-site
+  .elementor
+  > .e-con.e-parent.elementor-hidden-mobile:has(a.elementor-button[href*="/pickers"]),
+body.wp-site
+  .elementor
+  > .e-con.e-parent.elementor-hidden-desktop:has(a.elementor-button[href*="/couriers"]),
+body.wp-site
+  .elementor
+  > .e-con.e-parent.elementor-hidden-desktop:has(a.elementor-button[href*="/pickers"]) {
+  display: none !important;
+}
+
+/* Unified careers hero — same height and 50/50 split on all roles/locales */
+body.wp-site .elementor-element-f1a1893,
+body.wp-site .elementor-element-f77fac1,
+body.wp-site .elementor-element-12ec484,
+body.wp-site .elementor-element-ff28f6d,
+body.wp-site .elementor-element-2eaad409,
+body.wp-site .elementor-element-bf9b706,
+body.wp-site .elementor-element-54c787f7 {
+  align-items: stretch !important;
+  min-height: var(--wp-hero-height) !important;
+  height: var(--wp-hero-height) !important;
+  max-height: var(--wp-hero-height) !important;
+  overflow: hidden !important;
+  border-radius: 1.25rem !important;
+  padding: 0 !important;
+}
+
+body.wp-site .elementor-element-d26b98c {
+  flex: 1 1 100% !important;
+  min-height: 100% !important;
+  height: 100% !important;
+  align-items: stretch !important;
+  padding: 0 !important;
+  overflow: hidden !important;
+}
+
+/* Hero column split — text 50% / image 50% */
+body.wp-site .elementor-element-e3eda29,
+body.wp-site .elementor-element-b28d7b7,
+body.wp-site .elementor-element-7d3d793,
+body.wp-site .elementor-element-7775b00,
+body.wp-site .elementor-element-1e3807ee,
+body.wp-site .elementor-element-55897f0,
+body.wp-site .elementor-element-2612de9d {
+  flex: 1 1 50% !important;
+  min-width: 0;
+  max-width: 50% !important;
+  min-height: 100%;
+  z-index: 2;
+  position: relative;
+  box-sizing: border-box;
+  padding-inline: var(--wp-space-3);
+}
+
+body.wp-site .elementor-element-3e070d7,
+body.wp-site .elementor-element-ccb79e6,
+body.wp-site .elementor-element-44efa02,
+body.wp-site .elementor-element-97451e4,
+body.wp-site .elementor-element-7157ff66,
+body.wp-site .elementor-element-0c27ce9,
+body.wp-site .elementor-element-1e94ec9f {
+  flex: 1 1 50% !important;
+  min-width: 0;
+  max-width: 50% !important;
+  min-height: 100%;
+  z-index: 1;
+  position: relative;
+  padding: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+}
+
+body.wp-site .elementor-element-3e070d7 .elementor-widget-image,
+body.wp-site .elementor-element-ccb79e6 .elementor-widget-image,
+body.wp-site .elementor-element-44efa02 .elementor-widget-image,
+body.wp-site .elementor-element-97451e4 .elementor-widget-image,
+body.wp-site .elementor-element-7157ff66 .elementor-widget-image,
+body.wp-site .elementor-element-0c27ce9 .elementor-widget-image,
+body.wp-site .elementor-element-1e94ec9f .elementor-widget-image,
+body.wp-site .elementor-element-049603d,
+body.wp-site .elementor-element-f416209,
+body.wp-site .elementor-element-58e6e2a,
+body.wp-site .elementor-element-53995fd,
+body.wp-site .elementor-element-6e67c2cf,
+body.wp-site .elementor-element-893c928,
+body.wp-site .elementor-element-79ff86fb {
+  width: 100% !important;
+  height: 100% !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.wp-site .elementor .elementor-element.elementor-element-049603d img,
+body.wp-site .elementor .elementor-element.elementor-element-f416209 img,
+body.wp-site .elementor .elementor-element.elementor-element-58e6e2a img,
+body.wp-site .elementor .elementor-element.elementor-element-53995fd img,
+body.wp-site .elementor .elementor-element.elementor-element-6e67c2cf img,
+body.wp-site .elementor .elementor-element.elementor-element-893c928 img,
+body.wp-site .elementor .elementor-element.elementor-element-79ff86fb img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: 100% !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+  border-radius: 0 !important;
+  display: block;
+}
+
+/* Reset synced Elementor widget margins inside hero copy */
+body.wp-site .elementor-element-763a2865,
+body.wp-site .elementor-element-5bc57ca,
+body.wp-site .elementor-element-c10a627,
+body.wp-site .elementor-element-1c8cee57,
+body.wp-site .elementor-element-488008d,
+body.wp-site .elementor-element-8c2667c,
+body.wp-site .elementor-element-515e0e6,
+body.wp-site .elementor-element-e82df0d,
+body.wp-site .elementor-element-19906d1,
+body.wp-site .elementor-element-cebc447,
+body.wp-site .elementor-element-0ce76a5,
+body.wp-site .elementor-element-75994de,
+body.wp-site .elementor-element-11c0293f,
+body.wp-site .elementor-element-64dc25b {
+  margin: 0 !important;
+}
+
+/* EN/RU hero h1 — per widget (not whole column) */
+body.wp-site .elementor-element-5bc57ca .elementor-heading-title,
+body.wp-site .elementor-element-488008d .elementor-heading-title,
+body.wp-site .elementor-element-8c2667c .elementor-heading-title,
+body.wp-site .elementor-element-515e0e6 .elementor-heading-title,
+body.wp-site .elementor-element-763a2865 .elementor-heading-title,
+body.wp-site .elementor-element-1c8cee57 .elementor-heading-title,
+body.wp-site .elementor-element-c10a627 .elementor-heading-title {
+  font-size: clamp(1.75rem, 4vw, 2.75rem) !important;
+  line-height: 1.08 !important;
+}
+
+/* Hero h2 / subhead */
+body.wp-site .elementor-element-e82df0d .elementor-heading-title,
+body.wp-site .elementor-element-cebc447 .elementor-heading-title,
+body.wp-site .elementor-element-0ce76a5 .elementor-heading-title,
+body.wp-site .elementor-element-75994de .elementor-heading-title,
+body.wp-site .elementor-element-11c0293f .elementor-heading-title {
+  font-family: var(--wp-font-body) !important;
+  font-weight: 400 !important;
+  font-size: clamp(1rem, 2.2vw, 1.375rem) !important;
+  line-height: 1.35 !important;
+}
+
+/* Couriers hero subhead — smaller than pickers/support */
+body.wp-site .elementor-element-64dc25b .elementor-heading-title,
+body.wp-site .elementor-element-19906d1 .elementor-heading-title {
+  font-family: var(--wp-font-body) !important;
+  font-weight: 400 !important;
+  font-size: clamp(0.875rem, 1.6vw, 1.125rem) !important;
+  line-height: 1.35 !important;
+}
+
+/* Hero copy column — heading, subhead, Apply CTA stacked and centered */
+body.wp-site .elementor-element-e3eda29,
+body.wp-site .elementor-element-b28d7b7,
+body.wp-site .elementor-element-7d3d793,
+body.wp-site .elementor-element-7775b00,
+body.wp-site .elementor-element-55897f0,
+body.wp-site .elementor-element-2612de9d,
+body.wp-site .elementor-element-1c8cee57,
+body.wp-site .elementor-element-11c0293f,
+body.wp-site .elementor-element-1e3807ee {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  gap: var(--wp-space-2);
+}
+
+body.wp-site .elementor-element-e1170ad,
+body.wp-site .elementor-element-29c4f7a,
+body.wp-site .elementor-element-00ecb37,
+body.wp-site .elementor-element-7840307,
+body.wp-site .elementor-element-73960e4a,
+body.wp-site .elementor-element-13f07b06,
+body.wp-site .elementor-element-457d7d1 {
+  width: 100%;
+  align-self: center;
+  text-align: center;
+}
+
+body.wp-site .elementor-element-e1170ad .elementor-button,
+body.wp-site .elementor-element-29c4f7a .elementor-button,
+body.wp-site .elementor-element-00ecb37 .elementor-button,
+body.wp-site .elementor-element-7840307 .elementor-button,
+body.wp-site .elementor-element-73960e4a .elementor-button,
+body.wp-site .elementor-element-13f07b06 .elementor-button,
+body.wp-site .elementor-element-457d7d1 .elementor-button {
+  display: inline-flex;
+  margin-inline: auto;
+}
+
+html[lang="he"] body.wp-site .elementor-element-e3eda29,
+html[lang="he"] body.wp-site .elementor-element-b28d7b7,
+html[lang="he"] body.wp-site .elementor-element-7d3d793,
+html[lang="he"] body.wp-site .elementor-element-7775b00,
+html[lang="he"] body.wp-site .elementor-element-55897f0,
+html[lang="he"] body.wp-site .elementor-element-1c8cee57,
+html[lang="he"] body.wp-site .elementor-element-11c0293f,
+html[lang="he"] body.wp-site .elementor-element-1e3807ee {
+  align-items: center !important;
+  text-align: center !important;
+}
+
+/* Dark surfaces — keep white text from Elementor (safety net if globals leak) */
+body.wp-site .elementor-element-545ce30f,
+body.wp-site .elementor-element-47b80a35,
+body.wp-site .elementor-element-a68d1d7,
+body.wp-site .elementor-element-c00ec80,
+body.wp-site .elementor-element-a6ce159,
+body.wp-site .elementor-element-29cb0846,
+body.wp-site .elementor-element-bdbc663,
+body.wp-site .elementor-element-b840db7,
+body.wp-site .elementor-element-bdbc663,
+body.wp-site .elementor-element-f726be4,
+body.wp-site .elementor-element-be5ce78,
+body.wp-site .elementor-element-00467b6,
+body.wp-site .elementor-element-ca894b6,
+body.wp-site .elementor-element-9a91b4b,
+body.wp-site .elementor-element-6e735a8,
+body.wp-site .elementor-element-6acf198,
+body.wp-site .elementor-element-be741f6,
+body.wp-site .elementor-element-14c27c1,
+body.wp-site .elementor-element-a14168b,
+body.wp-site .elementor-element-3153fab,
+body.wp-site .elementor-element-41bb519f,
+body.wp-site .elementor-element-f5afbaa {
+  --wp-on-dark: #ffffff;
+}
+
+body.wp-site .elementor-element-545ce30f :is(.elementor-heading-title, p, .elementor-widget-text-editor, a),
+body.wp-site .elementor-element-47b80a35 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a),
+body.wp-site .elementor-element-a68d1d7 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a),
+body.wp-site .elementor-element-c00ec80 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a),
+body.wp-site .elementor-element-6e735a8 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b, strong),
+body.wp-site .elementor-element-6acf198 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b, strong),
+body.wp-site .elementor-element-be741f6 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b, strong),
+body.wp-site .elementor-element-14c27c1 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b, strong),
+body.wp-site .elementor-element-a14168b :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b, strong),
+body.wp-site .elementor-element-3153fab :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b, strong),
+body.wp-site .elementor-element-f5afbaa :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b, strong),
+body.wp-site .elementor-element-41bb519f :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b, strong),
+body.wp-site .elementor-element-44085d1 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b, strong),
+body.wp-site .elementor-element-a6ce159 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a),
+body.wp-site .elementor-element-29cb0846 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a),
+body.wp-site .elementor-element-bdbc663 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a),
+body.wp-site .elementor-element-b840db7 > .elementor-widget-heading .elementor-heading-title,
+body.wp-site .elementor-element-bdbc663 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b),
+body.wp-site .elementor-element-f726be4 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b),
+body.wp-site .elementor-element-be5ce78 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b),
+body.wp-site .elementor-element-00467b6 :is(.elementor-heading-title, p, .elementor-widget-text-editor, a, b),
+body.wp-site .elementor-element-9db3065 .elementor-heading-title,
+body.wp-site .elementor-element-5af775a7 .elementor-heading-title,
+body.wp-site .elementor-element-6feb734 .elementor-heading-title,
+body.wp-site .elementor-element-4ad4274 .elementor-heading-title,
+body.wp-site .elementor-element-86f563f .elementor-heading-title,
+body.wp-site .elementor-element-55d0272,
+body.wp-site .elementor-element-9a91b4b :is(p, a, .elementor-widget-text-editor),
+body.wp-site .elementor-element-ca894b6 :is(p, a, .elementor-widget-text-editor),
+body.wp-site .elementor-element-3f298d4,
+body.wp-site .elementor-element-4c3e32f,
+body.wp-site .elementor-element-da472f6 {
+  color: #ffffff !important;
+}
+
+/* Yellow card bottoms — black text (Elementor parity) */
+body.wp-site .elementor-element-7d90f1d2 :is(.elementor-heading-title, .elementor-widget-text-editor, .elementor-widget-text-editor *),
+body.wp-site .elementor-element-1a64e198 :is(.elementor-heading-title, .elementor-widget-text-editor, .elementor-widget-text-editor *),
+body.wp-site .elementor-element-341aad6 :is(.elementor-heading-title, .elementor-widget-text-editor, .elementor-widget-text-editor *),
+body.wp-site .elementor-element-90d02cb :is(.elementor-heading-title, .elementor-widget-text-editor, .elementor-widget-text-editor *),
+body.wp-site .elementor-element-7726b96 :is(.elementor-heading-title, .elementor-widget-text-editor, .elementor-widget-text-editor *),
+body.wp-site .elementor-element-e2abde5 :is(.elementor-heading-title, .elementor-widget-text-editor, .elementor-widget-text-editor *),
+body.wp-site .elementor-element-2612956 :is(.elementor-heading-title, .elementor-widget-text-editor, .elementor-widget-text-editor *),
+body.wp-site .elementor-element-6720307 :is(.elementor-heading-title, .elementor-widget-text-editor, .elementor-widget-text-editor *),
+body.wp-site .elementor-element-71374d84 :is(.elementor-heading-title, .elementor-widget-text-editor, .elementor-widget-text-editor *),
+body.wp-site .elementor-element-1df94e2d :is(.elementor-heading-title, .elementor-widget-text-editor, .elementor-widget-text-editor *) {
+  color: #000000 !important;
+}
+
+body.wp-site .elementor-element-ca894b6 a,
+body.wp-site .elementor-element-9a91b4b a,
+body.wp-site .elementor-element-4c3e32f a,
+body.wp-site .elementor-element-da472f6 a {
+  color: #ffffff !important;
+}
+
+/* Hero Apply buttons — center under copy (override Elementor align-left) */
+body.wp-site .elementor-element-e1170ad.elementor-align-left,
+body.wp-site .elementor-element-29c4f7a.elementor-align-left,
+body.wp-site .elementor-element-00ecb37.elementor-align-left,
+body.wp-site .elementor-element-7840307.elementor-align-left,
+body.wp-site .elementor-element-13f07b06.elementor-align-left,
+body.wp-site .elementor-element-73960e4a.elementor-align-left,
+body.wp-site .elementor-element-457d7d1.elementor-align-left {
+  text-align: center !important;
+}
+
+html[lang="ru"] body.wp-site .elementor-element-5bc57ca .elementor-heading-title {
+  font-size: clamp(1.5rem, 3.8vw, 2.5rem) !important;
+}
+
+html[lang="ru"] body.wp-site .elementor-element-e82df0d .elementor-heading-title {
+  font-size: clamp(1rem, 2.2vw, 1.25rem) !important;
+}
+
+/* ── Section titles (מה מצפה / למה שווה / steps / decision) ── */
+body.wp-site .elementor-element-19c1229d .elementor-heading-title,
+body.wp-site .elementor-element-77bf75ec .elementor-heading-title,
+body.wp-site .elementor-element-6b2fa868 .elementor-heading-title,
+body.wp-site .elementor-element-5af775a7 .elementor-heading-title,
+body.wp-site .elementor-element-764cfb2 .elementor-heading-title,
+body.wp-site .elementor-element-8d3609d .elementor-heading-title,
+body.wp-site .elementor-element-d8a9173 .elementor-heading-title,
+body.wp-site .elementor-element-aab3201 .elementor-heading-title,
+body.wp-site .elementor-element-450c0a6 .elementor-heading-title,
+body.wp-site .elementor-element-7de1df4 .elementor-heading-title,
+body.wp-site .elementor-element-60ad67c2 .elementor-heading-title,
+body.wp-site .elementor-element-858ae6b .elementor-heading-title,
+body.wp-site .elementor-element-95b386f .elementor-heading-title,
+body.wp-site .elementor-element-86f563f .elementor-heading-title,
+body.wp-site .elementor-element-6feb734 .elementor-heading-title,
+body.wp-site .elementor-element-4ad4274 .elementor-heading-title {
+  font-family: var(--wp-font-heading) !important;
+  font-weight: 900 !important;
+  font-size: clamp(1.75rem, 3.5vw, 2.5rem) !important;
+  line-height: 1.08 !important;
+  text-align: center !important;
+}
+
+/* ── Template A: What awaits / Your decision — illustration tops (gray) ── */
+body.wp-site .elementor .elementor-element.elementor-element-40b2fcff:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-4185b70:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-3e4b2591:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-3e197560:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-d2646fc:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-9b9dfc1:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-acfc892:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-c7ea0a2:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-8c02f18:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-860c6a3:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-2760f7e:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-6f1d34b:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-fe92bcb:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-5d91d985:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-e18aa7b:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-164715a:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-080311c:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-4cfc0d19:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-298b725f:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-9fad149:not(.elementor-motion-effects-element-type-background) {
+  background-color: var(--wp-card-illus-bg) !important;
+  min-height: var(--wp-card-illus-min-h) !important;
+  border-radius: var(--wp-card-radius) var(--wp-card-radius) 0 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  padding: var(--wp-space-2) var(--wp-space-1) !important;
+}
+
+/* Template A — card illustration images (gray tops) */
+body.wp-site .elementor-element-40b2fcff .elementor-widget-image,
+body.wp-site .elementor-element-4185b70 .elementor-widget-image,
+body.wp-site .elementor-element-3e4b2591 .elementor-widget-image,
+body.wp-site .elementor-element-d2646fc .elementor-widget-image,
+body.wp-site .elementor-element-9b9dfc1 .elementor-widget-image,
+body.wp-site .elementor-element-acfc892 .elementor-widget-image,
+body.wp-site .elementor-element-c7ea0a2 .elementor-widget-image,
+body.wp-site .elementor-element-8c02f18 .elementor-widget-image,
+body.wp-site .elementor-element-860c6a3 .elementor-widget-image,
+body.wp-site .elementor-element-2760f7e .elementor-widget-image,
+body.wp-site .elementor-element-6f1d34b .elementor-widget-image,
+body.wp-site .elementor-element-fe92bcb .elementor-widget-image,
+body.wp-site .elementor-element-5d91d985 .elementor-widget-image,
+body.wp-site .elementor-element-e18aa7b .elementor-widget-image,
+body.wp-site .elementor-element-164715a .elementor-widget-image,
+body.wp-site .elementor-element-080311c .elementor-widget-image,
+body.wp-site .elementor-element-4cfc0d19 .elementor-widget-image,
+body.wp-site .elementor-element-298b725f .elementor-widget-image,
+body.wp-site .elementor-element-9fad149 .elementor-widget-image,
+body.wp-site .elementor-element-39061da .elementor-widget-image,
+body.wp-site .elementor-element-b3c8f0c .elementor-widget-image,
+body.wp-site .elementor-element-c7b95a6 .elementor-widget-image,
+body.wp-site .elementor-element-6477bcb0 .elementor-widget-image,
+body.wp-site .elementor-element-169cfe0e .elementor-widget-image,
+body.wp-site .elementor-element-6fa7cfc2 .elementor-widget-image {
+  width: 100% !important;
+  max-width: 100% !important;
+  margin: 0 !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.wp-site .elementor-element-40b2fcff .elementor-widget-image img,
+body.wp-site .elementor-element-4185b70 .elementor-widget-image img,
+body.wp-site .elementor-element-3e4b2591 .elementor-widget-image img,
+body.wp-site .elementor-element-d2646fc .elementor-widget-image img,
+body.wp-site .elementor-element-9b9dfc1 .elementor-widget-image img,
+body.wp-site .elementor-element-acfc892 .elementor-widget-image img,
+body.wp-site .elementor-element-c7ea0a2 .elementor-widget-image img,
+body.wp-site .elementor-element-8c02f18 .elementor-widget-image img,
+body.wp-site .elementor-element-860c6a3 .elementor-widget-image img,
+body.wp-site .elementor-element-2760f7e .elementor-widget-image img,
+body.wp-site .elementor-element-6f1d34b .elementor-widget-image img,
+body.wp-site .elementor-element-fe92bcb .elementor-widget-image img,
+body.wp-site .elementor-element-5d91d985 .elementor-widget-image img,
+body.wp-site .elementor-element-e18aa7b .elementor-widget-image img,
+body.wp-site .elementor-element-164715a .elementor-widget-image img,
+body.wp-site .elementor-element-080311c .elementor-widget-image img,
+body.wp-site .elementor-element-4cfc0d19 .elementor-widget-image img,
+body.wp-site .elementor-element-298b725f .elementor-widget-image img,
+body.wp-site .elementor-element-9fad149 .elementor-widget-image img,
+body.wp-site .elementor-element-39061da .elementor-widget-image img,
+body.wp-site .elementor-element-b3c8f0c .elementor-widget-image img,
+body.wp-site .elementor-element-c7b95a6 .elementor-widget-image img,
+body.wp-site .elementor-element-6477bcb0 .elementor-widget-image img,
+body.wp-site .elementor-element-169cfe0e .elementor-widget-image img,
+body.wp-site .elementor-element-6fa7cfc2 .elementor-widget-image img {
+  width: auto !important;
+  height: auto !important;
+  max-width: min(92%, 18rem) !important;
+  max-height: calc(var(--wp-card-illus-min-h) - var(--wp-space-3)) !important;
+  min-width: 7.5rem !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+
+/* Template A — yellow card bottoms */
+body.wp-site .elementor .elementor-element.elementor-element-7d90f1d2:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-1a64e198:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-341aad6:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-90d02cb:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-7726b96:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-e2abde5:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-2612956:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-6720307:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-71374d84:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-1df94e2d:not(.elementor-motion-effects-element-type-background) {
+  background-color: var(--wp-brand-accent) !important;
+}
+
+/* Template A — black card bottoms */
+body.wp-site .elementor .elementor-element.elementor-element-545ce30f:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-00467b6:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-f726be4:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-41bb519f:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-44085d1:not(.elementor-motion-effects-element-type-background) {
+  background-color: #000000 !important;
+}
+
+/* Template A — card bottom panels (shared layout) */
+body.wp-site .elementor-element-7d90f1d2,
+body.wp-site .elementor-element-545ce30f,
+body.wp-site .elementor-element-1a64e198,
+body.wp-site .elementor-element-341aad6,
+body.wp-site .elementor-element-00467b6,
+body.wp-site .elementor-element-90d02cb,
+body.wp-site .elementor-element-7726b96,
+body.wp-site .elementor-element-f726be4,
+body.wp-site .elementor-element-e2abde5,
+body.wp-site .elementor-element-2612956,
+body.wp-site .elementor-element-44085d1,
+body.wp-site .elementor-element-6720307,
+body.wp-site .elementor-element-71374d84,
+body.wp-site .elementor-element-41bb519f,
+body.wp-site .elementor-element-1df94e2d {
+  display: flex !important;
+  flex-direction: column !important;
+  align-items: center !important;
+  justify-content: center !important;
+  text-align: center !important;
+  min-height: var(--wp-card-body-min-h) !important;
+  margin-top: var(--wp-card-overlap) !important;
+  border-radius: var(--wp-card-radius) !important;
+  padding: var(--wp-space-3) !important;
+  box-sizing: border-box;
+}
+
+body.wp-site .elementor-element-7d90f1d2 .elementor-widget,
+body.wp-site .elementor-element-545ce30f .elementor-widget,
+body.wp-site .elementor-element-1a64e198 .elementor-widget,
+body.wp-site .elementor-element-341aad6 .elementor-widget,
+body.wp-site .elementor-element-00467b6 .elementor-widget,
+body.wp-site .elementor-element-90d02cb .elementor-widget,
+body.wp-site .elementor-element-7726b96 .elementor-widget,
+body.wp-site .elementor-element-f726be4 .elementor-widget,
+body.wp-site .elementor-element-e2abde5 .elementor-widget,
+body.wp-site .elementor-element-2612956 .elementor-widget,
+body.wp-site .elementor-element-44085d1 .elementor-widget,
+body.wp-site .elementor-element-6720307 .elementor-widget,
+body.wp-site .elementor-element-71374d84 .elementor-widget,
+body.wp-site .elementor-element-41bb519f .elementor-widget,
+body.wp-site .elementor-element-1df94e2d .elementor-widget {
+  width: 100%;
+  text-align: center;
+}
+
+/* Card panel titles */
+body.wp-site .elementor-element-7d90f1d2 .elementor-heading-title,
+body.wp-site .elementor-element-545ce30f .elementor-heading-title,
+body.wp-site .elementor-element-1a64e198 .elementor-heading-title,
+body.wp-site .elementor-element-341aad6 .elementor-heading-title,
+body.wp-site .elementor-element-00467b6 .elementor-heading-title,
+body.wp-site .elementor-element-90d02cb .elementor-heading-title,
+body.wp-site .elementor-element-7726b96 .elementor-heading-title,
+body.wp-site .elementor-element-f726be4 .elementor-heading-title,
+body.wp-site .elementor-element-e2abde5 .elementor-heading-title,
+body.wp-site .elementor-element-2612956 .elementor-heading-title,
+body.wp-site .elementor-element-44085d1 .elementor-heading-title,
+body.wp-site .elementor-element-6720307 .elementor-heading-title,
+body.wp-site .elementor-element-71374d84 .elementor-heading-title,
+body.wp-site .elementor-element-41bb519f .elementor-heading-title,
+body.wp-site .elementor-element-1df94e2d .elementor-heading-title,
+body.wp-site .elementor-element-0cfe1e0 .elementor-heading-title,
+body.wp-site .elementor-element-88aad05 .elementor-heading-title,
+body.wp-site .elementor-element-03d2241 .elementor-heading-title,
+body.wp-site .elementor-element-1c7af41b .elementor-heading-title,
+body.wp-site .elementor-element-23e1a451 .elementor-heading-title,
+body.wp-site .elementor-element-6b15d7e1 .elementor-heading-title {
+  font-family: var(--wp-font-heading) !important;
+  font-weight: 700 !important;
+  font-size: clamp(1.125rem, 2vw, 1.5rem) !important;
+  line-height: 1.15 !important;
+}
+
+/* Card panel body copy */
+body.wp-site .elementor-element-7d90f1d2 .elementor-widget-text-editor,
+body.wp-site .elementor-element-545ce30f .elementor-widget-text-editor,
+body.wp-site .elementor-element-1a64e198 .elementor-widget-text-editor,
+body.wp-site .elementor-element-341aad6 .elementor-widget-text-editor,
+body.wp-site .elementor-element-00467b6 .elementor-widget-text-editor,
+body.wp-site .elementor-element-90d02cb .elementor-widget-text-editor,
+body.wp-site .elementor-element-7726b96 .elementor-widget-text-editor,
+body.wp-site .elementor-element-f726be4 .elementor-widget-text-editor,
+body.wp-site .elementor-element-e2abde5 .elementor-widget-text-editor,
+body.wp-site .elementor-element-2612956 .elementor-widget-text-editor,
+body.wp-site .elementor-element-44085d1 .elementor-widget-text-editor,
+body.wp-site .elementor-element-6720307 .elementor-widget-text-editor,
+body.wp-site .elementor-element-71374d84 .elementor-widget-text-editor,
+body.wp-site .elementor-element-41bb519f .elementor-widget-text-editor,
+body.wp-site .elementor-element-1df94e2d .elementor-widget-text-editor {
+  font-family: var(--wp-font-body) !important;
+  font-weight: 400 !important;
+  font-size: clamp(0.875rem, 1.6vw, 1rem) !important;
+  line-height: 1.4 !important;
+}
+
+/* ── Template B: Why join — yellow section bands (pickers/support) ── */
+body.wp-site .elementor .elementor-element.elementor-element-2402f80:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-6dca3de:not(.elementor-motion-effects-element-type-background) {
+  background-color: var(--wp-brand-accent) !important;
+}
+
+/* Why join — black text panels (pickers/support/manager) */
+body.wp-site .elementor .elementor-element.elementor-element-47b80a35:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-a68d1d7:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-c00ec80:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-6e735a8:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-6acf198:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-be741f6:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-14c27c1:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-a14168b:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-3153fab:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-f5afbaa:not(.elementor-motion-effects-element-type-background) {
+  background-color: #000000 !important;
+}
+
+/* Why join — couriers gray text panels */
+body.wp-site .elementor .elementor-element.elementor-element-9a07a99:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-3c7020e:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-0256ad8:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-662cd53b:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-6e4879c2:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-7ad5410f:not(.elementor-motion-effects-element-type-background) {
+  background-color: var(--wp-card-illus-bg) !important;
+}
+
+/* Why join — couriers yellow illustration panels */
+body.wp-site .elementor .elementor-element.elementor-element-39061da:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-b3c8f0c:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-c7b95a6:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-6477bcb0:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-169cfe0e:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-6fa7cfc2:not(.elementor-motion-effects-element-type-background) {
+  background-color: var(--wp-brand-accent) !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.wp-site .elementor-element-47b80a35,
+body.wp-site .elementor-element-a68d1d7,
+body.wp-site .elementor-element-c00ec80,
+body.wp-site .elementor-element-6e735a8,
+body.wp-site .elementor-element-6acf198,
+body.wp-site .elementor-element-be741f6,
+body.wp-site .elementor-element-14c27c1,
+body.wp-site .elementor-element-a14168b,
+body.wp-site .elementor-element-3153fab,
+body.wp-site .elementor-element-f5afbaa,
+body.wp-site .elementor-element-9a07a99,
+body.wp-site .elementor-element-3c7020e,
+body.wp-site .elementor-element-0256ad8,
+body.wp-site .elementor-element-662cd53b,
+body.wp-site .elementor-element-6e4879c2,
+body.wp-site .elementor-element-7ad5410f,
+body.wp-site .elementor-element-39061da,
+body.wp-site .elementor-element-b3c8f0c,
+body.wp-site .elementor-element-c7b95a6,
+body.wp-site .elementor-element-6477bcb0,
+body.wp-site .elementor-element-169cfe0e,
+body.wp-site .elementor-element-6fa7cfc2 {
+  border-radius: var(--wp-card-radius) !important;
+  padding: var(--wp-space-3) !important;
+  box-sizing: border-box;
+  text-align: start !important;
+}
+
+body.wp-site .elementor-element-47b80a35 .elementor-heading-title,
+body.wp-site .elementor-element-a68d1d7 .elementor-heading-title,
+body.wp-site .elementor-element-c00ec80 .elementor-heading-title,
+body.wp-site .elementor-element-6e735a8 .elementor-heading-title,
+body.wp-site .elementor-element-6acf198 .elementor-heading-title,
+body.wp-site .elementor-element-be741f6 .elementor-heading-title,
+body.wp-site .elementor-element-14c27c1 .elementor-heading-title,
+body.wp-site .elementor-element-a14168b .elementor-heading-title,
+body.wp-site .elementor-element-3153fab .elementor-heading-title,
+body.wp-site .elementor-element-9ec9b37 .elementor-heading-title,
+body.wp-site .elementor-element-4316628 .elementor-heading-title,
+body.wp-site .elementor-element-0207000 .elementor-heading-title {
+  font-weight: 700 !important;
+  font-size: clamp(1.125rem, 2vw, 1.375rem) !important;
+}
+
+body.wp-site .elementor-element-47b80a35 .elementor-widget-text-editor,
+body.wp-site .elementor-element-a68d1d7 .elementor-widget-text-editor,
+body.wp-site .elementor-element-c00ec80 .elementor-widget-text-editor,
+body.wp-site .elementor-element-6e735a8 .elementor-widget-text-editor,
+body.wp-site .elementor-element-6acf198 .elementor-widget-text-editor,
+body.wp-site .elementor-element-be741f6 .elementor-widget-text-editor,
+body.wp-site .elementor-element-14c27c1 .elementor-widget-text-editor,
+body.wp-site .elementor-element-a14168b .elementor-widget-text-editor,
+body.wp-site .elementor-element-3153fab .elementor-widget-text-editor,
+body.wp-site .elementor-element-9a07a99 .elementor-widget-text-editor,
+body.wp-site .elementor-element-3c7020e .elementor-widget-text-editor,
+body.wp-site .elementor-element-0256ad8 .elementor-widget-text-editor,
+body.wp-site .elementor-element-662cd53b .elementor-widget-text-editor,
+body.wp-site .elementor-element-6e4879c2 .elementor-widget-text-editor,
+body.wp-site .elementor-element-7ad5410f .elementor-widget-text-editor {
+  font-size: clamp(0.875rem, 1.6vw, 1rem) !important;
+  line-height: 1.4 !important;
+}
+
+/* Why join couriers — card row wrappers */
+body.wp-site .elementor-element-8aa2664,
+body.wp-site .elementor-element-3d4c9eb,
+body.wp-site .elementor-element-fe35610,
+body.wp-site .elementor-element-198d248c,
+body.wp-site .elementor-element-17b95c52,
+body.wp-site .elementor-element-6709cc04 {
+  border-radius: var(--wp-card-radius) !important;
+  overflow: hidden;
+}
+
+/* ── Template C: Icon columns ── */
+body.wp-site .elementor-element-0fa59ee .elementor-widget-image-box .elementor-image-box-img img,
+body.wp-site .elementor-element-c0caa35 .elementor-widget-image-box .elementor-image-box-img img,
+body.wp-site .elementor-element-a3aef89 .elementor-widget-image-box .elementor-image-box-img img,
+body.wp-site .elementor-element-333ddc83 .elementor-widget-image-box .elementor-image-box-img img,
+body.wp-site .elementor-element-31ce380 .elementor-widget-image-box .elementor-image-box-img img {
+  width: auto !important;
+  max-width: 4.5rem !important;
+  height: auto !important;
+  object-fit: contain;
+}
+
+body.wp-site .elementor-element-0fa59ee .elementor-widget-image-box,
+body.wp-site .elementor-element-c0caa35 .elementor-widget-image-box,
+body.wp-site .elementor-element-a3aef89 .elementor-widget-image-box,
+body.wp-site .elementor-element-333ddc83 .elementor-widget-image-box,
+body.wp-site .elementor-element-31ce380 .elementor-widget-image-box {
+  text-align: center;
+}
+
+body.wp-site .elementor-element-0fa59ee .elementor-image-box-title,
+body.wp-site .elementor-element-c0caa35 .elementor-image-box-title,
+body.wp-site .elementor-element-a3aef89 .elementor-image-box-title,
+body.wp-site .elementor-element-333ddc83 .elementor-image-box-title,
+body.wp-site .elementor-element-31ce380 .elementor-image-box-title {
+  font-weight: 700 !important;
+  font-size: clamp(1rem, 1.8vw, 1.25rem) !important;
+}
+
+body.wp-site .elementor-element-0fa59ee .elementor-image-box-description,
+body.wp-site .elementor-element-c0caa35 .elementor-image-box-description,
+body.wp-site .elementor-element-a3aef89 .elementor-image-box-description,
+body.wp-site .elementor-element-333ddc83 .elementor-image-box-description,
+body.wp-site .elementor-element-31ce380 .elementor-image-box-description {
+  font-size: clamp(0.875rem, 1.5vw, 1rem) !important;
+  line-height: 1.4 !important;
+}
+
+/* Icon column grids — equal columns */
+body.wp-site .elementor-element-073eef9,
+body.wp-site .elementor-element-5fdf54ca {
+  align-items: stretch !important;
+  gap: var(--wp-space-2) !important;
+}
+
+/* ── Template D: Steps on black band ── */
+body.wp-site .elementor .elementor-element.elementor-element-a6ce159:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-29cb0846:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-be5ce78:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-b840db7:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-bdbc663:not(.elementor-motion-effects-element-type-background) {
+  background-color: var(--wp-section-black) !important;
+  border-radius: var(--wp-card-radius) !important;
+  padding: var(--wp-space-5) var(--wp-space-3) !important;
+}
+
+body.wp-site .elementor-element-6c0d13d9,
+body.wp-site .elementor-element-46122c0,
+body.wp-site .elementor-element-46d885a {
+  align-items: stretch !important;
+  gap: var(--wp-space-2) !important;
+}
+
+/* Step card rows — equal height */
+body.wp-site .elementor-element-161f22d9,
+body.wp-site .elementor-element-7b8018a3,
+body.wp-site .elementor-element-17a895b7,
+body.wp-site .elementor-element-20398aa4,
+body.wp-site .elementor-element-756a0fd,
+body.wp-site .elementor-element-a7b2939,
+body.wp-site .elementor-element-6235a10,
+body.wp-site .elementor-element-151b2b0,
+body.wp-site .elementor-element-3a85c2b,
+body.wp-site .elementor-element-8f3d42c,
+body.wp-site .elementor-element-8455dc1,
+body.wp-site .elementor-element-89663ca {
+  display: flex !important;
+  flex-direction: column !important;
+  flex: 1 1 0 !important;
+  min-width: 0;
+}
+
+/* Step illustration tops (white) */
+body.wp-site .elementor .elementor-element.elementor-element-7b68ab71:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-15af1b94:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-5488a176:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-1b1b9f65:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-cd8f60c:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-93bb914:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-a44fa15:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-d4c69bd:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-5b6a0cd:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-c1b7b9e:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-5906185:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-6da4e40:not(.elementor-motion-effects-element-type-background) {
+  background-color: #ffffff !important;
+  min-height: 9rem !important;
+  border-radius: var(--wp-card-radius) var(--wp-card-radius) 0 0 !important;
+  align-items: center !important;
+  justify-content: center !important;
+  overflow: hidden !important;
+  padding: var(--wp-space-2) !important;
+}
+
+body.wp-site .elementor-element-7b68ab71 .elementor-widget-image,
+body.wp-site .elementor-element-15af1b94 .elementor-widget-image,
+body.wp-site .elementor-element-5488a176 .elementor-widget-image,
+body.wp-site .elementor-element-1b1b9f65 .elementor-widget-image,
+body.wp-site .elementor-element-cd8f60c .elementor-widget-image,
+body.wp-site .elementor-element-93bb914 .elementor-widget-image,
+body.wp-site .elementor-element-a44fa15 .elementor-widget-image,
+body.wp-site .elementor-element-d4c69bd .elementor-widget-image,
+body.wp-site .elementor-element-5b6a0cd .elementor-widget-image,
+body.wp-site .elementor-element-c1b7b9e .elementor-widget-image,
+body.wp-site .elementor-element-5906185 .elementor-widget-image,
+body.wp-site .elementor-element-6da4e40 .elementor-widget-image {
+  width: 100% !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+}
+
+body.wp-site .elementor-element-7b68ab71 .elementor-widget-image img,
+body.wp-site .elementor-element-15af1b94 .elementor-widget-image img,
+body.wp-site .elementor-element-5488a176 .elementor-widget-image img,
+body.wp-site .elementor-element-1b1b9f65 .elementor-widget-image img,
+body.wp-site .elementor-element-cd8f60c .elementor-widget-image img,
+body.wp-site .elementor-element-93bb914 .elementor-widget-image img,
+body.wp-site .elementor-element-a44fa15 .elementor-widget-image img,
+body.wp-site .elementor-element-d4c69bd .elementor-widget-image img,
+body.wp-site .elementor-element-5b6a0cd .elementor-widget-image img,
+body.wp-site .elementor-element-c1b7b9e .elementor-widget-image img,
+body.wp-site .elementor-element-5906185 .elementor-widget-image img,
+body.wp-site .elementor-element-6da4e40 .elementor-widget-image img {
+  max-width: min(90%, 10rem) !important;
+  max-height: 7.5rem !important;
+  width: auto !important;
+  height: auto !important;
+  object-fit: contain !important;
+}
+
+/* Step yellow bottoms */
+body.wp-site .elementor .elementor-element.elementor-element-50fed994:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-792c6553:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-60e3baae:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-2086a96e:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-f0781fd:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-906d16f:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-b8d2cc2:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-92c0cfd:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-3ce975a:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-c7571ce:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-a2d8137:not(.elementor-motion-effects-element-type-background),
+body.wp-site .elementor .elementor-element.elementor-element-096e059:not(.elementor-motion-effects-element-type-background) {
+  background-color: var(--wp-brand-accent) !important;
+  border-radius: 0 0 var(--wp-card-radius) var(--wp-card-radius) !important;
+  flex: 1 1 auto !important;
+  padding: var(--wp-space-2) var(--wp-space-3) !important;
+}
+
+body.wp-site .elementor-element-50fed994,
+body.wp-site .elementor-element-792c6553,
+body.wp-site .elementor-element-60e3baae,
+body.wp-site .elementor-element-2086a96e,
+body.wp-site .elementor-element-f0781fd,
+body.wp-site .elementor-element-906d16f,
+body.wp-site .elementor-element-b8d2cc2,
+body.wp-site .elementor-element-92c0cfd,
+body.wp-site .elementor-element-3ce975a,
+body.wp-site .elementor-element-c7571ce,
+body.wp-site .elementor-element-a2d8137,
+body.wp-site .elementor-element-096e059 {
+  display: flex !important;
+  flex-direction: column !important;
+  justify-content: flex-start !important;
+  text-align: start !important;
+}
+
+/* Step numbers */
+body.wp-site .elementor-element-3738b2b1 .elementor-heading-title,
+body.wp-site .elementor-element-33b6d06e .elementor-heading-title,
+body.wp-site .elementor-element-1e93d8f1 .elementor-heading-title,
+body.wp-site .elementor-element-272a9f9d .elementor-heading-title,
+body.wp-site .elementor-element-729f781 .elementor-heading-title,
+body.wp-site .elementor-element-ec45639 .elementor-heading-title,
+body.wp-site .elementor-element-2c3d478 .elementor-heading-title,
+body.wp-site .elementor-element-bb38ea1 .elementor-heading-title,
+body.wp-site .elementor-element-117bb9e .elementor-heading-title,
+body.wp-site .elementor-element-0209762 .elementor-heading-title,
+body.wp-site .elementor-element-350cb0e .elementor-heading-title,
+body.wp-site .elementor-element-eb55024 .elementor-heading-title {
+  font-family: var(--wp-font-heading) !important;
+  font-weight: 900 !important;
+  font-size: clamp(2.5rem, 5vw, 3.5rem) !important;
+  line-height: 1 !important;
+}
+
+body.wp-site .elementor-element-50fed994 .elementor-widget-text-editor,
+body.wp-site .elementor-element-792c6553 .elementor-widget-text-editor,
+body.wp-site .elementor-element-60e3baae .elementor-widget-text-editor,
+body.wp-site .elementor-element-2086a96e .elementor-widget-text-editor,
+body.wp-site .elementor-element-f0781fd .elementor-widget-text-editor,
+body.wp-site .elementor-element-906d16f .elementor-widget-text-editor,
+body.wp-site .elementor-element-b8d2cc2 .elementor-widget-text-editor,
+body.wp-site .elementor-element-92c0cfd .elementor-widget-text-editor,
+body.wp-site .elementor-element-3ce975a .elementor-widget-text-editor,
+body.wp-site .elementor-element-c7571ce .elementor-widget-text-editor,
+body.wp-site .elementor-element-a2d8137 .elementor-widget-text-editor,
+body.wp-site .elementor-element-096e059 .elementor-widget-text-editor {
+  font-size: clamp(0.875rem, 1.6vw, 1rem) !important;
+  line-height: 1.35 !important;
+}
+
+/* Steps section titles on black band — white text */
+body.wp-site .elementor-element-a6ce159 .elementor-heading-title,
+body.wp-site .elementor-element-29cb0846 .elementor-heading-title,
+body.wp-site .elementor-element-be5ce78 .elementor-heading-title,
+body.wp-site .elementor-element-b840db7 .elementor-heading-title,
+body.wp-site .elementor-element-bdbc663 .elementor-heading-title,
+body.wp-site .elementor-element-5af775a7 .elementor-heading-title,
+body.wp-site .elementor-element-6feb734 .elementor-heading-title,
+body.wp-site .elementor-element-9db3065 .elementor-heading-title,
+body.wp-site .elementor-element-4ad4274 .elementor-heading-title,
+body.wp-site .elementor-element-86f563f .elementor-heading-title,
+body.wp-site .elementor-element-a6ce159 .elementor-widget-text-editor,
+body.wp-site .elementor-element-29cb0846 .elementor-widget-text-editor,
+body.wp-site .elementor-element-be5ce78 .elementor-widget-text-editor,
+body.wp-site .elementor-element-b840db7 .elementor-widget-text-editor,
+body.wp-site .elementor-element-bdbc663 .elementor-widget-text-editor {
+  color: #ffffff !important;
+  text-align: center !important;
+}
+
+/* Card column shells — clip illustration + text panels */
+body.wp-site .elementor-element-21c486cb,
+body.wp-site .elementor-element-3e197560,
+body.wp-site .elementor-element-506d3ee3,
+body.wp-site .elementor-element-1ca85c5,
+body.wp-site .elementor-element-280678d,
+body.wp-site .elementor-element-23d1f9d {
+  overflow: hidden !important;
+  border-radius: var(--wp-card-radius) !important;
+}
+
+/* 3-card row grids — equal columns */
+body.wp-site .elementor-element-2e560292,
+body.wp-site .elementor-element-0b8346a,
+body.wp-site .elementor-element-08b6ed1,
+body.wp-site .elementor-element-a44f9c4,
+body.wp-site .elementor-element-3bc955d,
+body.wp-site .elementor-element-0e70db1,
+body.wp-site .elementor-element-fe88d47,
+body.wp-site .elementor-element-cedf7d7,
+body.wp-site .elementor-element-54dc68c,
+body.wp-site .elementor-element-2ac51d41 {
+  align-items: stretch !important;
+  gap: var(--wp-space-2) !important;
+}
+
+/* Reset synced Elementor 400px side margins on hub section titles */
+body.wp-site .elementor-element-5af775a7,
+body.wp-site .elementor-element-764cfb2,
+body.wp-site .elementor-element-8d3609d,
+body.wp-site .elementor-element-d8a9173 {
+  margin-inline: auto !important;
+  max-width: var(--wp-container);
+  padding-inline: var(--wp-space-3) !important;
+}
+
+/* Section rhythm — 8px grid */
+body.wp-site .elementor-element-dd95d15,
+body.wp-site .elementor-element-38febe3,
+body.wp-site .elementor-element-8efb04f {
+  padding-block: var(--wp-space-4) !important;
+  gap: var(--wp-space-3) !important;
+}
+
+body.wp-site .elementor-element-0fa59ee .elementor-widget-image-box,
+body.wp-site .elementor-element-c0caa35 .elementor-widget-image-box,
+body.wp-site .elementor-element-a3aef89 .elementor-widget-image-box,
+body.wp-site .elementor-element-333ddc83 .elementor-widget-image-box,
+body.wp-site .elementor-element-31ce380 .elementor-widget-image-box {
+  margin-bottom: 1rem !important;
+}
+
+body.wp-site .elementor-element-1ac75c07,
+body.wp-site .elementor-element-407dd47c,
+body.wp-site .elementor-element-55925321,
+body.wp-site .elementor-element-316551eb > .e-con-inner {
+  align-items: stretch !important;
+  gap: var(--wp-space-2) !important;
+}
+
+body.wp-site .elementor-element-438fe915 .elementor-heading-title,
+body.wp-site .elementor-element-8d3609d .elementor-heading-title {
+  text-align: center !important;
+}
+
+@media (max-width: 1024px) {
+  body.wp-site .elementor-element-f1a1893,
+  body.wp-site .elementor-element-f77fac1,
+  body.wp-site .elementor-element-12ec484,
+  body.wp-site .elementor-element-ff28f6d,
+  body.wp-site .elementor-element-2eaad409,
+  body.wp-site .elementor-element-bf9b706,
+  body.wp-site .elementor-element-54c787f7 {
+    height: auto !important;
+    min-height: 0 !important;
+    max-height: none !important;
+    overflow: hidden !important;
+  }
+
+  body.wp-site .elementor-element-d26b98c {
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+  }
+
+  body.wp-site .elementor-element-e3eda29,
+  body.wp-site .elementor-element-3e070d7,
+  body.wp-site .elementor-element-b28d7b7,
+  body.wp-site .elementor-element-ccb79e6,
+  body.wp-site .elementor-element-7d3d793,
+  body.wp-site .elementor-element-44efa02,
+  body.wp-site .elementor-element-7775b00,
+  body.wp-site .elementor-element-97451e4,
+  body.wp-site .elementor-element-1e3807ee,
+  body.wp-site .elementor-element-55897f0,
+  body.wp-site .elementor-element-2612de9d,
+  body.wp-site .elementor-element-7157ff66,
+  body.wp-site .elementor-element-0c27ce9,
+  body.wp-site .elementor-element-1e94ec9f {
+    max-width: 100%;
+    flex-basis: 100%;
+    min-height: 0;
+    overflow: hidden !important;
+  }
+
+  body.wp-site .elementor-element-3e070d7,
+  body.wp-site .elementor-element-ccb79e6,
+  body.wp-site .elementor-element-44efa02,
+  body.wp-site .elementor-element-97451e4,
+  body.wp-site .elementor-element-7157ff66,
+  body.wp-site .elementor-element-0c27ce9,
+  body.wp-site .elementor-element-1e94ec9f {
+    max-height: clamp(220px, 52vw, 340px) !important;
+    flex: 0 0 auto !important;
+  }
+
+  body.wp-site .elementor-element-049603d img,
+  body.wp-site .elementor-element-f416209 img,
+  body.wp-site .elementor-element-58e6e2a img,
+  body.wp-site .elementor-element-53995fd img,
+  body.wp-site .elementor-element-6e67c2cf img,
+  body.wp-site .elementor-element-893c928 img,
+  body.wp-site .elementor-element-79ff86fb img {
+    width: auto !important;
+    height: auto !important;
+    max-width: 100% !important;
+    max-height: clamp(200px, 50vw, 320px) !important;
+    object-fit: contain !important;
+  }
+}
+
+/* Role-page hero heading wrap */
+body.wp-site .elementor-element-763a2865 .elementor-heading-title,
+body.wp-site .elementor-element-64dc25b .elementor-heading-title,
+body.wp-site .elementor-element-c10a627 .elementor-heading-title,
+body.wp-site .elementor-element-1c8cee57 .elementor-heading-title,
+body.wp-site .elementor-element-11c0293f .elementor-heading-title {
+  overflow-wrap: break-word;
+}
+
+/* EN/RU role heroes: center copy in hero column */
+html:not([lang="he"]) body.wp-site .elementor-element-1c8cee57,
+html:not([lang="he"]) body.wp-site .elementor-element-11c0293f,
+html:not([lang="he"]) body.wp-site .elementor-element-763a2865,
+html:not([lang="he"]) body.wp-site .elementor-element-2612de9d {
+  text-align: center !important;
+}
+
+html:not([lang="he"]) body.wp-site .elementor-element-11c0293f,
+html:not([lang="he"]) body.wp-site .elementor-element-7157ff66,
+html:not([lang="he"]) body.wp-site .elementor-element-1e94ec9f {
+  align-self: center !important;
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+html:not([lang="he"]) body.wp-site .elementor-element-1c8cee57,
+html:not([lang="he"]) body.wp-site .elementor-element-763a2865 {
+  padding-inline: var(--wp-space-3) !important;
+  margin-bottom: 0 !important;
+}
+
+html[lang="ru"] body.wp-site .elementor-heading-title {
+  line-height: 1.08;
+}
+
+/* Careers hub: tabs replaced by chrome role links — default tab 1 (pickers) */
+body.wp-site.wp-page-hub .e-n-tabs-heading {
+  display: none !important;
+}
+
+body.wp-site .elementor-element-24e7f38 {
+  padding: 0 !important;
+  margin: 0 !important;
+  min-height: 0 !important;
+}
+
+body.wp-site.wp-page-hub .e-n-tabs-content > [role="tabpanel"] {
+  display: none !important;
+}
+
+body.wp-site.wp-page-hub .e-n-tabs-content > [role="tabpanel"][data-tab-index="1"] {
+  display: flex !important;
+}
+
+/* Manager: tab 4 from careers hub */
+body.wp-site.wp-page-manager .e-n-tabs-heading {
+  display: none !important;
+}
+
+body.wp-site.wp-page-manager .e-n-tabs-content > [role="tabpanel"] {
+  display: none !important;
+}
+
+body.wp-site.wp-page-manager .e-n-tabs-content > [role="tabpanel"][data-tab-index="4"] {
+  display: flex !important;
+}
+
+/* Support: tab 3 from careers hub (when no standalone EN page) */
+body.wp-site.wp-page-support .e-n-tabs-heading {
+  display: none !important;
+}
+
+body.wp-site.wp-page-support .e-n-tabs-content > [role="tabpanel"] {
+  display: none !important;
+}
+
+body.wp-site.wp-page-support .e-n-tabs-content > [role="tabpanel"][data-tab-index="3"] {
+  display: flex !important;
+}
+
+/* Standalone role pages (couriers/pickers/support HTML) */
+body.wp-site.wp-page-role .e-n-tabs-heading {
+  display: none !important;
+}
+
+body.wp-site.wp-page-role .e-n-tabs-content > [role="tabpanel"]:not(.e-active) {
+  display: none !important;
+}
+
+body.wp-site.wp-page-role .e-n-tabs-content > [role="tabpanel"].e-active {
+  display: flex !important;
+}
+
+/* Catch-all: non-brand yellows/oranges from synced Elementor */
+body.wp-site [style*="#FEDE47"],
+body.wp-site [style*="#fede47"],
+body.wp-site [style*="#FFCC66"],
+body.wp-site [style*="#ffcc66"],
+body.wp-site [style*="#ffcd57"],
+body.wp-site [style*="#FEDE46"],
+body.wp-site [style*="#fede46"] {
+  background-color: var(--wp-brand-accent) !important;
+}
+
+body.wp-site .elementor [class*="elementor-element-"]:is(
+    .elementor-element-f1a1893,
+    .elementor-element-f77fac1,
+    .elementor-element-12ec484,
+    .elementor-element-ff28f6d,
+    .elementor-element-2eaad409,
+    .elementor-element-bf9b706,
+    .elementor-element-d26b98c,
+    .elementor-element-54c787f7
+  ) {
+  --e-global-color-accent: var(--wp-brand-accent);
+}
+
+body.wp-site [style*="background-color:#f9f6fe"],
+body.wp-site [style*="background-color:#f4f0ff"],
+body.wp-site [style*="background-color:#efe8ff"] {
+  background-color: #f5f5f7 !important;
+}
+
+/* Mobile — 767px breakpoint */
+@media (max-width: 767px) {
+  body.wp-site {
+    --wp-card-illus-min-h: 11rem;
+    --wp-card-body-min-h: 10rem;
+    --wp-card-overlap: -2rem;
+    --wp-hero-height: auto;
+  }
+
+  body.wp-site .wp-page-shell {
+    padding-inline: var(--wp-space-2);
+  }
+
+  body.wp-site .elementor-element-316551eb > .e-con-inner,
+  body.wp-site .elementor-element-2e560292 > .e-con-inner {
+    flex-direction: column !important;
+    gap: var(--wp-space-3) !important;
+  }
+
+  body.wp-site .elementor-element-1ac75c07,
+  body.wp-site .elementor-element-407dd47c,
+  body.wp-site .elementor-element-55925321,
+  body.wp-site .elementor-element-21c486cb,
+  body.wp-site .elementor-element-3e197560,
+  body.wp-site .elementor-element-506d3ee3,
+  body.wp-site .elementor-element-1ca85c5,
+  body.wp-site .elementor-element-280678d,
+  body.wp-site .elementor-element-23d1f9d {
+    flex: 1 1 100% !important;
+    max-width: 100% !important;
+    width: 100% !important;
+  }
+
+  body.wp-site .elementor-element-0b8346a,
+  body.wp-site .elementor-element-08b6ed1,
+  body.wp-site .elementor-element-a44f9c4,
+  body.wp-site .elementor-element-3bc955d,
+  body.wp-site .elementor-element-0e70db1,
+  body.wp-site .elementor-element-fe88d47,
+  body.wp-site .elementor-element-cedf7d7,
+  body.wp-site .elementor-element-54dc68c,
+  body.wp-site .elementor-element-2ac51d41 {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    gap: var(--wp-space-3) !important;
+  }
+
+  body.wp-site .elementor-element-40b2fcff .elementor-widget-image img,
+  body.wp-site .elementor-element-4cfc0d19 .elementor-widget-image img,
+  body.wp-site .elementor-element-4185b70 .elementor-widget-image img,
+  body.wp-site .elementor-element-3e4b2591 .elementor-widget-image img,
+  body.wp-site .elementor-element-2760f7e .elementor-widget-image img,
+  body.wp-site .elementor-element-6f1d34b .elementor-widget-image img,
+  body.wp-site .elementor-element-fe92bcb .elementor-widget-image img {
+    max-width: min(88%, 14rem) !important;
+    min-width: 6.5rem !important;
+  }
+
+  body.wp-site .elementor-element-161f22d9,
+  body.wp-site .elementor-element-7b8018a3,
+  body.wp-site .elementor-element-17a895b7,
+  body.wp-site .elementor-element-20398aa4,
+  body.wp-site .elementor-element-756a0fd,
+  body.wp-site .elementor-element-a7b2939,
+  body.wp-site .elementor-element-6235a10,
+  body.wp-site .elementor-element-151b2b0,
+  body.wp-site .elementor-element-3a85c2b,
+  body.wp-site .elementor-element-8f3d42c,
+  body.wp-site .elementor-element-8455dc1,
+  body.wp-site .elementor-element-89663ca {
+    flex-basis: 100% !important;
+  }
+
+  body.wp-site .elementor-element-46122c0,
+  body.wp-site .elementor-element-46d885a,
+  body.wp-site .elementor-element-6c0d13d9 {
+    flex-wrap: wrap !important;
+  }
+
+  body.wp-site .elementor-element-5bc57ca .elementor-heading-title,
+  body.wp-site .elementor-element-488008d .elementor-heading-title,
+  body.wp-site .elementor-element-8c2667c .elementor-heading-title,
+  body.wp-site .elementor-element-515e0e6 .elementor-heading-title,
+  body.wp-site .elementor-element-763a2865 .elementor-heading-title,
+  body.wp-site .elementor-element-1c8cee57 .elementor-heading-title,
+  body.wp-site .elementor-element-c10a627 .elementor-heading-title,
+  html[lang="he"] body.wp-site .elementor-element-5bc57ca .elementor-heading-title,
+  html[lang="he"] body.wp-site .elementor-element-488008d .elementor-heading-title,
+  html[lang="he"] body.wp-site .elementor-element-8c2667c .elementor-heading-title,
+  html[lang="he"] body.wp-site .elementor-element-515e0e6 .elementor-heading-title {
+    font-size: clamp(1.5rem, 6.5vw, 2.25rem) !important;
+  }
+
+  body.wp-site .elementor-element-5af775a7,
+  body.wp-site .elementor-element-764cfb2,
+  body.wp-site .elementor-element-8d3609d,
+  body.wp-site .elementor-element-d8a9173 {
+    padding-inline: var(--wp-space-2) !important;
+    text-align: center !important;
+  }
+
+  body.wp-site .e-con.e-flex > .e-con {
+    flex-basis: 100% !important;
+    max-width: 100% !important;
+  }
+
+  body.wp-site .wp-lead-form,
+  body.wp-site .wp-lead-form-mount {
+    padding-inline: var(--wp-space-2);
+  }
+
+  body.wp-site .wp-lead-form input,
+  body.wp-site .wp-lead-form select,
+  body.wp-site .wp-lead-form button[type="submit"] {
+    min-height: 2.75rem;
+  }
+
+  .wp-chrome-pill {
+    width: 100%;
+    justify-content: center;
+  }
+}
