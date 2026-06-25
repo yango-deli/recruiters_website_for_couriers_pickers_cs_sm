@@ -3,7 +3,7 @@
 Сайт карьеры [Yango Deli](https://yango-deli.co.il) — набор персонала в Израиле: сборщики заказов, курьеры, служба поддержки, менеджеры смен.
 
 **GitHub:** [yango-deli/recruiters_website_for_couriers_pickers_cs_sm](https://github.com/yango-deli/recruiters_website_for_couriers_pickers_cs_sm)  
-**Production:** https://yangodeli-couriers-carriers-website.vercel.app  
+**Production:** https://yangodeli-couriers-carriers-website-sable.vercel.app  
 **Версия:** `0.2.0` — см. [`CHANGELOG.md`](CHANGELOG.md)
 
 > Код и релизы ведутся **только через GitHub**. Push в `main` → CI → автодеплой на Vercel. Подробнее: [`docs/RELEASE.md`](docs/RELEASE.md).  
@@ -143,22 +143,23 @@ git push -u origin feature/my-change
 
 ## Деплой (production)
 
-**https://yangodeli-couriers-carriers-website.vercel.app**
+**https://yangodeli-couriers-carriers-website-sable.vercel.app**
 
-Обновляется автоматически после merge в `main`. Ручной `vercel --prod` — только аварийный обход.
+Vercel team: **Yango Deli Israel tests** (`vercel.project.json`).
+
+> ⚠️ Старый alias `yangodeli-couriers-carriers-website.vercel.app` привязан к **другому** Vercel-проекту и показывает устаревший LandingPage. Новая WP-вёрстка — только на URL выше, пока старый проект не удалят или alias не перенесут.
+
+Обновляется после merge в `main` (GitHub Actions) или вручную: `npx vercel deploy --prod`.
 
 ### URL для демо коллегам
 
 | Назначение | URL |
 |------------|-----|
-| Production (основной) | https://yangodeli-couriers-carriers-website.vercel.app |
-| Иврит (по умолчанию) | https://yangodeli-couriers-carriers-website.vercel.app/he |
-| English | https://yangodeli-couriers-carriers-website.vercel.app/en |
-| Русский | https://yangodeli-couriers-carriers-website.vercel.app/ru |
-| Пример (курьеры) | https://yangodeli-couriers-carriers-website.vercel.app/ru?role=couriers |
-
-Дополнительный alias Vercel:
-`https://yangodeli-couriers-carriers-websit-igoryangotaxi-bytes-projects.vercel.app`
+| Production (актуальный) | https://yangodeli-couriers-carriers-website-sable.vercel.app |
+| Иврит (мלקטים) | https://yangodeli-couriers-carriers-website-sable.vercel.app/he/pickers |
+| English | https://yangodeli-couriers-carriers-website-sable.vercel.app/en/pickers |
+| Русский | https://yangodeli-couriers-carriers-website-sable.vercel.app/ru/pickers |
+| Курьеры | https://yangodeli-couriers-carriers-website-sable.vercel.app/he/couriers |
 
 ### DNS records
 

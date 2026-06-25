@@ -12,12 +12,13 @@ feature branch → Pull Request → merge в main → GitHub Actions → Vercel 
 2. **Проверка** — `npm run lint` и `npm run build` перед PR
 3. **Pull Request** — в `main`; CI запускает lint + build
 4. **Merge** — после ревью; CI снова собирает проект
-5. **Deploy** — job `Deploy to Vercel (production)` выкатывает на https://yangodeli-couriers-carriers-website.vercel.app
+5. **Deploy** — job `Deploy to Vercel (production)` выкатывает на https://yangodeli-couriers-carriers-website-sable.vercel.app
 
 ## Что не делать
 
 - Не выкатывать на прод через `vercel --prod` с локальной машины (только аварийный обход, если Actions недоступен)
 - Не коммитить `.env.local`, `.vercel`, скриншоты и черновые Zoho-скрипты из `scripts/`
+- Не использовать `yangodeli-couriers-carriers-website.vercel.app` — это **устаревший** проект на другом Vercel team
 
 ## Секреты GitHub (один раз)
 
@@ -25,9 +26,9 @@ feature branch → Pull Request → merge в main → GitHub Actions → Vercel 
 
 | Secret | Значение |
 |--------|----------|
-| `VERCEL_TOKEN` | Токен Vercel (Account → Tokens) |
-| `VERCEL_ORG_ID` | `team_g7rv4WZMHEpPS5kUUkYjl4Re` |
-| `VERCEL_PROJECT_ID` | `prj_RteDbZeITDPEc4VaTtIAbjM8njIk` |
+| `VERCEL_TOKEN` | Токен Vercel (Account → Tokens), scope: team **Yango Deli Israel tests** |
+
+Org/project ID заданы в [`.github/workflows/ci.yml`](../.github/workflows/ci.yml) (`team_dCMjJGup89FM0F5FadKpSaPH` / `prj_fhpF3ccDFD6aJpEuF1006v0b8bCU`).
 
 ## Контент и ассеты
 
