@@ -42,6 +42,15 @@ jobs:
           node-version: 22
       - name: Install Vercel CLI
         run: npm install -g vercel@latest
+      - name: Sync runtime env to Vercel
+        env:
+          VERCEL_TOKEN: ${{ secrets.VERCEL_TOKEN }}
+          TELEGRAM_BOT_TOKEN: ${{ secrets.TELEGRAM_BOT_TOKEN }}
+          TELEGRAM_CHAT_ID: ${{ secrets.TELEGRAM_CHAT_ID }}
+          CRM_API_URL: https://delicrm.com
+          CRM_INTAKE_URL: https://delicrm.com/api/recruitment/webhook
+          CRM_WEBHOOK_SECRET: ${{ secrets.CRM_WEBHOOK_SECRET }}
+        run: node scripts/sync-vercel-env.mjs
       - name: Pull Vercel environment
         run: vercel pull --yes --environment=production --token=${{ secrets.VERCEL_TOKEN }}
       - name: Build for Vercel
