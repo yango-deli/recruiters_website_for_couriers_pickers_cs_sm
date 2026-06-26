@@ -12,6 +12,8 @@
   --wp-space-4: 2rem;
   --wp-space-5: 3rem;
   --wp-container: 71.25rem;
+  --wp-chrome-height: 4.25rem;
+  --wp-chrome-gap: 50px;
   --wp-hero-height: clamp(300px, 36vw, 435px);
   --wp-card-radius: 1.25rem;
   --wp-card-illus-bg: #ececec;
@@ -33,9 +35,23 @@ body.wp-site::after {
 
 body.wp-site .wp-page-shell {
   margin: 0;
-  padding: 0;
+  padding: calc(var(--wp-chrome-gap) + env(safe-area-inset-top, 0px)) 0 0;
   min-height: 0;
   background: #ffffff;
+}
+
+/* Careers hero — clear sticky site chrome */
+body.wp-site .wp-page-shell > .elementor > .e-con.e-parent:is(
+    .elementor-element-bf9b706,
+    .elementor-element-54c787f7,
+    .elementor-element-2eaad409,
+    .elementor-element-f1a1893,
+    .elementor-element-f77fac1,
+    .elementor-element-12ec484,
+    .elementor-element-ff28f6d
+  ) {
+  margin-top: 0 !important;
+  scroll-margin-top: calc(var(--wp-chrome-height) + var(--wp-chrome-gap));
 }
 
 /* Hebrew / RTL — Elementor pages are authored RTL */
@@ -333,6 +349,12 @@ body.wp-site .wp-lead-form button[type="submit"] {
 body.wp-site .wp-lead-form .text-destructive,
 body.wp-site .wp-lead-form [class*="text-destructive"] {
   font-size: 0.875rem;
+  color: #c41230 !important;
+}
+
+body.wp-site .elementor-element-a6ce159 .wp-lead-form .text-destructive,
+body.wp-site .elementor-element-a6ce159 .wp-lead-form [class*="text-destructive"] {
+  color: #ff8a8a !important;
 }
 
 /* Hub dark form band */
@@ -537,7 +559,7 @@ body.wp-site .elementor .elementor-element.elementor-element-79ff86fb img {
   width: auto !important;
   height: auto !important;
   max-width: 100% !important;
-  max-height: 100% !important;
+  max-height: var(--wp-hero-height) !important;
   object-fit: contain !important;
   object-position: center center !important;
   border-radius: 0 !important;
@@ -577,7 +599,6 @@ body.wp-site .elementor-element-c10a627 .elementor-heading-title {
 /* Hero h2 / subhead */
 body.wp-site .elementor-element-e82df0d .elementor-heading-title,
 body.wp-site .elementor-element-cebc447 .elementor-heading-title,
-body.wp-site .elementor-element-0ce76a5 .elementor-heading-title,
 body.wp-site .elementor-element-75994de .elementor-heading-title,
 body.wp-site .elementor-element-11c0293f .elementor-heading-title {
   font-family: var(--wp-font-body) !important;
@@ -589,6 +610,15 @@ body.wp-site .elementor-element-11c0293f .elementor-heading-title {
 /* Couriers hero subhead — smaller than pickers/support */
 body.wp-site .elementor-element-64dc25b .elementor-heading-title,
 body.wp-site .elementor-element-19906d1 .elementor-heading-title {
+  font-family: var(--wp-font-body) !important;
+  font-weight: 400 !important;
+  font-size: clamp(0.875rem, 1.6vw, 1.125rem) !important;
+  line-height: 1.35 !important;
+}
+
+/* Shift Manager hero subhead only — auxiliary lines under title */
+body.wp-site .elementor .elementor-element.elementor-element-515e0e6 .elementor-heading-title .wp-hero-sub,
+body.wp-site .elementor .elementor-element.elementor-element-0ce76a5 .elementor-heading-title {
   font-family: var(--wp-font-body) !important;
   font-weight: 400 !important;
   font-size: clamp(0.875rem, 1.6vw, 1.125rem) !important;
@@ -1467,7 +1497,7 @@ body.wp-site .elementor-element-8d3609d .elementor-heading-title {
     width: auto !important;
     height: auto !important;
     max-width: 100% !important;
-    max-height: clamp(200px, 50vw, 320px) !important;
+    max-height: clamp(220px, 52vw, 340px) !important;
     object-fit: contain !important;
   }
 }
@@ -1602,6 +1632,8 @@ body.wp-site [style*="background-color:#efe8ff"] {
     --wp-card-body-min-h: 10rem;
     --wp-card-overlap: -2rem;
     --wp-hero-height: auto;
+    --wp-chrome-height: 3.5rem;
+    --wp-chrome-gap: 50px;
   }
 
   body.wp-site .wp-page-shell {
@@ -1686,6 +1718,11 @@ body.wp-site [style*="background-color:#efe8ff"] {
   html[lang="he"] body.wp-site .elementor-element-8c2667c .elementor-heading-title,
   html[lang="he"] body.wp-site .elementor-element-515e0e6 .elementor-heading-title {
     font-size: clamp(1.5rem, 6.5vw, 2.25rem) !important;
+  }
+
+  body.wp-site .elementor .elementor-element.elementor-element-515e0e6 .elementor-heading-title .wp-hero-sub,
+  body.wp-site .elementor .elementor-element.elementor-element-0ce76a5 .elementor-heading-title {
+    font-size: clamp(0.8125rem, 3.2vw, 1rem) !important;
   }
 
   body.wp-site .elementor-element-5af775a7,

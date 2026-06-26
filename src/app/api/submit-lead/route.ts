@@ -41,21 +41,46 @@ export async function POST(request: NextRequest) {
       ? String((body as { locale: string }).locale)
       : undefined;
 
-  // Deliver to Telegram (primary) and the CRM (secondary) in parallel.
-  // A CRM failure must never break the applicant-facing submission.
-  const [telegram, crm] = await Promise.allSettled([
-    sendTelegramMessage(formatLeadTelegramMessage(data, locale)),
-    sendLeadToCrm(data, locale),
-  ]);
+  const telegramConfigured = Boolean(
+    process.env.TELEGRAM_BOT_TOKEN && process.env.TELEGRAM_CHAT_ID
+  );
+  const crmConfigured = Boolean(
+    process.env.CRM_INTAKE_URL && process.env.CRM_WEBHOOK_SECRET
+  );
 
-  if (crm.status === "rejected") {
-    console.error("[submit-lead] CRM intake failed:", crm.reason);
+  if (!telegramConfigured && !crmConfigured) {
+    console.error("[submit-lead] No delivery channel configured");
+    return NextResponse.json({ error: "Delivery not configured" }, { status: 503 });
   }
 
-  if (telegram.status === "rejected") {
-    console.error("[submit-lead] Telegram delivery failed:", telegram.reason);
+  let telegramOk = false;
+  let crmOk = false;
+
+  await Promise.all([
+    telegramConfigured
+      ? sendTelegramMessage(formatLeadTelegramMessage(data, locale))
+          .then(() => {
+            telegramOk = true;
+          })
+          .catch((error) => {
+            console.error("[submit-lead] Telegram delivery failed:", error);
+          })
+      : Promise.resolve(),
+    crmConfigured
+      ? sendLeadToCrm(data, locale)
+          .then((ok) => {
+            if (ok) crmOk = true;
+            else console.error("[submit-lead] CRM intake skipped or misconfigured");
+          })
+          .catch((error) => {
+            console.error("[submit-lead] CRM intake failed:", error);
+          })
+      : Promise.resolve(),
+  ]);
+
+  if (!telegramOk && !crmOk) {
     return NextResponse.json({ error: "Delivery failed" }, { status: 502 });
   }
 
-  return NextResponse.json({ ok: true });
+  return NextResponse.json({ ok: true, delivered: { telegram: telegramOk, crm: crmOk } });
 }

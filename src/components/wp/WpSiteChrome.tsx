@@ -19,12 +19,13 @@ export function WpSiteChrome() {
   const activeRole = useMemo(() => activeRoleFromPath(pathname), [pathname]);
   const [mobileOpen, setMobileOpen] = useState(false);
   const isHub = pathname === "/" || pathname === "";
+  const logoHref = `/${activeRole ?? "pickers"}`;
 
   return (
     <header className="wp-site-chrome sticky top-0 z-[100] w-full border-b border-black/10 bg-white/95 backdrop-blur-sm">
       <div className="mx-auto flex h-14 w-full max-w-[1140px] items-center justify-between gap-3 px-4 md:h-[4.25rem]">
         <Link
-          href="/"
+          href={logoHref}
           className="wp-chrome-brand shrink-0 rounded-sm text-base font-black tracking-tight text-black transition-opacity hover:opacity-80 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFCC00]"
           aria-label={t("brand")}
         >

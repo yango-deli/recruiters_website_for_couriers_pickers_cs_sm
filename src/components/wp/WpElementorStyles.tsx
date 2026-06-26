@@ -113,6 +113,36 @@ body.wp-site .elementor-element-43f8131 .elementor-button {
 body.wp-site .elementor .elementor-image-box-title {
   font-weight: 500 !important;
 }
+body.wp-site .elementor .elementor-element.elementor-element-6e67c2cf img,
+body.wp-site .elementor .elementor-element.elementor-element-893c928 img,
+body.wp-site .elementor .elementor-element.elementor-element-79ff86fb img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100% !important;
+  max-height: clamp(300px, 36vw, 435px) !important;
+  object-fit: contain !important;
+  object-position: center center !important;
+}
+@media (max-width: 1024px) {
+  body.wp-site .elementor .elementor-element.elementor-element-6e67c2cf img,
+  body.wp-site .elementor .elementor-element.elementor-element-893c928 img,
+  body.wp-site .elementor .elementor-element.elementor-element-79ff86fb img {
+    max-height: clamp(220px, 52vw, 340px) !important;
+  }
+}
+body.wp-site .elementor .elementor-element.elementor-element-515e0e6 .elementor-heading-title .wp-hero-sub,
+body.wp-site .elementor .elementor-element.elementor-element-0ce76a5 .elementor-heading-title {
+  font-family: "Yango Text", sans-serif !important;
+  font-weight: 400 !important;
+  font-size: clamp(0.875rem, 1.6vw, 1.125rem) !important;
+  line-height: 1.35 !important;
+}
+@media (max-width: 1024px) {
+  body.wp-site .elementor .elementor-element.elementor-element-515e0e6 .elementor-heading-title .wp-hero-sub,
+  body.wp-site .elementor .elementor-element.elementor-element-0ce76a5 .elementor-heading-title {
+    font-size: clamp(0.8125rem, 3.2vw, 1rem) !important;
+  }
+}
 ${blackCtaRules}
 body.wp-site.wp-page-hub .e-n-tabs-content > [role="tabpanel"] { display: none !important; }
 body.wp-site.wp-page-hub .e-n-tabs-content > [role="tabpanel"][data-tab-index="1"] { display: flex !important; }

@@ -2,14 +2,18 @@ import { z } from "zod";
 import { ROLE_FORM_FIELDS, VEHICLE_OPTIONS } from "@/lib/forms/form-fields";
 import { ROLES, type Role } from "@/types/role";
 
+const requiredConsent = z
+  .boolean()
+  .refine((value) => value === true, { message: "required" });
+
 export type LeadFormData = {
   role: Role;
   firstName: string;
   lastName: string;
   phone: string;
   city: string;
-  ageConsent: true;
-  privacyConsent: true;
+  ageConsent: boolean;
+  privacyConsent: boolean;
   locale?: string;
   company?: string;
   targetId?: string;
@@ -24,8 +28,8 @@ export const leadFormSchema = z
     lastName: z.string().trim().min(1),
     phone: z.string().trim().min(9).max(20),
     city: z.string().trim().min(1),
-    ageConsent: z.literal(true),
-    privacyConsent: z.literal(true),
+    ageConsent: requiredConsent,
+    privacyConsent: requiredConsent,
     role: z.enum(ROLES),
     locale: z.string().optional(),
     company: z.string().max(0).optional(),

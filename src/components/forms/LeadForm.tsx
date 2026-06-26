@@ -5,7 +5,7 @@ import { AnimatePresence, motion } from "framer-motion";
 import { Bike, Car, Phone, User } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
 import { useEffect, useState } from "react";
-import { useForm } from "react-hook-form";
+import { useForm, Controller } from "react-hook-form";
 import { FormField } from "@/components/forms/FormField";
 import { ROLE_FORM_FIELDS, VEHICLE_OPTIONS } from "@/lib/forms/form-fields";
 import { leadFormSchema, type LeadFormData } from "@/lib/forms/schema";
@@ -61,18 +61,17 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
     setValue,
     watch,
     reset,
+    control,
     formState: { errors, isSubmitting },
   } = useForm<LeadFormData>({
     resolver: zodResolver(leadFormSchema),
     defaultValues: {
       role,
-      ageConsent: undefined,
-      privacyConsent: undefined,
+      ageConsent: false,
+      privacyConsent: false,
     },
   });
 
-  const ageConsent = watch("ageConsent");
-  const privacyConsent = watch("privacyConsent");
   const vehicle = watch("vehicle");
 
   useEffect(() => {
@@ -84,8 +83,8 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
       city: "",
       vehicle: undefined,
       taxRegistered: undefined,
-      ageConsent: undefined,
-      privacyConsent: undefined,
+      ageConsent: false,
+      privacyConsent: false,
       company: "",
       targetId: undefined,
       storeId: undefined,
@@ -134,6 +133,8 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
     }
   }, [targets, selectedTarget, setValue]);
 
+  let fieldDelay = 0.05;
+
   const onSubmit = async (data: LeadFormData) => {
     setSubmitError(false);
     setLocationError(false);
@@ -148,8 +149,8 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
       setSuccessOpen(true);
       reset({
         role,
-        ageConsent: undefined,
-        privacyConsent: undefined,
+        ageConsent: false,
+        privacyConsent: false,
         company: "",
       });
     } else {
@@ -157,7 +158,14 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
     }
   };
 
-  let fieldDelay = 0.05;
+  const onInvalid = () => {
+    const firstInvalid = document.querySelector<HTMLElement>(
+      "#ageConsent[aria-invalid='true'], #privacyConsent[aria-invalid='true'], [role='alert'].text-destructive"
+    );
+    firstInvalid?.scrollIntoView({ behavior: "smooth", block: "center" });
+  };
+
+  const consentHasError = Boolean(errors.ageConsent || errors.privacyConsent);
 
   const locationLabel =
     locationType === "store" ? t("locationStore") : t("locationCity");
@@ -188,7 +196,7 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
   const formBody = (
         <form
           key={role}
-          onSubmit={handleSubmit(onSubmit)}
+          onSubmit={handleSubmit(onSubmit, onInvalid)}
           className={formClassName}
           noValidate
         >
@@ -381,49 +389,68 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
           )}
 
           <motion.div
-            className="space-y-4 rounded-2xl bg-brand-surface/60 p-4"
+            className={cn(
+              "space-y-4 rounded-2xl bg-brand-surface/60 p-4",
+              consentHasError && "ring-2 ring-destructive/40"
+            )}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: fieldDelay + 0.04 }}
           >
             <div className="flex items-start gap-3">
-              <Checkbox
-                id="ageConsent"
-                checked={ageConsent === true}
-                onCheckedChange={(checked) =>
-                  setValue(
-                    "ageConsent",
-                    checked === true ? true : (undefined as unknown as true),
-                    { shouldValidate: true }
-                  )
-                }
+              <Controller
+                name="ageConsent"
+                control={control}
+                render={({ field }) => (
+                  <Checkbox
+                    id="ageConsent"
+                    checked={field.value === true}
+                    onCheckedChange={(checked) =>
+                      field.onChange(checked === true)
+                    }
+                    aria-invalid={!!errors.ageConsent}
+                    aria-required="true"
+                  />
+                )}
               />
               <Label htmlFor="ageConsent" className="leading-relaxed font-normal">
                 {t("ageConsent")}
+                <span className="ms-1 text-destructive" aria-hidden>
+                  *
+                </span>
               </Label>
             </div>
             {errors.ageConsent && (
-              <p className="text-sm text-destructive">{t("validation.ageConsent")}</p>
+              <p className="text-sm text-destructive" role="alert">
+                {t("validation.ageConsent")}
+              </p>
             )}
 
             <div className="flex items-start gap-3">
-              <Checkbox
-                id="privacyConsent"
-                checked={privacyConsent === true}
-                onCheckedChange={(checked) =>
-                  setValue(
-                    "privacyConsent",
-                    checked === true ? true : (undefined as unknown as true),
-                    { shouldValidate: true }
-                  )
-                }
+              <Controller
+                name="privacyConsent"
+                control={control}
+                render={({ field }) => (
+                  <Checkbox
+                    id="privacyConsent"
+                    checked={field.value === true}
+                    onCheckedChange={(checked) =>
+                      field.onChange(checked === true)
+                    }
+                    aria-invalid={!!errors.privacyConsent}
+                    aria-required="true"
+                  />
+                )}
               />
               <Label htmlFor="privacyConsent" className="leading-relaxed font-normal">
                 {t("privacyConsent")}
+                <span className="ms-1 text-destructive" aria-hidden>
+                  *
+                </span>
               </Label>
             </div>
             {errors.privacyConsent && (
-              <p className="text-sm text-destructive">
+              <p className="text-sm text-destructive" role="alert">
                 {t("validation.privacyConsent")}
               </p>
             )}
