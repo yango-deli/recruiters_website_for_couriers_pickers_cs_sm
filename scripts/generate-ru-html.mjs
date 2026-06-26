@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -61,12 +62,26 @@ function normalizeText(value) {
     .replace(/\r\n/g, "\n");
 }
 
+/** Collapse HTML whitespace so map keys match hero `<br><span>` variants. */
+function normalizeHtmlKey(value) {
+  return normalizeText(value)
+    .replace(/<br\s*\/?>/gi, "<br>")
+    .replace(/<br>\s+/g, "<br>")
+    .replace(/\s+/g, " ")
+    .trim();
+}
+
 function applyTranslations(html) {
   let out = normalizeText(html);
   for (const [from, to] of entries) {
     const source = normalizeText(from);
     if (!source || source === to) continue;
     out = out.split(source).join(to);
+    const htmlSource = normalizeHtmlKey(from);
+    const htmlTarget = normalizeHtmlKey(to);
+    if (htmlSource !== source) {
+      out = out.split(htmlSource).join(htmlTarget);
+    }
   }
   out = out.replace(/href="\/he\//g, 'href="/ru/');
   out = out.replace(/href="\/en\//g, 'href="/ru/');
@@ -145,6 +160,12 @@ for (const { slug, target, role, baseId, source } of SOURCES) {
 manifest.syncedAt = new Date().toISOString();
 writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
 console.log("Updated manifest.json");
+
+console.log("\nRunning sanitize:wp…");
+spawnSync(process.execPath, [join(__dirname, "sanitize-wp-card-copy.mjs")], {
+  stdio: "inherit",
+});
+
 if (totalIssues > 0) {
   console.warn(`\nTotal audit issues: ${totalIssues} — add keys to content/wp/translations/ru-map.json`);
   process.exitCode = 0;

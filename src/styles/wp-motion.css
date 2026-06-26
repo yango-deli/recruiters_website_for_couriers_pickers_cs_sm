@@ -1,0 +1,99 @@
+/* Page route + section motion — respects prefers-reduced-motion via JS */
+
+.wp-route-shell {
+  min-height: 0;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .wp-section-reveal {
+    opacity: 1 !important;
+    transform: none !important;
+  }
+}
+
+@media (max-width: 767px) {
+  body.wp-site .wp-section-reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}
+
+body.wp-site .wp-section-reveal {
+  opacity: 0;
+  transform: translateY(1.25rem);
+  transition:
+    opacity 0.55s cubic-bezier(0.22, 1, 0.36, 1),
+    transform 0.55s cubic-bezier(0.22, 1, 0.36, 1);
+  transition-delay: var(--wp-reveal-delay, 0ms);
+}
+
+body.wp-site .wp-section-reveal--visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Card hover — Template A awaits / benefits */
+body.wp-site .elementor-element-21c486cb,
+body.wp-site .elementor-element-3e197560,
+body.wp-site .elementor-element-506d3ee3,
+body.wp-site .elementor-element-1ca85c5,
+body.wp-site .elementor-element-280678d,
+body.wp-site .elementor-element-23d1f9d,
+body.wp-site .elementor-element-0fa59ee,
+body.wp-site .elementor-element-c0caa35,
+body.wp-site .elementor-element-a3aef89 {
+  transition:
+    transform 0.28s cubic-bezier(0.22, 1, 0.36, 1),
+    box-shadow 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+  border-radius: var(--wp-card-radius);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.wp-site .elementor-element-21c486cb:hover,
+  body.wp-site .elementor-element-3e197560:hover,
+  body.wp-site .elementor-element-506d3ee3:hover,
+  body.wp-site .elementor-element-1ca85c5:hover,
+  body.wp-site .elementor-element-280678d:hover,
+  body.wp-site .elementor-element-23d1f9d:hover,
+  body.wp-site .elementor-element-0fa59ee:hover,
+  body.wp-site .elementor-element-c0caa35:hover,
+  body.wp-site .elementor-element-a3aef89:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 16px 40px rgba(0, 0, 0, 0.1);
+  }
+
+  body.wp-site .elementor .elementor-button {
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  body.wp-site .elementor .elementor-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+  }
+
+  .wp-chrome-pill {
+    transition:
+      transform 0.2s ease,
+      background-color 0.2s ease,
+      color 0.2s ease;
+  }
+
+  .wp-chrome-pill:hover {
+    transform: translateY(-1px);
+  }
+}
+
+/* Image-box cards */
+body.wp-site .elementor-widget-image-box {
+  transition: transform 0.28s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) and (pointer: fine) {
+  body.wp-site .elementor-widget-image-box:hover {
+    transform: translateY(-4px);
+  }
+}

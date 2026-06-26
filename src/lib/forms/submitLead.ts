@@ -14,8 +14,22 @@ export async function submitLead(
     body: JSON.stringify({ ...data, locale }),
   });
 
-  if (!response.ok) {
+  let payload: { ok?: boolean; error?: string; code?: string; delivered?: { crm?: boolean; telegram?: boolean } } = {};
+  try {
+    payload = await response.json();
+  } catch {
     return { success: false, error: "submit_failed" };
+  }
+
+  if (!response.ok) {
+    if (payload.code === "crm_pending") {
+      return { success: false, error: "crm_pending" };
+    }
+    return { success: false, error: payload.error ?? "submit_failed" };
+  }
+
+  if (payload.delivered && !payload.delivered.crm && !payload.delivered.telegram) {
+    return { success: false, error: "delivery_failed" };
   }
 
   return { success: true };

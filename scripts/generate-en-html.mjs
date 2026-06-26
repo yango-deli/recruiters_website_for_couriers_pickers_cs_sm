@@ -6,6 +6,7 @@
 import { readFileSync, writeFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
+import { spawnSync } from "node:child_process";
 
 const __dirname = dirname(fileURLToPath(import.meta.url));
 const ROOT = join(__dirname, "..");
@@ -52,7 +53,6 @@ function buildRuToEn() {
     const hebrew = (from.match(/[\u0590-\u05FF]/g) || []).length;
     const cyrillic = (to.match(/[\u0400-\u04FF]/g) || []).length;
     if (cyrillic < 3) continue;
-    /* Prefer English source strings over Hebrew */
     if (latin >= 3 && latin >= hebrew) {
       const list = candidates.get(to) ?? [];
       list.push(from);
@@ -83,16 +83,47 @@ function normalizeText(value) {
     .replace(/\r\n/g, "\n");
 }
 
-function applyTranslations(html, ruToEn) {
-  let out = normalizeText(html);
-  const entries = Object.entries(ruToEn).sort((a, b) => b[0].length - a[0].length);
+/** Collapse HTML whitespace so map keys match hero `<br><span>` variants. */
+function normalizeHtmlKey(value) {
+  return normalizeText(value)
+    .replace(/<br\s*\/?>/gi, "<br>")
+    .replace(/<br>\s+/g, "<br>")
+    .replace(/\s+/g, " ")
+    .trim();
+}
 
+function applyReplacements(html, pairs) {
+  let out = normalizeText(html);
+  const entries = pairs.sort((a, b) => b[0].length - a[0].length);
   for (const [from, to] of entries) {
     const source = normalizeText(from);
     if (!source || source === to) continue;
     out = out.split(source).join(to);
+    const htmlSource = normalizeHtmlKey(from);
+    const htmlTarget = normalizeHtmlKey(to);
+    if (htmlSource !== source) {
+      out = out.split(htmlSource).join(htmlTarget);
+    }
   }
+  return out;
+}
 
+/** Build HE → EN via RU bridge (for fragments still in Hebrew after RU source pass). */
+function buildHeToEn(ruToEn) {
+  const heToEn = {};
+  for (const [from, ru] of Object.entries(ruMap)) {
+    const hebrew = (from.match(/[\u0590-\u05FF]/g) || []).length;
+    if (hebrew < 4) continue;
+    const en = ruToEn[ru] ?? overrides[ru];
+    if (!en || en === from) continue;
+    heToEn[from] = en;
+  }
+  return heToEn;
+}
+
+function applyTranslations(html, ruToEn, heToEn) {
+  let out = applyReplacements(html, Object.entries(ruToEn));
+  out = applyReplacements(out, Object.entries(heToEn));
   out = out.replace(/href="\/ru\//g, 'href="/en/');
   out = out.replace(/href='\/ru\//g, "href='/en/");
   return out;
@@ -116,6 +147,7 @@ function auditCyrillic(html, fileName) {
 }
 
 const ruToEn = buildRuToEn();
+const heToEn = buildHeToEn(ruToEn);
 let totalIssues = 0;
 
 for (const { source, target } of SOURCES) {
@@ -124,7 +156,7 @@ for (const { source, target } of SOURCES) {
     console.error("Missing source:", srcPath);
     process.exit(1);
   }
-  const html = applyTranslations(readFileSync(srcPath, "utf8"), ruToEn);
+  const html = applyTranslations(readFileSync(srcPath, "utf8"), ruToEn, heToEn);
   writeFileSync(join(HTML_DIR, target), html);
   console.log("Wrote", target, `(${html.length} bytes)`);
   totalIssues += auditCyrillic(html, target);
@@ -158,6 +190,12 @@ for (const { slug, target, role, baseId, source } of SOURCES) {
 manifest.syncedAt = new Date().toISOString();
 writeFileSync(manifestPath, JSON.stringify(manifest, null, 2) + "\n");
 console.log("Updated manifest.json");
+
+console.log("\nRunning sanitize:wp…");
+spawnSync(process.execPath, [join(__dirname, "sanitize-wp-card-copy.mjs")], {
+  stdio: "inherit",
+});
+
 if (totalIssues > 0) {
   console.warn(`\nTotal audit issues: ${totalIssues}`);
 }

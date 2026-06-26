@@ -22,7 +22,7 @@ export function WpSiteChrome() {
   const logoHref = `/${activeRole ?? "pickers"}`;
 
   return (
-    <header className="wp-site-chrome sticky top-0 z-[100] w-full border-b border-black/10 bg-white/95 backdrop-blur-sm">
+    <header className="wp-site-chrome sticky top-0 z-[100] w-full border-b border-black/10 bg-white/95 shadow-sm backdrop-blur-sm transition-shadow duration-300">
       <div className="mx-auto flex h-14 w-full max-w-[1140px] items-center justify-between gap-3 px-4 md:h-[4.25rem]">
         <Link
           href={logoHref}
@@ -55,7 +55,7 @@ export function WpSiteChrome() {
           <WpLanguageSwitcher />
           <button
             type="button"
-            className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-black/15 text-black lg:hidden"
+            className="inline-flex h-9 w-9 cursor-pointer items-center justify-center rounded-full border border-black/15 text-black transition-colors hover:border-black/30 hover:bg-[#FFCC00]/20 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-[#FFCC00]"
             onClick={() => setMobileOpen((open) => !open)}
             aria-label={t("menu")}
             aria-expanded={mobileOpen}

@@ -15,14 +15,17 @@ type WpFormMounterProps = {
   role?: Role;
 };
 
-function isMountVisible(element: HTMLElement): boolean {
-  if (typeof element.checkVisibility === "function") {
-    return element.checkVisibility({
-      checkOpacity: true,
-      checkVisibilityCSS: true,
-    });
+function isMountHidden(element: HTMLElement): boolean {
+  let node: HTMLElement | null = element;
+  while (node) {
+    if (node.hidden) return true;
+    const style = getComputedStyle(node);
+    if (style.display === "none" || style.visibility === "hidden") {
+      return true;
+    }
+    node = node.parentElement;
   }
-  return element.offsetParent !== null;
+  return false;
 }
 
 function collectFormTargets(role?: Role): FormTarget[] {
@@ -30,7 +33,9 @@ function collectFormTargets(role?: Role): FormTarget[] {
   const next: FormTarget[] = [];
 
   mounts.forEach((element, index) => {
-    if (!isMountVisible(element)) return;
+    // Empty mount placeholders have 0 height until the form portals in —
+    // do not use checkVisibility() or they never receive LeadForm.
+    if (isMountHidden(element)) return;
 
     const mountRole = (element.dataset.role as Role | undefined) ?? role;
     if (!mountRole) return;

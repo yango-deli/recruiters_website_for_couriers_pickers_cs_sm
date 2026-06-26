@@ -1,5 +1,5 @@
 {
-  "syncedAt": "2026-06-25T21:05:50.324Z",
+  "syncedAt": "2026-06-26T09:45:18.869Z",
   "wpUrl": "https://yango-deli.co.il",
   "pages": [
     {
@@ -377,7 +377,7 @@
       "htmlPath": "content/wp/html/work-with-us-couriers-ru.html",
       "imageCount": 24,
       "hasZoho": true,
-      "htmlBytes": 39044
+      "htmlBytes": 37315
     },
     {
       "id": 463,
@@ -390,7 +390,7 @@
       "htmlPath": "content/wp/html/work-with-us-storekeepers-ru.html",
       "imageCount": 18,
       "hasZoho": true,
-      "htmlBytes": 44633
+      "htmlBytes": 35075
     },
     {
       "id": 906,
@@ -403,7 +403,7 @@
       "htmlPath": "content/wp/html/work-with-us-support-ru.html",
       "imageCount": 20,
       "hasZoho": true,
-      "htmlBytes": 44745
+      "htmlBytes": 35532
     },
     {
       "id": 1052,
@@ -416,7 +416,7 @@
       "htmlPath": "content/wp/html/careers-ru.html",
       "imageCount": 51,
       "hasZoho": true,
-      "htmlBytes": 128919
+      "htmlBytes": 118043
     },
     {
       "id": 1052,
@@ -429,7 +429,7 @@
       "htmlPath": "content/wp/html/careers-en.html",
       "imageCount": 51,
       "hasZoho": true,
-      "htmlBytes": 128805
+      "htmlBytes": 117968
     },
     {
       "id": 906,
@@ -442,7 +442,7 @@
       "htmlPath": "content/wp/html/work-with-us-support-en.html",
       "imageCount": 20,
       "hasZoho": true,
-      "htmlBytes": 44728
+      "htmlBytes": 35502
     }
   ]
 }
