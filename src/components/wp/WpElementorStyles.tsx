@@ -113,6 +113,10 @@ body.wp-site .elementor-element-43f8131 .elementor-button {
 body.wp-site .elementor .elementor-image-box-title {
   font-weight: 500 !important;
 }
+body.wp-site .elementor .elementor-element.elementor-element-049603d img,
+body.wp-site .elementor .elementor-element.elementor-element-f416209 img,
+body.wp-site .elementor .elementor-element.elementor-element-58e6e2a img,
+body.wp-site .elementor .elementor-element.elementor-element-53995fd img,
 body.wp-site .elementor .elementor-element.elementor-element-6e67c2cf img,
 body.wp-site .elementor .elementor-element.elementor-element-893c928 img,
 body.wp-site .elementor .elementor-element.elementor-element-79ff86fb img {
@@ -123,11 +127,18 @@ body.wp-site .elementor .elementor-element.elementor-element-79ff86fb img {
   object-fit: contain !important;
   object-position: center center !important;
 }
-@media (max-width: 1024px) {
+@media (max-width: 767px) {
+  body.wp-site .elementor .elementor-element.elementor-element-049603d img,
+  body.wp-site .elementor .elementor-element.elementor-element-f416209 img,
+  body.wp-site .elementor .elementor-element.elementor-element-58e6e2a img,
+  body.wp-site .elementor .elementor-element.elementor-element-53995fd img,
   body.wp-site .elementor .elementor-element.elementor-element-6e67c2cf img,
   body.wp-site .elementor .elementor-element.elementor-element-893c928 img,
   body.wp-site .elementor .elementor-element.elementor-element-79ff86fb img {
-    max-height: clamp(220px, 52vw, 340px) !important;
+    width: 100% !important;
+    height: clamp(160px, 45vw, 260px) !important;
+    max-height: none !important;
+    object-fit: cover !important;
   }
 }
 body.wp-site .elementor .elementor-element.elementor-element-515e0e6 .elementor-heading-title .wp-hero-sub,

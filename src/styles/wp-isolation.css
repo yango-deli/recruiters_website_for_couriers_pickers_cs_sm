@@ -1483,22 +1483,8 @@ body.wp-site .elementor-element-8d3609d .elementor-heading-title {
   body.wp-site .elementor-element-7157ff66,
   body.wp-site .elementor-element-0c27ce9,
   body.wp-site .elementor-element-1e94ec9f {
-    max-height: clamp(220px, 52vw, 340px) !important;
+    max-height: none !important;
     flex: 0 0 auto !important;
-  }
-
-  body.wp-site .elementor-element-049603d img,
-  body.wp-site .elementor-element-f416209 img,
-  body.wp-site .elementor-element-58e6e2a img,
-  body.wp-site .elementor-element-53995fd img,
-  body.wp-site .elementor-element-6e67c2cf img,
-  body.wp-site .elementor-element-893c928 img,
-  body.wp-site .elementor-element-79ff86fb img {
-    width: auto !important;
-    height: auto !important;
-    max-width: 100% !important;
-    max-height: clamp(220px, 52vw, 340px) !important;
-    object-fit: contain !important;
   }
 }
 
@@ -1752,5 +1738,127 @@ body.wp-site [style*="background-color:#efe8ff"] {
   .wp-chrome-pill {
     width: 100%;
     justify-content: center;
+  }
+
+  /* Hero — avoid clipping photos on mobile (pickers HE, support, etc.) */
+  body.wp-site .elementor-element-f1a1893,
+  body.wp-site .elementor-element-f77fac1,
+  body.wp-site .elementor-element-12ec484,
+  body.wp-site .elementor-element-ff28f6d,
+  body.wp-site .elementor-element-2eaad409,
+  body.wp-site .elementor-element-bf9b706,
+  body.wp-site .elementor-element-54c787f7,
+  body.wp-site .elementor-element-d26b98c {
+    overflow: visible !important;
+  }
+
+  body.wp-site .elementor-element-e3eda29,
+  body.wp-site .elementor-element-b28d7b7,
+  body.wp-site .elementor-element-7d3d793,
+  body.wp-site .elementor-element-55897f0,
+  body.wp-site .elementor-element-2612de9d,
+  body.wp-site .elementor-element-763a2865,
+  body.wp-site .elementor-element-1c8cee57,
+  body.wp-site .elementor-element-c10a627 {
+    max-width: 100% !important;
+    flex: 0 0 auto !important;
+    padding-block: var(--wp-space-2) !important;
+  }
+
+  body.wp-site .elementor-element-bf9b706,
+  body.wp-site .elementor-element-d26b98c {
+    margin-bottom: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  body.wp-site .elementor-element-e3eda29 .elementor-heading-title,
+  body.wp-site .elementor-element-b28d7b7 .elementor-heading-title,
+  body.wp-site .elementor-element-7d3d793 .elementor-heading-title,
+  body.wp-site .elementor-element-55897f0 .elementor-heading-title,
+  body.wp-site .elementor-element-2612de9d .elementor-heading-title,
+  body.wp-site .elementor-element-763a2865 .elementor-heading-title,
+  body.wp-site .elementor-element-1c8cee57 .elementor-heading-title,
+  body.wp-site .elementor-element-c10a627 .elementor-heading-title {
+    margin-bottom: var(--wp-space-1) !important;
+  }
+
+  body.wp-site .elementor-element-e3eda29 .wp-hero-sub,
+  body.wp-site .elementor-element-b28d7b7 .wp-hero-sub,
+  body.wp-site .elementor-element-7d3d793 .wp-hero-sub,
+  body.wp-site .elementor-element-55897f0 .wp-hero-sub,
+  body.wp-site .elementor-element-2612de9d .wp-hero-sub,
+  body.wp-site .elementor-element-763a2865 .wp-hero-sub,
+  body.wp-site .elementor-element-1c8cee57 .wp-hero-sub,
+  body.wp-site .elementor-element-c10a627 .wp-hero-sub {
+    margin-top: 0 !important;
+    margin-bottom: var(--wp-space-1) !important;
+  }
+
+  body.wp-site .elementor-element-3e070d7,
+  body.wp-site .elementor-element-ccb79e6,
+  body.wp-site .elementor-element-44efa02,
+  body.wp-site .elementor-element-97451e4,
+  body.wp-site .elementor-element-7157ff66,
+  body.wp-site .elementor-element-0c27ce9,
+  body.wp-site .elementor-element-1e94ec9f {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: clamp(160px, 45vw, 260px) !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding: 0 !important;
+  }
+
+  body.wp-site .elementor .elementor-element.elementor-element-049603d img,
+  body.wp-site .elementor .elementor-element.elementor-element-f416209 img,
+  body.wp-site .elementor .elementor-element.elementor-element-58e6e2a img,
+  body.wp-site .elementor .elementor-element.elementor-element-53995fd img,
+  body.wp-site .elementor .elementor-element.elementor-element-6e67c2cf img,
+  body.wp-site .elementor .elementor-element.elementor-element-893c928 img,
+  body.wp-site .elementor .elementor-element.elementor-element-79ff86fb img {
+    width: 100% !important;
+    height: clamp(160px, 45vw, 260px) !important;
+    max-width: 100% !important;
+    max-height: none !important;
+    object-fit: cover !important;
+    object-position: center center !important;
+    display: block !important;
+  }
+
+  /* What awaits you? — title + cards visible together on customer service */
+  body.wp-site .elementor-element-4154ac9b,
+  body.wp-site .elementor-element-8efb04f {
+    display: flex !important;
+    margin-top: 0 !important;
+    margin-bottom: 0 !important;
+    padding-inline: var(--wp-space-2) !important;
+    padding-block: var(--wp-space-1) !important;
+    position: relative !important;
+    z-index: 2 !important;
+  }
+
+  body.wp-site .elementor-element-2e560292,
+  body.wp-site .elementor-element-dc1081b {
+    display: flex !important;
+    flex-direction: column !important;
+    margin-top: 0 !important;
+    padding-inline: var(--wp-space-2) !important;
+    padding-block: 0 var(--wp-space-2) !important;
+    width: 100% !important;
+  }
+
+  body.wp-site .elementor-element-2e560292 > .e-con-inner,
+  body.wp-site .elementor-element-dc1081b > .e-con-inner {
+    flex-direction: column !important;
+    flex-wrap: nowrap !important;
+    width: 100% !important;
+    gap: var(--wp-space-3) !important;
+  }
+
+  body.wp-site .elementor-element-19c1229d .elementor-heading-title,
+  body.wp-site .elementor-element-d8a9173 .elementor-heading-title {
+    font-size: clamp(1.5rem, 6.5vw, 2rem) !important;
+    line-height: 1.1 !important;
+    padding-block: var(--wp-space-1) !important;
   }
 }
