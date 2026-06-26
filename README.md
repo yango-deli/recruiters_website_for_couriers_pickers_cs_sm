@@ -3,8 +3,10 @@
 Сайт карьеры [Yango Deli](https://yango-deli.co.il) — набор персонала в Израиле: сборщики заказов, курьеры, служба поддержки, менеджеры смен.
 
 **GitHub:** [yango-deli/recruiters_website_for_couriers_pickers_cs_sm](https://github.com/yango-deli/recruiters_website_for_couriers_pickers_cs_sm)  
-**Production:** https://yangodeli-couriers-carriers-website-sable.vercel.app  
+**Production (актуальная WP-версия, как на localhost):** https://yangodeli-couriers-carriers-website-sable.vercel.app  
 **Версия:** `0.2.0` — см. [`CHANGELOG.md`](CHANGELOG.md)
+
+> ⚠️ **Не открывайте** `yangodeli-couriers-carriers-website.vercel.app` (без `-sable`) — это **старый** сайт на другом Vercel-проекте (LandingPage 2024). Для тестов и передачи проекта используйте только URL с `-sable`.
 
 > Код и релизы ведутся **только через GitHub**. Push в `main` → CI → автодеплой на Vercel. Подробнее: [`docs/RELEASE.md`](docs/RELEASE.md).  
 > Миграция с личного репозитория: [`docs/MIGRATION.md`](docs/MIGRATION.md).  
