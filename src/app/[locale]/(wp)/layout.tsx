@@ -1,13 +1,6 @@
 import type { ReactNode } from "react";
-import { WpSiteChrome } from "@/components/wp/WpSiteChrome";
-import { WpMotionEnhancements } from "@/components/wp/WpMotionEnhancements";
 
+/** Careers use FigmaCareersPage chrome; legal pages use WpLegalPage chrome. */
 export default function WpLayout({ children }: { children: ReactNode }) {
-  return (
-    <>
-      <WpSiteChrome />
-      <WpMotionEnhancements />
-      {children}
-    </>
-  );
+  return children;
 }

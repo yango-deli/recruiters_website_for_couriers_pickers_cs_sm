@@ -4,17 +4,18 @@
 
 ## [Unreleased]
 
+## [0.3.0] — 2026-06-28
+
 ### Added
 
-- [`docs/PROJECT_CONTEXT.md`](docs/PROJECT_CONTEXT.md) — полный контекст для AI-агентов (архитектура, skills, бренд, CI).
-- [`docs/CONTENT.md`](docs/CONTENT.md) — правила i18n и уникальности контента по секциям.
-- `.cursor/skills/` и `.cursor/rules/` в git — UUPM, Hallmark, yango-deli-design доступны после clone.
-- `.env.local.example` — шаблон переменных окружения.
+- React Figma careers landing (`FigmaCareersPage`) — hub + all roles (pickers, couriers, support, manager).
+- Section components: Hero, Benefits, Why Join, Unique, Registration Steps, Form wrapper.
+- [`design/figma-landing-spec.md`](design/figma-landing-spec.md) and [`src/styles/figma-landing.css`](src/styles/figma-landing.css).
 
 ### Changed
 
-- Канонический репозиторий перенесён в [yango-deli/recruiters_website_for_couriers_pickers_cs_sm](https://github.com/yango-deli/recruiters_website_for_couriers_pickers_cs_sm). См. [`docs/MIGRATION.md`](docs/MIGRATION.md).
-- `AGENTS.md` — точка входа для агентов со ссылками на всю документацию.
+- Careers routes render React sections instead of synced Elementor HTML; legal pages still use WP HTML.
+- `LeadForm` and submit API unchanged — only outer form section layout updated.
 
 ## [0.2.0] — 2026-06-09
 

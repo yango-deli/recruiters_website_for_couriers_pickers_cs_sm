@@ -1,0 +1,254 @@
+/* Figma careers landing — mirrors wp-isolation.css without Elementor */
+
+.figma-careers-site {
+  --figma-accent: #ffcc00;
+  --figma-accent-hover: #e6b800;
+  --figma-black: #000000;
+  --figma-section-black: #111111;
+  --figma-card-illus-bg: #ececec;
+  --figma-container: 71.25rem;
+  --figma-chrome-height: 4.25rem;
+  --figma-chrome-gap: 3.125rem;
+  --figma-hero-height: clamp(300px, 36vw, 435px);
+  --figma-card-radius: 1.25rem;
+  --figma-card-illus-min-h: 14.5rem;
+  --figma-card-body-min-h: 12.5rem;
+  background: #ffffff;
+  color: var(--figma-black);
+  font-family: "Yango Text", sans-serif;
+}
+
+.figma-careers-site::after {
+  display: none !important;
+}
+
+.figma-container {
+  width: 100%;
+  max-width: var(--figma-container);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.figma-section-title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.figma-hero {
+  min-height: var(--figma-hero-height);
+  background-color: var(--figma-accent);
+  scroll-margin-top: calc(var(--figma-chrome-height) + var(--figma-chrome-gap));
+}
+
+.figma-hero__title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.875rem, 4.5vw, 3rem);
+  line-height: 1.1;
+}
+
+.figma-hero__subtitle {
+  font-family: "Yango Text", sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+  line-height: 1.35;
+}
+
+.figma-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--figma-black);
+  color: #ffffff;
+  font-family: "Yango Text", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.figma-btn-primary:hover {
+  background-color: var(--figma-section-black);
+  color: #ffffff;
+}
+
+.figma-btn-primary:focus-visible {
+  outline: 2px solid var(--figma-accent);
+  outline-offset: 2px;
+}
+
+.figma-benefit-card {
+  border-radius: var(--figma-card-radius);
+  overflow: hidden;
+  background: var(--figma-section-black);
+  color: #ffffff;
+}
+
+.figma-benefit-card__illus {
+  min-height: var(--figma-card-illus-min-h);
+  background: var(--figma-card-illus-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1.5rem;
+}
+
+.figma-benefit-card__body {
+  min-height: var(--figma-card-body-min-h);
+  padding: 1.25rem 1.5rem 1.5rem;
+}
+
+.figma-benefit-card__title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: 1.375rem;
+  margin-bottom: 0.5rem;
+}
+
+.figma-why-card {
+  border-radius: var(--figma-card-radius);
+  background: var(--figma-accent);
+  color: var(--figma-black);
+  overflow: hidden;
+}
+
+.figma-unique-card {
+  text-align: center;
+  padding: 1.5rem 1rem;
+}
+
+.figma-step-card {
+  border-radius: var(--figma-card-radius);
+  overflow: hidden;
+  background: var(--figma-accent);
+  color: var(--figma-black);
+}
+
+.figma-step-card__illus {
+  min-height: 10rem;
+  background: var(--figma-card-illus-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.figma-step-card__number {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.figma-form-section {
+  background: var(--figma-accent);
+  scroll-margin-top: calc(var(--figma-chrome-height) + 1rem);
+}
+
+.figma-form-section .wp-lead-form,
+.figma-form-section .wp-lead-form-mount {
+  width: 100%;
+  max-width: 461px;
+  margin-inline: auto;
+}
+
+.figma-form-section .wp-lead-form button[type="submit"] {
+  background-color: var(--figma-accent) !important;
+  color: var(--figma-black) !important;
+  font-weight: 700;
+}
+
+.figma-chrome {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  height: var(--figma-chrome-height);
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.figma-chrome-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0.375rem 0.875rem;
+  border-radius: 9999px;
+  font-size: 0.875rem;
+  font-weight: 600;
+  color: rgba(0, 0, 0, 0.62);
+  transition: background-color 0.2s, color 0.2s;
+}
+
+.figma-chrome-pill:hover {
+  background: rgba(255, 204, 0, 0.2);
+  color: var(--figma-black);
+}
+
+.figma-chrome-pill--active {
+  background: var(--figma-accent);
+  color: var(--figma-black);
+}
+
+.figma-role-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 1rem 0 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  margin-bottom: 0;
+}
+
+.figma-role-tab {
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  color: rgba(0, 0, 0, 0.55);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.figma-role-tab:hover {
+  color: var(--figma-black);
+}
+
+.figma-role-tab--active {
+  color: var(--figma-black);
+  border-bottom-color: var(--figma-black);
+}
+
+.figma-role-tab:focus-visible {
+  outline: 2px solid var(--figma-accent);
+  outline-offset: 2px;
+}
+
+@media (max-width: 767px) {
+  .figma-hero__inner {
+    flex-direction: column !important;
+    text-align: center;
+  }
+
+  .figma-why-card__inner {
+    flex-direction: column !important;
+  }
+}
+
+@media (min-width: 768px) {
+  html[dir="rtl"] .figma-hero__inner {
+    flex-direction: row-reverse;
+  }
+
+  html[dir="ltr"] .figma-hero__inner {
+    flex-direction: row;
+  }
+}

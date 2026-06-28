@@ -1,19 +1,18 @@
 import { setRequestLocale } from "next-intl/server";
 import { notFound, redirect } from "next/navigation";
-import { WpCareersPage } from "@/components/wp/WpCareersPage";
+import { FigmaCareersPage } from "@/components/figma/FigmaCareersPage";
 import { WpLegalPage } from "@/components/wp/WpLegalPage";
 import { prepareLegalHtml } from "@/lib/wp/content";
 import {
   getLegalPages,
   getWpPageBySlug,
-  getWpSlugForRole,
-  getWpHubSlug,
   getElementorPostId,
   isRoleSlug,
   ROLE_SLUGS,
 } from "@/lib/wp/manifest";
 import type { Locale } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
+import type { Role } from "@/types/role";
 
 type PageProps = {
   params: Promise<{ locale: string; slug: string }>;
@@ -59,24 +58,14 @@ export default async function SlugPage({ params }: PageProps) {
   }
 
   if (isRoleSlug(decoded)) {
-    if (decoded === "manager") {
-      return (
-        <WpCareersPage
-          wpSlug={getWpHubSlug(locale)}
-          role="manager"
-          locale={locale}
-          pageMode="manager"
-        />
-      );
-    }
+    const role = decoded as Role;
+    const pageMode = role === "manager" ? "manager" : "role";
 
-    const wpSlug = getWpSlugForRole(decoded, locale);
     return (
-      <WpCareersPage
-        wpSlug={wpSlug}
-        role={decoded}
+      <FigmaCareersPage
         locale={locale}
-        pageMode="role"
+        initialRole={role}
+        pageMode={pageMode}
       />
     );
   }

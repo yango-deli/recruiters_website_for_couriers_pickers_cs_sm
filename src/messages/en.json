@@ -39,6 +39,32 @@
       "how-it-works": "Process",
       "cta": "Join",
       "footer": "Footer"
+    },
+    "formSectionTitle": "Ready to start working?",
+    "registrationPath": {
+      "title": "Sign up and get started!",
+      "steps": [
+        {
+          "number": "01",
+          "text": "Submit your application",
+          "image": "/wp-assets/uploads/2026/02/orig-6.png"
+        },
+        {
+          "number": "02",
+          "text": "Wait for our call and complete a phone interview",
+          "image": "/wp-assets/uploads/2026/02/wait-for-the-call.svg"
+        },
+        {
+          "number": "03",
+          "text": "Visit the branch for an in-person interview",
+          "image": "/wp-assets/uploads/2026/02/come-to-the-store.svg"
+        },
+        {
+          "number": "04",
+          "text": "Set your shifts and start earning",
+          "image": "/wp-assets/uploads/2026/02/orig-11.png"
+        }
+      ]
     }
   },
   "roles": {

@@ -39,6 +39,32 @@
       "how-it-works": "Процесс",
       "cta": "Вступить",
       "footer": "Подвал"
+    },
+    "formSectionTitle": "Хотите начать работать?",
+    "registrationPath": {
+      "title": "Регистрируйтесь и вперёд!",
+      "steps": [
+        {
+          "number": "01",
+          "text": "Подайте заявку",
+          "image": "/wp-assets/uploads/2026/02/orig-6.png"
+        },
+        {
+          "number": "02",
+          "text": "Ждите звонок и пройдите телефонное интервью",
+          "image": "/wp-assets/uploads/2026/02/wait-for-the-call.svg"
+        },
+        {
+          "number": "03",
+          "text": "Приходите в филиал на очное интервью",
+          "image": "/wp-assets/uploads/2026/02/come-to-the-store.svg"
+        },
+        {
+          "number": "04",
+          "text": "Выбирайте смены и начинайте зарабатывать",
+          "image": "/wp-assets/uploads/2026/02/orig-11.png"
+        }
+      ]
     }
   },
   "roles": {

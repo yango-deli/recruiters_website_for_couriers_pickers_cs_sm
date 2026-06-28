@@ -4,7 +4,7 @@
 
 **GitHub:** [yango-deli/recruiters_website_for_couriers_pickers_cs_sm](https://github.com/yango-deli/recruiters_website_for_couriers_pickers_cs_sm)  
 **Production (актуальная WP-версия, как на localhost):** https://yangodeli-couriers-carriers-website-sable.vercel.app  
-**Версия:** `0.2.0` — см. [`CHANGELOG.md`](CHANGELOG.md)
+**Версия:** `0.3.0` — см. [`CHANGELOG.md`](CHANGELOG.md)
 
 > ⚠️ **Не открывайте** `yangodeli-couriers-carriers-website.vercel.app` (без `-sable`) — это **старый** сайт на другом Vercel-проекте (LandingPage 2024). Для тестов и передачи проекта используйте только URL с `-sable`.
 

@@ -76,6 +76,7 @@
 @import "../styles/legal.css";
 @import "../styles/wp-isolation.css";
 @import "../styles/wp-motion.css";
+@import "../styles/figma-landing.css";
 
 :root {
   --background: var(--brand-background);

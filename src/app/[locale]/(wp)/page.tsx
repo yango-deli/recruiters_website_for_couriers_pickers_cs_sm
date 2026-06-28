@@ -1,6 +1,5 @@
 import { setRequestLocale } from "next-intl/server";
-import { WpCareersPage } from "@/components/wp/WpCareersPage";
-import { getWpHubSlug } from "@/lib/wp/manifest";
+import { FigmaCareersPage } from "@/components/figma/FigmaCareersPage";
 import type { Locale } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
 
@@ -18,10 +17,6 @@ export default async function Page({ params }: PageProps) {
   setRequestLocale(locale);
 
   return (
-    <WpCareersPage
-      wpSlug={getWpHubSlug(locale)}
-      locale={locale}
-      pageMode="hub"
-    />
+    <FigmaCareersPage locale={locale} initialRole="pickers" pageMode="hub" />
   );
 }

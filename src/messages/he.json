@@ -39,6 +39,32 @@
       "how-it-works": "תהליך",
       "cta": "הצטרפות",
       "footer": "תחתית"
+    },
+    "formSectionTitle": "רוצים להתחיל לעבוד?",
+    "registrationPath": {
+      "title": "נרשמים וקדימה לדרך!",
+      "steps": [
+        {
+          "number": "01",
+          "text": "מגישים מועמדות",
+          "image": "/wp-assets/uploads/2026/02/orig-6.png"
+        },
+        {
+          "number": "02",
+          "text": "מחכים לשיחת טלפון מאיתנו ומבצעים ראיון טלפוני",
+          "image": "/wp-assets/uploads/2026/02/wait-for-the-call.svg"
+        },
+        {
+          "number": "03",
+          "text": "מגיעים לסניף ועוברים ראיון פרונטלי",
+          "image": "/wp-assets/uploads/2026/02/come-to-the-store.svg"
+        },
+        {
+          "number": "04",
+          "text": "קובעים משמרות ומתחילים להרויח כסף",
+          "image": "/wp-assets/uploads/2026/02/orig-11.png"
+        }
+      ]
     }
   },
   "roles": {
