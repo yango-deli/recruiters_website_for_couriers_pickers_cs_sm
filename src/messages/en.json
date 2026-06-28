@@ -798,6 +798,12 @@
       "privacyConsent": "You must accept the privacy policy"
     }
   },
+  "floatingActions": {
+    "groupLabel": "Quick actions",
+    "scrollTop": "Back to top",
+    "whatsapp": "WhatsApp",
+    "whatsappUrl": ""
+  },
   "footer": {
     "copyright": "Yango Deli • יאנגו דלי",
     "terms": "Terms of Use",

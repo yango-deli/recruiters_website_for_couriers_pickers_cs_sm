@@ -1,43 +1,55 @@
 "use client";
 
 import Image from "next/image";
-import { resolveHeroImage } from "@/lib/role-images";
+import type { WpHeroContent } from "@/lib/wp/parse-role-page";
 import type { Role } from "@/types/role";
-import type { RoleHero } from "../types";
 import { formAnchorId } from "../types";
 
 type FigmaHeroProps = {
-  hero: RoleHero;
+  hero: WpHeroContent;
   role: Role;
+  centered?: boolean;
 };
 
-export function FigmaHero({ hero, role }: FigmaHeroProps) {
-  const imageSrc = resolveHeroImage(role, hero.image);
+export function FigmaHero({ hero, role, centered = false }: FigmaHeroProps) {
+  const roleClass =
+    role === "couriers" ? "figma-hero--couriers" : `figma-hero--${role}`;
+
+  const shellClass =
+    role === "couriers"
+      ? "figma-hero__container figma-hero__container--full"
+      : "figma-container figma-hero__container";
 
   return (
-    <section id="hero" className="figma-hero">
-      <div className="figma-container py-8 md:py-10">
-        <div className="figma-hero__inner flex flex-col-reverse items-center gap-8 md:flex-row md:items-stretch md:gap-6 lg:gap-10">
-          <div className="flex flex-1 flex-col justify-center text-center md:text-start md:max-w-[52%]">
-            <h1 className="figma-hero__title text-balance">{hero.title}</h1>
-            <p className="figma-hero__subtitle mt-4 text-balance">{hero.subtitle}</p>
-            <div className="mt-6 flex justify-center md:justify-start">
+    <section id="hero" className={`figma-hero ${roleClass}`}>
+      <div className={shellClass}>
+        <div
+          className={`figma-hero__inner ${centered ? "figma-hero__inner--centered" : ""}`}
+        >
+          <div className="figma-hero__copy">
+            <h1
+              className="figma-hero__title"
+              dangerouslySetInnerHTML={{ __html: hero.titleHtml }}
+            />
+            {hero.subtitle ? (
+              <p className="figma-hero__subtitle">{hero.subtitle}</p>
+            ) : null}
+            <div className="figma-hero__cta-wrap">
               <a href={`#${formAnchorId(role)}`} className="figma-btn-primary">
                 {hero.cta}
               </a>
             </div>
           </div>
-          <div className="relative flex flex-1 items-center justify-center md:max-w-[48%]">
-            <div className="relative aspect-[4/3] w-full max-w-lg">
-              <Image
-                src={imageSrc}
-                alt=""
-                fill
-                priority
-                className="object-contain object-center"
-                sizes="(max-width: 768px) 100vw, 540px"
-              />
-            </div>
+          <div className="figma-hero__media">
+            <Image
+              src={hero.image}
+              alt=""
+              width={606}
+              height={566}
+              priority
+              className="figma-hero__image"
+              sizes="(max-width: 768px) 100vw, 540px"
+            />
           </div>
         </div>
       </div>

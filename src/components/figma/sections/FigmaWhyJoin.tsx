@@ -1,54 +1,86 @@
 import Image from "next/image";
-import { resolveCarouselImage } from "@/lib/role-images";
-import type { Role } from "@/types/role";
-import type { RoleCardItem } from "../types";
+import type { WpCardItem } from "@/lib/wp/parse-role-page";
 
 type FigmaWhyJoinProps = {
   title: string;
-  items: RoleCardItem[];
-  role: Role;
+  items: WpCardItem[];
+  variant: "courier" | "standard";
 };
 
-export function FigmaWhyJoin({ title, items, role }: FigmaWhyJoinProps) {
-  const cards = items.slice(0, 3);
+export function FigmaWhyJoin({ title, items, variant }: FigmaWhyJoinProps) {
+  const isStandard = variant === "standard";
 
   return (
-    <section id="why-join" className="bg-white py-12 md:py-16">
+    <section
+      id="why-join"
+      className={`figma-why-join ${isStandard ? "figma-why-join--standard" : "figma-why-join--courier"}`}
+    >
       <div className="figma-container">
         <h2 className="figma-section-title">{title}</h2>
-        <div className="flex flex-col gap-6">
-          {cards.map((item, index) => {
-            const imageSrc = item.image
-              ? resolveCarouselImage(role, item.image, index)
-              : null;
-            const imageFirst = index % 2 === 1;
+        <div
+          className={
+            isStandard ? "figma-why-join__grid" : "figma-why-join__list"
+          }
+        >
+          {items.map((item) => {
+            const textPanel =
+              item.panelVariant ?? (isStandard ? "black" : "grey");
+            const imageFirst = item.imageFirst ?? false;
+
+            const copyBlock = (
+              <div
+                className={`figma-why-card__copy figma-why-card__copy--${textPanel}`}
+              >
+                <h3 className="figma-why-card__title">{item.title}</h3>
+                {item.descriptionHtml ? (
+                  <div
+                    className="figma-why-card__text"
+                    dangerouslySetInnerHTML={{ __html: item.descriptionHtml }}
+                  />
+                ) : null}
+              </div>
+            );
+
+            const mediaBlock = item.image ? (
+              <div className="figma-why-card__media">
+                <Image
+                  src={item.image}
+                  alt=""
+                  width={200}
+                  height={260}
+                  className="figma-why-card__image"
+                />
+              </div>
+            ) : null;
 
             return (
-              <article key={item.title} className="figma-why-card">
+              <article
+                key={item.title}
+                className={`figma-why-card figma-why-card--${variant}`}
+              >
                 <div
-                  className={`figma-why-card__inner flex min-h-[12rem] flex-col md:min-h-[14rem] md:flex-row ${
-                    imageFirst ? "md:flex-row-reverse" : ""
+                  className={`figma-why-card__inner${
+                    !isStandard && imageFirst
+                      ? " figma-why-card__inner--image-end"
+                      : ""
                   }`}
                 >
-                  <div className="flex flex-1 flex-col justify-center p-6 md:p-8">
-                    <h3 className="font-heading text-xl font-black md:text-2xl">
-                      {item.title}
-                    </h3>
-                    <p className="mt-3 text-sm leading-relaxed md:text-base">
-                      <strong>{item.description}</strong>
-                    </p>
-                  </div>
-                  {imageSrc ? (
-                    <div className="flex flex-1 items-center justify-center bg-[#ececec]/40 p-6 md:max-w-[40%]">
-                      <Image
-                        src={imageSrc}
-                        alt=""
-                        width={200}
-                        height={260}
-                        className="h-auto max-h-[15rem] w-auto object-contain"
-                      />
-                    </div>
-                  ) : null}
+                  {isStandard ? (
+                    <>
+                      {copyBlock}
+                      {mediaBlock}
+                    </>
+                  ) : imageFirst ? (
+                    <>
+                      {mediaBlock}
+                      {copyBlock}
+                    </>
+                  ) : (
+                    <>
+                      {copyBlock}
+                      {mediaBlock}
+                    </>
+                  )}
                 </div>
               </article>
             );

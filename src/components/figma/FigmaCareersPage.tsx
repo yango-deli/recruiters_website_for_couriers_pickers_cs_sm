@@ -1,70 +1,98 @@
 "use client";
 
-import { Suspense, useCallback, useState } from "react";
-import { useTranslations } from "next-intl";
-import { LandingPageRoleSync } from "@/components/LandingPageRoleSync";
-import { Footer } from "@/components/layout/Footer";
+import { Suspense, useCallback, useMemo, useState } from "react";
+import { CareersRoleSync } from "@/components/CareersRoleSync";
+import type { WpLandingSection, WpRolePageContent } from "@/lib/wp/parse-role-page";
+import type { Role } from "@/types/role";
 import { FigmaChrome } from "./FigmaChrome";
 import { FigmaBodyInit } from "./FigmaBodyInit";
+import { FigmaCareersFooter } from "./FigmaCareersFooter";
+import { FigmaFloatingActions } from "./FigmaFloatingActions";
 import { FigmaHero } from "./sections/FigmaHero";
 import { FigmaBenefits } from "./sections/FigmaBenefits";
 import { FigmaWhyJoin } from "./sections/FigmaWhyJoin";
 import { FigmaUnique } from "./sections/FigmaUnique";
 import { FigmaRegistrationSteps } from "./sections/FigmaRegistrationSteps";
 import { FigmaFormSection } from "./sections/FigmaFormSection";
-import type { FigmaCareersPageProps, RegistrationStep, RoleContent } from "./types";
+import type { FigmaCareersPageProps } from "./types";
 
 function RoleSections({
   role,
   content,
-  formTitle,
-  registrationPath,
 }: {
-  role: FigmaCareersPageProps["initialRole"];
-  content: RoleContent;
-  formTitle: string;
-  registrationPath: { title: string; steps: RegistrationStep[] };
+  role: Role;
+  content: WpRolePageContent;
 }) {
+  const centeredHero = role === "manager";
+
   return (
     <>
-      <FigmaHero hero={content.hero} role={role} />
-      <FigmaBenefits title={content.benefits.title} items={content.benefits.items} />
-      <FigmaWhyJoin title={content.whyJoin.title} items={content.whyJoin.items} role={role} />
-      <FigmaUnique title={content.howItWorks.title} items={content.howItWorks.items} />
-      <FigmaRegistrationSteps
-        title={registrationPath.title}
-        steps={registrationPath.steps}
-      />
-      <FigmaFormSection title={formTitle} role={role} />
+      <FigmaHero hero={content.hero} role={role} centered={centeredHero} />
+      {content.sections.map((section) => (
+        <SectionBlock key={`${section.type}-${section.title}`} section={section} role={role} />
+      ))}
     </>
   );
+}
+
+function SectionBlock({
+  section,
+  role,
+}: {
+  section: WpLandingSection;
+  role: Role;
+}) {
+  switch (section.type) {
+    case "benefits":
+      return <FigmaBenefits title={section.title} items={section.items} role={role} />;
+    case "unique":
+      return <FigmaUnique title={section.title} items={section.items} />;
+    case "whyJoin":
+      return (
+        <FigmaWhyJoin
+          title={section.title}
+          items={section.items}
+          variant={section.variant}
+        />
+      );
+    case "registration":
+      return (
+        <FigmaRegistrationSteps
+          title={section.title}
+          subtitle={section.subtitle}
+          steps={section.steps}
+          role={role}
+        />
+      );
+    case "form":
+      return <FigmaFormSection title={section.title} role={role} />;
+    default:
+      return null;
+  }
 }
 
 export function FigmaCareersPage({
   initialRole,
   pageMode,
+  roleContents,
 }: FigmaCareersPageProps) {
-  const tRoles = useTranslations("roles");
-  const tLanding = useTranslations("landing");
   const [activeRole, setActiveRole] = useState(initialRole);
+  const showHubTabs = pageMode === "hub";
 
-  const onRoleFromUrl = useCallback((role: typeof initialRole) => {
+  const onRoleFromUrl = useCallback((role: Role) => {
     setActiveRole(role);
   }, []);
 
-  const content = tRoles.raw(activeRole) as RoleContent;
-  const registrationPath = tLanding.raw("registrationPath") as {
-    title: string;
-    steps: RegistrationStep[];
-  };
-  const formTitle = tLanding("formSectionTitle");
-  const showHubTabs = pageMode === "hub";
+  const content = useMemo(
+    () => roleContents[activeRole],
+    [roleContents, activeRole]
+  );
 
   return (
     <>
       <FigmaBodyInit />
       <Suspense fallback={null}>
-        <LandingPageRoleSync onRoleFromUrl={onRoleFromUrl} />
+        <CareersRoleSync onRoleFromUrl={onRoleFromUrl} />
       </Suspense>
 
       <FigmaChrome
@@ -73,15 +101,14 @@ export function FigmaCareersPage({
         showHubTabs={showHubTabs}
       />
 
-      <main id="main-content" className="pt-[var(--figma-chrome-gap,3.125rem)]">
-        <RoleSections
-          role={activeRole}
-          content={content}
-          formTitle={formTitle}
-          registrationPath={registrationPath}
-        />
-        <Footer />
+      <main
+        id="main-content"
+        className={`figma-main${activeRole === "couriers" ? " figma-careers-site--couriers" : ""}`}
+      >
+        <RoleSections role={activeRole} content={content} />
+        <FigmaCareersFooter role={activeRole} />
       </main>
+      <FigmaFloatingActions />
     </>
   );
 }

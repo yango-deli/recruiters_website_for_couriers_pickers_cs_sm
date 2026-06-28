@@ -30,7 +30,7 @@ WP_URL=https://yango-deli.co.il
 | `/privacy-policy` | `/he/privacy-policy` |
 | …all legal slugs | `/he/{slug}` |
 
-**Manager** (`/he/manager`) — Next.js only (no WP page); uses `LandingPage` + `LeadForm`.
+**Manager** (`/he/manager`) — hub tab 4 content via `FigmaCareersPage` + `LeadForm`.
 
 ## Forms
 

@@ -1,38 +1,50 @@
 import Image from "next/image";
-import type { RegistrationStep } from "../types";
+import type { WpRegistrationStep } from "@/lib/wp/parse-role-page";
+import type { Role } from "@/types/role";
 
 type FigmaRegistrationStepsProps = {
   title: string;
-  steps: RegistrationStep[];
+  subtitle?: string;
+  steps: WpRegistrationStep[];
+  role?: Role;
 };
 
-export function FigmaRegistrationSteps({ title, steps }: FigmaRegistrationStepsProps) {
-  const ordered = [...steps].reverse();
+export function FigmaRegistrationSteps({
+  title,
+  subtitle,
+  steps,
+  role,
+}: FigmaRegistrationStepsProps) {
+  const roleClass = role === "couriers" ? "figma-steps--couriers" : "";
 
   return (
-    <section id="steps" className="bg-white py-12 md:py-16">
+    <section id="steps" className={`figma-steps ${roleClass}`.trim()}>
       <div className="figma-container">
-        <h2 className="figma-section-title">{title}</h2>
-        <div className="grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
-          {ordered.map((step) => (
-            <article key={step.number} className="figma-step-card">
-              <div className="figma-step-card__illus">
-                <Image
-                  src={step.image}
-                  alt=""
-                  width={220}
-                  height={160}
-                  className="h-auto max-h-[8rem] w-auto max-w-[85%] object-contain"
-                />
-              </div>
-              <div className="p-4 md:p-5">
-                <p className="figma-step-card__number">{step.number}</p>
-                <p className="mt-2 text-sm leading-relaxed md:text-base">
-                  <strong>{step.text}</strong>
-                </p>
-              </div>
-            </article>
-          ))}
+        <div className="figma-steps__band">
+          <h2 className="figma-steps__title">{title}</h2>
+          {subtitle ? <p className="figma-steps__subtitle">{subtitle}</p> : null}
+          <div className="figma-steps__grid">
+            {steps.map((step) => (
+              <article key={step.number} className="figma-step-card">
+                <div className="figma-step-card__illus">
+                  <Image
+                    src={step.image}
+                    alt=""
+                    width={220}
+                    height={160}
+                    className="figma-step-card__image"
+                  />
+                </div>
+                <div className="figma-step-card__body">
+                  <p className="figma-step-card__number">{step.number}</p>
+                  <div
+                    className="figma-step-card__text"
+                    dangerouslySetInnerHTML={{ __html: step.textHtml }}
+                  />
+                </div>
+              </article>
+            ))}
+          </div>
         </div>
       </div>
     </section>

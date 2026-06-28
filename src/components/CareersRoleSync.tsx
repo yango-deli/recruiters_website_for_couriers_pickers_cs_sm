@@ -4,12 +4,12 @@ import { useSearchParams } from "next/navigation";
 import { useEffect } from "react";
 import { isRole, type Role } from "@/types/role";
 
-type LandingPageRoleSyncProps = {
+type CareersRoleSyncProps = {
   onRoleFromUrl: (role: Role) => void;
 };
 
-/** Isolated so LandingPage mounts immediately and delayed CTA timer starts on load. */
-export function LandingPageRoleSync({ onRoleFromUrl }: LandingPageRoleSyncProps) {
+/** Syncs `?role=` deep link to hub tab state without blocking page mount. */
+export function CareersRoleSync({ onRoleFromUrl }: CareersRoleSyncProps) {
   const searchParams = useSearchParams();
 
   useEffect(() => {

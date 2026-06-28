@@ -25,7 +25,7 @@ Single-page **careers landing** for [Yango Deli](https://yango-deli.co.il) (Isra
 | `support` | Customer service (chat/phone, often remote) |
 | `manager` | Shift managers |
 
-Deep link: `?role=couriers` (see `LandingPageRoleSync`).
+Deep link: `?role=couriers` (see `CareersRoleSync`).
 
 ---
 
@@ -110,7 +110,7 @@ Implemented in [`src/styles/tokens.css`](../src/styles/tokens.css) and [`src/app
 
 ## Page architecture
 
-Entry: [`src/app/[locale]/page.tsx`](../src/app/[locale]/page.tsx) → [`LandingPage.tsx`](../src/components/LandingPage.tsx)
+Entry: [`src/app/[locale]/(wp)/page.tsx`](../src/app/[locale]/(wp)/page.tsx) → [`FigmaCareersPage.tsx`](../src/components/figma/FigmaCareersPage.tsx)
 
 ### Section order (`SECTION_IDS`)
 

@@ -3,6 +3,7 @@ import { notFound, redirect } from "next/navigation";
 import { FigmaCareersPage } from "@/components/figma/FigmaCareersPage";
 import { WpLegalPage } from "@/components/wp/WpLegalPage";
 import { prepareLegalHtml } from "@/lib/wp/content";
+import { loadAllRoleContents } from "@/lib/wp/load-role-content";
 import {
   getLegalPages,
   getWpPageBySlug,
@@ -60,12 +61,14 @@ export default async function SlugPage({ params }: PageProps) {
   if (isRoleSlug(decoded)) {
     const role = decoded as Role;
     const pageMode = role === "manager" ? "manager" : "role";
+    const roleContents = loadAllRoleContents(locale);
 
     return (
       <FigmaCareersPage
         locale={locale}
         initialRole={role}
         pageMode={pageMode}
+        roleContents={roleContents}
       />
     );
   }

@@ -729,6 +729,12 @@
       "privacyConsent": "יש לאשר את מדיניות הפרטיות"
     }
   },
+  "floatingActions": {
+    "groupLabel": "פעולות מהירות",
+    "scrollTop": "חזרה למעלה",
+    "whatsapp": "WhatsApp",
+    "whatsappUrl": ""
+  },
   "footer": {
     "copyright": "Yango Deli • יאנגו דלי",
     "terms": "תנאי שימוש",

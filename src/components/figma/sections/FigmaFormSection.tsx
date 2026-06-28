@@ -11,7 +11,7 @@ export function FigmaFormSection({ title, role }: FigmaFormSectionProps) {
   const anchorId = formAnchorId(role);
 
   return (
-    <section id={anchorId} className="figma-form-section py-12 md:py-16">
+    <section id={anchorId} className="figma-form-section">
       <div className="figma-container">
         <h2 className="figma-section-title">{title}</h2>
         <div
@@ -19,7 +19,7 @@ export function FigmaFormSection({ title, role }: FigmaFormSectionProps) {
           className="wp-lead-form-mount mx-auto w-full max-w-[461px]"
           data-role={role}
         >
-          <div className="wp-lead-form rounded-xl bg-white p-4 shadow-sm md:p-6">
+          <div className="wp-lead-form">
             <LeadForm role={role} embedded />
           </div>
         </div>

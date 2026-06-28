@@ -22,36 +22,118 @@ const COPY_FIXES = [
   ["Top-tier customer service", "Excellent customer service"],
 ];
 
-function extractStrongText(block) {
-  const matches = [...block.matchAll(/<strong>([^<]+)<\/strong>/gi)];
-  if (matches.length > 0) {
-    return matches[matches.length - 1][1].trim();
+function extractElementorWidgetInner(block, widgetNeedle) {
+  const re = new RegExp(`<div[^>]*${widgetNeedle}[^>]*>`, "i");
+  const match = re.exec(block);
+  if (!match) return "";
+
+  const start = match.index + match[0].length;
+  let depth = 1;
+  let i = start;
+
+  while (i < block.length && depth > 0) {
+    const nextOpen = block.indexOf("<div", i);
+    const nextClose = block.indexOf("</div>", i);
+    if (nextClose === -1) break;
+
+    if (nextOpen !== -1 && nextOpen < nextClose) {
+      depth += 1;
+      i = nextOpen + 4;
+    } else {
+      depth -= 1;
+      if (depth === 0) return block.slice(start, nextClose).trim();
+      i = nextClose + 6;
+    }
   }
+
+  return block.slice(start).trim();
+}
+
+function extractCopyText(block) {
+  if (block.includes("lc-styled-text") || block.includes("lc-text-block")) {
+    const lcMatches = [...block.matchAll(/lc-styled-text__text[^>]*>([\s\S]*?)<\/div>/gi)];
+    for (let i = lcMatches.length - 1; i >= 0; i -= 1) {
+      const inner = lcMatches[i][1].trim();
+      if (!inner || inner.includes("lc-borders")) continue;
+      const bold = inner.match(/<(b|strong)[^>]*>([\s\S]*?)<\/\1>/i);
+      if (bold) return bold[2].replace(/&nbsp;/g, " ").trim();
+      const plain = inner.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+      if (plain) return plain;
+    }
+  }
+
+  const strongMatches = [...block.matchAll(/<strong>([^<]+)<\/strong>/gi)];
+  if (strongMatches.length > 0) {
+    return strongMatches[strongMatches.length - 1][1].trim();
+  }
+
+  const pMatch = block.match(/<p[^>]*>([\s\S]*?)<\/p>/i);
+  if (pMatch) {
+    const plain = pMatch[1].replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    if (plain) return plain;
+  }
+
   const plain = block.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-  return plain.length > 0 && plain.length < 500 ? plain : null;
+  return plain.length > 0 && plain.length < 600 ? plain : null;
 }
 
 function escapeHtml(text) {
-  const decoded = text
-    .replace(/&amp;/g, "&")
-    .replace(/&quot;/g, '"')
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">");
-  return decoded.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+  return text
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;");
 }
 
 function sanitizeTextEditors(html) {
-  return html.replace(
-    /(<div class="elementor-element elementor-element-[a-f0-9]+ elementor-widget elementor-widget-text-editor"[^>]*>)[\s\S]*?(<\/div>\s*\n\t\t\t\t<\/div>)/g,
-    (full, open, close) => {
-      if (!full.includes("lc-styled-text") && !full.includes("lc-text-block")) {
-        return full;
-      }
-      const text = extractStrongText(full);
-      if (!text) return full;
-      return `${open}<p><strong>${escapeHtml(text)}</strong></p>${close}`;
+  const widgetRe =
+    /<div class="elementor-element elementor-element-[a-f0-9]+[^"]*elementor-widget-text-editor"[^>]*>/gi;
+
+  let out = html;
+  const replacements = [];
+  let match;
+
+  while ((match = widgetRe.exec(html)) !== null) {
+    const widgetStart = match.index;
+    const slice = html.slice(widgetStart);
+    const inner = extractElementorWidgetInner(slice, "elementor-widget-text-editor");
+    if (!inner.includes("lc-styled-text") && !inner.includes("lc-text-block")) {
+      continue;
     }
-  );
+
+    const text = extractCopyText(inner);
+    if (!text) continue;
+
+    let depth = 1;
+    let i = widgetStart + match[0].length;
+    while (i < html.length && depth > 0) {
+      const nextOpen = html.indexOf("<div", i);
+      const nextClose = html.indexOf("</div>", i);
+      if (nextClose === -1) break;
+      if (nextOpen !== -1 && nextOpen < nextClose) {
+        depth += 1;
+        i = nextOpen + 4;
+      } else {
+        depth -= 1;
+        if (depth === 0) {
+          replacements.push({
+            start: widgetStart,
+            end: nextClose + 6,
+            replacement: `${match[0]}<p><strong>${escapeHtml(text)}</strong></p>`,
+          });
+          break;
+        }
+        i = nextClose + 6;
+      }
+    }
+  }
+
+  for (let i = replacements.length - 1; i >= 0; i -= 1) {
+    const { start, end, replacement } = replacements[i];
+    out = out.slice(0, start) + replacement + out.slice(end);
+  }
+
+  return out;
 }
 
 function fixBrokenEntities(html) {
@@ -76,6 +158,7 @@ function applyCopyFixes(html) {
 }
 
 const skip = new Set(["privacy-policy.html", "terms-of-use.html"]);
+let changedFiles = 0;
 
 for (const file of readdirSync(HTML_DIR).filter((f) => f.endsWith(".html") && !skip.has(f))) {
   const path = join(HTML_DIR, file);
@@ -87,8 +170,9 @@ for (const file of readdirSync(HTML_DIR).filter((f) => f.endsWith(".html") && !s
   html = fixBrokenEntities(html);
   if (html !== before) {
     writeFileSync(path, html);
+    changedFiles += 1;
     console.log(`[sanitize] ${file}`);
   }
 }
 
-console.log("[sanitize] done");
+console.log(`[sanitize] done (${changedFiles} files updated)`);

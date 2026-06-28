@@ -747,6 +747,12 @@
       "privacyConsent": "Необходимо принять политику конфиденциальности"
     }
   },
+  "floatingActions": {
+    "groupLabel": "Быстрые действия",
+    "scrollTop": "Наверх",
+    "whatsapp": "WhatsApp",
+    "whatsappUrl": ""
+  },
   "footer": {
     "copyright": "Yango Deli • יאנגו דלי",
     "terms": "Условия использования",

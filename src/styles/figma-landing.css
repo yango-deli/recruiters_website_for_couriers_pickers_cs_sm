@@ -1,4 +1,4 @@
-/* Figma careers landing — mirrors wp-isolation.css without Elementor */
+/* Figma careers landing — 1:1 with WP/Figma (wp-isolation.css tokens) */
 
 .figma-careers-site {
   --figma-accent: #ffcc00;
@@ -13,6 +13,7 @@
   --figma-card-radius: 1.25rem;
   --figma-card-illus-min-h: 14.5rem;
   --figma-card-body-min-h: 12.5rem;
+  --figma-card-overlap: -2.5rem;
   background: #ffffff;
   color: var(--figma-black);
   font-family: "Yango Text", sans-serif;
@@ -20,6 +21,10 @@
 
 .figma-careers-site::after {
   display: none !important;
+}
+
+.figma-main {
+  padding-top: var(--figma-chrome-gap);
 }
 
 .figma-container {
@@ -38,10 +43,50 @@
   margin-bottom: 2rem;
 }
 
+/* ── Hero ── */
 .figma-hero {
-  min-height: var(--figma-hero-height);
-  background-color: var(--figma-accent);
   scroll-margin-top: calc(var(--figma-chrome-height) + var(--figma-chrome-gap));
+}
+
+.figma-hero__container {
+  padding-block: 0;
+}
+
+.figma-hero__inner {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: stretch;
+  gap: 1.5rem;
+  min-height: var(--figma-hero-height);
+  border-radius: var(--figma-card-radius);
+  background-color: var(--figma-accent);
+  overflow: hidden;
+}
+
+.figma-hero__copy {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.figma-hero__media {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  overflow: hidden;
+}
+
+.figma-hero__image {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  max-height: var(--figma-hero-height);
+  object-fit: contain;
 }
 
 .figma-hero__title {
@@ -51,11 +96,48 @@
   line-height: 1.1;
 }
 
+.figma-hero__title .wp-hero-sub {
+  display: block;
+  font-family: "Yango Text", sans-serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 2.2vw, 1.375rem);
+  line-height: 1.35;
+  margin-top: 0.75rem;
+}
+
 .figma-hero__subtitle {
   font-family: "Yango Text", sans-serif;
   font-weight: 400;
   font-size: clamp(1.125rem, 2.2vw, 1.5rem);
   line-height: 1.35;
+  margin-top: 1rem;
+}
+
+.figma-hero--couriers .figma-hero__subtitle {
+  font-size: clamp(0.875rem, 1.6vw, 1.125rem);
+}
+
+html[lang="ru"] .figma-hero__title {
+  font-size: clamp(1.625rem, 4vw, 2.75rem);
+}
+
+html[lang="ru"] .figma-hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.375rem);
+}
+
+.figma-hero__cta-wrap {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.figma-hero__inner--centered .figma-hero__copy {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+.figma-hero__inner--centered .figma-hero__media {
+  display: none;
 }
 
 .figma-btn-primary {
@@ -70,6 +152,7 @@
   font-family: "Yango Text", sans-serif;
   font-weight: 700;
   font-size: 1rem;
+  text-decoration: none;
   transition: background-color 0.2s ease, color 0.2s ease;
 }
 
@@ -83,60 +166,365 @@
   outline-offset: 2px;
 }
 
+/* ── Benefits — grey illus top + yellow/black bottom (Template A) ── */
+.figma-benefits {
+  padding-block: 3rem;
+  background: #ffffff;
+}
+
+.figma-benefits__grid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
 .figma-benefit-card {
-  border-radius: var(--figma-card-radius);
-  overflow: hidden;
-  background: var(--figma-section-black);
-  color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
 }
 
 .figma-benefit-card__illus {
+  position: relative;
+  z-index: 0;
   min-height: var(--figma-card-illus-min-h);
   background: var(--figma-card-illus-bg);
+  border-radius: var(--figma-card-radius) var(--figma-card-radius) 0 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  padding: 1.5rem;
+  padding: 1rem 0.75rem;
+  overflow: hidden;
+}
+
+.figma-benefit-card__image {
+  width: auto !important;
+  height: auto !important;
+  max-width: min(96%, 20rem);
+  max-height: calc(var(--figma-card-illus-min-h) - 1rem);
+  min-width: 7.5rem;
+  object-fit: contain;
 }
 
 .figma-benefit-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
   min-height: var(--figma-card-body-min-h);
-  padding: 1.25rem 1.5rem 1.5rem;
+  margin-top: var(--figma-card-overlap);
+  border-radius: var(--figma-card-radius);
+  padding: 1.5rem 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.figma-benefit-card__body--yellow {
+  background: var(--figma-accent);
+  color: var(--figma-black);
+}
+
+.figma-benefit-card__body--black {
+  background: var(--figma-black);
+  color: #ffffff;
+}
+
+.figma-benefit-card__body--grey {
+  background: var(--figma-card-illus-bg);
+  color: var(--figma-black);
 }
 
 .figma-benefit-card__title {
   font-family: "Yango Headline", "Yango Text", sans-serif;
-  font-weight: 900;
-  font-size: 1.375rem;
+  font-weight: 700;
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.15;
   margin-bottom: 0.5rem;
+  width: 100%;
 }
 
-.figma-why-card {
-  border-radius: var(--figma-card-radius);
+.figma-benefit-card__text {
+  font-size: clamp(0.875rem, 1.6vw, 1rem);
+  line-height: 1.4;
+  width: 100%;
+}
+
+.figma-benefit-card__text section,
+.figma-benefit-card__text .lc-section,
+.figma-why-card__text section,
+.figma-why-card__text .lc-section,
+.figma-step-card__text section,
+.figma-step-card__text .lc-section {
+  display: contents;
+}
+
+.figma-benefit-card__body--black .figma-benefit-card__text strong,
+.figma-benefit-card__body--black .figma-benefit-card__text b {
+  color: #ffffff;
+}
+
+/* ── Unique — full yellow band, icon columns ── */
+.figma-unique {
+  padding-block: 3rem;
   background: var(--figma-accent);
-  color: var(--figma-black);
-  overflow: hidden;
+}
+
+.figma-unique__grid {
+  display: grid;
+  gap: 2rem;
+  align-items: stretch;
 }
 
 .figma-unique-card {
   text-align: center;
-  padding: 1.5rem 1rem;
+  padding: 0 0.5rem;
 }
 
-.figma-step-card {
+.figma-unique-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4rem;
+  margin-bottom: 1rem;
+}
+
+.figma-unique-card__icon-img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 4.5rem;
+  max-height: 3.75rem;
+  object-fit: contain;
+}
+
+.figma-unique-card__title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  margin-bottom: 0.5rem;
+}
+
+.figma-unique-card__text {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: 1.4;
+}
+
+/* ── Why join ── */
+.figma-why-join {
+  padding-block: 3rem;
+  background: #ffffff;
+}
+
+.figma-why-join--standard {
+  background: var(--figma-accent);
+}
+
+.figma-why-join--courier {
+  background: #ffffff;
+}
+
+.figma-why-join__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.figma-why-join__grid {
+  display: grid;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.figma-why-card {
   border-radius: var(--figma-card-radius);
   overflow: hidden;
+}
+
+.figma-why-card__inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 12rem;
+  border-radius: var(--figma-card-radius);
+  overflow: hidden;
+}
+
+.figma-why-card--courier .figma-why-card__inner {
+  min-height: 14rem;
+}
+
+.figma-why-card--standard .figma-why-card__inner {
+  height: 100%;
+  background: transparent;
+}
+
+.figma-why-card--courier .figma-why-card__copy,
+.figma-why-card--courier .figma-why-card__media {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.figma-why-card__media {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--figma-accent);
+  padding: 1.25rem;
+  min-height: 10rem;
+}
+
+.figma-why-card--standard .figma-why-card__media {
+  background: transparent;
+  min-height: 12rem;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.figma-why-card__copy {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.25rem 1.5rem;
+  text-align: start;
+  min-height: 10rem;
+}
+
+.figma-why-card--standard .figma-why-card__copy {
+  flex: 0 0 auto;
+  min-height: auto;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  align-items: center;
+  border-radius: var(--figma-card-radius) var(--figma-card-radius) 0 0;
+}
+
+.figma-why-card--standard .figma-why-card__title {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.figma-why-card--standard .figma-why-card__text {
+  font-size: clamp(0.8125rem, 1.4vw, 0.9375rem);
+}
+
+.figma-why-card--standard .figma-why-card__media {
+  flex: 1 1 auto;
+  min-height: 10rem;
+  align-items: flex-end;
+  padding: 0.75rem 1rem 1.25rem;
+}
+
+.figma-why-card__copy--grey {
+  background: var(--figma-card-illus-bg);
+  color: var(--figma-black);
+}
+
+.figma-why-card__copy--black {
+  background: var(--figma-black);
+  color: #ffffff;
+}
+
+.figma-why-card__copy--yellow {
   background: var(--figma-accent);
   color: var(--figma-black);
 }
 
+.figma-why-card__title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  margin-bottom: 0.75rem;
+}
+
+.figma-why-card__text {
+  font-size: clamp(0.875rem, 1.6vw, 1rem);
+  line-height: 1.4;
+}
+
+.figma-why-card__text a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.figma-why-card__image {
+  width: auto !important;
+  height: auto !important;
+  max-height: 12rem;
+  max-width: min(90%, 11rem);
+  object-fit: contain;
+}
+
+/* ── Registration steps (black band) ── */
+.figma-steps {
+  padding-block: 3rem;
+  background: #ffffff;
+}
+
+.figma-steps__band {
+  background: var(--figma-section-black);
+  border-radius: var(--figma-card-radius);
+  padding: 3rem 1.5rem;
+  color: #ffffff;
+}
+
+.figma-steps__title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.figma-steps__subtitle {
+  text-align: center;
+  font-size: clamp(0.9375rem, 1.8vw, 1.125rem);
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.figma-steps__grid {
+  display: grid;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.figma-step-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: var(--figma-card-radius);
+  overflow: hidden;
+}
+
 .figma-step-card__illus {
-  min-height: 10rem;
-  background: var(--figma-card-illus-bg);
+  min-height: 9rem;
+  background: #ffffff;
   display: flex;
   align-items: center;
   justify-content: center;
   padding: 1rem;
+  border-radius: var(--figma-card-radius) var(--figma-card-radius) 0 0;
+}
+
+.figma-step-card__image {
+  width: auto !important;
+  height: auto !important;
+  max-width: min(90%, 10rem);
+  max-height: 7.5rem;
+  object-fit: contain;
+}
+
+.figma-step-card__body {
+  flex: 1 1 auto;
+  background: var(--figma-accent);
+  color: var(--figma-black);
+  padding: 1rem 1.25rem 1.25rem;
+  border-radius: 0 0 var(--figma-card-radius) var(--figma-card-radius);
+  text-align: start;
 }
 
 .figma-step-card__number {
@@ -146,54 +534,127 @@
   line-height: 1;
 }
 
-.figma-form-section {
-  background: var(--figma-accent);
-  scroll-margin-top: calc(var(--figma-chrome-height) + 1rem);
+.figma-step-card__text {
+  margin-top: 0.5rem;
+  font-size: clamp(0.875rem, 1.6vw, 1rem);
+  line-height: 1.4;
 }
 
-.figma-form-section .wp-lead-form,
+/* ── Form — white section per Figma ── */
+.figma-form-section {
+  background: #ffffff;
+  scroll-margin-top: calc(var(--figma-chrome-height) + 1rem);
+  padding-block: 3rem;
+}
+
 .figma-form-section .wp-lead-form-mount {
   width: 100%;
   max-width: 461px;
+  min-height: 12rem;
   margin-inline: auto;
+  scroll-margin-top: calc(var(--figma-chrome-height) + 1rem);
+}
+
+.figma-form-section .wp-lead-form {
+  width: 100%;
+  max-width: 461px;
+  margin-inline: auto;
+  padding: 0;
+  font-family: "Yango Text", sans-serif;
+  color: var(--figma-black);
+}
+
+.figma-form-section .wp-lead-form-fields {
+  width: 100%;
+}
+
+.figma-form-section .wp-lead-form label {
+  color: var(--figma-black);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-family: "Yango Text", sans-serif;
+}
+
+.figma-form-section .wp-lead-form,
+.figma-form-section .wp-lead-form input,
+.figma-form-section .wp-lead-form select,
+.figma-form-section .wp-lead-form button,
+.figma-form-section .wp-lead-form label {
+  font-family: "Yango Text", sans-serif !important;
+  font-size: 1rem !important;
+}
+
+.figma-form-section .wp-lead-form input,
+.figma-form-section .wp-lead-form select {
+  min-height: 2.75rem;
+  color: #000000;
+}
+
+.figma-form-section .wp-lead-form input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.figma-form-section .wp-lead-form [role="checkbox"] + label,
+.figma-form-section .wp-lead-form label:has([role="checkbox"]) {
+  font-size: 0.875rem !important;
+  line-height: 1.625;
 }
 
 .figma-form-section .wp-lead-form button[type="submit"] {
   background-color: var(--figma-accent) !important;
   color: var(--figma-black) !important;
+  min-height: 2.75rem;
   font-weight: 700;
 }
 
+.figma-form-section .wp-lead-form .text-destructive,
+.figma-form-section .wp-lead-form [class*="text-destructive"] {
+  font-size: 0.875rem;
+  color: #c41230 !important;
+}
+
+/* ── Chrome ── */
 .figma-chrome {
   position: sticky;
   top: 0;
   z-index: 100;
-  height: var(--figma-chrome-height);
   background: rgba(255, 255, 255, 0.95);
   border-bottom: 1px solid rgba(0, 0, 0, 0.1);
   backdrop-filter: blur(8px);
+}
+
+.figma-chrome > .figma-container:first-child {
+  height: var(--figma-chrome-height);
 }
 
 .figma-chrome-pill {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  padding: 0.375rem 0.875rem;
+  min-height: 2.25rem;
+  padding: 0.4rem 1rem;
   border-radius: 9999px;
-  font-size: 0.875rem;
-  font-weight: 600;
-  color: rgba(0, 0, 0, 0.62);
-  transition: background-color 0.2s, color 0.2s;
+  border: 1px solid transparent;
+  background: var(--figma-accent);
+  color: var(--figma-black);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  transition: background-color 0.2s, box-shadow 0.2s;
 }
 
 .figma-chrome-pill:hover {
-  background: rgba(255, 204, 0, 0.2);
-  color: var(--figma-black);
+  background: var(--figma-accent-hover);
 }
 
 .figma-chrome-pill--active {
-  background: var(--figma-accent);
-  color: var(--figma-black);
+  background: var(--figma-black);
+  color: #ffffff;
+}
+
+.figma-chrome-pill--active:hover {
+  background: var(--figma-black);
+  opacity: 0.92;
 }
 
 .figma-role-tabs {
@@ -203,7 +664,6 @@
   justify-content: center;
   padding: 1rem 0 0;
   border-bottom: 1px solid rgba(0, 0, 0, 0.08);
-  margin-bottom: 0;
 }
 
 .figma-role-tab {
@@ -232,23 +692,564 @@
   outline-offset: 2px;
 }
 
+/* ── Couriers — Figma 1:1 overrides (HE - New 2 wheels Landing page.svg @ 1366px) ── */
+.figma-careers-site--couriers {
+  --figma-accent: #fede47;
+  --figma-accent-hover: #e6c800;
+  --figma-hero-height: clamp(20rem, 41.4vw, 35.375rem);
+  --figma-card-illus-bg: #f5f5f5;
+  --figma-card-body-min-h: 15.0625rem;
+  --figma-card-overlap: -3.75rem;
+}
+
+.figma-hero--couriers .figma-hero__container--full {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+.figma-hero--couriers .figma-hero__inner {
+  min-height: var(--figma-hero-height);
+  height: var(--figma-hero-height);
+  max-height: var(--figma-hero-height);
+  overflow: hidden;
+  border-radius: 0;
+  background: transparent;
+  gap: 0;
+}
+
+.figma-hero--couriers .figma-hero__copy {
+  flex: 1 1 55.6%;
+  max-width: 55.6%;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+  background: var(--figma-accent);
+  padding: 2rem 2.5rem;
+}
+
+html[dir="rtl"] .figma-hero--couriers .figma-hero__copy {
+  border-end-start-radius: var(--figma-card-radius);
+  border-end-end-radius: var(--figma-card-radius);
+}
+
+html[dir="ltr"] .figma-hero--couriers .figma-hero__copy {
+  border-start-start-radius: var(--figma-card-radius);
+  border-end-start-radius: var(--figma-card-radius);
+}
+
+.figma-hero--couriers .figma-hero__cta-wrap {
+  justify-content: center;
+}
+
+.figma-hero--couriers .figma-btn-primary {
+  min-height: 3.9375rem;
+  min-width: 18.9375rem;
+  padding-inline: 2rem;
+  border-radius: 0.5625rem;
+  font-size: 1.125rem;
+}
+
+.figma-hero--couriers .figma-hero__media {
+  position: relative;
+  flex: 1 1 44.4%;
+  max-width: 44.4%;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  align-items: flex-end;
+  justify-content: center;
+  background: #ffffff;
+}
+
+.figma-hero--couriers .figma-hero__image {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  max-height: var(--figma-hero-height);
+  object-fit: contain;
+  object-position: center bottom;
+  display: block;
+}
+
+.figma-benefits--couriers .figma-benefit-card__body {
+  align-items: center;
+  text-align: center;
+}
+
+.figma-benefits--couriers .figma-benefit-card__body--black {
+  background: var(--figma-section-black);
+}
+
+.figma-benefits--couriers .figma-benefit-card__illus {
+  overflow: visible;
+  min-height: calc(var(--figma-card-illus-min-h) + 0.25rem);
+  padding-block: 1rem;
+  background: var(--figma-card-illus-bg);
+}
+
+.figma-benefits--couriers .figma-benefit-card__image--coins {
+  max-width: min(92%, 16rem);
+  max-height: calc(var(--figma-card-illus-min-h) - 0.5rem);
+  min-width: 5rem;
+}
+
+.figma-why-join--courier .figma-why-card__inner {
+  border-radius: var(--figma-card-radius);
+}
+
+.figma-why-join--courier .figma-why-card__copy {
+  padding: 1.5rem;
+}
+
+.figma-why-join--courier .figma-why-card__media {
+  padding: 1.5rem;
+}
+
+.figma-why-join--courier .figma-why-card__image {
+  max-width: min(90%, 12rem);
+  max-height: 11rem;
+}
+
+.figma-steps--couriers {
+  padding-block: 0;
+  background: var(--figma-accent);
+}
+
+.figma-steps--couriers > .figma-container {
+  max-width: var(--figma-container);
+  padding-inline: 1rem;
+}
+
+.figma-steps--couriers .figma-steps__band {
+  background: transparent;
+  color: var(--figma-section-black);
+  border-radius: 0;
+  padding: 3.5rem 2.5rem;
+  margin-inline: -1rem;
+  width: calc(100% + 2rem);
+}
+
+.figma-steps--couriers .figma-steps__title {
+  color: var(--figma-section-black);
+}
+
+.figma-steps--couriers .figma-steps__subtitle {
+  color: rgba(17, 17, 17, 0.88);
+}
+
+.figma-steps--couriers .figma-steps__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.figma-steps--couriers .figma-step-card {
+  background: #f5f5f5;
+  border-radius: 1.145rem;
+}
+
+.figma-steps--couriers .figma-step-card__illus {
+  background: transparent;
+  min-height: 7.5rem;
+  padding-block: 1.25rem 0.5rem;
+  border-radius: 0;
+}
+
+.figma-steps--couriers .figma-step-card__body {
+  background: transparent;
+  color: var(--figma-section-black);
+  border-radius: 0;
+  padding-block: 0.5rem 1.25rem;
+}
+
+.figma-steps--couriers .figma-step-card__number {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.figma-careers-footer--couriers {
+  background: #f5f5f5;
+  color: var(--figma-section-black);
+}
+
+.figma-careers-footer--couriers .figma-careers-footer__cta {
+  background: var(--figma-section-black);
+  color: #f5f5f5;
+}
+
+.figma-careers-footer--couriers .figma-careers-footer__cta:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.figma-careers-footer--couriers .figma-careers-footer__link {
+  color: var(--figma-section-black);
+}
+
+.figma-careers-footer--couriers .figma-careers-footer__link:hover {
+  color: #000000;
+}
+
+.figma-careers-footer--couriers .figma-careers-footer__copyright {
+  color: rgba(17, 17, 17, 0.72);
+}
+
+/* ── Careers footer (Figma — no app store) ── */
+.figma-careers-footer {
+  background: var(--figma-black);
+  color: #ffffff;
+  padding-block: 2.5rem;
+}
+
+.figma-careers-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.figma-careers-footer__cta-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.figma-careers-footer__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.625rem 1.75rem;
+  border-radius: 9999px;
+  background: var(--figma-accent);
+  color: var(--figma-black);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.figma-careers-footer__cta:hover {
+  background: var(--figma-accent-hover);
+}
+
+.figma-careers-footer__cta:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.figma-careers-footer__meta {
+  display: grid;
+  gap: 1rem;
+  text-align: center;
+  align-items: center;
+}
+
+.figma-careers-footer__copyright {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.figma-careers-footer__link {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.figma-careers-footer__link:hover {
+  color: var(--figma-accent);
+}
+
+.figma-careers-footer__link:focus-visible {
+  outline: 2px solid var(--figma-accent);
+  outline-offset: 2px;
+}
+
+.figma-careers-footer__logo {
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+}
+
+.figma-careers-footer__logo:focus-visible {
+  outline: 2px solid var(--figma-accent);
+  outline-offset: 4px;
+  border-radius: 0.25rem;
+}
+
+/* ── Floating actions ── */
+.figma-floating-actions {
+  position: fixed;
+  inset-inline-start: 1rem;
+  bottom: 1.5rem;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.figma-floating-actions__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.figma-floating-actions__btn:focus-visible {
+  outline: 2px solid var(--figma-accent);
+  outline-offset: 2px;
+}
+
+.figma-floating-actions__btn--whatsapp {
+  background: #25d366;
+  color: #ffffff;
+}
+
+.figma-floating-actions__btn--whatsapp:hover {
+  background: #1ebe57;
+}
+
+.figma-floating-actions__btn--top {
+  background: var(--figma-black);
+  color: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+}
+
+.figma-floating-actions__btn--top.figma-floating-actions__btn--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.figma-floating-actions__btn--top:hover {
+  background: var(--figma-section-black);
+}
+
+@media (min-width: 768px) {
+  .figma-careers-footer__meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    text-align: start;
+  }
+
+  .figma-careers-footer__logo {
+    justify-content: end;
+    margin-inline: 0;
+    grid-column: 2;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .figma-careers-footer__meta {
+    grid-template-columns: 1.2fr 1fr 1fr auto;
+    align-items: center;
+  }
+
+  .figma-careers-footer__logo {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+/* ── Responsive ── */
 @media (max-width: 767px) {
+  .figma-careers-site {
+    --figma-hero-height: auto;
+    --figma-card-illus-min-h: 12.5rem;
+    --figma-card-overlap: -1.5rem;
+  }
+
+  .figma-careers-site--couriers {
+    --figma-hero-height: auto;
+  }
+
+  .figma-hero--couriers .figma-hero__inner {
+    height: auto;
+    max-height: none;
+    min-height: auto;
+    flex-direction: column-reverse;
+  }
+
+  .figma-hero--couriers .figma-hero__copy,
+  .figma-hero--couriers .figma-hero__media {
+    flex: 1 1 auto;
+    max-width: 100%;
+  }
+
+  .figma-hero--couriers .figma-hero__copy {
+    border-radius: 0;
+    padding: 1.5rem 1rem;
+  }
+
+  .figma-hero--couriers .figma-btn-primary {
+    min-width: 0;
+    width: 100%;
+    max-width: 18.9375rem;
+  }
+
+  .figma-hero--couriers .figma-hero__media {
+    min-height: 14rem;
+    align-items: center;
+  }
+
+  .figma-hero--couriers .figma-hero__image {
+    max-height: clamp(200px, 52vw, 320px);
+  }
+
+  .figma-floating-actions {
+    inset-inline-start: 0.75rem;
+    bottom: 1rem;
+  }
+
   .figma-hero__inner {
-    flex-direction: column !important;
+    flex-direction: column-reverse;
+    min-height: auto;
+  }
+
+  .figma-hero__copy {
     text-align: center;
   }
 
-  .figma-why-card__inner {
-    flex-direction: column !important;
+  .figma-hero__cta-wrap {
+    justify-content: center;
+  }
+
+  .figma-benefit-card__image {
+    max-height: calc(var(--figma-card-illus-min-h) - 1.5rem);
+  }
+
+  .figma-why-card--courier .figma-why-card__inner,
+  .figma-why-card--courier .figma-why-card__inner--image-end {
+    flex-direction: column;
+  }
+
+  .figma-form-section .wp-lead-form-mount,
+  .figma-form-section .wp-lead-form {
+    padding-inline: 0.5rem;
   }
 }
 
 @media (min-width: 768px) {
-  html[dir="rtl"] .figma-hero__inner {
+  .figma-benefits__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .figma-unique__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .figma-why-join__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .figma-steps__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .figma-hero__copy {
+    text-align: start;
+  }
+
+  .figma-hero--couriers .figma-hero__copy {
+    text-align: center;
+    align-items: center;
+  }
+
+  .figma-hero__inner--centered .figma-hero__copy {
+    text-align: center;
+  }
+
+  .figma-hero__cta-wrap {
+    justify-content: flex-start;
+  }
+
+  .figma-hero--couriers .figma-hero__cta-wrap {
+    justify-content: center;
+  }
+
+  .figma-hero__inner--centered .figma-hero__cta-wrap {
+    justify-content: center;
+  }
+
+  html[dir="rtl"] .figma-hero__inner:not(.figma-hero__inner--centered) {
     flex-direction: row-reverse;
   }
 
-  html[dir="ltr"] .figma-hero__inner {
+  html[dir="ltr"] .figma-hero__inner:not(.figma-hero__inner--centered) {
     flex-direction: row;
+  }
+
+  /* Figma: image left, yellow copy right (same visual in HE/EN) */
+  html[dir="rtl"] .figma-hero--couriers .figma-hero__inner {
+    flex-direction: row;
+  }
+
+  html[dir="ltr"] .figma-hero--couriers .figma-hero__inner {
+    flex-direction: row-reverse;
+  }
+
+  .figma-hero--couriers .figma-hero__copy {
+    text-align: center;
+    align-items: center;
+  }
+
+  .figma-hero--couriers .figma-hero__cta-wrap {
+    justify-content: center;
+  }
+
+  .figma-steps--couriers .figma-steps__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .figma-steps--couriers .figma-steps__band {
+    border-radius: 0;
+    margin-inline: -1rem;
+    width: calc(100% + 2rem);
+    padding: 2.5rem 1rem;
+  }
+
+  .figma-why-card--courier .figma-why-card__inner {
+    flex-direction: row;
+    min-height: 14rem;
+    overflow: hidden;
+  }
+
+  .figma-why-card--courier .figma-why-card__copy,
+  .figma-why-card--courier .figma-why-card__media {
+    flex: 1 1 50%;
+    max-width: 50%;
+    min-width: 0;
+  }
+
+  .figma-why-card--courier .figma-why-card__inner--image-end {
+    flex-direction: row-reverse;
+  }
+}
+
+@media (min-width: 1024px) {
+  .figma-unique__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .figma-unique__grid:has(.figma-unique-card:nth-child(5):last-child) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .figma-steps--couriers .figma-steps__band {
+    padding: 3rem 1.5rem;
+  }
+
+  .figma-steps--couriers .figma-steps__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 }

@@ -2,7 +2,6 @@ import { readFileSync, existsSync } from "node:fs";
 import { join, dirname } from "node:path";
 import { fileURLToPath } from "node:url";
 import { getWpPageBySlug } from "@/lib/wp/manifest";
-import { stripWpLegacyChrome } from "@/lib/wp/strip-legacy-chrome";
 import type { Role } from "@/types/role";
 
 const ROOT = join(dirname(fileURLToPath(import.meta.url)), "..", "..", "..");
@@ -75,37 +74,6 @@ export function loadWpHtml(slug: string): string | null {
 
 function rewriteLocalePaths(html: string, locale: string): string {
   return html.replace(/href="\/(he|en|ru)\//g, `href="/${locale}/`);
-}
-
-const FOOTER_LINK_LABELS: Record<string, { terms: string; privacy: string }> = {
-  he: { terms: "תנאי שימוש", privacy: "מדיניות פרטיות" },
-  en: { terms: "Terms of Use", privacy: "Privacy Policy" },
-  ru: { terms: "Условия использования", privacy: "Политика конфиденциальности" },
-};
-
-/** WP footer links ship in English even on HE pages — localize per locale. */
-function localizeFooterLinks(html: string, locale: string): string {
-  const labels = FOOTER_LINK_LABELS[locale];
-  if (!labels) return html;
-  return html
-    .replace(/Terms of Use/g, labels.terms)
-    .replace(/Privacy Policy/g, labels.privacy);
-}
-
-export function prepareCareersHtml(
-  slug: string,
-  role?: Role,
-  locale?: string
-): string | null {
-  const raw = loadWpHtml(slug);
-  if (!raw) return null;
-  let html = stripWpLegacyChrome(injectLeadFormSlot(raw, role));
-  html = sanitizeWpHtml(html);
-  if (locale) {
-    html = rewriteLocalePaths(html, locale);
-    html = localizeFooterLinks(html, locale);
-  }
-  return html;
 }
 
 export function prepareLegalHtml(slug: string, locale?: string): string | null {

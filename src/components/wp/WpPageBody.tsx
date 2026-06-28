@@ -2,7 +2,7 @@
 
 import { useLocale } from "next-intl";
 import { useEffect } from "react";
-import type { WpPageMode } from "@/components/wp/WpCareersPage";
+import type { WpPageMode } from "@/types/wp";
 
 type WpPageBodyProps = {
   postId?: number | null;

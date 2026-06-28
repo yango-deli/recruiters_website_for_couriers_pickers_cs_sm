@@ -4,6 +4,20 @@
 
 ## [Unreleased]
 
+## [0.3.1] — 2026-06-28
+
+### Added
+
+- Couriers Figma 1:1 CSS from design export (hero split, `#FEDE47`, yellow steps band, light footer).
+- `FigmaCareersFooter`, `FigmaFloatingActions`, WP content parser (`parse-role-page.ts`) and `validate:wp` gate.
+- Removed legacy motion/WebGL landing stack; careers routes use Figma components only.
+
+### Fixed
+
+- Couriers hero: image left / copy right, full-bleed 566px height at desktop.
+- Steps section: yellow band with grey cards (was incorrectly black).
+- Footer on couriers: light `#F5F5F5` per Figma.
+
 ## [0.3.0] — 2026-06-28
 
 ### Added
