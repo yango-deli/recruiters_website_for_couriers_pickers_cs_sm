@@ -1,5 +1,6 @@
 import createIntlMiddleware from "next-intl/middleware";
 import { NextRequest, NextResponse } from "next/server";
+import { resolveLocaleHomeRedirect } from "./lib/landing/default-route";
 import { routing } from "./i18n/routing";
 import { WP_LEGACY_REDIRECTS } from "./lib/wp/manifest";
 
@@ -19,6 +20,13 @@ export default function middleware(request: NextRequest) {
     if (decodedTarget) {
       return NextResponse.redirect(new URL(decodedTarget, request.url), 301);
     }
+  }
+
+  if (pathname === "/he") {
+    const role = request.nextUrl.searchParams.get("role");
+    const target = resolveLocaleHomeRedirect(role);
+    const url = new URL(target, request.url);
+    return NextResponse.redirect(url, 308);
   }
 
   return intlMiddleware(request);

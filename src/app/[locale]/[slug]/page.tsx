@@ -2,6 +2,7 @@ import { setRequestLocale } from "next-intl/server";
 import { notFound, redirect } from "next/navigation";
 import { CareersPage } from "@/components/careers/CareersPage";
 import { loadHubRoleContents } from "@/lib/landing/load-content";
+import { resolveLocaleHomeRedirect } from "@/lib/landing/default-route";
 import { isRoleSlug } from "@/lib/wp/manifest";
 import type { Locale } from "@/i18n/routing";
 import { routing } from "@/i18n/routing";
@@ -54,7 +55,7 @@ export default async function SlugPage({ params }: PageProps) {
   setRequestLocale(locale);
 
   if (decoded === "careers" || decoded === "yango-deli-careers-original") {
-    redirect(`/${locale}`);
+    redirect(resolveLocaleHomeRedirect());
   }
 
   if (decoded === "manager") {

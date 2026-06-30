@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
+import { DEFAULT_LANDING_ROLE, landingPathForRole } from "@/lib/landing/default-route";
 import { routing, type Locale } from "@/i18n/routing";
 import "../globals.css";
 
@@ -30,9 +31,12 @@ export async function generateMetadata({
     description: messages.meta.description,
     icons: { icon: "/logos/favicon-32.png" },
     alternates: {
-      canonical: `${base}/${locale}`,
+      canonical:
+        locale === "he"
+          ? `https://yango-deli.co.il${landingPathForRole(DEFAULT_LANDING_ROLE)}`
+          : `${base}/${locale}`,
       languages: {
-        he: `${base}/he`,
+        he: `https://yango-deli.co.il${landingPathForRole(DEFAULT_LANDING_ROLE)}`,
         en: `${base}/en`,
         ru: `${base}/ru`,
       },

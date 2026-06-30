@@ -1,3 +1,4 @@
+import { resolveLocaleHomeRedirect } from "@/lib/landing/default-route";
 import manifest from "../../../content/wp/manifest.json";
 import type { Locale } from "@/i18n/routing";
 import type { Role } from "@/types/role";
@@ -105,9 +106,9 @@ export function getWpSlugForRole(role: Role, locale: string): string {
 
 /** Legacy WordPress paths (no locale) → Next.js paths */
 export const WP_LEGACY_REDIRECTS: Record<string, string> = {
-  "/careers": "/he",
-  "/home": "/he",
-  "/yango-deli-careers-original": "/he",
+  "/careers": resolveLocaleHomeRedirect(),
+  "/home": resolveLocaleHomeRedirect(),
+  "/yango-deli-careers-original": resolveLocaleHomeRedirect(),
   "/work-with-us-couriers-he": "/he/couriers",
   "/work-with-us-couriers-en": "/en/couriers",
   "/work-with-us-storekeepers-he": "/he/pickers",
