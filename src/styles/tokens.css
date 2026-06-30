@@ -66,6 +66,18 @@
   --tilt-subtle: 4deg;
   --tilt-carousel: 25deg;
   --card-3d-depth: 12px;
+
+  /* Careers landing aliases (Figma / Brand Overview) */
+  --careers-accent: var(--brand-accent);
+  --careers-accent-hover: var(--brand-accent-dark);
+  --careers-accent-couriers: #fede47;
+  --careers-black: #000000;
+  --careers-section-black: #111111;
+  --careers-container: 71.25rem;
+  --careers-chrome-height: 4.25rem;
+  --careers-chrome-gap: 3.125rem;
+  --careers-card-radius: 1.25rem;
+  --careers-card-illus-bg: #ececec;
 }
 
 html[lang="ru"] {

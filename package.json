@@ -1,20 +1,14 @@
 {
   "name": "yango-deli",
-  "version": "0.3.1",
+  "version": "0.4.0",
   "private": true,
   "engines": {
     "node": ">=22"
   },
   "scripts": {
     "dev": "next dev",
-    "build": "npm run validate:wp && next build",
+    "build": "next build",
     "start": "next start",
-    "sync:wp": "node scripts/sync-from-wordpress.mjs",
-    "generate:ru": "node scripts/generate-ru-html.mjs",
-    "generate:en": "node scripts/generate-en-html.mjs",
-    "sanitize:wp": "node scripts/sanitize-wp-card-copy.mjs",
-    "audit:wp": "node scripts/wp-audit.mjs",
-    "validate:wp": "npx tsx scripts/validate-wp-content.ts",
     "lint": "eslint"
   },
   "dependencies": {

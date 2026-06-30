@@ -3,7 +3,6 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { routing, type Locale } from "@/i18n/routing";
-import { WP_CRITICAL_CSS } from "@/components/wp/wp-critical.css";
 import "../globals.css";
 
 export const viewport: Viewport = {
@@ -68,7 +67,6 @@ export default async function LocaleLayout({
   return (
     <html lang={locale} dir={dir} className="h-full">
       <head>
-        <style dangerouslySetInnerHTML={{ __html: WP_CRITICAL_CSS }} />
         <link
           rel="preload"
           href="/fonts/yango-text/YangoText_Rg.ttf"

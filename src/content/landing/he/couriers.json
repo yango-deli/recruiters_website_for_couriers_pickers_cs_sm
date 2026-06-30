@@ -1,0 +1,50 @@
+{
+  "hero": {
+    "title": "אנחנו בדיוק מחפשים שליחים כמוך",
+    "subtitle": "צריך רק להגיש מועמדות, להתחיל לדווש ולהרוויח!",
+    "cta": "להגשת מועמדות",
+    "image": "/careers/couriers/hero-photo.png"
+  },
+  "sections": [
+    {
+      "type": "figmaBand",
+      "id": "benefits",
+      "image": "/careers/couriers/benefits-section.png",
+      "width": 2732,
+      "height": 1266,
+      "ariaLabel": "ההחלטה שלך"
+    },
+    {
+      "type": "figmaBand",
+      "id": "unique",
+      "image": "/careers/couriers/unique-band.png",
+      "width": 2732,
+      "height": 1054,
+      "variant": "flush",
+      "ariaLabel": "מה יש לנו שאין לאחרים"
+    },
+    {
+      "type": "figmaBand",
+      "id": "why-join",
+      "image": "/careers/couriers/why-join-section.png",
+      "width": 2732,
+      "height": 1124,
+      "variant": "rounded-top",
+      "ariaLabel": "למה שווה לך להצטרף?"
+    },
+    {
+      "type": "figmaBand",
+      "id": "steps",
+      "image": "/careers/couriers/steps-section.png",
+      "width": 2732,
+      "height": 1308,
+      "variant": "rounded-top-black",
+      "ariaLabel": "נרשמים וקדימה לדרך!"
+    },
+    {
+      "type": "form",
+      "title": "רוצים להירשם?",
+      "subtitle": "בוחרים מתי לעבוד 24/7 בלי התחייבות למינימום משמרות בשבוע."
+    }
+  ]
+}

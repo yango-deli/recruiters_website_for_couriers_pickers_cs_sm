@@ -466,7 +466,7 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
             <Button
               type="submit"
               disabled={isSubmitting}
-              className="h-12 w-full cursor-pointer rounded-full bg-[#FFCC00] text-sm font-bold text-black transition-all hover:bg-[#E6B800] disabled:opacity-60"
+              className="wp-lead-form-submit h-12 w-full cursor-pointer rounded-full text-sm font-bold transition-all disabled:opacity-60"
             >
               {isSubmitting ? t("submitting") : t("submit")}
             </Button>

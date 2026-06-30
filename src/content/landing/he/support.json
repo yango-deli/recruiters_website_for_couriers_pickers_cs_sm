@@ -1,0 +1,49 @@
+{
+  "hero": {
+    "title": "אם שירות זה בדם שלך, אנחנו מחפשים בדיוק אותך",
+    "subtitle": "כל מה שצריך זה רק להגיש מועמדות ולהתחיל לעבוד!",
+    "cta": "להגשת מועמדות",
+    "image": "/careers/support/hero-photo.png"
+  },
+  "sections": [
+    {
+      "type": "figmaBand",
+      "id": "benefits",
+      "image": "/careers/support/benefits-section.png",
+      "width": 2732,
+      "height": 1266,
+      "ariaLabel": "מה מצפה לך?"
+    },
+    {
+      "type": "figmaBand",
+      "id": "why-join",
+      "image": "/careers/support/why-join-section.png",
+      "width": 2732,
+      "height": 1196,
+      "variant": "rounded-top",
+      "ariaLabel": "למה שווה לך להצטרף?"
+    },
+    {
+      "type": "figmaBand",
+      "id": "unique",
+      "image": "/careers/support/unique-band.png",
+      "width": 2732,
+      "height": 894,
+      "variant": "flush",
+      "ariaLabel": "מה יש לנו שאין לאחרים"
+    },
+    {
+      "type": "figmaBand",
+      "id": "steps",
+      "image": "/careers/support/steps-section.png",
+      "width": 2732,
+      "height": 1308,
+      "variant": "rounded-top-black",
+      "ariaLabel": "נרשמים וקדימה לדרך!"
+    },
+    {
+      "type": "form",
+      "title": "רוצים להתחיל לעבוד?"
+    }
+  ]
+}

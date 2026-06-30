@@ -25,7 +25,7 @@ Local mirror: `public/brand/` (sync via `scripts/sync-brand-from-yadisk.py`)
 | Logotype black SVG | `/logos/official/logotype-black.svg` |
 | Logotype white SVG | `/logos/official/logotype-white.svg` |
 | Yellow button logo | `/logos/official/logo-yellow-button.png` |
-| First screen reference | `/images/brand/first-screen.png` |
+| Font files (web) | `/fonts/yango-text/`, `/fonts/yango-headline/` — run `bash scripts/copy-brand-fonts.sh` after brand sync |
 | 3D bag render | `/images/brand/bag-3d.png` |
 | Icons (careers) | `/icons/*.svg` (from WP, still valid) |
 

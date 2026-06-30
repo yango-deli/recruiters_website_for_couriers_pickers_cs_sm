@@ -1,0 +1,2468 @@
+/* Figma careers landing — design tokens + section styles */
+
+.careers-site {
+  --figma-accent: #ffcc00;
+  --figma-accent-hover: #e6b800;
+  --figma-chrome-pill: var(--figma-accent);
+  --figma-chrome-pill-hover: var(--figma-accent-hover);
+  --figma-black: #000000;
+  --figma-section-black: #111111;
+  --figma-card-illus-bg: #ececec;
+  --figma-container: 71.25rem;
+  --figma-chrome-height: 4.25rem;
+  --figma-chrome-gap: 3.125rem;
+  --figma-hero-height: clamp(300px, 36vw, 435px);
+  --figma-card-radius: 1.25rem;
+  --figma-card-illus-min-h: 14.5rem;
+  --figma-card-body-min-h: 12.5rem;
+  --figma-card-overlap: -2.5rem;
+  background: #ffffff;
+  color: var(--figma-black);
+  font-family: "Yango Text", sans-serif;
+}
+
+.careers-site::after {
+  display: none !important;
+}
+
+.careers-main {
+  padding-top: var(--figma-chrome-gap);
+}
+
+.careers-container {
+  width: 100%;
+  max-width: var(--figma-container);
+  margin-inline: auto;
+  padding-inline: 1rem;
+}
+
+.careers-section-title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+/* ── Hero ── */
+.careers-hero {
+  scroll-margin-top: calc(var(--figma-chrome-height) + var(--figma-chrome-gap));
+}
+
+.careers-hero__container {
+  padding-block: 0;
+}
+
+.careers-hero__inner {
+  display: flex;
+  flex-direction: column-reverse;
+  align-items: stretch;
+  gap: 1.5rem;
+  min-height: var(--figma-hero-height);
+  border-radius: var(--figma-card-radius);
+  background-color: var(--figma-accent);
+  overflow: hidden;
+}
+
+.careers-hero__copy {
+  flex: 1 1 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.5rem;
+  text-align: center;
+}
+
+.careers-hero__media {
+  flex: 1 1 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 12rem;
+  overflow: hidden;
+}
+
+.careers-hero__image {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  max-height: var(--figma-hero-height);
+  object-fit: contain;
+}
+
+.careers-hero__title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.875rem, 4.5vw, 3rem);
+  line-height: 1.1;
+}
+
+.careers-hero__title .wp-hero-sub {
+  display: block;
+  font-family: "Yango Text", sans-serif;
+  font-weight: 400;
+  font-size: clamp(1rem, 2.2vw, 1.375rem);
+  line-height: 1.35;
+  margin-top: 0.75rem;
+}
+
+.careers-hero__subtitle {
+  font-family: "Yango Text", sans-serif;
+  font-weight: 400;
+  font-size: clamp(1.125rem, 2.2vw, 1.5rem);
+  line-height: 1.35;
+  margin-top: 1rem;
+}
+
+.careers-hero--couriers .careers-hero__subtitle {
+  font-size: clamp(0.875rem, 1.6vw, 1.125rem);
+}
+
+html[lang="ru"] .careers-hero__title {
+  font-size: clamp(1.625rem, 4vw, 2.75rem);
+}
+
+html[lang="ru"] .careers-hero__subtitle {
+  font-size: clamp(1rem, 2vw, 1.375rem);
+}
+
+.careers-hero__cta-wrap {
+  margin-top: 1.5rem;
+  display: flex;
+  justify-content: center;
+}
+
+.careers-hero__inner--centered .careers-hero__copy {
+  flex: 1 1 100%;
+  max-width: 100%;
+}
+
+.careers-hero__inner--centered .careers-hero__media {
+  display: none;
+}
+
+.careers-btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.625rem 1.5rem;
+  border-radius: 0.5rem;
+  background-color: var(--figma-black);
+  color: #ffffff;
+  font-family: "Yango Text", sans-serif;
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.careers-btn-primary:hover {
+  background-color: var(--figma-section-black);
+  color: #ffffff;
+}
+
+.careers-btn-primary:focus-visible {
+  outline: 2px solid var(--figma-accent);
+  outline-offset: 2px;
+}
+
+/* ── Benefits — grey illus top + yellow/black bottom (Template A) ── */
+.careers-benefits {
+  padding-block: 3rem;
+  background: #ffffff;
+}
+
+.careers-benefits__grid {
+  display: grid;
+  gap: 1.5rem;
+  align-items: stretch;
+}
+
+.careers-benefit-card {
+  display: flex;
+  flex-direction: column;
+  overflow: visible;
+}
+
+.careers-benefit-card__illus {
+  position: relative;
+  z-index: 0;
+  min-height: var(--figma-card-illus-min-h);
+  background: var(--figma-card-illus-bg);
+  border-radius: var(--figma-card-radius) var(--figma-card-radius) 0 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem 0.75rem;
+  overflow: hidden;
+}
+
+.careers-benefit-card__image {
+  width: auto !important;
+  height: auto !important;
+  max-width: min(96%, 20rem);
+  max-height: calc(var(--figma-card-illus-min-h) - 1rem);
+  min-width: 7.5rem;
+  object-fit: contain;
+}
+
+.careers-benefit-card__body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  min-height: var(--figma-card-body-min-h);
+  margin-top: var(--figma-card-overlap);
+  border-radius: var(--figma-card-radius);
+  padding: 1.5rem 1.25rem;
+  position: relative;
+  z-index: 2;
+}
+
+.careers-benefit-card__body--yellow {
+  background: var(--figma-accent);
+  color: var(--figma-black);
+}
+
+.careers-benefit-card__body--black {
+  background: var(--figma-black);
+  color: #ffffff;
+}
+
+.careers-benefit-card__body--grey {
+  background: var(--figma-card-illus-bg);
+  color: var(--figma-black);
+}
+
+.careers-benefit-card__title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.125rem, 2vw, 1.5rem);
+  line-height: 1.15;
+  margin-bottom: 0.5rem;
+  width: 100%;
+}
+
+.careers-benefit-card__text {
+  font-size: clamp(0.875rem, 1.6vw, 1rem);
+  line-height: 1.4;
+  width: 100%;
+}
+
+.careers-benefit-card__text section,
+.careers-benefit-card__text .lc-section,
+.careers-why-card__text section,
+.careers-why-card__text .lc-section,
+.careers-step-card__text section,
+.careers-step-card__text .lc-section {
+  display: contents;
+}
+
+.careers-benefit-card__body--black .careers-benefit-card__text strong,
+.careers-benefit-card__body--black .careers-benefit-card__text b {
+  color: #ffffff;
+}
+
+/* ── Unique — full yellow band, icon columns ── */
+.careers-unique {
+  padding-block: 3rem;
+  background: var(--figma-accent);
+}
+
+.careers-unique__grid {
+  display: grid;
+  gap: 2rem;
+  align-items: stretch;
+}
+
+.careers-unique-card {
+  text-align: center;
+  padding: 0 0.5rem;
+}
+
+.careers-unique-card__icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 4rem;
+  margin-bottom: 1rem;
+}
+
+.careers-unique-card__icon-img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 4.5rem;
+  max-height: 3.75rem;
+  object-fit: contain;
+}
+
+.careers-unique-card__title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1rem, 1.8vw, 1.25rem);
+  margin-bottom: 0.5rem;
+}
+
+.careers-unique-card__text {
+  font-size: clamp(0.875rem, 1.5vw, 1rem);
+  line-height: 1.4;
+}
+
+/* ── Why join ── */
+.careers-why-join {
+  padding-block: 3rem;
+  background: #ffffff;
+}
+
+.careers-why-join--standard {
+  background: var(--figma-accent);
+}
+
+.careers-why-join--courier {
+  background: #ffffff;
+}
+
+.careers-why-join__list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+}
+
+.careers-why-join__grid {
+  display: grid;
+  gap: 1.25rem;
+  align-items: stretch;
+}
+
+.careers-why-card {
+  border-radius: var(--figma-card-radius);
+  overflow: hidden;
+}
+
+.careers-why-card__inner {
+  display: flex;
+  flex-direction: column;
+  min-height: 12rem;
+  border-radius: var(--figma-card-radius);
+  overflow: hidden;
+}
+
+.careers-why-card--courier .careers-why-card__inner {
+  min-height: 14rem;
+}
+
+.careers-why-card--standard .careers-why-card__inner {
+  height: 100%;
+  background: transparent;
+}
+
+.careers-why-card--courier .careers-why-card__copy,
+.careers-why-card--courier .careers-why-card__media {
+  flex: 1 1 50%;
+  min-width: 0;
+}
+
+.careers-why-card__media {
+  flex: 1 1 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--figma-accent);
+  padding: 1.25rem;
+  min-height: 10rem;
+}
+
+.careers-why-card--standard .careers-why-card__media {
+  background: transparent;
+  min-height: 12rem;
+  padding: 1rem 1.25rem 1.25rem;
+}
+
+.careers-why-card__copy {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1.25rem 1.5rem;
+  text-align: start;
+  min-height: 10rem;
+}
+
+.careers-why-card--standard .careers-why-card__copy {
+  flex: 0 0 auto;
+  min-height: auto;
+  padding: 1.5rem 1.25rem;
+  text-align: center;
+  align-items: center;
+  border-radius: var(--figma-card-radius) var(--figma-card-radius) 0 0;
+}
+
+.careers-why-card--standard .careers-why-card__title {
+  text-transform: uppercase;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.careers-why-card--standard .careers-why-card__text {
+  font-size: clamp(0.8125rem, 1.4vw, 0.9375rem);
+}
+
+.careers-why-card--standard .careers-why-card__media {
+  flex: 1 1 auto;
+  min-height: 10rem;
+  align-items: flex-end;
+  padding: 0.75rem 1rem 1.25rem;
+}
+
+.careers-why-card__copy--grey {
+  background: var(--figma-card-illus-bg);
+  color: var(--figma-black);
+}
+
+.careers-why-card__copy--black {
+  background: var(--figma-black);
+  color: #ffffff;
+}
+
+.careers-why-card__copy--yellow {
+  background: var(--figma-accent);
+  color: var(--figma-black);
+}
+
+.careers-why-card__title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 700;
+  font-size: clamp(1.125rem, 2vw, 1.375rem);
+  margin-bottom: 0.75rem;
+}
+
+.careers-why-card__text {
+  font-size: clamp(0.875rem, 1.6vw, 1rem);
+  line-height: 1.4;
+}
+
+.careers-why-card__text a {
+  color: inherit;
+  text-decoration: underline;
+}
+
+.careers-why-card__image {
+  width: auto !important;
+  height: auto !important;
+  max-height: 12rem;
+  max-width: min(90%, 11rem);
+  object-fit: contain;
+}
+
+/* ── Registration steps (black band) ── */
+.careers-steps {
+  padding-block: 3rem;
+  background: #ffffff;
+}
+
+.careers-steps__band {
+  background: var(--figma-section-black);
+  border-radius: var(--figma-card-radius);
+  padding: 3rem 1.5rem;
+  color: #ffffff;
+}
+
+.careers-steps__title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(1.75rem, 4vw, 2.75rem);
+  line-height: 1.15;
+  text-align: center;
+  margin-bottom: 1rem;
+}
+
+.careers-steps__subtitle {
+  text-align: center;
+  font-size: clamp(0.9375rem, 1.8vw, 1.125rem);
+  line-height: 1.4;
+  margin-bottom: 2rem;
+  color: rgba(255, 255, 255, 0.92);
+}
+
+.careers-steps__grid {
+  display: grid;
+  gap: 1rem;
+  align-items: stretch;
+}
+
+.careers-step-card {
+  display: flex;
+  flex-direction: column;
+  flex: 1 1 0;
+  min-width: 0;
+  border-radius: var(--figma-card-radius);
+  overflow: hidden;
+}
+
+.careers-step-card__illus {
+  min-height: 9rem;
+  background: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  border-radius: var(--figma-card-radius) var(--figma-card-radius) 0 0;
+}
+
+.careers-step-card__image {
+  width: auto !important;
+  height: auto !important;
+  max-width: min(90%, 10rem);
+  max-height: 7.5rem;
+  object-fit: contain;
+}
+
+.careers-step-card__body {
+  flex: 1 1 auto;
+  background: var(--figma-accent);
+  color: var(--figma-black);
+  padding: 1rem 1.25rem 1.25rem;
+  border-radius: 0 0 var(--figma-card-radius) var(--figma-card-radius);
+  text-align: start;
+}
+
+.careers-step-card__number {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: 2rem;
+  line-height: 1;
+}
+
+.careers-step-card__text {
+  margin-top: 0.5rem;
+  font-size: clamp(0.875rem, 1.6vw, 1rem);
+  line-height: 1.4;
+}
+
+/* ── Form — white section per Figma ── */
+.careers-form-section {
+  background: #ffffff;
+  scroll-margin-top: calc(var(--figma-chrome-height) + 1rem);
+  padding-block: 3rem;
+}
+
+.careers-form-section .wp-lead-form-mount {
+  width: 100%;
+  max-width: 461px;
+  min-height: 12rem;
+  margin-inline: auto;
+  scroll-margin-top: calc(var(--figma-chrome-height) + 1rem);
+}
+
+.careers-form-section .wp-lead-form {
+  width: 100%;
+  max-width: 461px;
+  margin-inline: auto;
+  padding: 0;
+  font-family: "Yango Text", sans-serif;
+  color: var(--figma-black);
+}
+
+.careers-form-section .wp-lead-form-fields {
+  width: 100%;
+}
+
+.careers-form-section .wp-lead-form label {
+  color: var(--figma-black);
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.5;
+  font-family: "Yango Text", sans-serif;
+}
+
+.careers-form-section .wp-lead-form,
+.careers-form-section .wp-lead-form input,
+.careers-form-section .wp-lead-form select,
+.careers-form-section .wp-lead-form button,
+.careers-form-section .wp-lead-form label {
+  font-family: "Yango Text", sans-serif !important;
+  font-size: 1rem !important;
+}
+
+.careers-form-section .wp-lead-form input,
+.careers-form-section .wp-lead-form select {
+  min-height: 2.75rem;
+  color: #000000;
+}
+
+.careers-form-section .wp-lead-form input::placeholder {
+  color: rgba(0, 0, 0, 0.5);
+}
+
+.careers-form-section .wp-lead-form [role="checkbox"] + label,
+.careers-form-section .wp-lead-form label:has([role="checkbox"]) {
+  font-size: 0.875rem !important;
+  line-height: 1.625;
+}
+
+.careers-form-section .wp-lead-form button[type="submit"] {
+  background-color: var(--figma-accent) !important;
+  color: var(--figma-black) !important;
+  min-height: 2.75rem;
+  font-weight: 700;
+}
+
+.careers-form-section .wp-lead-form .text-destructive,
+.careers-form-section .wp-lead-form [class*="text-destructive"] {
+  font-size: 0.875rem;
+  color: #c41230 !important;
+}
+
+/* ── Chrome ── */
+.careers-chrome {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(255, 255, 255, 0.95);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  backdrop-filter: blur(8px);
+}
+
+.careers-chrome > .careers-container:first-child {
+  height: var(--figma-chrome-height);
+}
+
+.careers-chrome-pill {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.25rem;
+  padding: 0.4rem 1rem;
+  border-radius: 0.625rem;
+  border: 1px solid transparent;
+  background: var(--figma-accent);
+  color: var(--figma-black);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  transition: background-color 0.2s, box-shadow 0.2s;
+}
+
+.careers-chrome-pill:hover {
+  background: var(--figma-accent-hover);
+}
+
+.careers-chrome-pill--active {
+  background: var(--figma-black);
+  color: #ffffff;
+}
+
+.careers-chrome-pill--active:hover {
+  background: var(--figma-black);
+  opacity: 0.92;
+}
+
+.careers-role-tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  justify-content: center;
+  padding: 1rem 0 0;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+}
+
+.careers-role-tab {
+  padding: 0.75rem 1.25rem;
+  font-weight: 700;
+  font-size: 0.9375rem;
+  border: none;
+  background: transparent;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  color: rgba(0, 0, 0, 0.55);
+  transition: color 0.2s, border-color 0.2s;
+}
+
+.careers-role-tab:hover {
+  color: var(--figma-black);
+}
+
+.careers-role-tab--active {
+  color: var(--figma-black);
+  border-bottom-color: var(--figma-black);
+}
+
+.careers-role-tab:focus-visible {
+  outline: 2px solid var(--figma-accent);
+  outline-offset: 2px;
+}
+
+.careers-site--couriers .careers-chrome--couriers-hub {
+  background: rgba(255, 255, 255, 0.95);
+}
+
+/* Figma role-page chrome (nodes 2:25197 + 2:25208) */
+.careers-chrome--figma-role {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: transparent;
+  border: none;
+  backdrop-filter: none;
+}
+
+.careers-chrome__menu {
+  background: #ffffff;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+  padding-inline: 1rem;
+}
+
+.careers-chrome__menu-inner {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  direction: ltr;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  width: 100%;
+  max-width: 85.375rem;
+  margin-inline: auto;
+  min-height: 5.3125rem;
+}
+
+.careers-chrome__nav {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  gap: 0.25rem;
+  min-width: 0;
+  overflow-x: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  padding-inline: 0;
+}
+
+.careers-chrome__nav::-webkit-scrollbar {
+  display: none;
+}
+
+.careers-chrome-pill--nav {
+  flex-shrink: 0;
+  min-height: 2rem;
+  padding: 0.35rem 0.75rem;
+  font-size: 0.75rem;
+  text-decoration: none;
+}
+
+.careers-chrome--figma-role .careers-chrome-pill--crm {
+  font-family: Inter, "Yango Text", sans-serif;
+  font-weight: 500;
+  font-size: 0.875rem;
+  line-height: 1.25rem;
+  border: none;
+  border-radius: 0.75rem;
+  min-height: 2.5rem;
+  padding: 0.625rem 0.75rem;
+  background: transparent;
+  color: rgba(15, 17, 21, 0.55);
+}
+
+.careers-chrome--figma-role .careers-chrome-pill--crm.careers-chrome-pill--active {
+  background: #ffcc00;
+  color: #0f1115;
+  box-shadow: 0 8px 24px rgba(255, 204, 0, 0.35);
+}
+
+.careers-chrome--figma-role .careers-chrome-pill--crm:not(.careers-chrome-pill--active):hover {
+  background: #f5f5f7;
+  color: #0f1115;
+}
+
+.careers-chrome--figma-role .careers-chrome-pill--crm:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #ffcc00;
+}
+
+@media (max-width: 639px) {
+  .careers-chrome__menu {
+    padding-block: 0;
+  }
+
+  .careers-chrome__menu-inner {
+    grid-template-columns: 1fr;
+    grid-template-rows: auto auto;
+    row-gap: 0.625rem;
+    min-height: 0;
+    padding-block: 0.75rem;
+  }
+
+  .careers-chrome__logo {
+    grid-column: 1;
+    grid-row: 1;
+    justify-self: end;
+  }
+
+  .careers-chrome__logo-img {
+    height: 2.25rem;
+    max-width: 8.75rem;
+  }
+
+  .careers-chrome__nav {
+    grid-column: 1;
+    grid-row: 2;
+    justify-content: flex-start;
+    padding-inline: 0;
+  }
+}
+
+@media (min-width: 640px) {
+  .careers-chrome-pill--nav:not(.careers-chrome-pill--crm) {
+    min-height: 2.25rem;
+    padding: 0.4rem 1rem;
+    font-size: 0.8125rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .careers-chrome__menu {
+    padding-inline: 2.5rem;
+  }
+
+  .careers-chrome__menu-inner {
+    gap: 1rem;
+  }
+
+  .careers-chrome__nav {
+    gap: 0.5rem;
+  }
+
+  .careers-chrome__logo-img {
+    height: 3rem;
+    max-width: 12.5rem;
+  }
+}
+
+.careers-chrome__apply-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.4375rem;
+  padding: 0.9375rem 1.25rem;
+  border: 2px solid #111111;
+  border-radius: 0.625rem;
+  background: #111111;
+  color: #f5f5f5;
+  font-family: "Yango Text", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.5625rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.careers-chrome__apply-cta:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.careers-chrome__apply-cta:focus-visible {
+  outline: 2px solid #fede47;
+  outline-offset: 2px;
+}
+
+.careers-chrome__logo {
+  display: inline-flex;
+  align-items: center;
+  border-radius: 0.25rem;
+}
+
+.careers-chrome__logo:focus-visible {
+  outline: 2px solid #fede47;
+  outline-offset: 2px;
+}
+
+.careers-site--couriers .careers-main {
+  padding-top: 0;
+}
+
+.careers-site--couriers:has(.careers-chrome--figma-role) {
+  --figma-chrome-gap: 0;
+}
+
+/* Couriers Figma canvas — 1366px artboard */
+.careers-site--couriers-figma {
+  background: #ffffff;
+}
+
+.careers-site--couriers-figma .careers-main {
+  width: 100%;
+  max-width: 85.375rem;
+  margin-inline: auto;
+}
+
+.careers-site--pickers-figma .careers-main,
+.careers-site--support-figma .careers-main {
+  width: 100%;
+  max-width: 85.375rem;
+  margin-inline: auto;
+}
+
+.careers-site--pickers {
+  --figma-accent: #ffcc00;
+  --figma-accent-hover: #e6b800;
+  --figma-chrome-pill: #fede47;
+  --figma-chrome-pill-hover: #e6c800;
+}
+
+.careers-site--pickers-figma {
+  background: #ffffff;
+}
+
+.careers-site--pickers .careers-main {
+  padding-top: 0;
+}
+
+.careers-site--pickers:has(.careers-chrome--figma-role) {
+  --figma-chrome-gap: 0;
+}
+
+.careers-site--pickers-figma .careers-footer--figma {
+  max-width: 85.375rem;
+  margin-inline: auto;
+}
+
+.careers-site--support {
+  --figma-accent: #ffcc00;
+  --figma-accent-hover: #e6b800;
+  --figma-chrome-pill: #fede47;
+  --figma-chrome-pill-hover: #e6c800;
+}
+
+.careers-site--support-figma {
+  background: #ffffff;
+}
+
+.careers-site--support .careers-main {
+  padding-top: 0;
+}
+
+.careers-site--support:has(.careers-chrome--figma-role) {
+  --figma-chrome-gap: 0;
+}
+
+.careers-site--support-figma .careers-footer--figma {
+  max-width: 85.375rem;
+  margin-inline: auto;
+}
+
+/* Hero — Figma 2:51 (support) */
+.careers-hero--support {
+  scroll-margin-top: 5.3125rem;
+}
+
+.careers-hero--support .careers-hero__figma-panel {
+  background: #fede47;
+}
+
+.careers-hero--support .careers-hero__figma-cta:focus-visible {
+  outline: 2px solid #fede47;
+}
+
+.careers-hero__figma-photo-img--support {
+  object-position: 42% top;
+}
+
+/* Hero — Figma 2:23052 (pickers) */
+.careers-hero--pickers {
+  scroll-margin-top: 5.3125rem;
+}
+
+.careers-hero--pickers .careers-hero__figma-panel {
+  background: #fede47;
+}
+
+.careers-hero--pickers .careers-hero__figma-cta:focus-visible {
+  outline: 2px solid #fede47;
+}
+
+.careers-hero__figma-photo-img--pickers {
+  object-position: 50% top;
+}
+
+/* Hero — Figma 2:25219 (couriers) */
+.careers-hero--couriers {
+  scroll-margin-top: 5.3125rem;
+}
+
+.careers-hero__figma {
+  display: flex;
+  flex-direction: row;
+  direction: ltr;
+  justify-content: flex-start;
+  align-items: stretch;
+  width: 100%;
+  min-height: 35.375rem;
+  overflow: visible;
+}
+
+.careers-hero__figma-photo {
+  position: relative;
+  flex: 0 0 37.625rem;
+  width: 37.625rem;
+  max-width: 44.36%;
+  height: 35.375rem;
+  margin-inline-end: -1.25rem;
+  z-index: 1;
+  overflow: hidden;
+  border-start-start-radius: 1.25rem;
+  border-end-start-radius: 1.25rem;
+}
+
+.careers-hero__figma-photo-frame {
+  position: relative;
+  width: 100%;
+  height: 100%;
+}
+
+.careers-hero__figma-photo-img {
+  object-fit: cover;
+  object-position: 62% top;
+}
+
+.careers-hero__figma-arrows {
+  position: absolute;
+  inset-inline-start: 2.5rem;
+  bottom: 2.5rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  pointer-events: none;
+}
+
+.careers-hero__figma-arrow--circle {
+  transform: rotate(-90deg);
+}
+
+.careers-hero__figma-panel {
+  position: relative;
+  z-index: 2;
+  flex: 1 1 48.75rem;
+  min-width: 0;
+  height: 35.375rem;
+  padding: 2.5rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: stretch;
+  direction: rtl;
+  background: #fede47;
+  border-start-start-radius: 1.25rem;
+  border-end-start-radius: 1.25rem;
+  overflow: visible;
+}
+
+.careers-hero__figma-title-wrap {
+  width: 100%;
+  display: flex;
+  justify-content: flex-start;
+}
+
+.careers-hero__figma-title {
+  margin: 0;
+  width: 100%;
+  max-width: 43.75rem;
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.25rem, 5.86vw, 5rem);
+  line-height: 0.84;
+  letter-spacing: 0.01em;
+  color: #111111;
+  text-align: start;
+  overflow-wrap: break-word;
+  word-break: normal;
+}
+
+.careers-hero__figma-bottom {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  align-self: flex-start;
+  gap: 2.5rem;
+  width: 100%;
+  max-width: 29.625rem;
+}
+
+.careers-hero__figma-subtitle {
+  margin: 0;
+  width: 100%;
+  font-family: "Yango Text", sans-serif;
+  font-size: clamp(1.125rem, 2.05vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.21;
+  letter-spacing: -0.02em;
+  color: #111111;
+  text-align: start;
+  overflow-wrap: break-word;
+}
+
+.careers-hero__figma-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 19.0625rem;
+  max-width: 100%;
+  min-height: 4.0625rem;
+  padding: 1.25rem 1.875rem;
+  border: 2px solid #111111;
+  border-radius: 0.625rem;
+  background: #111111;
+  color: #f5f5f5;
+  font-family: "Yango Text", sans-serif;
+  font-size: 1.125rem;
+  font-weight: 500;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease;
+}
+
+.careers-hero__figma-cta:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.careers-hero__figma-cta:focus-visible {
+  outline: 2px solid #fede47;
+  outline-offset: 2px;
+}
+
+.careers-chrome__logo-img {
+  width: auto;
+  height: 3.125rem;
+  max-width: 15.625rem;
+}
+
+/* Figma band sections — full artboard slices @2x */
+.careers-figma-band {
+  width: 100%;
+  line-height: 0;
+}
+
+.careers-figma-band__img {
+  display: block;
+  width: 100%;
+  height: auto !important;
+}
+
+.careers-figma-band--flush {
+  margin-block: 0;
+}
+
+.careers-figma-band--rounded-top {
+  margin-block-start: 0;
+}
+
+.careers-figma-band--rounded-top-black {
+  margin-block-start: 0;
+}
+
+/* Form — Figma 2:25925 */
+.careers-form-section--couriers {
+  padding: 6.875rem 0 16.25rem;
+  background: #ffffff;
+  border-end-start-radius: 1.25rem;
+  border-end-end-radius: 1.25rem;
+}
+
+.careers-form-section__couriers-inner {
+  width: 100%;
+  max-width: 85.375rem;
+  margin-inline: auto;
+  padding-inline: 2.5rem;
+}
+
+.careers-form-section__header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 1.875rem;
+  margin-bottom: 3.75rem;
+  text-align: center;
+}
+
+.careers-form-section__title--couriers {
+  margin: 0;
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5.7vw, 4.875rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: #111111;
+}
+
+.careers-form-section__subtitle {
+  margin: 0;
+  max-width: 20.9375rem;
+  font-family: "Yango Text", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: #111111;
+}
+
+.careers-form-section--couriers .careers-form-section__mount {
+  width: 100%;
+  max-width: 29.9375rem;
+  margin-inline: auto;
+}
+
+.careers-form-section--couriers .wp-lead-form {
+  max-width: 29.9375rem;
+}
+
+.careers-form-section--couriers .wp-lead-form input,
+.careers-form-section--couriers .wp-lead-form select {
+  min-height: 3.5rem;
+  border-radius: 0.5rem;
+  border-color: rgba(17, 17, 17, 0.2);
+}
+
+.careers-form-section--couriers .wp-lead-form button[type="submit"] {
+  width: 100%;
+  min-height: 3.5rem;
+  border-radius: 0.5rem;
+  background-color: #fede47 !important;
+  color: #111111 !important;
+  font-weight: 700;
+  font-size: 1.125rem !important;
+}
+
+/* Form — Figma 2:24016 (pickers) */
+.careers-form-section--pickers {
+  padding: 6.875rem 0 16.25rem;
+  background: #ffffff;
+  border-end-start-radius: 1.25rem;
+  border-end-end-radius: 1.25rem;
+}
+
+.careers-form-section__pickers-inner {
+  width: 100%;
+  max-width: 85.375rem;
+  margin-inline: auto;
+  padding-inline: 2.5rem;
+}
+
+.careers-form-section__title--pickers {
+  margin: 0;
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5.7vw, 4.875rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: #111111;
+}
+
+.careers-form-section--pickers .careers-form-section__mount {
+  width: 100%;
+  max-width: 29.9375rem;
+  margin-inline: auto;
+}
+
+.careers-form-section--pickers .wp-lead-form {
+  max-width: 29.9375rem;
+}
+
+.careers-form-section--pickers .wp-lead-form input,
+.careers-form-section--pickers .wp-lead-form select {
+  min-height: 3.5rem;
+  border-radius: 0.5rem;
+  border-color: rgba(17, 17, 17, 0.2);
+}
+
+.careers-form-section--pickers .wp-lead-form button[type="submit"] {
+  width: 100%;
+  min-height: 3.5rem;
+  border-radius: 0.5rem;
+  background-color: #ffcc00 !important;
+  color: #111111 !important;
+  font-weight: 700;
+  font-size: 1.125rem !important;
+}
+
+/* Form — Figma 2:1002 (support) */
+.careers-form-section--support {
+  padding: 6.875rem 0 16.25rem;
+  background: #ffffff;
+  border-end-start-radius: 1.25rem;
+  border-end-end-radius: 1.25rem;
+}
+
+.careers-form-section__support-inner {
+  width: 100%;
+  max-width: 85.375rem;
+  margin-inline: auto;
+  padding-inline: 2.5rem;
+}
+
+.careers-form-section__title--support {
+  margin: 0;
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5.7vw, 4.875rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  color: #111111;
+}
+
+.careers-form-section--support .careers-form-section__mount {
+  width: 100%;
+  max-width: 29.9375rem;
+  margin-inline: auto;
+}
+
+.careers-form-section--support .wp-lead-form {
+  max-width: 29.9375rem;
+}
+
+.careers-form-section--support .wp-lead-form input,
+.careers-form-section--support .wp-lead-form select {
+  min-height: 3.5rem;
+  border-radius: 0.5rem;
+  border-color: rgba(17, 17, 17, 0.2);
+}
+
+.careers-form-section--support .wp-lead-form button[type="submit"] {
+  width: 100%;
+  min-height: 3.5rem;
+  border-radius: 0.5rem;
+  background-color: #ffcc00 !important;
+  color: #111111 !important;
+  font-weight: 700;
+  font-size: 1.125rem !important;
+}
+
+.careers-site--couriers-figma .careers-footer--figma {
+  max-width: 85.375rem;
+  margin-inline: auto;
+}
+
+@media (max-width: 1023px) {
+  .careers-hero__figma {
+    flex-direction: column-reverse;
+    min-height: auto;
+    direction: ltr;
+  }
+
+  .careers-hero__figma-photo {
+    flex: none;
+    width: 100%;
+    max-width: none;
+    height: 15rem;
+    margin-inline-end: 0;
+    z-index: 1;
+    border-radius: 0;
+  }
+
+  .careers-hero__figma-panel {
+    position: relative;
+    z-index: 2;
+    flex: none;
+    width: 100%;
+    height: auto;
+    min-height: 0;
+    margin-block-end: -0.9375rem;
+    padding: 1.875rem;
+    gap: 3.125rem;
+    justify-content: flex-start;
+    align-items: stretch;
+    border-radius: 0 0 0.9375rem 0.9375rem;
+    border-start-start-radius: 0;
+    border-end-start-radius: 0;
+  }
+
+  .careers-hero__figma-title-wrap {
+    width: 100%;
+  }
+
+  .careers-hero__figma-title {
+    font-size: clamp(2.25rem, 12.8vw, 3rem);
+    line-height: 0.96;
+    max-width: 19.6875rem;
+  }
+
+  .careers-hero__figma-subtitle {
+    display: none;
+  }
+
+  .careers-hero--pickers .careers-hero__figma-subtitle {
+    display: block;
+    font-size: clamp(1.125rem, 4.5vw, 1.75rem);
+    line-height: 1.21;
+  }
+
+  .careers-hero--support .careers-hero__figma-subtitle {
+    display: block;
+    font-size: clamp(1rem, 4vw, 1.5rem);
+    line-height: 1.21;
+  }
+
+  .careers-hero--support .careers-hero__figma-title {
+    font-size: clamp(1.75rem, 10vw, 2.5rem);
+    line-height: 0.96;
+    max-width: 100%;
+  }
+
+  .careers-hero--pickers .careers-hero__figma-bottom {
+    gap: 1.5625rem;
+  }
+
+  .careers-hero--support .careers-hero__figma-bottom {
+    gap: 1.5625rem;
+  }
+
+  .careers-hero__figma-bottom {
+    gap: 0;
+    max-width: none;
+    width: 100%;
+    align-self: stretch;
+    align-items: stretch;
+  }
+
+  .careers-hero__figma-cta {
+    width: 100%;
+    max-width: none;
+    min-height: 3.4375rem;
+    padding: 0.9375rem 1.25rem;
+  }
+
+  .careers-form-section--couriers {
+    padding: 3rem 0 6rem;
+  }
+
+  .careers-form-section--pickers {
+    padding: 3rem 0 6rem;
+  }
+
+  .careers-form-section--support {
+    padding: 3rem 0 6rem;
+  }
+
+  .careers-form-section__couriers-inner {
+    padding-inline: 1rem;
+  }
+
+  .careers-form-section__pickers-inner {
+    padding-inline: 1rem;
+  }
+
+  .careers-form-section__support-inner {
+    padding-inline: 1rem;
+  }
+}
+
+@media (min-width: 1024px) and (max-width: 1365px) {
+  .careers-hero__figma-title {
+    font-size: clamp(3rem, 5.86vw, 5rem);
+  }
+
+  .careers-hero__figma-subtitle {
+    font-size: clamp(1.25rem, 2.05vw, 1.75rem);
+  }
+}
+
+/* ── Couriers — legacy overrides (hub / pickers fallback) ── */
+.careers-site--couriers {
+  --figma-accent: #fede47;
+  --figma-accent-hover: #e6c800;
+  --figma-chrome-pill: #fede47;
+  --figma-chrome-pill-hover: #e6c800;
+  --figma-hero-height: clamp(20rem, 41.4vw, 35.375rem);
+  --figma-card-illus-bg: #f5f5f5;
+  --figma-card-body-min-h: 15.0625rem;
+  --figma-card-overlap: -3.75rem;
+}
+
+.careers-hero--couriers .careers-hero__container--full {
+  width: 100%;
+  max-width: none;
+  margin-inline: 0;
+  padding-inline: 0;
+}
+
+.careers-hero--couriers .careers-hero__inner--couriers {
+  display: flex;
+  flex-direction: row;
+  direction: ltr;
+  justify-content: flex-end;
+  align-items: stretch;
+  width: 100%;
+  min-height: 35.375rem;
+  height: 35.375rem;
+  max-height: 35.375rem;
+  overflow: visible;
+  border-radius: 0;
+  background: transparent;
+  gap: 0;
+  margin-inline-end: -1.25rem;
+}
+
+.careers-hero--couriers .careers-hero__media--couriers {
+  position: relative;
+  flex: 0 0 44.4%;
+  max-width: 37.625rem;
+  width: 37.625rem;
+  height: 100%;
+  min-height: 0;
+  padding: 0;
+  overflow: hidden;
+  background: #ffffff;
+}
+
+.careers-hero__float-icons {
+  position: absolute;
+  inset-inline-start: 2.5rem;
+  bottom: 2.5rem;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  gap: 0.625rem;
+  pointer-events: none;
+}
+
+.careers-hero__float-icon--circle {
+  transform: rotate(-90deg);
+}
+
+.careers-hero--couriers .careers-hero__image--couriers {
+  position: absolute;
+  inset-block: 0;
+  inset-inline-start: -29.21%;
+  width: 140%;
+  max-width: none;
+  height: 100%;
+  object-fit: cover;
+  object-position: center top;
+}
+
+.careers-hero--couriers .careers-hero__copy--couriers {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: space-between;
+  height: 100%;
+  max-width: none;
+  padding: 2.5rem;
+  text-align: end;
+  direction: rtl;
+  background: #fede47;
+  border-start-start-radius: 1.25rem;
+  border-end-start-radius: 1.25rem;
+}
+
+.careers-hero__title--couriers {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5.86vw, 5rem);
+  line-height: 1.05;
+  letter-spacing: 0.01em;
+  color: #111111;
+  max-width: 43.75rem;
+  margin: 0;
+}
+
+.careers-hero__subtitle--couriers {
+  font-family: "Yango Text", sans-serif;
+  font-size: clamp(1.125rem, 2.05vw, 1.75rem);
+  font-weight: 700;
+  line-height: 1.21;
+  letter-spacing: -0.02em;
+  color: #111111;
+  max-width: 29.625rem;
+  margin: 0;
+}
+
+.careers-hero__cta-wrap--couriers {
+  margin-top: 2.5rem;
+  justify-content: flex-end;
+  width: 100%;
+}
+
+.careers-btn-primary--couriers {
+  width: 19.0625rem;
+  max-width: 100%;
+  min-height: 4.0625rem;
+  padding: 1.25rem 1.875rem;
+  border-radius: 0.625rem;
+  border: 2px solid #111111;
+  background: #111111;
+  color: #f5f5f5;
+  font-size: 1.125rem;
+  font-weight: 500;
+}
+
+.careers-benefits--couriers .careers-benefit-card__body {
+  align-items: center;
+  text-align: center;
+}
+
+.careers-benefits--couriers .careers-benefit-card__body--black {
+  background: var(--figma-section-black);
+}
+
+.careers-benefits--couriers .careers-benefit-card__illus {
+  overflow: visible;
+  min-height: calc(var(--figma-card-illus-min-h) + 0.25rem);
+  padding-block: 1rem;
+  background: var(--figma-card-illus-bg);
+}
+
+.careers-benefits--couriers .careers-benefit-card__image--coins {
+  max-width: min(92%, 16rem);
+  max-height: calc(var(--figma-card-illus-min-h) - 0.5rem);
+  min-width: 5rem;
+}
+
+.careers-why-join--courier .careers-why-card__inner {
+  border-radius: var(--figma-card-radius);
+}
+
+.careers-why-join--courier .careers-why-card__copy {
+  padding: 1.5rem;
+}
+
+.careers-why-join--courier .careers-why-card__media {
+  padding: 1.5rem;
+}
+
+.careers-why-join--courier .careers-why-card__image {
+  max-width: min(90%, 12rem);
+  max-height: 11rem;
+}
+
+.careers-steps--couriers {
+  padding-block: 0;
+  background: var(--figma-accent);
+}
+
+.careers-steps--couriers > .careers-container {
+  max-width: var(--figma-container);
+  padding-inline: 1rem;
+}
+
+.careers-steps--couriers .careers-steps__band {
+  background: transparent;
+  color: var(--figma-section-black);
+  border-radius: 0;
+  padding: 3.5rem 2.5rem;
+  margin-inline: -1rem;
+  width: calc(100% + 2rem);
+}
+
+.careers-steps--couriers .careers-steps__title {
+  color: var(--figma-section-black);
+}
+
+.careers-steps--couriers .careers-steps__subtitle {
+  color: rgba(17, 17, 17, 0.88);
+}
+
+.careers-steps--couriers .careers-steps__grid {
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 1.25rem;
+}
+
+.careers-steps--couriers .careers-step-card {
+  background: #f5f5f5;
+  border-radius: 1.145rem;
+}
+
+.careers-steps--couriers .careers-step-card__illus {
+  background: transparent;
+  min-height: 7.5rem;
+  padding-block: 1.25rem 0.5rem;
+  border-radius: 0;
+}
+
+.careers-steps--couriers .careers-step-card__body {
+  background: transparent;
+  color: var(--figma-section-black);
+  border-radius: 0;
+  padding-block: 0.5rem 1.25rem;
+}
+
+.careers-steps--couriers .careers-step-card__number {
+  font-size: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+.careers-footer--couriers {
+  background: #f5f5f5;
+  color: var(--figma-section-black);
+}
+
+.careers-footer--couriers .careers-footer__cta {
+  background: var(--figma-section-black);
+  color: #f5f5f5;
+}
+
+.careers-footer--couriers .careers-footer__cta:hover {
+  background: #000000;
+  color: #ffffff;
+}
+
+.careers-footer--couriers .careers-footer__link {
+  color: var(--figma-section-black);
+}
+
+.careers-footer--couriers .careers-footer__link:hover {
+  color: #000000;
+}
+
+.careers-footer--couriers .careers-footer__copyright {
+  color: rgba(17, 17, 17, 0.72);
+}
+
+/* ── Careers footer (Figma — no app store) ── */
+.careers-footer {
+  background: var(--figma-black);
+  color: #ffffff;
+  padding-block: 2.5rem;
+}
+
+.careers-footer__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 2rem;
+}
+
+.careers-footer__cta-wrap {
+  display: flex;
+  justify-content: center;
+}
+
+.careers-footer__cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.625rem 1.75rem;
+  border-radius: 9999px;
+  background: var(--figma-accent);
+  color: var(--figma-black);
+  font-weight: 700;
+  font-size: 1rem;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.careers-footer__cta:hover {
+  background: var(--figma-accent-hover);
+}
+
+.careers-footer__cta:focus-visible {
+  outline: 2px solid #ffffff;
+  outline-offset: 2px;
+}
+
+.careers-footer__meta {
+  display: grid;
+  gap: 1rem;
+  text-align: center;
+  align-items: center;
+}
+
+.careers-footer__copyright {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.careers-footer__link {
+  font-size: 0.875rem;
+  color: rgba(255, 255, 255, 0.9);
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.careers-footer__link:hover {
+  color: var(--figma-accent);
+}
+
+.careers-footer__link:focus-visible {
+  outline: 2px solid var(--figma-accent);
+  outline-offset: 2px;
+}
+
+.careers-footer__logo {
+  display: flex;
+  justify-content: center;
+  margin-inline: auto;
+}
+
+.careers-footer__logo:focus-visible {
+  outline: 2px solid var(--figma-accent);
+  outline-offset: 4px;
+  border-radius: 0.25rem;
+}
+
+/* ── Floating actions ── */
+.careers-floating-actions {
+  position: fixed;
+  inset-inline-start: 1rem;
+  bottom: 1.5rem;
+  z-index: 90;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.careers-floating-actions__btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 3rem;
+  height: 3rem;
+  border-radius: 9999px;
+  border: none;
+  cursor: pointer;
+  text-decoration: none;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.18);
+  transition: transform 0.2s ease, opacity 0.2s ease, background-color 0.2s ease;
+}
+
+.careers-floating-actions__btn:focus-visible {
+  outline: 2px solid var(--figma-accent);
+  outline-offset: 2px;
+}
+
+.careers-floating-actions__btn--whatsapp {
+  background: #25d366;
+  color: #ffffff;
+}
+
+.careers-floating-actions__btn--whatsapp:hover {
+  background: #1ebe57;
+}
+
+.careers-floating-actions__btn--top {
+  background: var(--figma-black);
+  color: #ffffff;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(0.5rem);
+}
+
+.careers-floating-actions__btn--top.careers-floating-actions__btn--visible {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+.careers-floating-actions__btn--top:hover {
+  background: var(--figma-section-black);
+}
+
+@media (min-width: 768px) {
+  .careers-footer__meta {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    text-align: start;
+  }
+
+  .careers-footer__logo {
+    justify-content: end;
+    margin-inline: 0;
+    grid-column: 2;
+    grid-row-start: 1;
+    grid-row-end: span 2;
+  }
+}
+
+@media (min-width: 1024px) {
+  .careers-footer__meta {
+    grid-template-columns: 1.2fr 1fr 1fr auto;
+    align-items: center;
+  }
+
+  .careers-footer__logo {
+    grid-column: auto;
+    grid-row: auto;
+  }
+}
+
+/* ── Responsive ── */
+@media (max-width: 767px) {
+  .careers-site {
+    --figma-hero-height: auto;
+    --figma-card-illus-min-h: 12.5rem;
+    --figma-card-overlap: -1.5rem;
+  }
+
+  .careers-site--couriers {
+    --figma-hero-height: auto;
+  }
+
+  .careers-hero--couriers .careers-hero__inner {
+    height: auto;
+    max-height: none;
+    min-height: auto;
+    flex-direction: column-reverse;
+  }
+
+  .careers-hero--couriers .careers-hero__copy,
+  .careers-hero--couriers .careers-hero__media {
+    flex: 1 1 auto;
+    max-width: 100%;
+  }
+
+  .careers-hero--couriers .careers-hero__copy {
+    border-radius: 0;
+    padding: 1.5rem 1rem;
+  }
+
+  .careers-hero--couriers .careers-btn-primary {
+    min-width: 0;
+    width: 100%;
+    max-width: 18.9375rem;
+  }
+
+  .careers-hero--couriers .careers-hero__media {
+    min-height: 14rem;
+    align-items: center;
+  }
+
+  .careers-hero--couriers .careers-hero__image {
+    max-height: clamp(200px, 52vw, 320px);
+  }
+
+  .careers-hero__figma-photo-img {
+    object-position: 55% 20%;
+  }
+
+  .careers-hero__figma-arrows {
+    inset-inline-start: 1.25rem;
+    bottom: 1rem;
+  }
+
+  .careers-hero__figma-arrow,
+  .careers-hero__figma-arrow--circle {
+    width: 3.25rem;
+    height: 3.25rem;
+  }
+
+  .careers-floating-actions {
+    inset-inline-start: 0.75rem;
+    bottom: 1rem;
+  }
+
+  .careers-hero__inner {
+    flex-direction: column-reverse;
+    min-height: auto;
+  }
+
+  .careers-hero__copy {
+    text-align: center;
+  }
+
+  .careers-hero__cta-wrap {
+    justify-content: center;
+  }
+
+  .careers-benefit-card__image {
+    max-height: calc(var(--figma-card-illus-min-h) - 1.5rem);
+  }
+
+  .careers-why-card--courier .careers-why-card__inner,
+  .careers-why-card--courier .careers-why-card__inner--image-end {
+    flex-direction: column;
+  }
+
+  .careers-form-section .wp-lead-form-mount,
+  .careers-form-section .wp-lead-form {
+    padding-inline: 0.5rem;
+  }
+}
+
+@media (min-width: 768px) {
+  .careers-benefits__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .careers-unique__grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .careers-why-join__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .careers-steps__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .careers-hero__copy {
+    text-align: start;
+  }
+
+  .careers-hero--couriers .careers-hero__copy {
+    text-align: center;
+    align-items: center;
+  }
+
+  .careers-hero__inner--centered .careers-hero__copy {
+    text-align: center;
+  }
+
+  .careers-hero__cta-wrap {
+    justify-content: flex-start;
+  }
+
+  .careers-hero--couriers .careers-hero__cta-wrap {
+    justify-content: center;
+  }
+
+  .careers-hero__inner--centered .careers-hero__cta-wrap {
+    justify-content: center;
+  }
+
+  html[dir="rtl"] .careers-hero__inner:not(.careers-hero__inner--centered) {
+    flex-direction: row-reverse;
+  }
+
+  html[dir="ltr"] .careers-hero__inner:not(.careers-hero__inner--centered) {
+    flex-direction: row;
+  }
+
+  /* Figma: image left, yellow copy right (same visual in HE/EN) */
+  html[dir="rtl"] .careers-hero--couriers .careers-hero__inner {
+    flex-direction: row;
+  }
+
+  html[dir="ltr"] .careers-hero--couriers .careers-hero__inner {
+    flex-direction: row-reverse;
+  }
+
+  .careers-hero--couriers .careers-hero__copy {
+    text-align: center;
+    align-items: center;
+  }
+
+  .careers-hero--couriers .careers-hero__cta-wrap {
+    justify-content: center;
+  }
+
+  .careers-steps--couriers .careers-steps__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .careers-steps--couriers .careers-steps__band {
+    border-radius: 0;
+    margin-inline: -1rem;
+    width: calc(100% + 2rem);
+    padding: 2.5rem 1rem;
+  }
+
+  .careers-why-card--courier .careers-why-card__inner {
+    flex-direction: row;
+    min-height: 14rem;
+    overflow: hidden;
+  }
+
+  .careers-why-card--courier .careers-why-card__copy,
+  .careers-why-card--courier .careers-why-card__media {
+    flex: 1 1 50%;
+    max-width: 50%;
+    min-width: 0;
+  }
+
+  .careers-why-card--courier .careers-why-card__inner--image-end {
+    flex-direction: row-reverse;
+  }
+}
+
+@media (min-width: 1024px) {
+  .careers-unique__grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .careers-unique__grid:has(.careers-unique-card:nth-child(5):last-child) {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .careers-steps--couriers .careers-steps__band {
+    padding: 3rem 1.5rem;
+  }
+
+  .careers-steps--couriers .careers-steps__grid {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+/* ── Figma MCP composite sections (couriers HE desktop) ── */
+.careers-container--figma {
+  max-width: 85.375rem;
+  padding-inline: 2.5rem;
+}
+
+.careers-section-title--figma-end {
+  text-align: end;
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5.7vw, 4.875rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  margin-bottom: 2.5rem;
+}
+
+.careers-section-title--figma-center {
+  text-align: center;
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5.7vw, 4.875rem);
+  line-height: 1.1;
+  letter-spacing: 0.01em;
+  margin-bottom: 2.5rem;
+}
+
+.careers-figma-composite {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.25rem;
+  justify-content: center;
+}
+
+.careers-figma-composite__card {
+  width: 100%;
+  max-width: 25.9375rem;
+  height: auto !important;
+}
+
+.careers-benefits--figma {
+  padding-block: 3.5rem 4rem;
+  background: #ffffff;
+}
+
+.careers-benefits__figma-grid {
+  gap: 1.25rem;
+}
+
+.careers-unique--figma {
+  padding-block: 3.5rem 2.5rem;
+  background: #fede47;
+}
+
+.careers-unique__grid--figma {
+  gap: 1.25rem;
+}
+
+.careers-unique--figma .careers-unique-card {
+  text-align: center;
+  max-width: 13.375rem;
+  margin-inline: auto;
+}
+
+.careers-unique--figma .careers-unique-card__title {
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: 1.25rem;
+  line-height: 1.2;
+  margin-bottom: 0.75rem;
+}
+
+.careers-unique--figma .careers-unique-card__text {
+  font-size: 1rem;
+  line-height: 1.25;
+  letter-spacing: -0.02em;
+}
+
+.careers-unique__footnote {
+  margin-top: 2rem;
+  text-align: center;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgba(17, 17, 17, 0.72);
+}
+
+.careers-why-join--figma {
+  padding: 0;
+  background: #fede47;
+}
+
+.careers-why-join__figma-shell {
+  padding-block: 0 3.5rem;
+}
+
+.careers-why-join__figma-title {
+  background: #ffffff;
+  border-radius: 1.25rem 1.25rem 0 0;
+  padding: 4.5rem 2.5rem 2.5rem;
+  margin-bottom: 0;
+}
+
+.careers-why-join__figma-grid {
+  padding: 2.5rem 2.5rem 0;
+  gap: 2rem;
+}
+
+.careers-steps--figma {
+  padding-block: 0;
+  background: transparent;
+}
+
+.careers-steps__figma-band {
+  background: #111111;
+  border-radius: 1.25rem 1.25rem 0 0;
+  padding: 4.375rem 2.5rem 3rem;
+  color: #f5f5f5;
+}
+
+.careers-steps__title--figma {
+  text-align: end;
+  font-family: "Yango Headline", "Yango Text", sans-serif;
+  font-weight: 900;
+  font-size: clamp(2.5rem, 5.7vw, 4.875rem);
+  line-height: 1.1;
+  color: #f5f5f5;
+  margin-bottom: 1.875rem;
+}
+
+.careers-steps__subtitle--figma {
+  text-align: end;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  color: #f5f5f5;
+  margin-bottom: 2.5rem;
+  max-width: 74.9375rem;
+}
+
+.careers-steps__figma-grid {
+  gap: 1.6875rem;
+}
+
+.careers-steps__figma-grid .careers-figma-composite__card {
+  max-width: 18.8125rem;
+}
+
+.careers-footer--figma {
+  padding: 0;
+  background: #f5f5f5;
+  color: #111111;
+}
+
+.careers-footer__figma-shell {
+  padding: 0;
+}
+
+.careers-footer__figma-panel {
+  position: relative;
+  display: grid;
+  gap: 2rem;
+  background: #111111;
+  border-radius: 1.25rem 1.25rem 0 0;
+  padding: 2.5rem;
+  color: #f5f5f5;
+  min-height: 16rem;
+}
+
+.careers-footer__figma-copy {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 1.25rem;
+  max-width: 46.375rem;
+}
+
+.careers-footer__figma-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 3.8125rem;
+  padding: 1.25rem 1.5625rem;
+  border-radius: 0.625rem;
+  background: #f5f5f5;
+  color: #111111;
+  font-weight: 500;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.careers-footer__figma-cta:hover {
+  background: #ffffff;
+}
+
+.careers-footer__figma-cta:focus-visible {
+  outline: 2px solid #fede47;
+  outline-offset: 2px;
+}
+
+.careers-footer__figma-disclaimer {
+  font-size: 1.125rem;
+  line-height: 1.4;
+  letter-spacing: -0.02em;
+  opacity: 0.4;
+  text-align: end;
+}
+
+.careers-footer__figma-legal {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.875rem;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 1.125rem;
+  line-height: 1.4;
+  opacity: 0.4;
+}
+
+.careers-footer__figma-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.careers-footer__figma-link:hover {
+  opacity: 1;
+}
+
+.careers-footer__figma-logo {
+  position: absolute;
+  inset-inline-end: 0.2rem;
+  top: 4.125rem;
+  width: min(36.25rem, 45vw);
+  pointer-events: none;
+}
+
+.careers-footer__figma-logo-img {
+  width: 100%;
+  height: auto !important;
+}
+
+@media (min-width: 1024px) {
+  .careers-unique__grid--figma {
+    grid-template-columns: repeat(5, minmax(0, 1fr));
+  }
+
+  .careers-footer__figma-panel {
+    grid-template-columns: minmax(0, 1fr) auto;
+    align-items: start;
+  }
+}
+
+@media (max-width: 767px) {
+  .careers-container--figma {
+    padding-inline: 1rem;
+  }
+
+  .careers-why-join__figma-title {
+    padding: 2.5rem 1rem 1.5rem;
+  }
+
+  .careers-why-join__figma-grid,
+  .careers-steps__figma-band {
+    padding-inline: 1rem;
+  }
+
+  .careers-footer__figma-panel {
+    padding: 1.5rem 1rem 2rem;
+  }
+
+  .careers-footer__figma-logo {
+    position: static;
+    width: 100%;
+    margin-top: 1rem;
+  }
+}
+
+/* ── Button motion: scroll reveal + hover/active ── */
+.careers-site--couriers-figma .careers-form-section,
+.careers-site--pickers-figma .careers-form-section,
+.careers-site--support-figma .careers-form-section {
+  scroll-margin-top: 5.3125rem;
+}
+
+.careers-site--motion {
+  --careers-btn-ease: cubic-bezier(0.22, 1, 0.36, 1);
+  --careers-btn-duration: 0.22s;
+}
+
+.careers-site .careers-chrome-pill,
+.careers-site .careers-hero__figma-cta,
+.careers-site .careers-footer__figma-cta,
+.careers-site .careers-btn-primary,
+.careers-site .careers-form-section .wp-lead-form button[type="submit"] {
+  transition:
+    transform var(--careers-btn-duration, 0.22s) var(--careers-btn-ease, ease),
+    box-shadow var(--careers-btn-duration, 0.22s) var(--careers-btn-ease, ease),
+    background-color 0.2s ease,
+    color 0.2s ease,
+    border-color 0.2s ease,
+    opacity 0.45s var(--careers-btn-ease, ease);
+  will-change: transform;
+}
+
+@media (hover: hover) {
+  .careers-site .careers-chrome-pill:not(.careers-chrome-pill--crm):not(.careers-chrome-pill--active):hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.375rem 0.875rem rgba(17, 17, 17, 0.14);
+  }
+
+  .careers-site .careers-chrome-pill:not(.careers-chrome-pill--crm).careers-chrome-pill--active:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 0.25rem 0.625rem rgba(17, 17, 17, 0.28);
+  }
+
+  .careers-chrome--figma-role .careers-chrome-pill--crm:not(.careers-chrome-pill--active):hover {
+    transform: none;
+    box-shadow: none;
+  }
+
+  .careers-chrome--figma-role .careers-chrome-pill--crm.careers-chrome-pill--active:hover {
+    transform: translateY(-1px);
+    background: #e6b800;
+    box-shadow: 0 8px 24px rgba(255, 204, 0, 0.45);
+  }
+
+  .careers-site .careers-hero__figma-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.625rem 1.375rem rgba(17, 17, 17, 0.28);
+    background: #000000;
+    color: #ffffff;
+  }
+
+  .careers-site .careers-footer__figma-cta:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.35);
+    background: #ffffff;
+  }
+
+  .careers-site .careers-btn-primary:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(17, 17, 17, 0.2);
+  }
+
+  .careers-site .careers-form-section .wp-lead-form button[type="submit"]:hover:not(:disabled) {
+    transform: translateY(-2px);
+    box-shadow: 0 0.5rem 1rem rgba(17, 17, 17, 0.18);
+    filter: brightness(0.97);
+  }
+}
+
+.careers-site .careers-chrome-pill:active,
+.careers-site .careers-hero__figma-cta:active,
+.careers-site .careers-footer__figma-cta:active,
+.careers-site .careers-btn-primary:active,
+.careers-site .careers-form-section .wp-lead-form button[type="submit"]:active:not(:disabled) {
+  transform: translateY(0);
+  box-shadow: 0 0.125rem 0.375rem rgba(17, 17, 17, 0.12);
+  transition-duration: 0.1s;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .careers-site--motion .careers-btn--reveal:not(.careers-btn--visible) {
+    opacity: 0;
+    transform: translateY(1rem);
+  }
+
+  .careers-site--motion .careers-btn--visible {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
