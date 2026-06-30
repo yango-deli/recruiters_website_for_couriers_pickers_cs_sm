@@ -99,6 +99,7 @@ function SectionBlock({
           image={section.image}
           width={section.width}
           height={section.height}
+          role={role}
           variant={section.variant}
           ariaLabel={section.ariaLabel}
         />

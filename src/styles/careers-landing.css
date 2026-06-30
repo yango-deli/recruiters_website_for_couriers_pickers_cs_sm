@@ -1150,6 +1150,53 @@ html[lang="ru"] .careers-hero__subtitle {
   height: auto !important;
 }
 
+.careers-figma-band__img--mobile {
+  display: none;
+}
+
+/* Mobile Figma artboards (375px) — nodes 2:25980 / 2:24213 / 2:3006 */
+.careers-hero__figma-mobile {
+  display: none;
+  position: relative;
+  width: 100%;
+  line-height: 0;
+}
+
+.careers-hero__figma-mobile-img {
+  display: block;
+  width: 100%;
+  height: auto !important;
+}
+
+.careers-hero__figma-mobile-sr {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border: 0;
+}
+
+.careers-hero__figma-mobile-cta {
+  position: absolute;
+  inset-inline: 8%;
+  top: 31%;
+  height: 11.5%;
+  border-radius: 0.625rem;
+  font-size: 0;
+  color: transparent;
+  background: transparent;
+  text-decoration: none;
+}
+
+.careers-hero__figma-mobile-cta:focus-visible {
+  outline: 2px solid #ffcc00;
+  outline-offset: 2px;
+}
+
 .careers-figma-band--flush {
   margin-block: 0;
 }
@@ -2347,6 +2394,71 @@ html[lang="ru"] .careers-hero__subtitle {
 }
 
 @media (max-width: 767px) {
+  .careers-site--couriers-figma .careers-main,
+  .careers-site--pickers-figma .careers-main,
+  .careers-site--support-figma .careers-main {
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .careers-site--pickers-figma .careers-footer--figma,
+  .careers-site--support-figma .careers-footer--figma,
+  .careers-site--couriers-figma .careers-footer--figma {
+    max-width: none;
+    margin-inline: 0;
+  }
+
+  .careers-figma-band__img--desktop {
+    display: none;
+  }
+
+  .careers-figma-band__img--mobile {
+    display: block;
+  }
+
+  .careers-hero__figma-desktop {
+    display: none;
+  }
+
+  .careers-hero__figma-mobile {
+    display: block;
+  }
+
+  .careers-hero--support .careers-hero__figma-mobile-cta {
+    top: 28%;
+    height: 9.5%;
+  }
+
+  .careers-form-section--couriers,
+  .careers-form-section--pickers,
+  .careers-form-section--support {
+    padding: 2.5rem 1rem 4rem;
+    border-radius: 0;
+  }
+
+  .careers-form-section__couriers-inner,
+  .careers-form-section__pickers-inner,
+  .careers-form-section__support-inner {
+    padding-inline: 0;
+  }
+
+  .careers-form-section__header {
+    gap: 1rem;
+    margin-bottom: 2rem;
+  }
+
+  .careers-form-section__title--couriers,
+  .careers-form-section__title--pickers,
+  .careers-form-section__title--support {
+    font-size: clamp(2rem, 10.5vw, 2.75rem);
+    line-height: 1.05;
+  }
+
+  .careers-form-section__subtitle {
+    font-size: 1.125rem;
+    max-width: 19.6875rem;
+  }
+
   .careers-container--figma {
     padding-inline: 1rem;
   }
