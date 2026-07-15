@@ -6,13 +6,29 @@ export type SubmitLeadResult =
 
 export async function submitLead(
   data: LeadFormData,
-  locale?: string
+  locale?: string,
+  cvFile?: File | null
 ): Promise<SubmitLeadResult> {
-  const response = await fetch("/api/submit-lead", {
-    method: "POST",
-    headers: { "Content-Type": "application/json" },
-    body: JSON.stringify({ ...data, locale }),
-  });
+  let response: Response;
+
+  if (cvFile) {
+    // Multipart carries the CV alongside the lead fields (browser → API route).
+    const form = new FormData();
+    const payload: Record<string, unknown> = { ...data, locale };
+    for (const [key, value] of Object.entries(payload)) {
+      if (value === undefined || value === null) continue;
+      form.append(key, typeof value === "boolean" ? String(value) : String(value));
+    }
+    form.append("cv", cvFile);
+    // Let the browser set the multipart boundary — do not set Content-Type.
+    response = await fetch("/api/submit-lead", { method: "POST", body: form });
+  } else {
+    response = await fetch("/api/submit-lead", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ...data, locale }),
+    });
+  }
 
   let payload: { ok?: boolean; error?: string; code?: string; delivered?: { crm?: boolean; telegram?: boolean } } = {};
   try {

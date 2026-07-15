@@ -2,15 +2,20 @@
 
 import { zodResolver } from "@hookform/resolvers/zod";
 import { AnimatePresence, motion } from "framer-motion";
-import { Bike, Car, Phone, User } from "lucide-react";
+import { Bike, Car, FileText, Phone, Upload, User, X } from "lucide-react";
 import { useLocale, useTranslations } from "next-intl";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { FormField } from "@/components/forms/FormField";
 import { ROLE_FORM_FIELDS, VEHICLE_OPTIONS } from "@/lib/forms/form-fields";
+import {
+  CV_ACCEPT_EXTENSIONS,
+  validateCvFile,
+  type CvValidationError,
+} from "@/lib/forms/cv";
 import { leadFormSchema, type LeadFormData } from "@/lib/forms/schema";
 import { submitLead } from "@/lib/forms/submitLead";
-import { resolveTargetSelection, targetOptionValue, withFallbackTargets, fallbackTargetLabel, type HiringTarget, type HiringTargetsResponse } from "@/lib/hiring-targets";
+import { resolveTargetSelection, targetOptionValue, withFallbackTargets, fallbackTargetLabel, pickersFormCityTargets, type HiringTarget, type HiringTargetsResponse } from "@/lib/hiring-targets";
 import type { Role } from "@/types/role";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -32,6 +37,7 @@ const roleBadgeClass: Record<Role, string> = {
   pickers: "from-brand-accent/30 to-brand-accent/15 text-brand-primary",
   couriers: "from-brand-accent/25 to-brand-accent/10 text-brand-primary",
   support: "from-brand-surface-elevated to-brand-surface text-brand-text",
+  "service-rep": "from-brand-surface-elevated to-brand-surface text-brand-text",
   manager: "from-brand-accent/40 to-brand-accent-dark/20 text-brand-primary",
 };
 
@@ -52,6 +58,9 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
   const [locationType, setLocationType] = useState<"store" | "city">("city");
   const [selectedTarget, setSelectedTarget] = useState("");
   const [locationError, setLocationError] = useState(false);
+  const [cvFile, setCvFile] = useState<File | null>(null);
+  const [cvError, setCvError] = useState<CvValidationError | null>(null);
+  const cvInputRef = useRef<HTMLInputElement>(null);
 
   const fields = ROLE_FORM_FIELDS[role];
 
@@ -91,11 +100,47 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
     });
     setSelectedTarget("");
     setLocationError(false);
+    setCvFile(null);
+    setCvError(null);
+    if (cvInputRef.current) cvInputRef.current.value = "";
   }, [role, reset]);
+
+  const resetCv = () => {
+    setCvFile(null);
+    setCvError(null);
+    if (cvInputRef.current) cvInputRef.current.value = "";
+  };
+
+  const handleCvChange = (file: File | null) => {
+    if (!file) {
+      resetCv();
+      return;
+    }
+    const error = validateCvFile(file);
+    if (error) {
+      setCvError(error);
+      setCvFile(null);
+      if (cvInputRef.current) cvInputRef.current.value = "";
+      return;
+    }
+    setCvError(null);
+    setCvFile(file);
+  };
 
   useEffect(() => {
     let cancelled = false;
     setTargetsLoading(true);
+
+    // Pickers form always uses the fixed city list from the מלקט דף brief.
+    if (role === "pickers") {
+      setTargets(pickersFormCityTargets());
+      setLocationType("city");
+      setTargetsLoading(false);
+      return () => {
+        cancelled = true;
+      };
+    }
+
     fetch(`/api/hiring-targets?role=${encodeURIComponent(role)}`)
       .then((res) => (res.ok ? res.json() : null))
       .then((data: HiringTargetsResponse | null) => {
@@ -144,7 +189,7 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
       return;
     }
 
-    const result = await submitLead({ ...data, role }, locale);
+    const result = await submitLead({ ...data, role }, locale, cvFile);
     if (result.success) {
       setSuccessOpen(true);
       reset({
@@ -153,6 +198,7 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
         privacyConsent: false,
         company: "",
       });
+      resetCv();
     } else {
       setSubmitError(true);
     }
@@ -160,7 +206,7 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
 
   const onInvalid = () => {
     const firstInvalid = document.querySelector<HTMLElement>(
-      "#ageConsent[aria-invalid='true'], #privacyConsent[aria-invalid='true'], [role='alert'].text-destructive"
+      "[aria-invalid='true'], #ageConsent[aria-invalid='true'], #privacyConsent[aria-invalid='true'], [role='alert']"
     );
     firstInvalid?.scrollIntoView({ behavior: "smooth", block: "center" });
   };
@@ -316,6 +362,60 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
             </select>
           </FormField>
 
+          <FormField
+            id="cv"
+            label={t("cv")}
+            error={
+              cvError
+                ? t(cvError === "size" ? "validation.cvSize" : "validation.cvType")
+                : undefined
+            }
+            delay={(fieldDelay += 0.04)}
+          >
+            <div className="space-y-2">
+              {cvFile ? (
+                <div className="flex items-center gap-3 rounded-xl border border-brand-border/80 bg-brand-surface/50 px-4 py-3">
+                  <FileText
+                    className="size-5 shrink-0 text-brand-primary"
+                    aria-hidden
+                  />
+                  <span className="min-w-0 flex-1 truncate text-sm font-medium text-brand-text">
+                    {cvFile.name}
+                  </span>
+                  <button
+                    type="button"
+                    onClick={resetCv}
+                    className="inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-brand-surface hover:text-brand-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50"
+                    aria-label={t("cvRemove")}
+                  >
+                    <X className="size-4" aria-hidden />
+                  </button>
+                </div>
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => cvInputRef.current?.click()}
+                  className={cn(
+                    fieldInputClass,
+                    "flex w-full cursor-pointer items-center gap-3 text-start text-muted-foreground hover:border-brand-accent/60"
+                  )}
+                >
+                  <Upload className="size-4 shrink-0 text-brand-primary" aria-hidden />
+                  <span className="truncate text-sm">{t("cvHint")}</span>
+                </button>
+              )}
+              <input
+                id="cv"
+                ref={cvInputRef}
+                type="file"
+                accept={CV_ACCEPT_EXTENSIONS}
+                className="sr-only"
+                onChange={(e) => handleCvChange(e.target.files?.[0] ?? null)}
+                aria-invalid={!!cvError}
+              />
+            </div>
+          </FormField>
+
           {fields.includes("vehicle") && (
             <input type="hidden" {...register("vehicle")} />
           )}
@@ -443,7 +543,18 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
                 )}
               />
               <Label htmlFor="privacyConsent" className="leading-relaxed font-normal">
-                {t("privacyConsent")}
+                {t.rich("privacyConsent", {
+                  privacyLink: (chunks) => (
+                    <a
+                      href={t("privacyUrl")}
+                      target="_blank"
+                      rel="noopener noreferrer"
+                      className="underline underline-offset-2 text-brand-primary hover:opacity-80"
+                    >
+                      {chunks}
+                    </a>
+                  ),
+                })}
                 <span className="ms-1 text-destructive" aria-hidden>
                   *
                 </span>

@@ -32,4 +32,5 @@ export const FIGMA_MOBILE_HERO_HEIGHT: Record<string, number> = {
   couriers: 482,
   pickers: 482,
   support: 581,
+  "service-rep": 581,
 };
