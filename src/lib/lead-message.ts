@@ -6,6 +6,7 @@ const ROLE_LABELS: Record<Role, string> = {
   couriers: "Курьеры",
   pickers: "Сборщики",
   support: "Поддержка",
+  "service-rep": "Оператор поддержки",
   manager: "Менеджер смены",
 };
 

@@ -10,6 +10,7 @@
       "pickers": "מלקטים",
       "couriers": "שליחים",
       "support": "שירות לקוחות",
+      "service-rep": "נציג שירות",
       "manager": "אחראי משמרת"
     }
   },
@@ -34,8 +35,12 @@
     "taxRegistered": "האם יש לך תיק ברשויות המס?",
     "taxYes": "כן",
     "taxNo": "לא",
+    "cv": "קורות חיים (לא חובה)",
+    "cvHint": "צרפו קובץ PDF, DOC או DOCX (עד 4MB)",
+    "cvRemove": "הסרת הקובץ",
     "ageConsent": "מאשר/ת שאני מעל 18",
-    "privacyConsent": "לחיצה על \"שליחה\" מאשר/ת שקראתי והבנתי את מדיניות הפרטיות שלנו ושהיא מאושרת מבחינתי",
+    "privacyConsent": "לחיצה על \"שליחה\" מאשר/ת שקראתי והבנתי את <privacyLink>מדיניות הפרטיות</privacyLink> שלנו ושהיא מאושרת מבחינתי",
+    "privacyUrl": "https://deli.yango.com/he-il/131/about/docs/legal/confidential",
     "submit": "שליחה",
     "submitting": "שולח...",
     "successTitle": "המועמדות נשלחה בהצלחה!",
@@ -50,6 +55,8 @@
       "location": "נא לבחור מיקום",
       "vehicle": "נא לבחור כלי רכב",
       "taxRegistered": "נא לבחור תשובה",
+      "cvType": "סוג קובץ לא נתמך. העלו PDF, DOC או DOCX",
+      "cvSize": "הקובץ גדול מדי (עד 4MB)",
       "ageConsent": "יש לאשר גיל 18 ומעלה",
       "privacyConsent": "יש לאשר את מדיניות הפרטיות"
     }

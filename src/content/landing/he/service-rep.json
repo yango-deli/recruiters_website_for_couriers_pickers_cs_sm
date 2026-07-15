@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "title": "יש לך תודעת שירות גבוהה ויחסי אנוש מעולים? אנחנו מחפשים אותך.",
+    "subtitle": "כל מה שצריך זה רק להגיש מועמדות!",
+    "cta": "להגשת מועמדות",
+    "image": "/careers/service-rep/hero-photo.png"
+  },
+  "sections": [
+    {
+      "type": "benefits",
+      "title": "מה מצפה לך?",
+      "items": [
+        {
+          "title": "שירות לקוחות",
+          "descriptionHtml": "<p>מתן מענה ללקוחות, שליחים וחנויות באמצעות צ'אטים ושיחות יוצאות</p>",
+          "image": "/wp-assets/uploads/2026/02/wait-for-the-call.svg",
+          "panelVariant": "yellow"
+        },
+        {
+          "title": "משמרות גמישות",
+          "descriptionHtml": "<p>משרה חלקית במשמרות בוקר וערב, כולל סופי שבוע, שמתאימה לשילוב עם לימודים או חיים אישיים.</p>",
+          "image": "/wp-assets/uploads/2026/02/Flexible-shifts.svg",
+          "panelVariant": "black"
+        },
+        {
+          "title": "עבודה מהבית",
+          "descriptionHtml": "<p>בלי לבזבז זמן על נסיעות ופקקים.</p>",
+          "image": "/wp-assets/uploads/2026/02/young-team.svg",
+          "panelVariant": "yellow"
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "title": "הצטרפו לצוות שלנו",
+      "subtitle": "הגישו מועמדות ונחזור אליכם בהקדם עם כל הפרטים"
+    }
+  ]
+}

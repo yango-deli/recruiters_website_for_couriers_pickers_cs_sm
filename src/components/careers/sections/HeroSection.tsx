@@ -217,7 +217,7 @@ export function HeroSection({ hero, role, centered = false }: HeroSectionProps) 
     return <PickersHero hero={hero} role={role} />;
   }
 
-  if (role === "support") {
+  if (role === "support" || role === "service-rep") {
     return <SupportHero hero={hero} role={role} />;
   }
 

@@ -13,7 +13,7 @@ export function FormSection({ title, subtitle, role }: FormSectionProps) {
   const anchorId = formAnchorId(role);
   const isCouriers = role === "couriers";
   const isPickers = role === "pickers";
-  const isSupport = role === "support";
+  const isSupport = role === "support" || role === "service-rep";
   const isFigmaForm = isCouriers || isPickers || isSupport;
 
   return (

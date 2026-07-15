@@ -105,7 +105,7 @@ export function CareersFooter({ role }: CareersFooterProps) {
     );
   }
 
-  if (role === "support") {
+  if (role === "support" || role === "service-rep") {
     return (
       <footer className="careers-footer careers-footer--support careers-footer--figma">
         <div className="careers-footer__figma-shell">

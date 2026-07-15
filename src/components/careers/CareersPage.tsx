@@ -130,7 +130,8 @@ export function CareersPage({
     "careers-site min-h-full",
     activeRole === "couriers" && "careers-site--couriers careers-site--couriers-figma",
     activeRole === "pickers" && "careers-site--pickers careers-site--pickers-figma",
-    activeRole === "support" && "careers-site--support careers-site--support-figma"
+    (activeRole === "support" || activeRole === "service-rep") &&
+      "careers-site--support careers-site--support-figma"
   );
 
   return (

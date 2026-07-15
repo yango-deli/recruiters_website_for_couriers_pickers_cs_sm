@@ -27,7 +27,7 @@ export type WpManifest = {
 
 export const wpManifest = manifest as WpManifest;
 
-export const ROLE_SLUGS = ["couriers", "pickers", "support", "manager"] as const;
+export const ROLE_SLUGS = ["couriers", "pickers", "support", "service-rep", "manager"] as const;
 export type RoleSlug = (typeof ROLE_SLUGS)[number];
 
 export function isRoleSlug(value: string): value is RoleSlug {
