@@ -1,49 +1,38 @@
 {
   "hero": {
-    "title": "אם שירות זה בדם שלך, אנחנו מחפשים בדיוק אותך",
-    "subtitle": "כל מה שצריך זה רק להגיש מועמדות ולהתחיל לעבוד!",
+    "title": "אם יש לך ניסיון בשירות לקוחות והגיע זמן לצעד הבא - זו ההזדמנות שלך",
+    "subtitle": "אנחנו מחפשים אחראי/ת משמרת לצוות שירות לקוחות. כל מה שצריך זה רק להגיש מועמדות!",
     "cta": "להגשת מועמדות",
     "image": "/careers/support/hero-photo.png"
   },
   "sections": [
     {
-      "type": "figmaBand",
-      "id": "benefits",
-      "image": "/careers/support/benefits-section.png",
-      "width": 2732,
-      "height": 1266,
-      "ariaLabel": "מה מצפה לך?"
-    },
-    {
-      "type": "figmaBand",
-      "id": "why-join",
-      "image": "/careers/support/why-join-section.png",
-      "width": 2732,
-      "height": 1196,
-      "variant": "rounded-top",
-      "ariaLabel": "למה שווה לך להצטרף?"
-    },
-    {
-      "type": "figmaBand",
-      "id": "unique",
-      "image": "/careers/support/unique-band.png",
-      "width": 2732,
-      "height": 894,
-      "variant": "flush",
-      "ariaLabel": "מה יש לנו שאין לאחרים"
-    },
-    {
-      "type": "figmaBand",
-      "id": "steps",
-      "image": "/careers/support/steps-section.png",
-      "width": 2732,
-      "height": 1308,
-      "variant": "rounded-top-black",
-      "ariaLabel": "נרשמים וקדימה לדרך!"
+      "type": "benefits",
+      "title": "מה מצפה לך?",
+      "items": [
+        {
+          "title": "ניהול צוות של נציגי שירות לקוחות",
+          "descriptionHtml": "<p>שיפור וייעול תהליכי עבודה<br/>שמירה על סטנדרטים גבוהים ועמידה ביעדים</p>",
+          "image": "/wp-assets/uploads/2026/02/wait-for-the-call.svg",
+          "panelVariant": "yellow"
+        },
+        {
+          "title": "משרה מלאה",
+          "descriptionHtml": "<p>עבודה במשרדי החברה במרכז תל אביב (עם אפשרות להיברידיות)</p>",
+          "image": "/wp-assets/uploads/2026/02/Flexible-shifts.svg",
+          "panelVariant": "black"
+        },
+        {
+          "title": "שכר מעולה ובונוסים מתגמלים",
+          "image": "/wp-assets/uploads/2026/02/young-team.svg",
+          "panelVariant": "yellow"
+        }
+      ]
     },
     {
       "type": "form",
-      "title": "רוצים להתחיל לעבוד?"
+      "title": "הצטרפו לצוות שלנו",
+      "subtitle": "הגישו מועמדות ונחזור אליכם בהקדם עם כל הפרטים"
     }
   ]
 }

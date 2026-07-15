@@ -1,50 +1,64 @@
 {
   "hero": {
-    "title": "אנחנו בדיוק מחפשים מלקטים כמוך",
+    "title": "בואו ללקט ולהרוויח",
     "subtitle": "כל מה שצריך זה רק להגיש מועמדות ולהתחיל לעבוד!",
     "cta": "להגשת מועמדות",
     "image": "/careers/pickers/hero-photo.png"
   },
   "sections": [
     {
-      "type": "figmaBand",
-      "id": "benefits",
-      "image": "/careers/pickers/benefits-section.png",
-      "width": 2732,
-      "height": 1266,
-      "ariaLabel": "מה מצפה לך?"
+      "type": "benefits",
+      "title": "מה מצפה לך?",
+      "items": [
+        {
+          "title": "ליקוט הזמנות",
+          "descriptionHtml": "<p><b>איתור וליקוט מוצרים בחנות, הכנת הזמנות למשלוח וסידור סחורה</b></p>",
+          "image": "/wp-assets/uploads/2026/02/picking-orders.svg",
+          "panelVariant": "yellow"
+        },
+        {
+          "title": "עבודה במשמרות",
+          "descriptionHtml": "<p><b>עבודה במשמרות בוקר/ערב / גם בסופ״שים!</b></p>",
+          "image": "/wp-assets/uploads/2026/02/Flexible-shifts.svg",
+          "panelVariant": "black"
+        },
+        {
+          "title": "צוות צעיר ודינאמי",
+          "descriptionHtml": "<p><b>עבודה בצוות צעיר ואיכותי / מגיל 18 ומעלה</b></p>",
+          "image": "/wp-assets/uploads/2026/02/young-team.svg",
+          "panelVariant": "yellow"
+        }
+      ]
     },
     {
-      "type": "figmaBand",
-      "id": "why-join",
-      "image": "/careers/pickers/why-join-section.png",
-      "width": 2732,
-      "height": 1196,
-      "variant": "rounded-top",
-      "ariaLabel": "למה שווה לך להצטרף?"
-    },
-    {
-      "type": "figmaBand",
-      "id": "unique",
-      "image": "/careers/pickers/unique-band.png",
-      "width": 2732,
-      "height": 1054,
-      "variant": "flush",
-      "ariaLabel": "מה יש לנו שאין לאחרים"
-    },
-    {
-      "type": "figmaBand",
-      "id": "steps",
-      "image": "/careers/pickers/steps-section.png",
-      "width": 2732,
-      "height": 1308,
-      "variant": "rounded-top-black",
-      "ariaLabel": "נרשמים וקדימה לדרך!"
+      "type": "whyJoin",
+      "title": "למה שווה לך להצטרף?",
+      "variant": "courier",
+      "items": [
+        {
+          "title": "30% הנחה",
+          "descriptionHtml": "<p><b>הנחה קבועה על מגוון מוצרים באיסוף עצמי כמו: ארוחות מוכנות להפסקה במשמרת או קניות לבית בסוף היום.</b></p>",
+          "image": "/wp-assets/uploads/2026/02/Group-2087327956-1-1.png",
+          "panelVariant": "black"
+        },
+        {
+          "title": "בונוסים",
+          "descriptionHtml": "<p><b>אנחנו דואגים לתת בונוסים שמקפיצים את השכר כמו: בונוס ביצועים, חבר מביא חבר, ועוד</b></p>",
+          "image": "/wp-assets/uploads/2026/02/Group-2087327955-1.png",
+          "panelVariant": "black"
+        },
+        {
+          "title": "אפשרויות קידום",
+          "descriptionHtml": "<p><b>התפתחות האישית שלכם חשובה לנו, ולכן אנחנו מציעים מסלולי קידום פנימיים</b></p>",
+          "image": "/wp-assets/uploads/2026/02/Group-2087327983.png",
+          "panelVariant": "black"
+        }
+      ]
     },
     {
       "type": "form",
-      "title": "רוצים להתחיל לעבוד?",
-      "subtitle": "בוחרים 3-4 משמרות נוחות בשעות גמישות ומתחילים לעבוד"
+      "title": "הצטרפו לצוות שלנו",
+      "subtitle": "הגישו מועמדות ונחזור אליכם בהקדם עם כל הפרטים"
     }
   ]
 }

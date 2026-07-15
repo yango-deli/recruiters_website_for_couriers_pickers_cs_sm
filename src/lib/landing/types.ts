@@ -6,6 +6,7 @@ export type HeroContent = {
   subtitle: string;
   cta: string;
   image: string;
+  imageMobile?: string;
 };
 
 export type CardItem = {

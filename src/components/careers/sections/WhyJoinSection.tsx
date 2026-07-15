@@ -1,5 +1,7 @@
 import Image from "next/image";
 import type { CardItem } from "@/lib/landing/types";
+import type { Role } from "@/types/role";
+import { remoteLandingImageProps } from "@/lib/landing/image-props";
 import { FigmaCompositeGrid } from "./FigmaCompositeGrid";
 
 type WhyJoinSectionProps = {
@@ -7,15 +9,26 @@ type WhyJoinSectionProps = {
   items?: CardItem[];
   compositeCards?: string[];
   variant: "courier" | "standard";
+  role?: Role;
 };
+
+function courierCopyPanel(item: CardItem, role?: Role): "grey" | "black" | "yellow" {
+  if (role === "couriers") {
+    return "grey";
+  }
+  return item.panelVariant ?? "grey";
+}
 
 export function WhyJoinSection({
   title,
   items = [],
   compositeCards,
   variant,
+  role,
 }: WhyJoinSectionProps) {
   const isStandard = variant === "standard";
+  const isCouriersCourier = role === "couriers" && !isStandard && !compositeCards?.length;
+  const isPickersWhyJoin = role === "pickers" && !isStandard && !compositeCards?.length;
 
   if (compositeCards?.length) {
     return (
@@ -40,21 +53,44 @@ export function WhyJoinSection({
     );
   }
 
+  const sectionClass = [
+    "careers-why-join",
+    isStandard ? "careers-why-join--standard" : "careers-why-join--courier",
+    isCouriersCourier ? "careers-why-join--couriers" : "",
+    isPickersWhyJoin ? "careers-why-join--pickers" : "",
+  ]
+    .filter(Boolean)
+    .join(" ");
+
+  const listClass = isStandard
+    ? "careers-why-join__grid"
+    : "careers-why-join__list careers-why-join__list--courier";
+
   return (
-    <section
-      id="why-join"
-      className={`careers-why-join ${isStandard ? "careers-why-join--standard" : "careers-why-join--courier"}`}
-    >
-      <div className="careers-container">
-        <h2 className="careers-section-title">{title}</h2>
-        <div
+    <section id="why-join" className={sectionClass}>
+      <div
+        className={
+          isCouriersCourier || isPickersWhyJoin
+            ? "careers-container careers-container--figma"
+            : "careers-container"
+        }
+      >
+        <h2
           className={
-            isStandard ? "careers-why-join__grid" : "careers-why-join__list"
+            isCouriersCourier
+              ? "careers-section-title careers-section-title--figma-center careers-why-join__couriers-title"
+              : isPickersWhyJoin
+                ? "careers-section-title careers-section-title--figma-end careers-why-join__pickers-title"
+                : "careers-section-title"
           }
         >
+          {title}
+        </h2>
+        <div className={listClass}>
           {items.map((item) => {
-            const textPanel =
-              item.panelVariant ?? (isStandard ? "black" : "grey");
+            const textPanel = isStandard
+              ? (item.panelVariant ?? "black")
+              : courierCopyPanel(item, role);
             const imageFirst = item.imageFirst ?? false;
 
             const copyBlock = (
@@ -67,6 +103,8 @@ export function WhyJoinSection({
                     className="careers-why-card__text"
                     dangerouslySetInnerHTML={{ __html: item.descriptionHtml }}
                   />
+                ) : item.description ? (
+                  <p className="careers-why-card__text">{item.description}</p>
                 ) : null}
               </div>
             );
@@ -76,9 +114,10 @@ export function WhyJoinSection({
                 <Image
                   src={item.image}
                   alt=""
-                  width={200}
-                  height={260}
+                  width={isCouriersCourier ? 280 : 200}
+                  height={isCouriersCourier ? 220 : 260}
                   className="careers-why-card__image"
+                  {...remoteLandingImageProps(item.image)}
                 />
               </div>
             ) : null;

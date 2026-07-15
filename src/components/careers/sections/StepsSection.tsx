@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { RegistrationStep } from "@/lib/landing/types";
 import type { Role } from "@/types/role";
+import { remoteLandingImageProps } from "@/lib/landing/image-props";
 import { FigmaCompositeGrid } from "./FigmaCompositeGrid";
 
 type StepsSectionProps = {
@@ -64,6 +65,7 @@ export function StepsSection({
                     width={220}
                     height={160}
                     className="careers-step-card__image"
+                    {...remoteLandingImageProps(step.image)}
                   />
                 </div>
                 <div className="careers-step-card__body">

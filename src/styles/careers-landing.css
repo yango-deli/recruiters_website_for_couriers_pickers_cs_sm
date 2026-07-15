@@ -239,7 +239,7 @@ html[lang="ru"] .careers-hero__subtitle {
 
 .careers-benefit-card__title {
   font-family: "Yango Headline", "Yango Text", sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   font-size: clamp(1.125rem, 2vw, 1.5rem);
   line-height: 1.15;
   margin-bottom: 0.5rem;
@@ -301,7 +301,7 @@ html[lang="ru"] .careers-hero__subtitle {
 
 .careers-unique-card__title {
   font-family: "Yango Headline", "Yango Text", sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   font-size: clamp(1rem, 1.8vw, 1.25rem);
   margin-bottom: 0.5rem;
 }
@@ -434,7 +434,7 @@ html[lang="ru"] .careers-hero__subtitle {
 
 .careers-why-card__title {
   font-family: "Yango Headline", "Yango Text", sans-serif;
-  font-weight: 700;
+  font-weight: 900;
   font-size: clamp(1.125rem, 2vw, 1.375rem);
   margin-bottom: 0.75rem;
 }
@@ -904,10 +904,78 @@ html[lang="ru"] .careers-hero__subtitle {
 }
 
 .careers-site--pickers {
-  --figma-accent: #ffcc00;
-  --figma-accent-hover: #e6b800;
+  --figma-accent: #fede47;
+  --figma-accent-hover: #e6c800;
   --figma-chrome-pill: #fede47;
   --figma-chrome-pill-hover: #e6c800;
+}
+
+/* Pickers why-join — match why-join-section.png: yellow band, horizontal white|black cards */
+.careers-why-join--pickers {
+  background: var(--figma-accent);
+  padding-block: 3.5rem 4rem;
+}
+
+.careers-why-join__pickers-title {
+  margin-bottom: 2.5rem;
+}
+
+.careers-why-join--pickers .careers-why-card {
+  background: transparent;
+}
+
+.careers-why-join--pickers .careers-why-card__inner {
+  border-radius: var(--figma-card-radius);
+  overflow: hidden;
+  background: #ffffff;
+  box-shadow: none;
+}
+
+.careers-why-join--pickers .careers-why-card__media {
+  background: #ffffff;
+  padding: 1.25rem 1rem;
+}
+
+.careers-why-join--pickers .careers-why-card__copy {
+  text-align: start;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 1.75rem 1.5rem;
+}
+
+.careers-why-join--pickers .careers-why-card__copy--black {
+  background: var(--figma-black);
+  color: #ffffff;
+}
+
+.careers-why-join--pickers .careers-why-card__title {
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  line-height: 1.15;
+  margin-bottom: 0.875rem;
+  text-transform: none;
+  letter-spacing: normal;
+}
+
+.careers-why-join--pickers .careers-why-card__text {
+  font-size: clamp(0.875rem, 1.55vw, 1rem);
+  line-height: 1.45;
+}
+
+.careers-why-join--pickers .careers-why-card__text b,
+.careers-why-join--pickers .careers-why-card__text strong {
+  font-weight: 700;
+  color: inherit;
+}
+
+.careers-why-join--pickers .careers-why-card__image {
+  max-width: min(95%, 11.5rem);
+  max-height: 12rem;
+}
+
+@media (min-width: 768px) {
+  .careers-why-join--pickers .careers-why-card--courier .careers-why-card__inner {
+    min-height: 20.3125rem;
+  }
 }
 
 .careers-site--pickers-figma {
@@ -928,8 +996,8 @@ html[lang="ru"] .careers-hero__subtitle {
 }
 
 .careers-site--support {
-  --figma-accent: #ffcc00;
-  --figma-accent-hover: #e6b800;
+  --figma-accent: #fede47;
+  --figma-accent-hover: #e6c800;
   --figma-chrome-pill: #fede47;
   --figma-chrome-pill-hover: #e6c800;
 }
@@ -1684,6 +1752,59 @@ html[lang="ru"] .careers-hero__subtitle {
   max-height: 11rem;
 }
 
+/* Couriers figma — horizontal split cards, 3-up grid (matches why-join-section.png) */
+.careers-why-join--couriers {
+  position: relative;
+  z-index: 1;
+  margin-top: -1.25rem;
+  padding-block: 0 4rem;
+  background: #ffffff;
+  border-radius: 1.25rem 1.25rem 0 0;
+}
+
+.careers-why-join__couriers-title {
+  padding-block: 4.5rem 2.5rem;
+  margin-bottom: 0;
+}
+
+.careers-why-join__list--courier {
+  display: grid;
+  gap: 1.25rem;
+}
+
+.careers-why-join--couriers .careers-why-card--courier .careers-why-card__inner {
+  min-height: 20.3125rem;
+}
+
+.careers-why-join--couriers .careers-why-card__media {
+  background: #fede47;
+  padding: 1.25rem 1rem;
+}
+
+.careers-why-join--couriers .careers-why-card__copy {
+  background: var(--figma-card-illus-bg);
+  color: var(--figma-black);
+  padding: 1.75rem 1.5rem;
+  text-align: start;
+}
+
+.careers-why-join--couriers .careers-why-card__title {
+  font-size: clamp(1.25rem, 2.2vw, 1.625rem);
+  line-height: 1.15;
+  margin-bottom: 0.875rem;
+}
+
+.careers-why-join--couriers .careers-why-card__text {
+  font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+}
+
+.careers-why-join--couriers .careers-why-card__image {
+  max-width: min(95%, 11.5rem);
+  max-height: 12rem;
+}
+
 .careers-steps--couriers {
   padding-block: 0;
   background: var(--figma-accent);
@@ -2030,6 +2151,10 @@ html[lang="ru"] .careers-hero__subtitle {
     grid-template-columns: repeat(3, minmax(0, 1fr));
   }
 
+  .careers-why-join__list--courier {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
   .careers-unique__grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
@@ -2189,32 +2314,73 @@ html[lang="ru"] .careers-hero__subtitle {
 }
 
 .careers-unique--figma {
-  padding-block: 3.5rem 2.5rem;
+  padding-block: 3.5rem 3rem;
   background: #fede47;
 }
 
 .careers-unique__grid--figma {
-  gap: 1.25rem;
+  gap: 2rem;
 }
 
 .careers-unique--figma .careers-unique-card {
   text-align: center;
-  max-width: 13.375rem;
+  max-width: none;
   margin-inline: auto;
+  padding-inline: 0.75rem;
+}
+
+.careers-unique--figma .careers-unique-card__icon {
+  min-height: 5.5rem;
+  margin-bottom: 1.25rem;
+}
+
+.careers-unique--figma .careers-unique-card__icon-img {
+  max-width: 5.5rem;
+  max-height: 5rem;
+}
+
+.careers-unique-card__media {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: min(100%, 12.5rem);
+  height: 10rem;
+  margin-inline: auto;
+  margin-bottom: 1.25rem;
+}
+
+.careers-unique-card__media-img {
+  width: auto !important;
+  height: auto !important;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
 }
 
 .careers-unique--figma .careers-unique-card__title {
   font-family: "Yango Headline", "Yango Text", sans-serif;
   font-weight: 900;
-  font-size: 1.25rem;
-  line-height: 1.2;
-  margin-bottom: 0.75rem;
+  font-size: clamp(1.25rem, 2.2vw, 1.75rem);
+  line-height: 1.15;
+  margin-bottom: 0.625rem;
 }
 
 .careers-unique--figma .careers-unique-card__text {
-  font-size: 1rem;
-  line-height: 1.25;
-  letter-spacing: -0.02em;
+  font-family: "Yango Text", sans-serif;
+  font-size: clamp(1rem, 1.8vw, 1.125rem);
+  line-height: 1.35;
+  letter-spacing: -0.01em;
+  max-width: 16.5rem;
+  margin-inline: auto;
+}
+
+.careers-unique--couriers.careers-unique--figma {
+  padding-block: 4rem 3.5rem;
+}
+
+.careers-unique--couriers .careers-unique-card__media {
+  width: min(100%, 14rem);
+  height: 11rem;
 }
 
 .careers-unique__footnote {
@@ -2382,8 +2548,22 @@ html[lang="ru"] .careers-hero__subtitle {
   height: auto !important;
 }
 
+@media (min-width: 768px) {
+  .careers-unique__grid--figma[data-items="3"] {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .careers-unique__grid--figma[data-items="2"] {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .careers-unique__grid--figma[data-items="4"] {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+}
+
 @media (min-width: 1024px) {
-  .careers-unique__grid--figma {
+  .careers-unique__grid--figma[data-items="5"] {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
 
@@ -2465,6 +2645,24 @@ html[lang="ru"] .careers-hero__subtitle {
 
   .careers-why-join__figma-title {
     padding: 2.5rem 1rem 1.5rem;
+  }
+
+  .careers-why-join__couriers-title {
+    padding: 2.5rem 1rem 1.5rem;
+  }
+
+  .careers-why-join--couriers {
+    margin-top: 0;
+    border-radius: 0;
+    padding-block: 2.5rem 3rem;
+  }
+
+  .careers-why-join__list--courier {
+    grid-template-columns: 1fr;
+  }
+
+  .careers-why-join--couriers .careers-why-card--courier .careers-why-card__inner {
+    min-height: 14rem;
   }
 
   .careers-why-join__figma-grid,

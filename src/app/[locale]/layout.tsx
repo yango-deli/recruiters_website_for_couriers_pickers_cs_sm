@@ -3,6 +3,8 @@ import { NextIntlClientProvider } from "next-intl";
 import { getMessages, setRequestLocale } from "next-intl/server";
 import { notFound } from "next/navigation";
 import { DEFAULT_LANDING_ROLE, landingPathForRole } from "@/lib/landing/default-route";
+import { fetchPublicJobsList } from "@/lib/jobs/fetch-job";
+import { CareersJobsProvider } from "@/components/careers/CareersJobsProvider";
 import { routing, type Locale } from "@/i18n/routing";
 import "../globals.css";
 
@@ -67,6 +69,7 @@ export default async function LocaleLayout({
 
   setRequestLocale(locale);
   const messages = await getMessages();
+  const navJobs = await fetchPublicJobsList();
   const dir = locale === "he" ? "rtl" : "ltr";
   return (
     <html lang={locale} dir={dir} className="h-full">
@@ -102,7 +105,7 @@ export default async function LocaleLayout({
       </head>
       <body className="h-full antialiased" suppressHydrationWarning>
         <NextIntlClientProvider messages={messages}>
-          {children}
+          <CareersJobsProvider jobs={navJobs}>{children}</CareersJobsProvider>
         </NextIntlClientProvider>
       </body>
     </html>
