@@ -2,6 +2,7 @@ import { NextRequest, NextResponse } from "next/server";
 import { getCrmBaseUrl } from "@/lib/crm-config";
 import {
   locationTypeForRole,
+  pickersFormCityTargets,
   withFallbackTargets,
   type HiringTargetsResponse,
 } from "@/lib/hiring-targets";
@@ -13,6 +14,15 @@ export async function GET(request: NextRequest) {
   const role = new URL(request.url).searchParams.get("role")?.trim();
   if (!role) {
     return NextResponse.json({ error: "role required" }, { status: 400 });
+  }
+
+  // Fixed brief cities for pickers — do not depend on CRM campaigns.
+  if (role === "pickers") {
+    return NextResponse.json({
+      role,
+      locationType: "city" as const,
+      targets: pickersFormCityTargets(),
+    });
   }
 
   const locationType = locationTypeForRole(role);

@@ -8,12 +8,15 @@ import { BrandLogo } from "@/components/brand/BrandLogo";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
 import { LANDING_ROLES, isRole, type Role } from "@/types/role";
+import { useCareersNavJobs } from "@/components/careers/CareersJobsProvider";
 import { cn } from "@/lib/utils";
 
 type CareersChromeProps = {
   activeRole: Role;
   onRoleChange?: (role: Role) => void;
   showHubTabs?: boolean;
+  /** Active custom job page slug (/jobs/{slug}). */
+  activeJobSlug?: string | null;
 };
 
 function activeRoleFromPath(pathname: string): Role | undefined {
@@ -25,8 +28,10 @@ export function CareersChrome({
   activeRole,
   onRoleChange,
   showHubTabs = false,
+  activeJobSlug = null,
 }: CareersChromeProps) {
   const t = useTranslations("nav");
+  const customJobs = useCareersNavJobs();
   const pathname = usePathname();
   const router = useRouter();
   const pathRole = useMemo(() => activeRoleFromPath(pathname), [pathname]);
@@ -34,6 +39,31 @@ export function CareersChrome({
   const isCouriers = activeRole === "couriers";
   const [mobileOpen, setMobileOpen] = useState(false);
   const figmaRolePage = !showHubTabs;
+
+  const rolePillClass = (role: Role, asNav = false) =>
+    cn(
+      asNav
+        ? "careers-chrome-pill careers-chrome-pill--nav careers-chrome-pill--crm"
+        : "careers-chrome-pill cursor-pointer",
+      activeRole === role && !activeJobSlug && "careers-chrome-pill--active"
+    );
+
+  const jobPillClass = (slug: string) =>
+    cn(
+      "careers-chrome-pill careers-chrome-pill--nav careers-chrome-pill--crm careers-chrome-pill--job max-w-[9rem] truncate",
+      activeJobSlug === slug && "careers-chrome-pill--active"
+    );
+
+  const customJobLinks = customJobs.map((job) => (
+    <Link
+      key={job.slug}
+      href={`/jobs/${job.slug}`}
+      className={jobPillClass(job.slug)}
+      aria-current={activeJobSlug === job.slug ? "page" : undefined}
+    >
+      {job.title}
+    </Link>
+  ));
 
   const selectRole = (role: Role) => {
     if (onRoleChange) {
@@ -57,15 +87,13 @@ export function CareersChrome({
                 <Link
                   key={role}
                   href={`/${role}`}
-                  className={cn(
-                    "careers-chrome-pill careers-chrome-pill--nav careers-chrome-pill--crm",
-                    activeRole === role && "careers-chrome-pill--active"
-                  )}
-                  aria-current={activeRole === role ? "page" : undefined}
+                  className={rolePillClass(role, true)}
+                  aria-current={activeRole === role && !activeJobSlug ? "page" : undefined}
                 >
                   {t(`roles.${role}`)}
                 </Link>
               ))}
+              {customJobLinks}
             </nav>
             <Link href={logoHref} className="careers-chrome__logo" aria-label={t("brand")}>
               <Image
@@ -100,14 +128,15 @@ export function CareersChrome({
               key={role}
               type="button"
               onClick={() => selectRole(role)}
-              className={cn(
-                "careers-chrome-pill cursor-pointer",
-                (activeRole === role || (isHub && !pathRole && role === "pickers" && activeRole === role)) &&
-                  "careers-chrome-pill--active"
-              )}
+              className={rolePillClass(role)}
             >
               {t(`roles.${role}`)}
             </button>
+          ))}
+          {customJobs.map((job) => (
+            <Link key={job.slug} href={`/jobs/${job.slug}`} className={jobPillClass(job.slug)}>
+              {job.title}
+            </Link>
           ))}
         </nav>
 
@@ -133,13 +162,21 @@ export function CareersChrome({
                 <button
                   type="button"
                   onClick={() => selectRole(role)}
-                  className={cn(
-                    "careers-chrome-pill w-full cursor-pointer",
-                    activeRole === role && "careers-chrome-pill--active"
-                  )}
+                  className={cn(rolePillClass(role), "w-full")}
                 >
                   {t(`roles.${role}`)}
                 </button>
+              </li>
+            ))}
+            {customJobs.map((job) => (
+              <li key={job.slug}>
+                <Link
+                  href={`/jobs/${job.slug}`}
+                  className={cn(jobPillClass(job.slug), "w-full inline-flex justify-center")}
+                  onClick={() => setMobileOpen(false)}
+                >
+                  {job.title}
+                </Link>
               </li>
             ))}
           </ul>

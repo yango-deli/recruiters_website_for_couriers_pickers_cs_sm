@@ -1,6 +1,7 @@
 import Image from "next/image";
 import type { CardItem } from "@/lib/landing/types";
 import type { Role } from "@/types/role";
+import { remoteLandingImageProps } from "@/lib/landing/image-props";
 import { FigmaCompositeGrid } from "./FigmaCompositeGrid";
 
 type BenefitsSectionProps = {
@@ -61,6 +62,7 @@ export function BenefitsSection({
                       width={400}
                       height={240}
                       className={`careers-benefit-card__image${isCoinsIllus ? " careers-benefit-card__image--coins" : ""}`}
+                      {...remoteLandingImageProps(item.image)}
                     />
                   ) : null}
                 </div>
@@ -73,6 +75,8 @@ export function BenefitsSection({
                       className="careers-benefit-card__text"
                       dangerouslySetInnerHTML={{ __html: item.descriptionHtml }}
                     />
+                  ) : item.description ? (
+                    <p className="careers-benefit-card__text">{item.description}</p>
                   ) : null}
                 </div>
               </article>

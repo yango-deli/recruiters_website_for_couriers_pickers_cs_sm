@@ -1,9 +1,10 @@
 import Image from "next/image";
 import type { Role } from "@/types/role";
 import {
-  careersMobileAssetPath,
-  FIGMA_MOBILE_BAND_HEIGHTS,
-} from "@/lib/landing/mobile-assets";
+  landingMobileImagePath,
+  remoteLandingImageProps,
+} from "@/lib/landing/image-props";
+import { FIGMA_MOBILE_BAND_HEIGHTS } from "@/lib/landing/mobile-assets";
 
 type FigmaBandSectionProps = {
   id: string;
@@ -24,7 +25,8 @@ export function FigmaBandSection({
   variant = "default",
   ariaLabel,
 }: FigmaBandSectionProps) {
-  const mobileImage = careersMobileAssetPath(image);
+  const mobileImage = landingMobileImagePath(image);
+  const imageProps = remoteLandingImageProps(image);
   const mobileHeight =
     FIGMA_MOBILE_BAND_HEIGHTS[role]?.[id] ??
     Math.round((height / width) * 375);
@@ -43,6 +45,7 @@ export function FigmaBandSection({
         unoptimized
         className="careers-figma-band__img careers-figma-band__img--desktop"
         sizes="(max-width: 767px) 0px, 1366px"
+        {...imageProps}
       />
       <Image
         src={mobileImage}
@@ -52,6 +55,7 @@ export function FigmaBandSection({
         unoptimized
         className="careers-figma-band__img careers-figma-band__img--mobile"
         sizes="100vw"
+        {...remoteLandingImageProps(mobileImage)}
       />
     </section>
   );

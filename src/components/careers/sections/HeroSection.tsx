@@ -26,8 +26,12 @@ function FigmaMobileHero({
   hero: HeroContent;
   role: Role;
 }) {
-  const mobileSrc = `/careers/${role}/hero-mobile.png`;
+  const mobileSrc =
+    hero.imageMobile?.trim() || `/careers/${role}/hero-mobile.png`;
   const mobileHeight = FIGMA_MOBILE_HERO_HEIGHT[role] ?? 482;
+  const isUploaded =
+    Boolean(hero.imageMobile?.trim()) &&
+    (hero.imageMobile!.startsWith("http") || hero.imageMobile!.startsWith("/"));
 
   return (
     <div className="careers-hero__figma-mobile">
@@ -37,7 +41,7 @@ function FigmaMobileHero({
         width={375}
         height={mobileHeight}
         priority
-        unoptimized
+        unoptimized={isUploaded}
         className="careers-hero__figma-mobile-img"
         sizes="100vw"
       />
@@ -167,43 +171,41 @@ function PickersHero({ hero, role }: { hero: HeroContent; role: Role }) {
   );
 }
 
-/** Support — Figma node 2:51 */
+/** Support — Figma node 2:51. Responsive HTML hero (no baked-text PNG on mobile). */
 function SupportHero({ hero, role }: { hero: HeroContent; role: Role }) {
   return (
     <section id="hero" className="careers-hero careers-hero--support">
-      <FigmaHeroShell hero={hero} role={role}>
-        <div className="careers-hero__figma careers-hero__figma--support">
-          <div className="careers-hero__figma-photo">
-            <div className="careers-hero__figma-photo-frame">
-              <Image
-                src={hero.image}
-                alt=""
-                fill
-                priority
-                unoptimized
-                className="careers-hero__figma-photo-img careers-hero__figma-photo-img--support"
-                sizes="606px"
-              />
-            </div>
-          </div>
-          <div className="careers-hero__figma-panel">
-            <div className="careers-hero__figma-title-wrap">
-              <h1 className="careers-hero__figma-title">{heroTitle(hero)}</h1>
-            </div>
-            <div className="careers-hero__figma-bottom">
-              {hero.subtitle ? (
-                <p className="careers-hero__figma-subtitle">{hero.subtitle}</p>
-              ) : null}
-              <a
-                href={`#${formAnchorId(role)}`}
-                className="careers-hero__figma-cta"
-              >
-                {hero.cta}
-              </a>
-            </div>
+      <div className="careers-hero__figma careers-hero__figma--support careers-hero__figma--responsive">
+        <div className="careers-hero__figma-photo">
+          <div className="careers-hero__figma-photo-frame">
+            <Image
+              src={hero.image}
+              alt=""
+              fill
+              priority
+              unoptimized
+              className="careers-hero__figma-photo-img careers-hero__figma-photo-img--support"
+              sizes="(max-width: 767px) 100vw, 606px"
+            />
           </div>
         </div>
-      </FigmaHeroShell>
+        <div className="careers-hero__figma-panel">
+          <div className="careers-hero__figma-title-wrap">
+            <h1 className="careers-hero__figma-title">{heroTitle(hero)}</h1>
+          </div>
+          <div className="careers-hero__figma-bottom">
+            {hero.subtitle ? (
+              <p className="careers-hero__figma-subtitle">{hero.subtitle}</p>
+            ) : null}
+            <a
+              href={`#${formAnchorId(role)}`}
+              className="careers-hero__figma-cta"
+            >
+              {hero.cta}
+            </a>
+          </div>
+        </div>
+      </div>
     </section>
   );
 }

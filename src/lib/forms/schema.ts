@@ -27,7 +27,8 @@ export const leadFormSchema = z
     firstName: z.string().trim().min(1),
     lastName: z.string().trim().min(1),
     phone: z.string().trim().min(9).max(20),
-    city: z.string().trim().min(1),
+    // Empty allowed for “Any cities / Any branches” fallback when no campaign targets.
+    city: z.string().trim(),
     ageConsent: requiredConsent,
     privacyConsent: requiredConsent,
     role: z.enum(ROLES),

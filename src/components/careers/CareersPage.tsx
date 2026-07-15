@@ -67,6 +67,7 @@ function SectionBlock({
           title={section.title}
           footnote={section.footnote}
           items={section.items}
+          role={role}
         />
       );
     case "whyJoin":
@@ -76,6 +77,7 @@ function SectionBlock({
           items={section.items}
           compositeCards={section.compositeCards}
           variant={section.variant}
+          role={role}
         />
       );
     case "registration":
