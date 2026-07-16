@@ -15,7 +15,7 @@ import {
 } from "@/lib/forms/cv";
 import { leadFormSchema, type LeadFormData } from "@/lib/forms/schema";
 import { submitLead } from "@/lib/forms/submitLead";
-import { resolveTargetSelection, targetOptionValue, withFallbackTargets, fallbackTargetLabel, pickersFormCityTargets, type HiringTarget, type HiringTargetsResponse } from "@/lib/hiring-targets";
+import { resolveTargetSelection, targetOptionValue, withFallbackTargets, fallbackTargetLabel, type HiringTarget, type HiringTargetsResponse } from "@/lib/hiring-targets";
 import type { Role } from "@/types/role";
 import { Button } from "@/components/ui/button";
 import { Checkbox } from "@/components/ui/checkbox";
@@ -130,16 +130,6 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
   useEffect(() => {
     let cancelled = false;
     setTargetsLoading(true);
-
-    // Pickers form always uses the fixed city list from the מלקט דף brief.
-    if (role === "pickers") {
-      setTargets(pickersFormCityTargets());
-      setLocationType("city");
-      setTargetsLoading(false);
-      return () => {
-        cancelled = true;
-      };
-    }
 
     fetch(`/api/hiring-targets?role=${encodeURIComponent(role)}`)
       .then((res) => (res.ok ? res.json() : null))

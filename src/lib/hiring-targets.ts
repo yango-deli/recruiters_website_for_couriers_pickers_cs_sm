@@ -22,31 +22,7 @@ export type HiringTargetsResponse = {
 /** Sentinel value for the “any location” dropdown option (no campaign target). */
 export const ANY_TARGET_VALUE = "__any__";
 
-const STORE_ROLES = new Set<Role>(["manager"]);
-
-/** Fixed city options for the pickers lead form (brief מלקט דף). */
-export const PICKERS_FORM_CITIES = [
-  "תל אביב",
-  "צפון תל אביב",
-  "רמת גן",
-  "פתח תקווה",
-  "בת ים",
-  "ראשון לציון",
-  "מודיעין",
-  "רמת השרון",
-  "נתניה",
-  "חיפה",
-] as const;
-
-export function pickersFormCityTargets(): HiringTarget[] {
-  return PICKERS_FORM_CITIES.map((city) => ({
-    targetId: null,
-    storeId: null,
-    positionId: null,
-    city,
-    label: city,
-  }));
-}
+const STORE_ROLES = new Set<Role>(["manager", "pickers"]);
 
 export function locationTypeForRole(role: string): "store" | "city" {
   return isRole(role) && STORE_ROLES.has(role) ? "store" : "city";
