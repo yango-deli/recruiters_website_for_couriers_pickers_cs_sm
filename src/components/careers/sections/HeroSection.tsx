@@ -130,52 +130,11 @@ function CouriersHero({ hero, role }: { hero: HeroContent; role: Role }) {
   );
 }
 
-/** Pickers — Figma node 2:23052 */
+/** Pickers — responsive HTML hero (desktop + mobile use the same photo). */
 function PickersHero({ hero, role }: { hero: HeroContent; role: Role }) {
   return (
     <section id="hero" className="careers-hero careers-hero--pickers">
-      <FigmaHeroShell hero={hero} role={role}>
-        <div className="careers-hero__figma careers-hero__figma--pickers">
-          <div className="careers-hero__figma-photo">
-            <div className="careers-hero__figma-photo-frame">
-              <Image
-                src={hero.image}
-                alt=""
-                fill
-                priority
-                unoptimized
-                className="careers-hero__figma-photo-img careers-hero__figma-photo-img--pickers"
-                sizes="606px"
-              />
-            </div>
-          </div>
-          <div className="careers-hero__figma-panel">
-            <div className="careers-hero__figma-title-wrap">
-              <h1 className="careers-hero__figma-title">{heroTitle(hero)}</h1>
-            </div>
-            <div className="careers-hero__figma-bottom">
-              {hero.subtitle ? (
-                <p className="careers-hero__figma-subtitle">{hero.subtitle}</p>
-              ) : null}
-              <a
-                href={`#${formAnchorId(role)}`}
-                className="careers-hero__figma-cta"
-              >
-                {hero.cta}
-              </a>
-            </div>
-          </div>
-        </div>
-      </FigmaHeroShell>
-    </section>
-  );
-}
-
-/** Support — Figma node 2:51. Responsive HTML hero (no baked-text PNG on mobile). */
-function SupportHero({ hero, role }: { hero: HeroContent; role: Role }) {
-  return (
-    <section id="hero" className="careers-hero careers-hero--support">
-      <div className="careers-hero__figma careers-hero__figma--support careers-hero__figma--responsive">
+      <div className="careers-hero__figma careers-hero__figma--pickers careers-hero__figma--responsive">
         <div className="careers-hero__figma-photo">
           <div className="careers-hero__figma-photo-frame">
             <Image
@@ -184,7 +143,49 @@ function SupportHero({ hero, role }: { hero: HeroContent; role: Role }) {
               fill
               priority
               unoptimized
-              className="careers-hero__figma-photo-img careers-hero__figma-photo-img--support"
+              className="careers-hero__figma-photo-img careers-hero__figma-photo-img--pickers"
+              sizes="(max-width: 767px) 100vw, 606px"
+            />
+          </div>
+        </div>
+        <div className="careers-hero__figma-panel">
+          <div className="careers-hero__figma-title-wrap">
+            <h1 className="careers-hero__figma-title">{heroTitle(hero)}</h1>
+          </div>
+          <div className="careers-hero__figma-bottom">
+            {hero.subtitle ? (
+              <p className="careers-hero__figma-subtitle">{hero.subtitle}</p>
+            ) : null}
+            <a
+              href={`#${formAnchorId(role)}`}
+              className="careers-hero__figma-cta"
+            >
+              {hero.cta}
+            </a>
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/** Support / service-rep — Figma node 2:51. Responsive HTML hero (no baked-text PNG on mobile). */
+function SupportHero({ hero, role }: { hero: HeroContent; role: Role }) {
+  const roleMod = role === "service-rep" ? "service-rep" : "support";
+  return (
+    <section id="hero" className={`careers-hero careers-hero--${roleMod}`}>
+      <div
+        className={`careers-hero__figma careers-hero__figma--${roleMod} careers-hero__figma--responsive`}
+      >
+        <div className="careers-hero__figma-photo">
+          <div className="careers-hero__figma-photo-frame">
+            <Image
+              src={hero.image}
+              alt=""
+              fill
+              priority
+              unoptimized
+              className={`careers-hero__figma-photo-img careers-hero__figma-photo-img--${roleMod}`}
               sizes="(max-width: 767px) 100vw, 606px"
             />
           </div>
