@@ -1,4 +1,4 @@
-import { setRequestLocale, getTranslations } from "next-intl/server";
+import { setRequestLocale } from "next-intl/server";
 import { notFound, redirect } from "next/navigation";
 import { CareersPage } from "@/components/careers/CareersPage";
 import { loadHubRoleContents } from "@/lib/landing/load-content";
@@ -38,8 +38,17 @@ export async function generateMetadata({ params }: PageProps) {
   const decoded = decodeURIComponent(slug);
 
   if (isRoleSlug(decoded)) {
-    const t = await getTranslations({ locale, namespace: "nav.roles" });
-    const roleTitle = t(decoded as Role);
+    // Sync message lookup avoids next-intl async setup during parallel SSG.
+    const catalog =
+      locale === "ru"
+        ? (await import("../../../messages/ru.json")).default
+        : locale === "en"
+          ? (await import("../../../messages/en.json")).default
+          : (await import("../../../messages/he.json")).default;
+    const roleTitle =
+      (catalog as { nav: { roles: Record<string, string> } }).nav.roles[
+        decoded
+      ] ?? decoded;
     return { title: `Yango Deli — ${roleTitle}` };
   }
 
