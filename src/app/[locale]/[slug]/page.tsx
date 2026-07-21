@@ -1,4 +1,4 @@
-import { setRequestLocale } from "next-intl/server";
+import { setRequestLocale, getTranslations } from "next-intl/server";
 import { notFound, redirect } from "next/navigation";
 import { CareersPage } from "@/components/careers/CareersPage";
 import { loadHubRoleContents } from "@/lib/landing/load-content";
@@ -34,11 +34,13 @@ export function generateStaticParams() {
 }
 
 export async function generateMetadata({ params }: PageProps) {
-  const { slug } = await params;
+  const { slug, locale } = await params;
   const decoded = decodeURIComponent(slug);
 
   if (isRoleSlug(decoded)) {
-    return { title: `Yango Deli — ${decoded}` };
+    const t = await getTranslations({ locale, namespace: "nav.roles" });
+    const roleTitle = t(decoded as Role);
+    return { title: `Yango Deli — ${roleTitle}` };
   }
 
   return { title: decoded };

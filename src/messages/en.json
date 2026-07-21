@@ -7,10 +7,10 @@
     "brand": "Yango Deli",
     "menu": "Menu",
     "roles": {
-      "pickers": "Pickers",
-      "couriers": "Couriers",
-      "support": "Customer Service",
-      "service-rep": "Service Representative",
+      "pickers": "Picker",
+      "couriers": "Courier",
+      "support": "Customer Service Shift Manager",
+      "service-rep": "Customer Service Representative",
       "manager": "Shift Manager"
     }
   },
@@ -36,6 +36,7 @@
     "taxYes": "Yes",
     "taxNo": "No",
     "cv": "CV / Resume (optional)",
+    "cvRequired": "CV / Resume",
     "cvHint": "Attach a PDF, DOC or DOCX (up to 4MB)",
     "cvRemove": "Remove file",
     "ageConsent": "I confirm I am over 18",
@@ -57,6 +58,7 @@
       "taxRegistered": "Please select an answer",
       "cvType": "Unsupported file type. Upload a PDF, DOC or DOCX",
       "cvSize": "File is too large (up to 4MB)",
+      "cvRequired": "Please attach your CV / resume",
       "ageConsent": "You must confirm you are 18+",
       "privacyConsent": "You must accept the privacy policy"
     }

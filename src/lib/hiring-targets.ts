@@ -22,10 +22,55 @@ export type HiringTargetsResponse = {
 /** Sentinel value for the “any location” dropdown option (no campaign target). */
 export const ANY_TARGET_VALUE = "__any__";
 
+/**
+ * Canonical courier/CS cities from CRM hiring campaign list (Hebrew labels).
+ * Used only when CRM returns an empty city list — never invent beyond this set.
+ */
+export const CAREERS_HIRING_CITIES = [
+  "תל אביב",
+  "צפון תל אביב",
+  "רמת גן",
+  "פתח תקווה",
+  "בת ים",
+  "ראשון לציון",
+  "מודיעין",
+  "רמת השרון",
+  "נתניה",
+  "חיפה",
+] as const;
+
 const STORE_ROLES = new Set<Role>(["manager", "pickers"]);
 
 export function locationTypeForRole(role: string): "store" | "city" {
   return isRole(role) && STORE_ROLES.has(role) ? "store" : "city";
+}
+
+function normalizeDedupeKey(target: HiringTarget): string {
+  const name = (target.name ?? "").trim().toLowerCase();
+  const city = (target.city ?? "").trim().toLowerCase();
+  if (name || city) return `${name}|${city}`;
+  return (target.label ?? "").trim().toLowerCase();
+}
+
+/** Stable de-dupe for branch/city lists (keeps first occurrence). */
+export function dedupeHiringTargets(targets: HiringTarget[]): HiringTarget[] {
+  const seen = new Set<string>();
+  const out: HiringTarget[] = [];
+  for (const t of targets) {
+    const key = normalizeDedupeKey(t);
+    if (seen.has(key)) continue;
+    seen.add(key);
+    out.push(t);
+  }
+  return out;
+}
+
+export function citiesAsHiringTargets(cities: readonly string[]): HiringTarget[] {
+  return cities.map((city) => ({
+    targetId: null,
+    city,
+    label: city,
+  }));
 }
 
 /** Default target so leads still reach the pipeline without a published campaign. */
@@ -45,10 +90,17 @@ export function withFallbackTargets(
   response: Partial<HiringTargetsResponse> & { role: string }
 ): HiringTargetsResponse {
   const locationType = response.locationType ?? locationTypeForRole(response.role);
-  const targets =
-    response.targets && response.targets.length > 0
-      ? response.targets
-      : [createFallbackTarget(locationType)];
+  let targets = response.targets?.length
+    ? dedupeHiringTargets(response.targets)
+    : [];
+
+  if (targets.length === 0 && locationType === "city") {
+    targets = citiesAsHiringTargets(CAREERS_HIRING_CITIES);
+  }
+
+  if (targets.length === 0) {
+    targets = [createFallbackTarget(locationType)];
+  }
 
   return {
     role: response.role,
@@ -62,6 +114,7 @@ export function targetOptionValue(target: HiringTarget): string {
   if (target.isFallback) return ANY_TARGET_VALUE;
   if (target.targetId) return target.targetId;
   if (target.positionId) return `legacy:${target.positionId}`;
+  if (target.storeId) return `store:${target.storeId}`;
   return target.label;
 }
 

@@ -8,6 +8,7 @@ import { useEffect, useRef, useState } from "react";
 import { useForm, Controller } from "react-hook-form";
 import { FormField } from "@/components/forms/FormField";
 import { ROLE_FORM_FIELDS, VEHICLE_OPTIONS } from "@/lib/forms/form-fields";
+import { getRoleFormConfig } from "@/lib/forms/role-form-config";
 import {
   CV_ACCEPT_EXTENSIONS,
   validateCvFile,
@@ -33,6 +34,8 @@ import { cn } from "@/lib/utils";
 const inputClassName =
   "h-12 rounded-xl border-brand-border/80 bg-brand-surface/50 px-4 text-base shadow-sm transition-all focus-visible:border-brand-accent focus-visible:ring-brand-accent/30";
 
+type CvErrorKind = CvValidationError | "required";
+
 const roleBadgeClass: Record<Role, string> = {
   pickers: "from-brand-accent/30 to-brand-accent/15 text-brand-primary",
   couriers: "from-brand-accent/25 to-brand-accent/10 text-brand-primary",
@@ -51,15 +54,16 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
   const t = useTranslations("form");
   const tRoles = useTranslations("nav.roles");
   const locale = useLocale();
+  const formConfig = getRoleFormConfig(role);
   const [successOpen, setSuccessOpen] = useState(false);
   const [submitError, setSubmitError] = useState(false);
-  const [targetsLoading, setTargetsLoading] = useState(true);
+  const [targetsLoading, setTargetsLoading] = useState(formConfig.showLocation);
   const [targets, setTargets] = useState<HiringTarget[]>([]);
   const [locationType, setLocationType] = useState<"store" | "city">("city");
   const [selectedTarget, setSelectedTarget] = useState("");
   const [locationError, setLocationError] = useState(false);
   const [cvFile, setCvFile] = useState<File | null>(null);
-  const [cvError, setCvError] = useState<CvValidationError | null>(null);
+  const [cvError, setCvError] = useState<CvErrorKind | null>(null);
   const cvInputRef = useRef<HTMLInputElement>(null);
 
   const fields = ROLE_FORM_FIELDS[role];
@@ -128,6 +132,14 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
   };
 
   useEffect(() => {
+    if (!formConfig.showLocation) {
+      setTargetsLoading(false);
+      setTargets([]);
+      setSelectedTarget("");
+      setLocationError(false);
+      return;
+    }
+
     let cancelled = false;
     setTargetsLoading(true);
 
@@ -154,9 +166,10 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
     return () => {
       cancelled = true;
     };
-  }, [role]);
+  }, [role, formConfig.showLocation]);
 
   useEffect(() => {
+    if (!formConfig.showLocation) return;
     if (targets.length !== 1 || !targets[0].isFallback || selectedTarget) return;
     const value = targetOptionValue(targets[0]);
     setSelectedTarget(value);
@@ -166,7 +179,7 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
       setValue("targetId", resolved.targetId);
       setValue("storeId", resolved.storeId);
     }
-  }, [targets, selectedTarget, setValue]);
+  }, [targets, selectedTarget, setValue, formConfig.showLocation]);
 
   let fieldDelay = 0.05;
 
@@ -174,12 +187,23 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
     setSubmitError(false);
     setLocationError(false);
 
-    if (targets.length > 0 && !selectedTarget) {
-      setLocationError(true);
+    if (formConfig.showLocation && formConfig.locationRequired) {
+      if (targets.length > 0 && !selectedTarget) {
+        setLocationError(true);
+        return;
+      }
+    }
+
+    if (formConfig.showResume && formConfig.resumeRequired && !cvFile) {
+      setCvError("required");
       return;
     }
 
-    const result = await submitLead({ ...data, role }, locale, cvFile);
+    const result = await submitLead(
+      { ...data, role },
+      locale,
+      formConfig.showResume ? cvFile : null
+    );
     if (result.success) {
       setSuccessOpen(true);
       reset({
@@ -210,7 +234,7 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
     anyBranch: t("locationAnyBranch"),
   };
 
-  if (targetsLoading) {
+  if (formConfig.showLocation && targetsLoading) {
     return (
       <div className="space-y-4 animate-pulse" aria-busy="true">
         <div className="h-10 w-40 rounded-full bg-brand-surface" />
@@ -312,99 +336,107 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
             </div>
           </FormField>
 
-          <FormField
-            id="location"
-            label={locationLabel}
-            error={locationError ? t("validation.location") : undefined}
-            delay={(fieldDelay += 0.04)}
-          >
-            <select
+          {formConfig.showLocation ? (
+            <FormField
               id="location"
-              className={cn(
-                fieldInputClass,
-                "w-full appearance-none bg-white pe-10"
-              )}
-              value={selectedTarget}
-              onChange={(e) => {
-                const value = e.target.value;
-                setSelectedTarget(value);
-                setLocationError(false);
-                const resolved = resolveTargetSelection(targets, value);
-                if (resolved) {
-                  setValue("city", resolved.city, { shouldValidate: true });
-                  setValue("targetId", resolved.targetId);
-                  setValue("storeId", resolved.storeId);
-                }
-              }}
-              aria-invalid={locationError}
+              label={locationLabel}
+              error={locationError ? t("validation.location") : undefined}
+              delay={(fieldDelay += 0.04)}
             >
-              {!(targets.length === 1 && targets[0].isFallback) ? (
-                <option value="">{t("locationPlaceholder")}</option>
-              ) : null}
-              {targets.map((target) => {
-                const value = targetOptionValue(target);
-                return (
-                  <option key={value} value={value}>
-                    {fallbackTargetLabel(target, locationType, anyLocationLabels)}
-                  </option>
-                );
-              })}
-            </select>
-          </FormField>
+              <select
+                id="location"
+                className={cn(
+                  fieldInputClass,
+                  "w-full max-w-full appearance-none bg-white pe-10"
+                )}
+                value={selectedTarget}
+                onChange={(e) => {
+                  const value = e.target.value;
+                  setSelectedTarget(value);
+                  setLocationError(false);
+                  const resolved = resolveTargetSelection(targets, value);
+                  if (resolved) {
+                    setValue("city", resolved.city, { shouldValidate: true });
+                    setValue("targetId", resolved.targetId);
+                    setValue("storeId", resolved.storeId);
+                  }
+                }}
+                aria-invalid={locationError}
+              >
+                {!(targets.length === 1 && targets[0].isFallback) ? (
+                  <option value="">{t("locationPlaceholder")}</option>
+                ) : null}
+                {targets.map((target) => {
+                  const value = targetOptionValue(target);
+                  return (
+                    <option key={value} value={value}>
+                      {fallbackTargetLabel(target, locationType, anyLocationLabels)}
+                    </option>
+                  );
+                })}
+              </select>
+            </FormField>
+          ) : null}
 
-          <FormField
-            id="cv"
-            label={t("cv")}
-            error={
-              cvError
-                ? t(cvError === "size" ? "validation.cvSize" : "validation.cvType")
-                : undefined
-            }
-            delay={(fieldDelay += 0.04)}
-          >
-            <div className="space-y-2">
-              {cvFile ? (
-                <div className="flex items-center gap-3 rounded-xl border border-brand-border/80 bg-brand-surface/50 px-4 py-3">
-                  <FileText
-                    className="size-5 shrink-0 text-brand-primary"
-                    aria-hidden
-                  />
-                  <span className="min-w-0 flex-1 truncate text-sm font-medium text-brand-text">
-                    {cvFile.name}
-                  </span>
+          {formConfig.showResume ? (
+            <FormField
+              id="cv"
+              label={formConfig.resumeRequired ? t("cvRequired") : t("cv")}
+              error={
+                cvError === "required"
+                  ? t("validation.cvRequired")
+                  : cvError === "size"
+                    ? t("validation.cvSize")
+                    : cvError === "type"
+                      ? t("validation.cvType")
+                      : undefined
+              }
+              delay={(fieldDelay += 0.04)}
+            >
+              <div className="space-y-2">
+                {cvFile ? (
+                  <div className="flex items-center gap-3 rounded-xl border border-brand-border/80 bg-brand-surface/50 px-4 py-3">
+                    <FileText
+                      className="size-5 shrink-0 text-brand-primary"
+                      aria-hidden
+                    />
+                    <span className="min-w-0 flex-1 truncate text-sm font-medium text-brand-text">
+                      {cvFile.name}
+                    </span>
+                    <button
+                      type="button"
+                      onClick={resetCv}
+                      className="inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-brand-surface hover:text-brand-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50"
+                      aria-label={t("cvRemove")}
+                    >
+                      <X className="size-4" aria-hidden />
+                    </button>
+                  </div>
+                ) : (
                   <button
                     type="button"
-                    onClick={resetCv}
-                    className="inline-flex size-7 shrink-0 cursor-pointer items-center justify-center rounded-full text-muted-foreground transition-colors hover:bg-brand-surface hover:text-brand-primary focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-brand-accent/50"
-                    aria-label={t("cvRemove")}
+                    onClick={() => cvInputRef.current?.click()}
+                    className={cn(
+                      fieldInputClass,
+                      "flex w-full cursor-pointer items-center gap-3 text-start text-muted-foreground hover:border-brand-accent/60"
+                    )}
                   >
-                    <X className="size-4" aria-hidden />
+                    <Upload className="size-4 shrink-0 text-brand-primary" aria-hidden />
+                    <span className="truncate text-sm">{t("cvHint")}</span>
                   </button>
-                </div>
-              ) : (
-                <button
-                  type="button"
-                  onClick={() => cvInputRef.current?.click()}
-                  className={cn(
-                    fieldInputClass,
-                    "flex w-full cursor-pointer items-center gap-3 text-start text-muted-foreground hover:border-brand-accent/60"
-                  )}
-                >
-                  <Upload className="size-4 shrink-0 text-brand-primary" aria-hidden />
-                  <span className="truncate text-sm">{t("cvHint")}</span>
-                </button>
-              )}
-              <input
-                id="cv"
-                ref={cvInputRef}
-                type="file"
-                accept={CV_ACCEPT_EXTENSIONS}
-                className="sr-only"
-                onChange={(e) => handleCvChange(e.target.files?.[0] ?? null)}
-                aria-invalid={!!cvError}
-              />
-            </div>
-          </FormField>
+                )}
+                <input
+                  id="cv"
+                  ref={cvInputRef}
+                  type="file"
+                  accept={CV_ACCEPT_EXTENSIONS}
+                  className="sr-only"
+                  onChange={(e) => handleCvChange(e.target.files?.[0] ?? null)}
+                  aria-invalid={!!cvError}
+                />
+              </div>
+            </FormField>
+          ) : null}
 
           {fields.includes("vehicle") && (
             <input type="hidden" {...register("vehicle")} />
@@ -503,7 +535,10 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
                   />
                 )}
               />
-              <Label htmlFor="ageConsent" className="leading-relaxed font-normal">
+              <Label
+                htmlFor="ageConsent"
+                className="block min-w-0 flex-1 text-start leading-relaxed font-normal"
+              >
                 {t("ageConsent")}
                 <span className="ms-1 text-destructive" aria-hidden>
                   *
@@ -532,14 +567,18 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
                   />
                 )}
               />
-              <Label htmlFor="privacyConsent" className="leading-relaxed font-normal">
+              <Label
+                htmlFor="privacyConsent"
+                className="block min-w-0 flex-1 text-start leading-relaxed font-normal"
+              >
                 {t.rich("privacyConsent", {
                   privacyLink: (chunks) => (
                     <a
                       href={t("privacyUrl")}
                       target="_blank"
                       rel="noopener noreferrer"
-                      className="underline underline-offset-2 text-brand-primary hover:opacity-80"
+                      className="inline whitespace-normal underline underline-offset-2 text-brand-primary hover:opacity-80"
+                      onClick={(e) => e.stopPropagation()}
                     >
                       {chunks}
                     </a>

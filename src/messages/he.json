@@ -7,10 +7,10 @@
     "brand": "Yango Deli",
     "menu": "תפריט",
     "roles": {
-      "pickers": "מלקטים",
-      "couriers": "שליחים",
-      "support": "שירות לקוחות",
-      "service-rep": "נציג שירות",
+      "pickers": "מלקט/ת",
+      "couriers": "שליח/ה",
+      "support": "אחמ\"ש/ית שירות לקוחות",
+      "service-rep": "נציג/ת שירות לקוחות",
       "manager": "אחראי משמרת"
     }
   },
@@ -36,6 +36,7 @@
     "taxYes": "כן",
     "taxNo": "לא",
     "cv": "קורות חיים (לא חובה)",
+    "cvRequired": "קורות חיים",
     "cvHint": "צרפו קובץ PDF, DOC או DOCX (עד 4MB)",
     "cvRemove": "הסרת הקובץ",
     "ageConsent": "מאשר/ת שאני מעל 18",
@@ -57,6 +58,7 @@
       "taxRegistered": "נא לבחור תשובה",
       "cvType": "סוג קובץ לא נתמך. העלו PDF, DOC או DOCX",
       "cvSize": "הקובץ גדול מדי (עד 4MB)",
+      "cvRequired": "נא לצרף קורות חיים",
       "ageConsent": "יש לאשר גיל 18 ומעלה",
       "privacyConsent": "יש לאשר את מדיניות הפרטיות"
     }
