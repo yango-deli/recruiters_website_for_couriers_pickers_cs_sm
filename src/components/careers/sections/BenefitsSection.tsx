@@ -78,6 +78,11 @@ export function BenefitsSection({
                   ) : item.description ? (
                     <p className="careers-benefit-card__text">{item.description}</p>
                   ) : null}
+                  {item.secondaryDescription ? (
+                    <p className="careers-benefit-card__secondary">
+                      {item.secondaryDescription}
+                    </p>
+                  ) : null}
                 </div>
               </article>
             );

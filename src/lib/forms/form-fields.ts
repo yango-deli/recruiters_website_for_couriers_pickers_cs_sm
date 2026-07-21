@@ -11,8 +11,8 @@ export type FormFieldKey =
 export const ROLE_FORM_FIELDS: Record<Role, FormFieldKey[]> = {
   pickers: ["firstName", "lastName", "phone", "city"],
   couriers: ["firstName", "lastName", "phone", "city", "vehicle", "taxRegistered"],
-  support: ["firstName", "lastName", "phone", "city"],
-  "service-rep": ["firstName", "lastName", "phone", "city"],
+  support: ["firstName", "lastName", "phone"],
+  "service-rep": ["firstName", "lastName", "phone"],
   manager: ["firstName", "lastName", "phone", "city"],
 };
 

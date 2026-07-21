@@ -13,6 +13,8 @@ export type CardItem = {
   title: string;
   descriptionHtml?: string;
   description?: string;
+  /** Secondary body line under the primary description (muted typography). */
+  secondaryDescription?: string;
   image?: string;
   icon?: string;
   panelVariant?: "yellow" | "black" | "grey";

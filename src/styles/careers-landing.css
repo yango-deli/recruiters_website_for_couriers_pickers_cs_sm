@@ -603,6 +603,22 @@ html[lang="ru"] .careers-hero__subtitle {
   line-height: 1.625;
 }
 
+/* Consent copy must stay as flowing RTL text (Label defaults to flex). */
+.careers-form-section .wp-lead-form .flex.items-start > label,
+.careers-form-section .wp-lead-form label[for="privacyConsent"],
+.careers-form-section .wp-lead-form label[for="ageConsent"] {
+  display: block !important;
+  flex: 1 1 auto;
+  min-width: 0;
+  white-space: normal;
+  text-align: start;
+}
+
+.careers-form-section .wp-lead-form label[for="privacyConsent"] a {
+  display: inline !important;
+  white-space: normal;
+}
+
 .careers-form-section .wp-lead-form button[type="submit"] {
   background-color: var(--figma-accent) !important;
   color: var(--figma-black) !important;
@@ -990,7 +1006,7 @@ html[lang="ru"] .careers-hero__subtitle {
   --figma-chrome-gap: 0;
 }
 
-.careers-site--pickers-figma .careers-footer--figma {
+.careers-site--pickers-figma .careers-footer--slim {
   max-width: 85.375rem;
   margin-inline: auto;
 }
@@ -1014,7 +1030,7 @@ html[lang="ru"] .careers-hero__subtitle {
   --figma-chrome-gap: 0;
 }
 
-.careers-site--support-figma .careers-footer--figma {
+.careers-site--support-figma .careers-footer--slim {
   max-width: 85.375rem;
   margin-inline: auto;
 }
@@ -1297,7 +1313,7 @@ html[lang="ru"] .careers-hero__subtitle {
 
 /* Form — Figma 2:25925 */
 .careers-form-section--couriers {
-  padding: 6.875rem 0 16.25rem;
+  padding: 4.5rem 0 3rem;
   background: #ffffff;
   border-end-start-radius: 1.25rem;
   border-end-end-radius: 1.25rem;
@@ -1369,7 +1385,7 @@ html[lang="ru"] .careers-hero__subtitle {
 
 /* Form — Figma 2:24016 (pickers) */
 .careers-form-section--pickers {
-  padding: 6.875rem 0 16.25rem;
+  padding: 4.5rem 0 3rem;
   background: #ffffff;
   border-end-start-radius: 1.25rem;
   border-end-end-radius: 1.25rem;
@@ -1421,7 +1437,7 @@ html[lang="ru"] .careers-hero__subtitle {
 
 /* Form — Figma 2:1002 (support) */
 .careers-form-section--support {
-  padding: 6.875rem 0 16.25rem;
+  padding: 4.5rem 0 3rem;
   background: #ffffff;
   border-end-start-radius: 1.25rem;
   border-end-end-radius: 1.25rem;
@@ -1471,7 +1487,7 @@ html[lang="ru"] .careers-hero__subtitle {
   font-size: 1.125rem !important;
 }
 
-.careers-site--couriers-figma .careers-footer--figma {
+.careers-site--couriers-figma .careers-footer--slim {
   max-width: 85.375rem;
   margin-inline: auto;
 }
@@ -1587,15 +1603,15 @@ html[lang="ru"] .careers-hero__subtitle {
   }
 
   .careers-form-section--couriers {
-    padding: 3rem 0 6rem;
+    padding: 2.5rem 1rem 2.5rem;
   }
 
   .careers-form-section--pickers {
-    padding: 3rem 0 6rem;
+    padding: 2.5rem 1rem 2.5rem;
   }
 
   .careers-form-section--support {
-    padding: 3rem 0 6rem;
+    padding: 2.5rem 1rem 2.5rem;
   }
 
   .careers-form-section__couriers-inner {
@@ -2523,6 +2539,7 @@ html[lang="ru"] .careers-hero__subtitle {
   padding: 2.5rem;
   color: #f5f5f5;
   min-height: 16rem;
+  overflow: hidden;
 }
 
 .careers-footer__figma-copy {
@@ -2531,6 +2548,8 @@ html[lang="ru"] .careers-hero__subtitle {
   align-items: flex-end;
   gap: 1.25rem;
   max-width: 46.375rem;
+  position: relative;
+  z-index: 1;
 }
 
 .careers-footer__figma-cta {
@@ -2577,10 +2596,53 @@ html[lang="ru"] .careers-hero__subtitle {
   opacity: 0.4;
 }
 
+.careers-footer__figma-legal--stacked {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  gap: 0.5rem;
+}
+
+.careers-footer--support-legal .careers-footer__figma-disclaimer {
+  max-width: 100%;
+  white-space: normal;
+}
+
+.careers-footer--no-cta .careers-footer__figma-copy,
+.careers-footer--no-disclaimer .careers-footer__figma-copy {
+  gap: 1rem;
+}
+
+.careers-footer--no-cta.careers-footer--no-disclaimer .careers-footer__figma-panel {
+  min-height: 16rem;
+  padding-block: 2.5rem;
+  align-content: end;
+}
+
+.careers-footer--no-cta.careers-footer--no-disclaimer .careers-footer__figma-logo {
+  top: auto;
+  bottom: -1.5rem;
+  inset-inline-end: 0;
+  width: min(28rem, 42vw);
+  opacity: 0.95;
+}
+
 .careers-footer__figma-link {
   color: inherit;
   text-decoration: underline;
   text-underline-offset: 0.15em;
+}
+
+.careers-benefit-card__secondary {
+  margin-top: 0.5rem;
+  font-size: 0.875rem;
+  line-height: 1.4;
+  color: rgba(17, 17, 17, 0.72);
+  width: 100%;
+}
+
+.careers-benefit-card__body--black .careers-benefit-card__secondary {
+  color: rgba(255, 255, 255, 0.78);
 }
 
 .careers-footer__figma-link:hover {
@@ -2598,6 +2660,152 @@ html[lang="ru"] .careers-hero__subtitle {
 .careers-footer__figma-logo-img {
   width: 100%;
   height: auto !important;
+}
+
+/* Compact professional footer */
+.careers-footer--slim {
+  padding: 0;
+  background: #f5f5f5;
+  color: #f5f5f5;
+}
+
+.careers-footer__slim-panel {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  background: #111111;
+  border-radius: 1rem 1rem 0 0;
+  padding: 1rem 1.5rem;
+  min-height: 4.5rem;
+}
+
+.careers-footer__slim-main {
+  display: flex;
+  flex: 1 1 auto;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.75rem;
+  min-width: 0;
+}
+
+.careers-footer__slim-cta {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2.75rem;
+  padding: 0.75rem 1.25rem;
+  border-radius: 0.5rem;
+  background: #f5f5f5;
+  color: #111111;
+  font-weight: 500;
+  font-size: 1rem;
+  line-height: 1.3;
+  text-decoration: none;
+  transition: background-color 0.2s ease;
+}
+
+.careers-footer__slim-cta:hover {
+  background: #ffffff;
+}
+
+.careers-footer__slim-cta:focus-visible {
+  outline: 2px solid #fede47;
+  outline-offset: 2px;
+}
+
+.careers-footer__slim-disclaimer {
+  margin: 0;
+  max-width: 36rem;
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  letter-spacing: -0.01em;
+  opacity: 0.55;
+  text-align: end;
+}
+
+.careers-footer__slim-legal {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 0.75rem 1.25rem;
+  font-size: 0.8125rem;
+  line-height: 1.4;
+  opacity: 0.7;
+}
+
+.careers-footer__slim-legal-block {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 0.5rem;
+  max-width: min(36rem, 100%);
+  font-size: 0.8125rem;
+  line-height: 1.45;
+  text-align: end;
+}
+
+.careers-footer__slim-legal-block .careers-footer__slim-disclaimer {
+  margin: 0;
+  max-width: none;
+  opacity: 0.55;
+}
+
+.careers-footer__slim-legal-block .careers-footer__slim-link,
+.careers-footer__slim-legal-block .careers-footer__slim-copyline {
+  opacity: 0.7;
+}
+
+.careers-footer__slim-legal--stacked {
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: flex-end;
+  gap: 0.35rem;
+}
+
+.careers-footer__slim-link {
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.careers-footer__slim-link:hover {
+  opacity: 1;
+}
+
+.careers-footer__slim-link:focus-visible {
+  outline: 2px solid #fede47;
+  outline-offset: 2px;
+  border-radius: 0.125rem;
+}
+
+.careers-footer__slim-copyline {
+  white-space: nowrap;
+}
+
+.careers-footer__slim-brand {
+  flex: 0 0 auto;
+  width: 5.5rem;
+  opacity: 0.85;
+  pointer-events: none;
+}
+
+.careers-footer__slim-brand-img {
+  width: 100%;
+  height: auto !important;
+  display: block;
+}
+
+.careers-footer--has-cta .careers-footer__slim-panel,
+.careers-footer--has-disclaimer .careers-footer__slim-panel {
+  align-items: flex-end;
+  padding-block: 1.25rem;
+  min-height: 0;
+}
+
+.careers-footer--support-legal .careers-footer__slim-disclaimer {
+  max-width: min(36rem, 100%);
 }
 
 @media (min-width: 768px) {
@@ -2618,11 +2826,6 @@ html[lang="ru"] .careers-hero__subtitle {
   .careers-unique__grid--figma[data-items="5"] {
     grid-template-columns: repeat(5, minmax(0, 1fr));
   }
-
-  .careers-footer__figma-panel {
-    grid-template-columns: minmax(0, 1fr) auto;
-    align-items: start;
-  }
 }
 
 @media (max-width: 767px) {
@@ -2633,9 +2836,9 @@ html[lang="ru"] .careers-hero__subtitle {
     margin-inline: 0;
   }
 
-  .careers-site--pickers-figma .careers-footer--figma,
-  .careers-site--support-figma .careers-footer--figma,
-  .careers-site--couriers-figma .careers-footer--figma {
+  .careers-site--pickers-figma .careers-footer--slim,
+  .careers-site--support-figma .careers-footer--slim,
+  .careers-site--couriers-figma .careers-footer--slim {
     max-width: none;
     margin-inline: 0;
   }
@@ -2665,7 +2868,7 @@ html[lang="ru"] .careers-hero__subtitle {
   .careers-form-section--couriers,
   .careers-form-section--pickers,
   .careers-form-section--support {
-    padding: 2.5rem 1rem 4rem;
+    padding: 2.5rem 1rem 2.5rem;
     border-radius: 0;
   }
 
@@ -2723,14 +2926,34 @@ html[lang="ru"] .careers-hero__subtitle {
     padding-inline: 1rem;
   }
 
-  .careers-footer__figma-panel {
-    padding: 1.5rem 1rem 2rem;
+  .careers-footer__slim-panel {
+    flex-direction: column-reverse;
+    align-items: stretch;
+    gap: 1rem;
+    padding: 1rem;
+    border-radius: 0.75rem 0.75rem 0 0;
   }
 
-  .careers-footer__figma-logo {
-    position: static;
+  .careers-footer__slim-main {
+    align-items: stretch;
+  }
+
+  .careers-footer__slim-cta {
     width: 100%;
-    margin-top: 1rem;
+  }
+
+  .careers-footer__slim-disclaimer,
+  .careers-footer__slim-legal,
+  .careers-footer__slim-legal--stacked,
+  .careers-footer__slim-legal-block {
+    text-align: start;
+    align-items: flex-start;
+    justify-content: flex-start;
+  }
+
+  .careers-footer__slim-brand {
+    width: 4.5rem;
+    align-self: flex-end;
   }
 }
 
@@ -2749,6 +2972,7 @@ html[lang="ru"] .careers-hero__subtitle {
 .careers-site .careers-chrome-pill,
 .careers-site .careers-hero__figma-cta,
 .careers-site .careers-footer__figma-cta,
+.careers-site .careers-footer__slim-cta,
 .careers-site .careers-btn-primary,
 .careers-site .careers-form-section .wp-lead-form button[type="submit"] {
   transition:
@@ -2790,8 +3014,9 @@ html[lang="ru"] .careers-hero__subtitle {
     color: #ffffff;
   }
 
-  .careers-site .careers-footer__figma-cta:hover {
-    transform: translateY(-3px);
+  .careers-site .careers-footer__figma-cta:hover,
+  .careers-site .careers-footer__slim-cta:hover {
+    transform: translateY(-2px);
     box-shadow: 0 0.5rem 1.25rem rgba(0, 0, 0, 0.35);
     background: #ffffff;
   }
@@ -2811,6 +3036,7 @@ html[lang="ru"] .careers-hero__subtitle {
 .careers-site .careers-chrome-pill:active,
 .careers-site .careers-hero__figma-cta:active,
 .careers-site .careers-footer__figma-cta:active,
+.careers-site .careers-footer__slim-cta:active,
 .careers-site .careers-btn-primary:active,
 .careers-site .careers-form-section .wp-lead-form button[type="submit"]:active:not(:disabled) {
   transform: translateY(0);

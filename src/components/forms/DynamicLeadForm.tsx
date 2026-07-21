@@ -351,7 +351,10 @@ export function DynamicLeadForm({
                 />
               )}
             />
-            <Label htmlFor={`consent-${cb.key}`} className="text-sm leading-snug">
+            <Label
+              htmlFor={`consent-${cb.key}`}
+              className="block min-w-0 flex-1 text-start text-sm leading-snug font-normal"
+            >
               {cb.label}
               {cb.required ? " *" : ""}
             </Label>
