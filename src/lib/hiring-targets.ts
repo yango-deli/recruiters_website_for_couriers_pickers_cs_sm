@@ -94,7 +94,10 @@ export function withFallbackTargets(
     ? dedupeHiringTargets(response.targets)
     : [];
 
-  if (targets.length === 0 && locationType === "city") {
+  const onlySyntheticFallback =
+    targets.length > 0 && targets.every((t) => t.isFallback);
+
+  if ((targets.length === 0 || onlySyntheticFallback) && locationType === "city") {
     targets = citiesAsHiringTargets(CAREERS_HIRING_CITIES);
   }
 
