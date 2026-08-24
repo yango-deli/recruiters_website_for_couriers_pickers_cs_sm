@@ -461,18 +461,20 @@ export function LeadForm({ role, embedded = false }: LeadFormProps) {
                       setValue("vehicle", option, { shouldValidate: true })
                     }
                     className={cn(
-                      "flex cursor-pointer flex-col items-center gap-1.5 rounded-xl border-2 px-2 py-3 text-xs font-semibold transition-all sm:text-sm",
+                      "flex min-w-0 cursor-pointer flex-col items-center gap-1.5 rounded-xl border-2 px-1.5 py-3 text-center text-[0.6875rem] font-semibold leading-tight transition-all sm:px-2 sm:text-sm sm:leading-snug",
                       vehicle === option
                         ? "border-brand-accent bg-brand-accent/15 text-brand-primary shadow-sm"
                         : "border-brand-border/60 bg-white text-brand-text hover:border-brand-accent/50"
                     )}
                   >
                     {option === "car" ? (
-                      <Car className="size-5" aria-hidden />
+                      <Car className="size-5 shrink-0" aria-hidden />
                     ) : (
-                      <Bike className="size-5" aria-hidden />
+                      <Bike className="size-5 shrink-0" aria-hidden />
                     )}
-                    {t(`vehicleOptions.${option}`)}
+                    <span className="w-full whitespace-normal [overflow-wrap:normal] [word-break:normal]">
+                      {t(`vehicleOptions.${option}`)}
+                    </span>
                   </button>
                 ))}
               </div>
