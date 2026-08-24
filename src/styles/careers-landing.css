@@ -1181,6 +1181,10 @@ html[lang="ru"] .careers-hero__subtitle {
   object-position: 50% top;
 }
 
+.careers-hero__figma-photo-img.careers-hero__figma-photo-img--couriers {
+  object-position: 55% top;
+}
+
 .careers-hero__figma-arrows {
   position: absolute;
   inset-inline-start: 2.5rem;
@@ -1672,6 +1676,12 @@ html[dir="rtl"] .careers-hero__figma-bottom {
     line-height: 1.21;
   }
 
+  .careers-hero--couriers .careers-hero__figma-subtitle {
+    display: block;
+    font-size: clamp(1.125rem, 4.5vw, 1.75rem);
+    line-height: 1.21;
+  }
+
   .careers-hero--support .careers-hero__figma-subtitle,
   .careers-hero--service-rep .careers-hero__figma-subtitle {
     display: block;
@@ -1679,6 +1689,7 @@ html[dir="rtl"] .careers-hero__figma-bottom {
     line-height: 1.21;
   }
 
+  .careers-hero--couriers .careers-hero__figma-title,
   .careers-hero--support .careers-hero__figma-title,
   .careers-hero--service-rep .careers-hero__figma-title {
     font-size: clamp(1.75rem, 10vw, 2.5rem);
@@ -1690,6 +1701,7 @@ html[dir="rtl"] .careers-hero__figma-bottom {
     gap: 1.5625rem;
   }
 
+  .careers-hero--couriers .careers-hero__figma-bottom,
   .careers-hero--support .careers-hero__figma-bottom,
   .careers-hero--service-rep .careers-hero__figma-bottom {
     gap: 1.5625rem;
@@ -3038,11 +3050,36 @@ html[dir="rtl"] .careers-hero__figma-bottom {
   .careers-form-section__title--support {
     font-size: clamp(2rem, 10.5vw, 2.75rem);
     line-height: 1.05;
+    max-width: 100%;
+    padding-inline: 0.25rem;
+    overflow-wrap: anywhere;
+  }
+
+  html[lang="en"] .careers-form-section__title--couriers,
+  html[lang="ru"] .careers-form-section__title--couriers,
+  html[lang="en"] .careers-form-section__title--pickers,
+  html[lang="ru"] .careers-form-section__title--pickers,
+  html[lang="en"] .careers-form-section__title--support,
+  html[lang="ru"] .careers-form-section__title--support {
+    font-size: clamp(1.375rem, 6.2vw, 2rem);
+    line-height: 1.15;
   }
 
   .careers-form-section__subtitle {
     font-size: 1.125rem;
     max-width: 19.6875rem;
+  }
+
+  /* Vehicle option tiles — keep long RU/EN labels inside each cell */
+  .wp-lead-form .grid.grid-cols-3 > button {
+    min-width: 0;
+    overflow: hidden;
+  }
+
+  .wp-lead-form .grid.grid-cols-3 > button > span {
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: manual;
   }
 
   .careers-container--figma {
@@ -3135,7 +3172,15 @@ html[dir="rtl"] .careers-hero__figma-bottom {
     overflow-wrap: anywhere;
   }
 
-  .careers-form-section__title--couriers {
+  html[lang="en"] .careers-section-title,
+  html[lang="ru"] .careers-section-title {
+    font-size: clamp(1.5rem, 7vw, 2.25rem);
+    line-height: 1.15;
+  }
+
+  .careers-form-section__title--couriers,
+  .careers-form-section__title--pickers,
+  .careers-form-section__title--support {
     overflow-wrap: anywhere;
   }
 
