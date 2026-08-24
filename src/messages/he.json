@@ -6,6 +6,7 @@
   "nav": {
     "brand": "Yango Deli",
     "menu": "תפריט",
+    "language": "שפה",
     "roles": {
       "pickers": "מלקט/ת",
       "couriers": "שליח/ה",
@@ -76,7 +77,9 @@
     "privacyUrl": "https://yango-deli.co.il/privacy-policy/",
     "downloadApp": "הורידו את האפליקציה",
     "appStore": "App Store",
-    "googlePlay": "Google Play"
+    "googlePlay": "Google Play",
+    "disclaimer": "Yango Deli הוא שירות שליחויות לעסקים שצריכים פתרון נוח ומהיר. המשלוחים מטופלים על ידי שליחים וחברות שליחויות שעובדות עם Yango Deli",
+    "companyLine": "Yango Deli Israel Ltd © {year}"
   },
   "floatingActions": {
     "groupLabel": "פעולות מהירות",

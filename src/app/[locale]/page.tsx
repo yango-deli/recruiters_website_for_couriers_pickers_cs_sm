@@ -17,5 +17,5 @@ export default async function HomePage({ params, searchParams }: PageProps) {
     return null;
   }
 
-  redirect(resolveLocaleHomeRedirect(role));
+  redirect(resolveLocaleHomeRedirect(role, locale));
 }

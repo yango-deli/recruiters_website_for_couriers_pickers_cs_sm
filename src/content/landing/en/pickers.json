@@ -1,0 +1,65 @@
+{
+  "hero": {
+    "title": "Come pick and earn",
+    "subtitle": "All you need is to apply and start working!",
+    "cta": "Apply now",
+    "image": "/careers/pickers/hero-photo.png"
+  },
+  "sections": [
+    {
+      "type": "benefits",
+      "title": "What awaits you?",
+      "items": [
+        {
+          "title": "Order picking",
+          "descriptionHtml": "<p><b>Find and pick products in-store, prepare orders for delivery, and organize inventory</b></p>",
+          "image": "/wp-assets/uploads/2026/02/picking-orders.svg",
+          "panelVariant": "yellow"
+        },
+        {
+          "title": "Shift work",
+          "descriptionHtml": "<p><b>Morning/evening shifts, including weekends!</b></p>",
+          "secondaryDescription": "Morning and evening shifts, including weekend shifts",
+          "image": "/wp-assets/uploads/2026/02/Flexible-shifts.svg",
+          "panelVariant": "black"
+        },
+        {
+          "title": "Young and dynamic team",
+          "descriptionHtml": "<p><b>Work in a young, high-quality team from age 18+</b></p>",
+          "image": "/wp-assets/uploads/2026/02/young-team.svg",
+          "panelVariant": "yellow"
+        }
+      ]
+    },
+    {
+      "type": "whyJoin",
+      "title": "Why is it worth joining?",
+      "variant": "courier",
+      "items": [
+        {
+          "title": "30% discount",
+          "descriptionHtml": "<p><b>A permanent discount on selected products for self-pickup, such as ready meals for breaks or groceries for home.</b></p>",
+          "image": "/wp-assets/uploads/2026/02/Group-2087327956-1-1.png",
+          "panelVariant": "black"
+        },
+        {
+          "title": "Bonuses",
+          "descriptionHtml": "<p><b>We provide bonuses that boost your salary: performance bonus, referral bonus, and more.</b></p>",
+          "image": "/wp-assets/uploads/2026/02/Group-2087327955-1.png",
+          "panelVariant": "black"
+        },
+        {
+          "title": "Growth opportunities",
+          "descriptionHtml": "<p><b>Your personal growth matters to us, so we offer internal career paths.</b></p>",
+          "image": "/wp-assets/uploads/2026/02/Group-2087327983.png",
+          "panelVariant": "black"
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "title": "Join our team",
+      "subtitle": "Apply and we will get back to you soon with all the details"
+    }
+  ]
+}

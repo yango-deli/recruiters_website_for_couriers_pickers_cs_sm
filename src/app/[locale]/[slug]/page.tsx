@@ -21,10 +21,8 @@ type PageProps = {
 export function generateStaticParams() {
   const params: { locale: string; slug: string }[] = [];
   for (const locale of routing.locales) {
-    if (locale === "he") {
-      for (const role of LANDING_ROLES) {
-        params.push({ locale, slug: role });
-      }
+    for (const role of LANDING_ROLES) {
+      params.push({ locale, slug: role });
     }
     for (const slug of Object.keys(LEGAL_REDIRECTS)) {
       params.push({ locale, slug });
@@ -66,7 +64,7 @@ export default async function SlugPage({ params }: PageProps) {
   setRequestLocale(locale);
 
   if (decoded === "careers" || decoded === "yango-deli-careers-original") {
-    redirect(resolveLocaleHomeRedirect());
+    redirect(resolveLocaleHomeRedirect(null, locale));
   }
 
   if (decoded === "manager") {
@@ -80,10 +78,6 @@ export default async function SlugPage({ params }: PageProps) {
 
   if (isRoleSlug(decoded)) {
     const role = decoded as Role;
-
-    if (locale !== "he") {
-      redirect(`/he/${role}`);
-    }
 
     if (!LANDING_ROLES.includes(role as (typeof LANDING_ROLES)[number])) {
       notFound();

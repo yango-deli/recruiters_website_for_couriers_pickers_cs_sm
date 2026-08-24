@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "title": "We are looking for couriers like you",
+    "subtitle": "All you need is to apply, start riding, and earn!",
+    "cta": "Apply now",
+    "image": "/careers/couriers/hero-photo.png"
+  },
+  "sections": [
+    {
+      "type": "benefits",
+      "title": "Your decision",
+      "items": [
+        {
+          "title": "How much to earn per month",
+          "descriptionHtml": "<p><b>Simple math — more deliveries = more earnings</b></p>",
+          "image": "/careers/couriers/benefit-illus-earnings.svg",
+          "panelVariant": "yellow"
+        },
+        {
+          "title": "How to get from here to there",
+          "descriptionHtml": "<p><b>Electric bike, scooter, or car.</b></p>",
+          "image": "/careers/couriers/benefit-illus-transport.svg",
+          "panelVariant": "black"
+        },
+        {
+          "title": "When to take a shift",
+          "descriptionHtml": "<p><b>Choose when to work 24/7 with no minimum weekly shifts.</b></p>",
+          "image": "/careers/couriers/benefit-illus-shifts.svg",
+          "panelVariant": "yellow"
+        }
+      ]
+    },
+    {
+      "type": "whyJoin",
+      "title": "Why is it worth joining?",
+      "variant": "courier",
+      "items": [
+        {
+          "title": "Super fast payment",
+          "descriptionHtml": "<p><b>Self-employed workers get paid every two weeks</b></p>",
+          "image": "/careers/couriers/why-illus-fast-pay.svg",
+          "panelVariant": "grey",
+          "imageFirst": true
+        },
+        {
+          "title": "There are also bonuses",
+          "descriptionHtml": "<p><b>We reward you at every opportunity with special bonuses that boost income, such as: holiday bonus, weather bonus, distance and weight bonus.</b></p>",
+          "image": "/careers/couriers/why-illus-bonuses.svg",
+          "panelVariant": "grey",
+          "imageFirst": true
+        },
+        {
+          "title": "15% discount",
+          "descriptionHtml": "<p><b>A permanent discount on selected self-pickup products, such as ready meals for shift breaks or groceries for home at the end of the day.</b></p>",
+          "image": "/careers/couriers/why-illus-discount.svg",
+          "panelVariant": "grey",
+          "imageFirst": true
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "title": "Ready to sign up?",
+      "subtitle": "Choose when to work 24/7 with no minimum weekly shifts."
+    }
+  ]
+}

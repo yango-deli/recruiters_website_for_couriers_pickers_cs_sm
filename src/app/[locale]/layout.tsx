@@ -33,14 +33,11 @@ export async function generateMetadata({
     description: messages.meta.description,
     icons: { icon: "/logos/favicon-32.png" },
     alternates: {
-      canonical:
-        locale === "he"
-          ? `https://yango-deli.co.il${landingPathForRole(DEFAULT_LANDING_ROLE)}`
-          : `${base}/${locale}`,
+      canonical: `${base}${landingPathForRole(DEFAULT_LANDING_ROLE, locale)}`,
       languages: {
-        he: `https://yango-deli.co.il${landingPathForRole(DEFAULT_LANDING_ROLE)}`,
-        en: `${base}/en`,
-        ru: `${base}/ru`,
+        he: `${base}${landingPathForRole(DEFAULT_LANDING_ROLE, "he")}`,
+        en: `${base}${landingPathForRole(DEFAULT_LANDING_ROLE, "en")}`,
+        ru: `${base}${landingPathForRole(DEFAULT_LANDING_ROLE, "ru")}`,
       },
     },
     openGraph: {

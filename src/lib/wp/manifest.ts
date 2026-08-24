@@ -111,9 +111,13 @@ export const WP_LEGACY_REDIRECTS: Record<string, string> = {
   "/yango-deli-careers-original": resolveLocaleHomeRedirect(),
   "/work-with-us-couriers-he": "/he/couriers",
   "/work-with-us-couriers-en": "/en/couriers",
+  "/work-with-us-couriers-ru": "/ru/couriers",
   "/work-with-us-storekeepers-he": "/he/pickers",
   "/work-with-us-storekeepers-en": "/en/pickers",
+  "/work-with-us-storekeepers-ru": "/ru/pickers",
   "/work-with-us-support-he": "/he/support",
+  "/work-with-us-support-en": "/en/support",
+  "/work-with-us-support-ru": "/ru/support",
 };
 
 for (const page of wpManifest.pages) {

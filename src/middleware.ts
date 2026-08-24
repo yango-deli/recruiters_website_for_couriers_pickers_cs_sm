@@ -22,9 +22,10 @@ export default function middleware(request: NextRequest) {
     }
   }
 
-  if (pathname === "/he") {
+  if (pathname === "/he" || pathname === "/en" || pathname === "/ru") {
+    const locale = pathname.slice(1);
     const role = request.nextUrl.searchParams.get("role");
-    const target = resolveLocaleHomeRedirect(role);
+    const target = resolveLocaleHomeRedirect(role, locale);
     const url = new URL(target, request.url);
     return NextResponse.redirect(url, 308);
   }

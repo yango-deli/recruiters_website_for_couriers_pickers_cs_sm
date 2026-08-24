@@ -47,9 +47,7 @@ export function CareersFooter({ role }: CareersFooterProps) {
           {isSupportLegal ? (
             <div className="careers-footer__slim-legal-block">
               <p className="careers-footer__slim-disclaimer">
-                Yango Deli הוא שירות שליחויות לעסקים שצריכים פתרון נוח ומהיר.
-                המשלוחים מטופלים על ידי שליחים וחברות שליחויות שעובדות עם Yango
-                Deli
+                {t("disclaimer")}
               </p>
               <a
                 href={t("privacyUrl")}
@@ -57,10 +55,10 @@ export function CareersFooter({ role }: CareersFooterProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Privacy Policy
+                {t("privacy")}
               </a>
               <span className="careers-footer__slim-copyline">
-                Yango Deli Israel Ltd © {config.privacyYear}
+                {t("companyLine", { year: config.privacyYear })}
               </span>
             </div>
           ) : (
@@ -71,10 +69,10 @@ export function CareersFooter({ role }: CareersFooterProps) {
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Privacy Policy
+                {t("privacy")}
               </a>
               <span className="careers-footer__slim-copyline">
-                Yango Deli Israel Ltd © {config.privacyYear}
+                {t("companyLine", { year: config.privacyYear })}
               </span>
             </div>
           )}

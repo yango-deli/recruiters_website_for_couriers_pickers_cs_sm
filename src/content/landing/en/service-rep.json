@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "title": "Do you have a strong service mindset and great people skills? We're looking for you.",
+    "subtitle": "All you need to do is apply!",
+    "cta": "Apply now",
+    "image": "/careers/service-rep/hero-photo.png"
+  },
+  "sections": [
+    {
+      "type": "benefits",
+      "title": "What awaits you?",
+      "items": [
+        {
+          "title": "Customer service",
+          "descriptionHtml": "<p>Support customers, couriers, and stores via chat and outbound calls</p>",
+          "image": "/wp-assets/uploads/2026/02/wait-for-the-call.svg",
+          "panelVariant": "yellow"
+        },
+        {
+          "title": "Flexible shifts",
+          "descriptionHtml": "<p>Part-time morning and evening shifts, including weekends — easy to combine with studies or personal life.</p>",
+          "image": "/wp-assets/uploads/2026/02/Flexible-shifts.svg",
+          "panelVariant": "black"
+        },
+        {
+          "title": "Work from home",
+          "descriptionHtml": "<p>No time wasted on commuting and traffic.</p>",
+          "image": "/wp-assets/uploads/2026/02/young-team.svg",
+          "panelVariant": "yellow"
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "title": "Join our team",
+      "subtitle": "Apply and we'll get back to you shortly with all the details"
+    }
+  ]
+}

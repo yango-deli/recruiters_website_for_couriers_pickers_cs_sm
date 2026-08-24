@@ -7,39 +7,56 @@
   },
   "sections": [
     {
-      "type": "figmaBand",
-      "id": "benefits",
-      "image": "/careers/couriers/benefits-section.png",
-      "width": 2732,
-      "height": 1266,
-      "ariaLabel": "ההחלטה שלך"
+      "type": "benefits",
+      "title": "ההחלטה שלך",
+      "items": [
+        {
+          "title": "כמה להרוויח בחודש",
+          "descriptionHtml": "<p><b>החשבון פשוט - יותר משלוחים = מרוויחים יותר</b></p>",
+          "image": "/careers/couriers/benefit-illus-earnings.svg",
+          "panelVariant": "yellow"
+        },
+        {
+          "title": "איך להגיע מפה לשם",
+          "descriptionHtml": "<p><b>אופניים חשמליים, קטנוע או רכב.</b></p>",
+          "image": "/careers/couriers/benefit-illus-transport.svg",
+          "panelVariant": "black"
+        },
+        {
+          "title": "מתי לקחת משמרת",
+          "descriptionHtml": "<p><b>בוחרים מתי לעבוד 24/7 בלי התחייבות למינימום משמרות בשבוע.</b></p>",
+          "image": "/careers/couriers/benefit-illus-shifts.svg",
+          "panelVariant": "yellow"
+        }
+      ]
     },
     {
-      "type": "figmaBand",
-      "id": "unique",
-      "image": "/careers/couriers/unique-band.png",
-      "width": 2732,
-      "height": 1054,
-      "variant": "flush",
-      "ariaLabel": "מה יש לנו שאין לאחרים"
-    },
-    {
-      "type": "figmaBand",
-      "id": "why-join",
-      "image": "/careers/couriers/why-join-section.png",
-      "width": 2732,
-      "height": 1124,
-      "variant": "rounded-top",
-      "ariaLabel": "למה שווה לך להצטרף?"
-    },
-    {
-      "type": "figmaBand",
-      "id": "steps",
-      "image": "/careers/couriers/steps-section.png",
-      "width": 2732,
-      "height": 1308,
-      "variant": "rounded-top-black",
-      "ariaLabel": "נרשמים וקדימה לדרך!"
+      "type": "whyJoin",
+      "title": "למה שווה לך להצטרף?",
+      "variant": "courier",
+      "items": [
+        {
+          "title": "תשלום סופר מהיר",
+          "descriptionHtml": "<p><b>עובדים עצמאיים מקבלים תשלום כל שבועיים</b></p>",
+          "image": "/careers/couriers/why-illus-fast-pay.svg",
+          "panelVariant": "grey",
+          "imageFirst": true
+        },
+        {
+          "title": "יש גם בונוסים",
+          "descriptionHtml": "<p><b>אנחנו דואגים לצ'פר בכל הזדמנות עם בונוסים מיוחדים שמקפיצים את ההכנסה כמו: בונוס חגים, בונוס מזג אוויר, בונוס מרחק ומשקל.</b></p>",
+          "image": "/careers/couriers/why-illus-bonuses.svg",
+          "panelVariant": "grey",
+          "imageFirst": true
+        },
+        {
+          "title": "15% הנחה",
+          "descriptionHtml": "<p><b>הנחה קבועה על מגוון מוצרים באיסוף עצמי כמו: ארוחות מוכנות להפסקה במשמרת או קניות לבית בסוף היום.</b></p>",
+          "image": "/careers/couriers/why-illus-discount.svg",
+          "panelVariant": "grey",
+          "imageFirst": true
+        }
+      ]
     },
     {
       "type": "form",
