@@ -6,6 +6,7 @@
   "nav": {
     "brand": "Yango Deli",
     "menu": "Меню",
+    "language": "Язык",
     "roles": {
       "pickers": "Сборщик/сборщица",
       "couriers": "Курьер",
@@ -76,7 +77,9 @@
     "privacyUrl": "https://yango-deli.co.il/privacy-policy/",
     "downloadApp": "Скачать приложение",
     "appStore": "App Store",
-    "googlePlay": "Google Play"
+    "googlePlay": "Google Play",
+    "disclaimer": "Yango Deli — сервис доставки для бизнеса, которому нужно удобное и быстрое решение. Доставки выполняют курьеры и курьерские компании, работающие с Yango Deli",
+    "companyLine": "Yango Deli Israel Ltd © {year}"
   },
   "floatingActions": {
     "groupLabel": "Быстрые действия",

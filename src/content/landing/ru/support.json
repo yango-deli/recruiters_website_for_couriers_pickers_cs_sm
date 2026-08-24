@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "title": "Если у вас есть опыт в клиентском сервисе и вы готовы к следующему шагу — это ваш шанс",
+    "subtitle": "Мы ищем старшего смены службы поддержки. Все, что нужно — подать заявку!",
+    "cta": "Подать заявку",
+    "image": "/careers/support/hero-photo.png"
+  },
+  "sections": [
+    {
+      "type": "benefits",
+      "title": "Что вас ждёт?",
+      "items": [
+        {
+          "title": "Управление командой клиентского сервиса",
+          "descriptionHtml": "<p>Улучшение и оптимизация рабочих процессов<br/>Поддержание высоких стандартов и достижение целей</p>",
+          "image": "/wp-assets/uploads/2026/02/wait-for-the-call.svg",
+          "panelVariant": "yellow"
+        },
+        {
+          "title": "Полная занятость",
+          "descriptionHtml": "<p>Работа из офиса компании в центре Тель-Авива (с возможностью гибридного формата)</p>",
+          "image": "/wp-assets/uploads/2026/02/Flexible-shifts.svg",
+          "panelVariant": "black"
+        },
+        {
+          "title": "Отличная зарплата и щедрые бонусы",
+          "image": "/wp-assets/uploads/2026/02/young-team.svg",
+          "panelVariant": "yellow"
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "title": "Присоединяйтесь к команде",
+      "subtitle": "Подайте заявку — мы скоро свяжемся с вами и расскажем детали"
+    }
+  ]
+}

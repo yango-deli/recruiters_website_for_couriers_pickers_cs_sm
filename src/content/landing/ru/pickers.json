@@ -1,0 +1,65 @@
+{
+  "hero": {
+    "title": "Приходите собирать заказы и зарабатывать",
+    "subtitle": "Все, что нужно — подать заявку и начать работать!",
+    "cta": "Подать заявку",
+    "image": "/careers/pickers/hero-photo.png"
+  },
+  "sections": [
+    {
+      "type": "benefits",
+      "title": "Что вас ждёт?",
+      "items": [
+        {
+          "title": "Сбор заказов",
+          "descriptionHtml": "<p><b>Поиск и сбор товаров в магазине, подготовка заказов к доставке и организация выкладки</b></p>",
+          "image": "/wp-assets/uploads/2026/02/picking-orders.svg",
+          "panelVariant": "yellow"
+        },
+        {
+          "title": "Сменная работа",
+          "descriptionHtml": "<p><b>Утренние и вечерние смены, включая выходные!</b></p>",
+          "secondaryDescription": "Утренние и вечерние смены, включая смены по выходным",
+          "image": "/wp-assets/uploads/2026/02/Flexible-shifts.svg",
+          "panelVariant": "black"
+        },
+        {
+          "title": "Молодая и динамичная команда",
+          "descriptionHtml": "<p><b>Работа в молодой и сильной команде, от 18 лет</b></p>",
+          "image": "/wp-assets/uploads/2026/02/young-team.svg",
+          "panelVariant": "yellow"
+        }
+      ]
+    },
+    {
+      "type": "whyJoin",
+      "title": "Почему стоит присоединиться?",
+      "variant": "courier",
+      "items": [
+        {
+          "title": "Скидка 30%",
+          "descriptionHtml": "<p><b>Постоянная скидка на часть ассортимента при самовывозе: готовые блюда на перерыв или покупки домой.</b></p>",
+          "image": "/wp-assets/uploads/2026/02/Group-2087327956-1-1.png",
+          "panelVariant": "black"
+        },
+        {
+          "title": "Бонусы",
+          "descriptionHtml": "<p><b>Мы даем бонусы, которые повышают доход: за результат, \"приведи друга\" и другие.</b></p>",
+          "image": "/wp-assets/uploads/2026/02/Group-2087327955-1.png",
+          "panelVariant": "black"
+        },
+        {
+          "title": "Возможности роста",
+          "descriptionHtml": "<p><b>Ваш рост важен для нас, поэтому мы предлагаем внутренние карьерные возможности.</b></p>",
+          "image": "/wp-assets/uploads/2026/02/Group-2087327983.png",
+          "panelVariant": "black"
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "title": "Присоединяйтесь к команде",
+      "subtitle": "Подайте заявку — мы скоро свяжемся с вами и расскажем детали"
+    }
+  ]
+}

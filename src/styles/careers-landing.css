@@ -808,10 +808,16 @@ html[lang="ru"] .careers-hero__subtitle {
     padding-block: 0.75rem;
   }
 
-  .careers-chrome__logo {
+  .careers-chrome__brand-cluster {
     grid-column: 1;
     grid-row: 1;
     justify-self: end;
+  }
+
+  .careers-chrome__logo {
+    grid-column: auto;
+    grid-row: auto;
+    justify-self: auto;
   }
 
   .careers-chrome__logo-img {
@@ -891,6 +897,54 @@ html[lang="ru"] .careers-hero__subtitle {
 .careers-chrome__logo:focus-visible {
   outline: 2px solid #fede47;
   outline-offset: 2px;
+}
+
+.careers-chrome__brand-cluster {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  direction: ltr;
+}
+
+.careers-chrome__lang {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.careers-chrome__lang-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 2rem;
+  padding: 0.35rem 0.65rem;
+  border: 1px solid rgba(15, 17, 21, 0.15);
+  border-radius: 0.75rem;
+  background: #ffffff;
+  color: rgba(15, 17, 21, 0.55);
+  font-family: Inter, "Yango Text", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  text-decoration: none;
+  transition: background-color 0.2s ease, color 0.2s ease, border-color 0.2s ease;
+}
+
+.careers-chrome__lang-btn:hover {
+  background: #f5f5f7;
+  color: #0f1115;
+  border-color: rgba(15, 17, 21, 0.25);
+}
+
+.careers-chrome__lang-btn:focus-visible {
+  outline: none;
+  box-shadow: 0 0 0 2px #ffffff, 0 0 0 4px #ffcc00;
+}
+
+.careers-chrome__lang-btn--active {
+  background: #ffcc00;
+  border-color: #ffcc00;
+  color: #0f1115;
 }
 
 .careers-site--couriers .careers-main {
@@ -1153,11 +1207,65 @@ html[lang="ru"] .careers-hero__subtitle {
   flex-direction: column;
   justify-content: space-between;
   align-items: stretch;
-  direction: rtl;
   background: #fede47;
   border-start-start-radius: 1.25rem;
   border-end-start-radius: 1.25rem;
   overflow: visible;
+}
+
+/* HE: keep photo|panel LTR shell, but RTL-align copy inside the yellow panel. */
+html[dir="rtl"] .careers-hero__figma-panel {
+  direction: rtl;
+}
+
+html[dir="rtl"] .careers-hero__figma-bottom {
+  align-items: flex-start;
+  align-self: flex-start;
+}
+
+/* EN/RU desktop: grow with longer copy (HE keeps fixed Figma height). */
+@media (min-width: 1024px) {
+  html[lang="en"] .careers-hero__figma,
+  html[lang="ru"] .careers-hero__figma {
+    height: auto;
+    min-height: 35.375rem;
+    align-items: stretch;
+  }
+
+  html[lang="en"] .careers-hero__figma-photo,
+  html[lang="ru"] .careers-hero__figma-photo {
+    height: auto;
+    min-height: 35.375rem;
+    align-self: stretch;
+  }
+
+  html[lang="en"] .careers-hero__figma-panel,
+  html[lang="ru"] .careers-hero__figma-panel {
+    height: auto;
+    min-height: 35.375rem;
+    overflow: hidden;
+    justify-content: flex-start;
+    gap: 1.75rem;
+  }
+
+  html[lang="en"] .careers-hero__figma-title,
+  html[lang="ru"] .careers-hero__figma-title {
+    font-size: clamp(1.75rem, 3.6vw, 3.125rem);
+    line-height: 1.08;
+    overflow-wrap: anywhere;
+  }
+
+  html[lang="en"] .careers-hero__figma-bottom,
+  html[lang="ru"] .careers-hero__figma-bottom {
+    margin-top: auto;
+    gap: 1.5rem;
+    flex-shrink: 0;
+  }
+
+  html[lang="en"] .careers-hero__figma-subtitle,
+  html[lang="ru"] .careers-hero__figma-subtitle {
+    overflow-wrap: anywhere;
+  }
 }
 
 .careers-hero__figma-title-wrap {
@@ -1771,6 +1879,15 @@ html[lang="ru"] .careers-hero__subtitle {
 .careers-benefits--couriers .careers-benefit-card__body {
   align-items: center;
   text-align: center;
+  overflow-wrap: anywhere;
+}
+
+.careers-benefits--couriers .careers-benefit-card__title {
+  overflow-wrap: anywhere;
+}
+
+.careers-benefits--couriers .careers-benefit-card__text {
+  overflow-wrap: anywhere;
 }
 
 .careers-benefits--couriers .careers-benefit-card__body--black {
@@ -1778,16 +1895,31 @@ html[lang="ru"] .careers-hero__subtitle {
 }
 
 .careers-benefits--couriers .careers-benefit-card__illus {
-  overflow: visible;
+  position: relative;
+  overflow: hidden;
   min-height: calc(var(--figma-card-illus-min-h) + 0.25rem);
-  padding-block: 1rem;
+  padding: 1rem 0.75rem;
   background: var(--figma-card-illus-bg);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.careers-benefits--couriers .careers-benefit-card__image {
+  position: static !important;
+  width: auto !important;
+  height: auto !important;
+  max-width: min(96%, 18rem) !important;
+  max-height: calc(var(--figma-card-illus-min-h) - 1.25rem) !important;
+  min-width: 0 !important;
+  object-fit: contain;
+  object-position: center;
 }
 
 .careers-benefits--couriers .careers-benefit-card__image--coins {
-  max-width: min(92%, 16rem);
-  max-height: calc(var(--figma-card-illus-min-h) - 0.5rem);
-  min-width: 5rem;
+  max-width: min(92%, 16rem) !important;
+  max-height: calc(var(--figma-card-illus-min-h) - 1rem) !important;
+  min-width: 0 !important;
 }
 
 .careers-why-join--courier .careers-why-card__inner {
@@ -1827,13 +1959,22 @@ html[lang="ru"] .careers-hero__subtitle {
   gap: 1.25rem;
 }
 
+.careers-why-join--couriers .careers-why-card {
+  overflow: visible;
+}
+
 .careers-why-join--couriers .careers-why-card--courier .careers-why-card__inner {
   min-height: 20.3125rem;
+  overflow: visible;
 }
 
 .careers-why-join--couriers .careers-why-card__media {
   background: #fede47;
-  padding: 1.25rem 1rem;
+  padding: 1rem 0.75rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
 }
 
 .careers-why-join--couriers .careers-why-card__copy {
@@ -1841,23 +1982,32 @@ html[lang="ru"] .careers-hero__subtitle {
   color: var(--figma-black);
   padding: 1.75rem 1.5rem;
   text-align: start;
+  overflow-wrap: anywhere;
+  word-break: normal;
+  min-width: 0;
 }
 
 .careers-why-join--couriers .careers-why-card__title {
   font-size: clamp(1.25rem, 2.2vw, 1.625rem);
   line-height: 1.15;
   margin-bottom: 0.875rem;
+  overflow-wrap: anywhere;
 }
 
 .careers-why-join--couriers .careers-why-card__text {
   font-size: clamp(0.9375rem, 1.6vw, 1.0625rem);
   line-height: 1.45;
   letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
 }
 
 .careers-why-join--couriers .careers-why-card__image {
-  max-width: min(95%, 11.5rem);
+  width: auto !important;
+  height: auto !important;
+  max-width: min(92%, 11.5rem);
   max-height: 12rem;
+  object-fit: contain;
+  object-position: center;
 }
 
 .careers-steps--couriers {
@@ -2905,6 +3055,9 @@ html[lang="ru"] .careers-hero__subtitle {
 
   .careers-why-join__couriers-title {
     padding: 2.5rem 1rem 1.5rem;
+    font-size: clamp(1.75rem, 8vw, 2.5rem);
+    line-height: 1.1;
+    overflow-wrap: anywhere;
   }
 
   .careers-why-join--couriers {
@@ -2918,7 +3071,77 @@ html[lang="ru"] .careers-hero__subtitle {
   }
 
   .careers-why-join--couriers .careers-why-card--courier .careers-why-card__inner {
-    min-height: 14rem;
+    min-height: 0;
+  }
+
+  .careers-why-join--couriers .careers-why-card__media {
+    min-height: 12rem;
+    padding: 1.25rem 1rem;
+  }
+
+  .careers-why-join--couriers .careers-why-card__copy {
+    padding: 1.25rem 1.125rem 1.5rem;
+  }
+
+  .careers-why-join--couriers .careers-why-card__title {
+    font-size: clamp(1.25rem, 5.5vw, 1.5rem);
+    line-height: 1.2;
+  }
+
+  .careers-why-join--couriers .careers-why-card__text {
+    font-size: clamp(0.9375rem, 3.8vw, 1.0625rem);
+    line-height: 1.45;
+  }
+
+  .careers-why-join--couriers .careers-why-card__image {
+    max-width: min(70%, 10rem);
+    max-height: 10rem;
+  }
+
+  .careers-benefits--couriers .careers-benefit-card__body {
+    min-height: 0;
+    padding: 1.25rem 1.25rem 1.5rem;
+  }
+
+  .careers-benefits--couriers .careers-benefit-card__title {
+    font-size: clamp(1.0625rem, 4.6vw, 1.3125rem);
+    line-height: 1.2;
+    overflow-wrap: anywhere;
+  }
+
+  .careers-benefits--couriers .careers-benefit-card__text {
+    font-size: clamp(0.875rem, 3.6vw, 1rem);
+    line-height: 1.4;
+    overflow-wrap: anywhere;
+  }
+
+  .careers-section-title {
+    overflow-wrap: anywhere;
+    padding-inline: 0.25rem;
+  }
+
+  html[lang="en"] .careers-hero__figma-title,
+  html[lang="ru"] .careers-hero__figma-title {
+    font-size: clamp(1.75rem, 9vw, 2.5rem);
+    line-height: 1.05;
+    max-width: 100%;
+  }
+
+  html[lang="en"] .careers-hero__figma-subtitle,
+  html[lang="ru"] .careers-hero__figma-subtitle {
+    display: block;
+    font-size: clamp(1rem, 4vw, 1.25rem);
+    line-height: 1.25;
+    overflow-wrap: anywhere;
+  }
+
+  .careers-form-section__title--couriers {
+    overflow-wrap: anywhere;
+  }
+
+  .careers-form-section__subtitle {
+    max-width: none;
+    overflow-wrap: anywhere;
   }
 
   .careers-why-join__figma-grid,

@@ -1,0 +1,38 @@
+{
+  "hero": {
+    "title": "If you have customer service experience and are ready for the next step, this is your opportunity",
+    "subtitle": "We are looking for a customer service shift manager. All you need is to apply!",
+    "cta": "Apply now",
+    "image": "/careers/support/hero-photo.png"
+  },
+  "sections": [
+    {
+      "type": "benefits",
+      "title": "What awaits you?",
+      "items": [
+        {
+          "title": "Managing a customer service team",
+          "descriptionHtml": "<p>Improve and optimize workflows<br/>Maintain high standards and achieve goals</p>",
+          "image": "/wp-assets/uploads/2026/02/wait-for-the-call.svg",
+          "panelVariant": "yellow"
+        },
+        {
+          "title": "Full-time position",
+          "descriptionHtml": "<p>Work from the company office in central Tel Aviv (with hybrid option)</p>",
+          "image": "/wp-assets/uploads/2026/02/Flexible-shifts.svg",
+          "panelVariant": "black"
+        },
+        {
+          "title": "Great salary and rewarding bonuses",
+          "image": "/wp-assets/uploads/2026/02/young-team.svg",
+          "panelVariant": "yellow"
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "title": "Join our team",
+      "subtitle": "Apply and we will get back to you soon with all the details"
+    }
+  ]
+}

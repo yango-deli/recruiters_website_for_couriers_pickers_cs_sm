@@ -1,0 +1,39 @@
+{
+  "hero": {
+    "title": "У вас сильное сервисное мышление и отличные навыки общения? Мы ищем именно вас.",
+    "subtitle": "Достаточно просто подать заявку!",
+    "cta": "Подать заявку",
+    "image": "/careers/service-rep/hero-photo.png"
+  },
+  "sections": [
+    {
+      "type": "benefits",
+      "title": "Что вас ждёт?",
+      "items": [
+        {
+          "title": "Клиентский сервис",
+          "descriptionHtml": "<p>Поддержка клиентов, курьеров и магазинов в чатах и исходящих звонках</p>",
+          "image": "/wp-assets/uploads/2026/02/wait-for-the-call.svg",
+          "panelVariant": "yellow"
+        },
+        {
+          "title": "Гибкие смены",
+          "descriptionHtml": "<p>Частичная занятость в утренние и вечерние смены, включая выходные — удобно совмещать с учёбой или личной жизнью.</p>",
+          "image": "/wp-assets/uploads/2026/02/Flexible-shifts.svg",
+          "panelVariant": "black"
+        },
+        {
+          "title": "Работа из дома",
+          "descriptionHtml": "<p>Без потери времени на дорогу и пробки.</p>",
+          "image": "/wp-assets/uploads/2026/02/young-team.svg",
+          "panelVariant": "yellow"
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "title": "Присоединяйтесь к команде",
+      "subtitle": "Подайте заявку — мы свяжемся с вами в ближайшее время и расскажем детали"
+    }
+  ]
+}

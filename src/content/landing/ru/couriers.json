@@ -1,0 +1,67 @@
+{
+  "hero": {
+    "title": "Мы ищем курьеров именно как вы",
+    "subtitle": "Нужно только подать заявку, начать ездить и зарабатывать!",
+    "cta": "Подать заявку",
+    "image": "/careers/couriers/hero-photo.png"
+  },
+  "sections": [
+    {
+      "type": "benefits",
+      "title": "Твоё решение",
+      "items": [
+        {
+          "title": "Сколько зарабатывать в месяц",
+          "descriptionHtml": "<p><b>Расчёт прост — больше доставок = больше заработок</b></p>",
+          "image": "/careers/couriers/benefit-illus-earnings.svg",
+          "panelVariant": "yellow"
+        },
+        {
+          "title": "Как добраться из пункта А в пункт Б",
+          "descriptionHtml": "<p><b>Электровелосипед, самокат или автомобиль.</b></p>",
+          "image": "/careers/couriers/benefit-illus-transport.svg",
+          "panelVariant": "black"
+        },
+        {
+          "title": "Когда брать смену",
+          "descriptionHtml": "<p><b>Выбирайте время работы 24/7 без обязательного минимума смен в неделю.</b></p>",
+          "image": "/careers/couriers/benefit-illus-shifts.svg",
+          "panelVariant": "yellow"
+        }
+      ]
+    },
+    {
+      "type": "whyJoin",
+      "title": "Почему стоит присоединиться?",
+      "variant": "courier",
+      "items": [
+        {
+          "title": "Супер быстрая оплата",
+          "descriptionHtml": "<p><b>Самозанятые получают оплату каждые две недели</b></p>",
+          "image": "/careers/couriers/why-illus-fast-pay.svg",
+          "panelVariant": "grey",
+          "imageFirst": true
+        },
+        {
+          "title": "Есть также бонусы",
+          "descriptionHtml": "<p><b>Мы поощряем при любой возможности специальными бонусами, повышающими доход: праздничный бонус, бонус за погоду, бонус за расстояние и вес.</b></p>",
+          "image": "/careers/couriers/why-illus-bonuses.svg",
+          "panelVariant": "grey",
+          "imageFirst": true
+        },
+        {
+          "title": "Скидка 15%",
+          "descriptionHtml": "<p><b>Постоянная скидка на часть товаров при самовывозе: готовые блюда на перерыв в смене или покупки домой в конце дня.</b></p>",
+          "image": "/careers/couriers/why-illus-discount.svg",
+          "panelVariant": "grey",
+          "imageFirst": true
+        }
+      ]
+    },
+    {
+      "type": "form",
+      "title": "Готовы зарегистрироваться?",
+      "subtitle": "Выбирайте, когда работать 24/7, без минимального количества смен в неделю."
+    }
+  ]
+}

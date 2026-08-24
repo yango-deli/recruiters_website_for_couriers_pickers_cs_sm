@@ -1,4 +1,4 @@
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
 import type { Role } from "@/types/role";
 import { LANDING_ROLES } from "@/types/role";
@@ -6,8 +6,17 @@ import type { LandingRole, RolePageContent } from "./types";
 
 const CONTENT_ROOT = join(process.cwd(), "src/content/landing");
 
-function landingLocale(locale: string): "he" {
-  return locale === "he" ? "he" : "he";
+function loadJsonContent(role: LandingRole, locale: string): RolePageContent {
+  const localePath = join(CONTENT_ROOT, locale, `${role}.json`);
+  if (existsSync(localePath)) {
+    return JSON.parse(readFileSync(localePath, "utf8")) as RolePageContent;
+  }
+
+  const fallbackPath = join(CONTENT_ROOT, "he", `${role}.json`);
+  if (!existsSync(fallbackPath)) {
+    throw new Error(`No landing JSON for ${role} (${locale})`);
+  }
+  return JSON.parse(readFileSync(fallbackPath, "utf8")) as RolePageContent;
 }
 
 export function loadRoleContent(role: Role, locale: string): RolePageContent {
@@ -15,10 +24,7 @@ export function loadRoleContent(role: Role, locale: string): RolePageContent {
   if (!LANDING_ROLES.includes(landingRole)) {
     throw new Error(`No landing content for role: ${role}`);
   }
-
-  const filePath = join(CONTENT_ROOT, landingLocale(locale), `${landingRole}.json`);
-  const raw = readFileSync(filePath, "utf8");
-  return JSON.parse(raw) as RolePageContent;
+  return loadJsonContent(landingRole, locale);
 }
 
 export function loadHubRoleContents(

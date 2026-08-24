@@ -7,6 +7,7 @@ import { Menu, X } from "lucide-react";
 import { BrandLogo } from "@/components/brand/BrandLogo";
 import { Link, usePathname, useRouter } from "@/i18n/navigation";
 import { LocaleSwitcher } from "@/components/LocaleSwitcher";
+import { CareersLocaleSwitcher } from "@/components/careers/CareersLocaleSwitcher";
 import { LANDING_ROLES, isRole, type Role } from "@/types/role";
 import { useCareersNavJobs } from "@/components/careers/CareersJobsProvider";
 import { cn } from "@/lib/utils";
@@ -95,16 +96,19 @@ export function CareersChrome({
               ))}
               {customJobLinks}
             </nav>
-            <Link href={logoHref} className="careers-chrome__logo" aria-label={t("brand")}>
-              <Image
-                src="/careers/shared/header-logo.png"
-                alt=""
-                width={250}
-                height={50}
-                priority
-                className="careers-chrome__logo-img"
-              />
-            </Link>
+            <div className="careers-chrome__brand-cluster">
+              <CareersLocaleSwitcher />
+              <Link href={logoHref} className="careers-chrome__logo" aria-label={t("brand")}>
+                <Image
+                  src="/careers/shared/header-logo.png"
+                  alt=""
+                  width={250}
+                  height={50}
+                  priority
+                  className="careers-chrome__logo-img"
+                />
+              </Link>
+            </div>
           </div>
         </div>
       </header>
